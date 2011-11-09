@@ -220,7 +220,7 @@ namespace Button
         {
             if (IsOnScreen)
             {
-                theFileManager.SpriteBatch.Draw(Graphic, ScreenPosition, SourceRectangle, Color, 0, Origin + new Vector2(0, 10), Scale, SpriteEffects, LayerDepth);
+                theFileManager.SpriteBatch.Draw(Graphic, ScreenPosition, SourceRectangle, Color, Rotation, Origin + new Vector2(0, 10), Scale, SpriteEffects, LayerDepth);
             }
         }
 
