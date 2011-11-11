@@ -38,7 +38,7 @@ namespace Button
         {
             base.Update();
 
-            // DeleteTile();
+           // DeleteTile(); // Uncomment this if you want to remove tiles. Leftclick to remove.
         }
 
         public override void Draw()
@@ -66,10 +66,10 @@ namespace Button
         {
             if (theInputManager.mouseLeftDrag)
             {
-                if (CollisionRectangle.X < theInputManager.mousePosition.X &&
-                    CollisionRectangle.X + Graphic.Width > theInputManager.mousePosition.X &&
-                    CollisionRectangle.Y < theInputManager.mousePosition.Y &&
-                    CollisionRectangle.Y + Graphic.Height > theInputManager.mousePosition.Y)
+                if (CollisionRectangle.X - Graphic.Width/2 < theInputManager.mousePosition.X &&
+                    CollisionRectangle.X + Graphic.Width - Graphic.Width / 2 > theInputManager.mousePosition.X &&
+                    CollisionRectangle.Y - Graphic.Height  / 2< theInputManager.mousePosition.Y &&
+                    CollisionRectangle.Y + Graphic.Height - Graphic.Height /2> theInputManager.mousePosition.Y)
                 {
                     theTileManager.Remove(this);
                 }

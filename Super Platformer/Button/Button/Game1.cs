@@ -125,6 +125,8 @@ namespace Button
 
             if (theInputManager.mouseLeftDrag)
             {
+              //  theTileManager.Remove();
+
                 Vector2 mousePosition = new Vector2(theInputManager.mousePosition.X, theInputManager.mousePosition.Y);
             }
 

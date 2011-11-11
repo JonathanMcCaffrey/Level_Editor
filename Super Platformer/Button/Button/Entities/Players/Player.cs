@@ -118,6 +118,7 @@ namespace Button
             base.Update();
 
             Movement();
+            Gun();
         }
 
         private void Movement()
@@ -215,6 +216,20 @@ namespace Button
             }
             return false;
         }
+
+        void Gun()
+        {
+            Vector2 tempVector;
+            tempVector = mScreenPosition - theInputManager.mousePosition;
+            tempVector.Normalize();
+            mGunDirection = (float)Math.Atan2(tempVector.Y, tempVector.X) - MathHelper.PiOver2;
+
+            if (theInputManager.mouseLeftDrag)
+            {
+                TankShell.CreateProjectile(ScreenPosition, WorldPosition, this);
+            }
+        }
+
 
         public override void Draw()
         {

@@ -16,14 +16,12 @@ namespace Button
         #region Construction
         public WorldScreen()
         {
-            mBackgroundTexture = theFileManager.LoadTexture2D("GameBackground");
-
+            mBackgroundTexture = theFileManager.LoadTexture2D("Background");
          //   Enemy.CreateEnemy(Vector2.Zero);
         }
 
         public WorldScreen(string aFilePath)
         {
-            mBackgroundTexture = theFileManager.LoadTexture2D("GameBackground");
             theTileManager.Clear();
             theTileManager.Load(aFilePath);
         }
@@ -46,16 +44,7 @@ namespace Button
 
         public override void Draw(GameTime aGameTime)
         {
-            for (int loopX = 0; loopX < (theFileManager.GraphicsDevice.Viewport.Width / mBackgroundTexture.Width) + 1; loopX ++)
-            {
-                for (int loopY = 0; loopY < (theFileManager.GraphicsDevice.Viewport.Height / mBackgroundTexture.Height) + 1; loopY ++)
-                {
-                    int posX = mBackgroundTexture.Width * loopX;
-                    int posY = mBackgroundTexture.Height * loopY;
-
-                    SpriteBatch.Draw(mBackgroundTexture, new Vector2(posX, posY), Color.Wheat);
-                }
-            }
+            SpriteBatch.Draw(mBackgroundTexture, new Rectangle(-200,0, 1000,800), Color.White);
 
             theTileManager.Draw(aGameTime);
             theButtonManager.Draw(aGameTime);
