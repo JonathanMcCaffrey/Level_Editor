@@ -226,7 +226,7 @@ namespace Button
 
             if (theInputManager.mouseLeftDrag)
             {
-                TankShell.CreateProjectile(ScreenPosition, WorldPosition, this);
+                TankShell.CreateProjectile(ScreenPosition, WorldPosition - new Vector2(0, 25), this);
             }
         }
 

@@ -144,24 +144,24 @@ namespace Button
             }
         }
 
-        public void Save(XmlWriter aXmlWriter)
+        public override void Save(XmlWriter aXmlWriter)
         {
-                for (int loop = 0; loop < List.Count; loop++)
-                {
-                    aXmlWriter.WriteStartElement("Button");
-                    aXmlWriter.WriteElementString("Graphic", List[loop].FilePathToGraphic);
-                    aXmlWriter.WriteElementString("Position", List[loop].WorldPosition.ToString());
-                    aXmlWriter.WriteElementString("IsCollidable", List[loop].IsCollidable.ToString());
-                    aXmlWriter.WriteElementString("Color", List[loop].Color.ToString());
-                    aXmlWriter.WriteElementString("Rotation", List[loop].Rotation.ToString());
-                    aXmlWriter.WriteElementString("Scale", List[loop].Scale.ToString());
-                    aXmlWriter.WriteElementString("SpriteEffects", List[loop].SpriteEffects.ToString());
-                    aXmlWriter.WriteElementString("LayerDepth", List[loop].LayerDepth.ToString());
-                    aXmlWriter.WriteEndElement();
-                }
+            for (int loop = 0; loop < List.Count; loop++)
+            {
+                aXmlWriter.WriteStartElement("Tile");
+                aXmlWriter.WriteElementString("Graphic", List[loop].FilePathToGraphic);
+                aXmlWriter.WriteElementString("Position", List[loop].WorldPosition.ToString());
+                aXmlWriter.WriteElementString("IsCollidable", List[loop].IsCollidable.ToString());
+                aXmlWriter.WriteElementString("Color", List[loop].Color.ToString());
+                aXmlWriter.WriteElementString("Rotation", List[loop].Rotation.ToString());
+                aXmlWriter.WriteElementString("Scale", List[loop].Scale.ToString());
+                aXmlWriter.WriteElementString("SpriteEffects", List[loop].SpriteEffects.ToString());
+                aXmlWriter.WriteElementString("LayerDepth", List[loop].LayerDepth.ToString());
+                aXmlWriter.WriteEndElement();
+            }
         }
 
-        public void Load(string aFilePath)
+        public override void Load(string aFilePath)
         {
             int ButtonsToLoad = 0;
 
@@ -171,16 +171,16 @@ namespace Button
                 {
                     switch (xmlReader.NodeType)
                     {
-                        case XmlNodeType.Element:
+                        case XmlNodeType.Element:   // Count every element to get amount of items
                             ButtonsToLoad++;
                             break;
-                        case XmlNodeType.Text:
+                        case XmlNodeType.Text:      // Texts are also elements, uncount them
                             ButtonsToLoad--;
                             break;
                     }
                 }
 
-                ButtonsToLoad--;
+                ButtonsToLoad--;    // We are also uncounting Data
                 xmlReader.Close();
             }
 
@@ -199,61 +199,69 @@ namespace Button
 
                 for (int loop = 0; loop < ButtonsToLoad; loop++)
                 {
-                    xmlReader.ReadStartElement("Button");
-
-                    Tile temporaryTile = new Tile();
-
-                    temporaryTile.FilePathToGraphic = xmlReader.ReadElementContentAsString("Graphic", "");
-
-                    rawData = xmlReader.ReadElementContentAsString("Position", "");
-                    organizedData = rawData.Split(' ');
-                    xData = organizedData[0].Split(':');
-                    yData = organizedData[1].Split(':');
-                    yData[1] = yData[1].TrimEnd();  // Glitch in C#: This will not work at this instance. Wonder why...
-                    yData[1] = yData[1].Replace('}', ' ');  // Here is another solution.
-                    temporaryTile.WorldPosition = new Vector2((float)Convert.ToDouble(xData[1]), (float)Convert.ToDouble(yData[1]));
-
-                    rawData = xmlReader.ReadElementContentAsString("IsCollidable", "");
-                    if (rawData == "True")
+                    try
                     {
-                        temporaryTile.IsCollidable = true;
+                        xmlReader.ReadStartElement("Tile");
+
+                        Tile temporaryTile = new Tile();
+
+                        temporaryTile.FilePathToGraphic = xmlReader.ReadElementContentAsString("Graphic", "");
+
+                        rawData = xmlReader.ReadElementContentAsString("Position", "");
+                        organizedData = rawData.Split(' ');
+                        xData = organizedData[0].Split(':');
+                        yData = organizedData[1].Split(':');
+                        yData[1] = yData[1].TrimEnd();  // Glitch in C#: This will not work at this instance. Wonder why...
+                        yData[1] = yData[1].Replace('}', ' ');  // Here is another solution.
+                        temporaryTile.WorldPosition = new Vector2((float)Convert.ToDouble(xData[1]), (float)Convert.ToDouble(yData[1]));
+
+                        rawData = xmlReader.ReadElementContentAsString("IsCollidable", "");
+                        if (rawData == "True")
+                        {
+                            temporaryTile.IsCollidable = true;
+                        }
+                        else
+                        {
+                            temporaryTile.IsCollidable = false;
+                        }
+
+                        rawData = xmlReader.ReadElementContentAsString("Color", "");
+                        organizedData = rawData.Split(' ');
+                        xData = organizedData[0].Split(':');
+                        yData = organizedData[1].Split(':');
+                        zData = organizedData[2].Split(':');
+                        zData[1] = zData[1].TrimEnd();
+                        temporaryTile.Color = new Color((float)Convert.ToDouble(xData[1]), (float)Convert.ToDouble(yData[1]), (float)Convert.ToDouble(zData[1]));
+
+                        temporaryTile.Rotation = xmlReader.ReadElementContentAsFloat("Rotation", "");
+
+                        temporaryTile.Scale = xmlReader.ReadElementContentAsFloat("Scale", "");
+
+                        switch (xmlReader.ReadElementContentAsString("SpriteEffects", ""))
+                        {
+                            case "FlipVertically":
+                                temporaryTile.SpriteEffects = SpriteEffects.FlipVertically;
+                                break;
+                            case "FlipHorizontally":
+                                temporaryTile.SpriteEffects = SpriteEffects.FlipHorizontally;
+                                break;
+                            case "None":
+                                temporaryTile.SpriteEffects = SpriteEffects.None;
+                                break;
+                            default: break;
+                        }
+
+                        temporaryTile.LayerDepth = xmlReader.ReadElementContentAsFloat("LayerDepth", "");
+
+                        xmlReader.ReadEndElement();
+
+                        Add(temporaryTile);
                     }
-                    else
+
+                    catch
                     {
-                        temporaryTile.IsCollidable = false;
+
                     }
-
-                    rawData = xmlReader.ReadElementContentAsString("Color", "");
-                    organizedData = rawData.Split(' ');
-                    xData = organizedData[0].Split(':');
-                    yData = organizedData[1].Split(':');
-                    zData = organizedData[2].Split(':');
-                    zData[1] = zData[1].TrimEnd();  // See. It works here. What the heck?
-                    temporaryTile.Color = new Color((float)Convert.ToDouble(xData[1]), (float)Convert.ToDouble(yData[1]), (float)Convert.ToDouble(zData[1]));
-
-                    temporaryTile.Rotation = xmlReader.ReadElementContentAsFloat("Rotation", "");
-
-                    temporaryTile.Scale = xmlReader.ReadElementContentAsFloat("Scale", "");
-
-                    switch (xmlReader.ReadElementContentAsString("SpriteEffects", ""))
-                    {
-                        case "FlipVertically":
-                            temporaryTile.SpriteEffects = SpriteEffects.FlipVertically;
-                            break;
-                        case "FlipHorizontally":
-                            temporaryTile.SpriteEffects = SpriteEffects.FlipHorizontally;
-                            break;
-                        case "None":
-                            temporaryTile.SpriteEffects = SpriteEffects.None;
-                            break;
-                        default: break;
-                    }
-
-                    temporaryTile.Rotation = xmlReader.ReadElementContentAsFloat("LayerDepth", "");
-
-                    xmlReader.ReadEndElement();
-
-                    Add(temporaryTile);
                 }
             }
         }

@@ -56,8 +56,8 @@ namespace Button
         public virtual void Save(string aFilePath) { }
         public virtual void Load(string aFilePath) { }
 
-        public virtual void Save() { }
-        public virtual void Load() { }
+        public virtual void Save(XmlWriter aXmlWriter) { }
+        public virtual void Load(XmlWriter aXmlWriter) { }
         #endregion
     }
 }

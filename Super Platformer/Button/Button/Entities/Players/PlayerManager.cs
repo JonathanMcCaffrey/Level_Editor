@@ -81,7 +81,7 @@ namespace Button
             return "Total: " + temporaryStatistic.ToString();
         }
 
-        public void Save(XmlWriter aXmlWriter)
+        public override void Save(XmlWriter aXmlWriter)
         {
             for (int loop = 0; loop < List.Count; loop++)
             {

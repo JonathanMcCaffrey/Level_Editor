@@ -45,6 +45,9 @@ namespace Button
         protected EnemyManager theEnemyManager;
         protected ProjectileManager theProjectileManager;
         protected CollisionManager theCollisionManager;
+
+        protected EntityComponetManager theEntityComponetManager;
+
         #endregion
 
         #region Data
@@ -77,6 +80,10 @@ namespace Button
             theProjectileManager = ProjectileManager.Get(this);
             theCollisionManager = CollisionManager.Get(this);
 
+            theEntityComponetManager = EntityComponetManager.Get(this);
+            theEntityComponetManager.Initialize();
+                
+
             theScreenManager.WorldScreen = new MainMenu();
 
             Player.CreatePlayer("test", new Vector2(mScreenDimensions.X / 2.0f, mScreenDimensions.Y / 2.0f), Vector2.Zero);
@@ -91,7 +98,8 @@ namespace Button
             EnemyButton.Create(new EnemyTurret(), Keys.F);
          //   EnemyButton.Create("Turret_Gun", Keys.F);
 
-            theTileManager.Load("Level_1.xml");
+          //  theEnemyManager.Load("Test_First.xml");
+            theTileManager.Load("Test_First.xml");
 
             base.Initialize();
         }
@@ -115,6 +123,15 @@ namespace Button
             }
 
             base.Update(aGameTime);
+
+            if (theInputManager.SingleKeyPressInput(Keys.V))
+            {
+                theEntityComponetManager.SaveAll("Test_First.xml");
+            }
+            if (theInputManager.SingleKeyPressInput(Keys.C))
+            {
+                theEntityComponetManager.LoadAll("Test_First.xml");
+            }
 
             if (theInputManager.mouseRightDrag)
             {

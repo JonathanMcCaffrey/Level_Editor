@@ -17,3 +17,4 @@ C:\Users\mcca0442\Desktop\tank-gauntlet\trunk\Player\Button\ButtonContent\obj\x8
 Z:\tank-gauntlet\trunk\Player\Button\ButtonContent\obj\x86\Debug\ResolveAssemblyReference.cache
 C:\Users\mcca0442\Desktop\Test\tank-gauntlet\trunk\Super Platformer\Button\ButtonContent\obj\x86\Debug\ResolveAssemblyReference.cache
 C:\Users\mcca0442\Desktop\super-platformer\trunk\Super Platformer\Button\ButtonContent\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\mcca0442\Desktop\trunk\Super Platformer\Button\ButtonContent\obj\x86\Debug\ResolveAssemblyReference.cache

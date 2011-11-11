@@ -17,10 +17,7 @@ namespace Button
     {
         #region Construction
 
-
-
         List<AbstractEntityManager> mList = new List<AbstractEntityManager>();
-
 
         protected EntityComponetManager(Game aGame)
             : base(aGame) { }
@@ -39,12 +36,12 @@ namespace Button
             return Instance;
         }
 
-        private void Initialize()
+        public override void Initialize()
         {
             mList.Add(TileManager.Get());
             mList.Add(EnemyManager.Get());
 
-        //    mList.Add(PlayerManager.Get());
+            //    mList.Add(PlayerManager.Get());
         }
         #endregion
 
@@ -56,12 +53,20 @@ namespace Button
             {
                 xmlWriter.WriteStartElement("Data");
 
-                for (int outterLoop = 0; outterLoop < mList.Count; outterLoop++)
+                for (int loop = 0; loop < mList.Count; loop++)
                 {
-                        mList[outterLoop].Save();
+                    mList[loop].Save(xmlWriter);
                 }
 
                 xmlWriter.Close();
+            }
+        }
+
+        public void LoadAll(string aFilePath)
+        {
+            for (int loop = 0; loop < mList.Count; loop++)
+            {
+                mList[loop].Load(aFilePath);
             }
         }
         #endregion

@@ -33,7 +33,7 @@ namespace Button
             get { return mList; }
         }
 
-        private string mFilePathToGraphic = "Wooden";      
+        private string mFilePathToGraphic = "Wooden";
         public Texture2D Graphic
         {
             get { return theFileManager.LoadTexture2D(mFilePathToGraphic); }
@@ -79,31 +79,36 @@ namespace Button
         #region Methods
         public override void Update(GameTime aGameTime)
         {
-        /*    if (theInputManager.SingleKeyPressInput(Keys.A) && !loadFile.IsAccessible) // Start save file
-            {
-                saveFile.On();
-            }
-            if (saveFile.Done)  // Finish save file
-            {
-                Save(saveFile.FileName);
-                saveFile.Off();
-            }
+            /*    if (theInputManager.SingleKeyPressInput(Keys.A) && !loadFile.IsAccessible) // Start save file
+                {
+                    saveFile.On();
+                }
+                if (saveFile.Done)  // Finish save file
+                {
+                    Save(saveFile.FileName);
+                    saveFile.Off();
+                }
 
-            if (theInputManager.SingleKeyPressInput(Keys.D) && !saveFile.IsAccessible)
-            {
-                loadFile.On();
-            }
-            if (loadFile.Done)  // Finish save file
-            {
-                Load(loadFile.FileName);
-                loadFile.Off();
-            }
+                if (theInputManager.SingleKeyPressInput(Keys.D) && !saveFile.IsAccessible)
+                {
+                    loadFile.On();
+                }
+                if (loadFile.Done)  // Finish save file
+                {
+                    Load(loadFile.FileName);
+                    loadFile.Off();
+                }
 
+                if (theInputManager.SingleKeyPressInput(Keys.S) && !saveFile.IsAccessible && !loadFile.IsAccessible)
+                {
+                    Clear();
+                }
+                */
             if (theInputManager.SingleKeyPressInput(Keys.S) && !saveFile.IsAccessible && !loadFile.IsAccessible)
             {
                 Clear();
             }
-            */
+
             for (int i = 0; i < mList.Count; i++)
             {
                 List[i].Update();
@@ -157,11 +162,11 @@ namespace Button
             }
         }
 
-        public void Save(XmlWriter aXmlWriter)
+        public override void Save(XmlWriter aXmlWriter)
         {
             for (int loop = 0; loop < List.Count; loop++)
             {
-                aXmlWriter.WriteStartElement("Button");
+                aXmlWriter.WriteStartElement("Enemy");
                 aXmlWriter.WriteElementString("Graphic", List[loop].FilePathToGraphic);
                 aXmlWriter.WriteElementString("Position", List[loop].WorldPosition.ToString());
                 aXmlWriter.WriteElementString("IsCollidable", List[loop].IsCollidable.ToString());
@@ -174,11 +179,11 @@ namespace Button
             }
         }
 
-        public void Load(string aFilePath)
+        public override void Load(string aFilePath)
         {
             int ButtonsToLoad = 0;
 
-            using (XmlReader xmlReader = XmlReader.Create(aFilePath + ".xml"))
+            using (XmlReader xmlReader = XmlReader.Create(aFilePath))
             {
                 while (xmlReader.Read())
                 {
@@ -197,7 +202,7 @@ namespace Button
                 xmlReader.Close();
             }
 
-            using (XmlReader xmlReader = XmlReader.Create(aFilePath + ".xml"))
+            using (XmlReader xmlReader = XmlReader.Create(aFilePath))
             {
                 xmlReader.MoveToContent();
 
@@ -210,13 +215,14 @@ namespace Button
                 string[] yData;
                 string[] zData;
 
-                for (int loop = 0; loop < ButtonsToLoad; loop++)
+                xmlReader.ReadToFollowing("Enemy");
+
+                for (int loop = 0; loop < 10; loop++)
                 {
-                    xmlReader.ReadStartElement("Button");
+                    xmlReader.ReadStartElement("Enemy");
 
                     Enemy temporaryEnemy = new Enemy();
 
-              //      temporaryEnemy.FilePathToBorder = xmlReader.ReadElementContentAsString("Border", "");
                     temporaryEnemy.FilePathToGraphic = xmlReader.ReadElementContentAsString("Graphic", "");
 
                     rawData = xmlReader.ReadElementContentAsString("Position", "");
@@ -226,6 +232,8 @@ namespace Button
                     yData[1] = yData[1].TrimEnd();  // Glitch: This is not working. C# has failed me : (
                     yData[1] = yData[1].Replace('}', ' ');  // This is another method of doing it. Rather not use it tho for the sake of consistency.
                     temporaryEnemy.WorldPosition = new Vector2((float)Convert.ToDouble(xData[1]), (float)Convert.ToDouble(yData[1]));
+
+                    EnemyTurret.CreateEnemy(new Vector2((float)Convert.ToDouble(xData[1]), (float)Convert.ToDouble(yData[1])));
 
                     rawData = xmlReader.ReadElementContentAsString("IsCollidable", "");
                     if (rawData == "True")
@@ -242,7 +250,7 @@ namespace Button
                     xData = organizedData[0].Split(':');
                     yData = organizedData[1].Split(':');
                     zData = organizedData[2].Split(':');
-                    zData[1] = zData[1].TrimEnd();  // See. It works here. What the heck?
+                    zData[1] = zData[1].TrimEnd();
                     temporaryEnemy.Color = new Color((float)Convert.ToDouble(xData[1]), (float)Convert.ToDouble(yData[1]), (float)Convert.ToDouble(zData[1]));
 
                     temporaryEnemy.Rotation = xmlReader.ReadElementContentAsFloat("Rotation", "");
@@ -263,7 +271,11 @@ namespace Button
                         default: break;
                     }
 
-                    temporaryEnemy.Rotation = xmlReader.ReadElementContentAsFloat("LayerDepth", "");
+                    temporaryEnemy.LayerDepth = xmlReader.ReadElementContentAsFloat("LayerDepth", "");
+
+                    Enemy.CreateEnemy(temporaryEnemy.WorldPosition);
+
+                    EnemyTurret.CreateEnemy(temporaryEnemy.WorldPosition);
 
                     xmlReader.ReadEndElement();
 

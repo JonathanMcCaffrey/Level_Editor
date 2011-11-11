@@ -31,6 +31,8 @@ namespace Button
         #region Construction
         public Enemy()
         {
+            FilePathToGraphic = "Turret_Base";
+            mHostileStateMachine = new HostileStateMachine(this);
         }
 
         private Enemy(Vector2 aCoordinate)
