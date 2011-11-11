@@ -137,6 +137,7 @@
     <Compile Include="Entities\Enemies\Enemy.cs" />
     <Compile Include="Entities\Enemies\EnemyManager.cs" />
     <Compile Include="Entities\Enemies\Content\EnemyTurret.cs" />
+    <Compile Include="Entities\EntityComponetManager.cs" />
     <Compile Include="Entities\Tiles\Content\WallCopper.cs" />
     <Compile Include="Entities\Tiles\Content\WallMetal.cs" />
     <Compile Include="Entities\Tiles\Content\FloorCopper.cs" />

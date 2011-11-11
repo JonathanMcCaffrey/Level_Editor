@@ -81,6 +81,23 @@ namespace Button
             return "Total: " + temporaryStatistic.ToString();
         }
 
+        public void Save(XmlWriter aXmlWriter)
+        {
+            for (int loop = 0; loop < List.Count; loop++)
+            {
+                aXmlWriter.WriteStartElement("Button");
+                aXmlWriter.WriteElementString("Graphic", List[loop].FilePathToGraphic);
+                aXmlWriter.WriteElementString("Position", List[loop].WorldPosition.ToString());
+                aXmlWriter.WriteElementString("IsCollidable", List[loop].IsCollidable.ToString());
+                aXmlWriter.WriteElementString("Color", List[loop].Color.ToString());
+                aXmlWriter.WriteElementString("Rotation", List[loop].Rotation.ToString());
+                aXmlWriter.WriteElementString("Scale", List[loop].Scale.ToString());
+                aXmlWriter.WriteElementString("SpriteEffects", List[loop].SpriteEffects.ToString());
+                aXmlWriter.WriteElementString("LayerDepth", List[loop].LayerDepth.ToString());
+                aXmlWriter.WriteEndElement();
+            }
+        }
+
         #endregion
     }
 }

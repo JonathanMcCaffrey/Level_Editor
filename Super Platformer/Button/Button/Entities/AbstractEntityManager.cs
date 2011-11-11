@@ -15,6 +15,16 @@ namespace Button
 {
     public class AbstractEntityManager : DrawableGameComponent
     {
+        public AbstractEntityManager Manager
+        {
+            get { return this; }
+        }
+
+        public virtual List<AbstractEntity> List
+        {
+            get { return null; }
+        }
+
         #region Construction
         protected AbstractEntityManager(Game aGame)
             : base(aGame) { }
@@ -42,6 +52,12 @@ namespace Button
         public virtual void Clear() { }
         public virtual void Generate(Vector2 aCoordinate) { }
         public virtual string Statistic() { return "Hi"; }
+
+        public virtual void Save(string aFilePath) { }
+        public virtual void Load(string aFilePath) { }
+
+        public virtual void Save() { }
+        public virtual void Load() { }
         #endregion
     }
 }

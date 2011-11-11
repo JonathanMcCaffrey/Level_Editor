@@ -128,9 +128,7 @@ namespace Button
                 for (int loop = 0; loop < List.Count; loop++)
                 {
                     xmlWriter.WriteStartElement("Button");
-                  //  xmlWriter.WriteElementString("Border", List[loop].FilePathToBorder);
                     xmlWriter.WriteElementString("Graphic", List[loop].FilePathToGraphic);
-                    //       xmlWriter.WriteElementString("Function", List[0].Function.ToString());
                     xmlWriter.WriteElementString("Position", List[loop].WorldPosition.ToString());
                     xmlWriter.WriteElementString("IsCollidable", List[loop].IsCollidable.ToString());
                     xmlWriter.WriteElementString("Color", List[loop].Color.ToString());
@@ -144,6 +142,23 @@ namespace Button
 
                 xmlWriter.Close();
             }
+        }
+
+        public void Save(XmlWriter aXmlWriter)
+        {
+                for (int loop = 0; loop < List.Count; loop++)
+                {
+                    aXmlWriter.WriteStartElement("Button");
+                    aXmlWriter.WriteElementString("Graphic", List[loop].FilePathToGraphic);
+                    aXmlWriter.WriteElementString("Position", List[loop].WorldPosition.ToString());
+                    aXmlWriter.WriteElementString("IsCollidable", List[loop].IsCollidable.ToString());
+                    aXmlWriter.WriteElementString("Color", List[loop].Color.ToString());
+                    aXmlWriter.WriteElementString("Rotation", List[loop].Rotation.ToString());
+                    aXmlWriter.WriteElementString("Scale", List[loop].Scale.ToString());
+                    aXmlWriter.WriteElementString("SpriteEffects", List[loop].SpriteEffects.ToString());
+                    aXmlWriter.WriteElementString("LayerDepth", List[loop].LayerDepth.ToString());
+                    aXmlWriter.WriteEndElement();
+                }
         }
 
         public void Load(string aFilePath)
@@ -188,15 +203,14 @@ namespace Button
 
                     Tile temporaryTile = new Tile();
 
-              //      temporaryTile.FilePathToBorder = xmlReader.ReadElementContentAsString("Border", "");
                     temporaryTile.FilePathToGraphic = xmlReader.ReadElementContentAsString("Graphic", "");
 
                     rawData = xmlReader.ReadElementContentAsString("Position", "");
                     organizedData = rawData.Split(' ');
                     xData = organizedData[0].Split(':');
                     yData = organizedData[1].Split(':');
-                    yData[1] = yData[1].TrimEnd();  // Glitch: This is not working. C# has failed me : (
-                    yData[1] = yData[1].Replace('}', ' ');  // This is another method of doing it. Rather not use it tho for the sake of consistency.
+                    yData[1] = yData[1].TrimEnd();  // Glitch in C#: This will not work at this instance. Wonder why...
+                    yData[1] = yData[1].Replace('}', ' ');  // Here is another solution.
                     temporaryTile.WorldPosition = new Vector2((float)Convert.ToDouble(xData[1]), (float)Convert.ToDouble(yData[1]));
 
                     rawData = xmlReader.ReadElementContentAsString("IsCollidable", "");
