@@ -129,9 +129,6 @@
     <Compile Include="Collision\CollisionManager.cs" />
     <Compile Include="Collision\Content\EntityCollision.cs" />
     <Compile Include="Collision\Content\ProjectileCollision.cs" />
-    <Compile Include="Emitters\EmitterManager.cs" />
-    <Compile Include="Emitters\GenericEmitter.cs" />
-    <Compile Include="Emitters\GenericParticle.cs" />
     <Compile Include="Entities\AbstractEntity.cs" />
     <Compile Include="Entities\AbstractEntityManager.cs" />
     <Compile Include="Entities\Enemies\Enemy.cs" />
@@ -222,7 +219,6 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Emitters\Content\" />
     <Folder Include="Entities\Objects\" />
     <Folder Include="Entities\Players\Content\" />
   </ItemGroup>

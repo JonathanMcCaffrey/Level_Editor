@@ -16,26 +16,12 @@ namespace Button
 {
     public class TileManager : AbstractEntityManager
     {
-        #region Singletons
-        protected FileManager theFileManager = FileManager.Get();
-        protected InputManager theInputManager = InputManager.Get();
-        protected UtilityManager theUtilityManager = UtilityManager.Get();
-        protected TileManager theTileManager = TileManager.Get();
-        protected ButtonManager theButtonManager = ButtonManager.Get();
-        protected PlayerManager thePlayerManager = PlayerManager.Get();
-        protected ScreenManager theScreenManager = ScreenManager.Get();
-        #endregion
-
         #region Data
         private List<Tile> mList = new List<Tile>();
         public List<Tile> List
         {
             get { return mList; }
         }
-
-        SaveMap saveFile = new SaveMap();
-        LoadMap loadFile = new LoadMap();
-
         #endregion
 
         #region Construction
@@ -61,27 +47,7 @@ namespace Button
         #region Methods
         public override void Update(GameTime aGameTime)
         {
-            if (theInputManager.SingleKeyPressInput(Keys.A) && !loadFile.IsAccessible) // Start save file
-            {
-                saveFile.On();
-            }
-            if (saveFile.Done)  // Finish save file
-            {
-                Save(saveFile.FileName);
-                saveFile.Off();
-            }
-
-            if (theInputManager.SingleKeyPressInput(Keys.D) && !saveFile.IsAccessible)
-            {
-                loadFile.On();
-            }
-            if (loadFile.Done)  // Finish save file
-            {
-                Load(loadFile.FileName);
-                loadFile.Off();
-            }
-
-            if (theInputManager.SingleKeyPressInput(Keys.S) && !saveFile.IsAccessible && !loadFile.IsAccessible)
+            if (theInputManager.SingleKeyPressInput(Keys.S))
             {
                 Clear();
             }
@@ -118,30 +84,6 @@ namespace Button
         public override void Generate(Vector2 aCoordinate)
         {
             Tile newTile = new Tile(aCoordinate);
-        }
-
-        public void Save(string aFilePath)
-        {
-            using (XmlWriter xmlWriter = XmlWriter.Create(aFilePath))
-            {
-                xmlWriter.WriteStartElement("Data");
-                for (int loop = 0; loop < List.Count; loop++)
-                {
-                    xmlWriter.WriteStartElement("Button");
-                    xmlWriter.WriteElementString("Graphic", List[loop].FilePathToGraphic);
-                    xmlWriter.WriteElementString("Position", List[loop].WorldPosition.ToString());
-                    xmlWriter.WriteElementString("IsCollidable", List[loop].IsCollidable.ToString());
-                    xmlWriter.WriteElementString("Color", List[loop].Color.ToString());
-                    xmlWriter.WriteElementString("Rotation", List[loop].Rotation.ToString());
-                    xmlWriter.WriteElementString("Scale", List[loop].Scale.ToString());
-                    xmlWriter.WriteElementString("SpriteEffects", List[loop].SpriteEffects.ToString());
-                    xmlWriter.WriteElementString("LayerDepth", List[loop].LayerDepth.ToString());
-                    xmlWriter.WriteEndElement();
-                }
-                xmlWriter.WriteEndElement();
-
-                xmlWriter.Close();
-            }
         }
 
         public override void Save(XmlWriter aXmlWriter)
@@ -249,11 +191,13 @@ namespace Button
                     {
                         Console.WriteLine("Something went wrong in tile loading.");
                     }
+
+                    xmlReader.Close();
                 }
             }
         }
 
-        public string Statistic()
+        public override string Statistic()
         {
             int temporaryStatistic = mList.Count;
 

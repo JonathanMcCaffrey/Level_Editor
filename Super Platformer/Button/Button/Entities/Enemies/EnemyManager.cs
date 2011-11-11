@@ -16,16 +16,6 @@ namespace Button
 {
     public class EnemyManager : AbstractEntityManager
     {
-        #region Singletons
-        protected FileManager theFileManager = FileManager.Get();
-        protected InputManager theInputManager = InputManager.Get();
-        protected UtilityManager theUtilityManager = UtilityManager.Get();
-        protected EnemyManager theEnemyManager = EnemyManager.Get();
-        protected ButtonManager theButtonManager = ButtonManager.Get();
-        protected PlayerManager thePlayerManager = PlayerManager.Get();
-        protected ScreenManager theScreenManager = ScreenManager.Get();
-        #endregion
-
         #region Data
         private List<Enemy> mList = new List<Enemy>();
         public List<Enemy> List
@@ -50,10 +40,6 @@ namespace Button
             get { return isCollidable; }
             set { isCollidable = value; }
         }
-
-        SaveMap saveFile = new SaveMap();
-        LoadMap loadFile = new LoadMap();
-
         #endregion
 
         #region Construction
@@ -79,32 +65,7 @@ namespace Button
         #region Methods
         public override void Update(GameTime aGameTime)
         {
-            /*    if (theInputManager.SingleKeyPressInput(Keys.A) && !loadFile.IsAccessible) // Start save file
-                {
-                    saveFile.On();
-                }
-                if (saveFile.Done)  // Finish save file
-                {
-                    Save(saveFile.FileName);
-                    saveFile.Off();
-                }
-
-                if (theInputManager.SingleKeyPressInput(Keys.D) && !saveFile.IsAccessible)
-                {
-                    loadFile.On();
-                }
-                if (loadFile.Done)  // Finish save file
-                {
-                    Load(loadFile.FileName);
-                    loadFile.Off();
-                }
-
-                if (theInputManager.SingleKeyPressInput(Keys.S) && !saveFile.IsAccessible && !loadFile.IsAccessible)
-                {
-                    Clear();
-                }
-                */
-            if (theInputManager.SingleKeyPressInput(Keys.S) && !saveFile.IsAccessible && !loadFile.IsAccessible)
+            if (theInputManager.SingleKeyPressInput(Keys.S))
             {
                 Clear();
             }
@@ -133,33 +94,9 @@ namespace Button
             List.Remove(aEntity);
         }
 
-        public void Clear()
+        public override void Clear()
         {
             List.Clear();
-        }
-
-        public void Save(string aFilePath)
-        {
-            using (XmlWriter xmlWriter = XmlWriter.Create(aFilePath + ".xml"))
-            {
-                xmlWriter.WriteStartElement("Data");
-                for (int loop = 0; loop < List.Count; loop++)
-                {
-                    xmlWriter.WriteStartElement("Button");
-                    xmlWriter.WriteElementString("Graphic", List[loop].FilePathToGraphic);
-                    xmlWriter.WriteElementString("Position", List[loop].WorldPosition.ToString());
-                    xmlWriter.WriteElementString("IsCollidable", List[loop].IsCollidable.ToString());
-                    xmlWriter.WriteElementString("Color", List[loop].Color.ToString());
-                    xmlWriter.WriteElementString("Rotation", List[loop].Rotation.ToString());
-                    xmlWriter.WriteElementString("Scale", List[loop].Scale.ToString());
-                    xmlWriter.WriteElementString("SpriteEffects", List[loop].SpriteEffects.ToString());
-                    xmlWriter.WriteElementString("LayerDepth", List[loop].LayerDepth.ToString());
-                    xmlWriter.WriteEndElement();
-                }
-                xmlWriter.WriteEndElement();
-
-                xmlWriter.Close();
-            }
         }
 
         public override void Save(XmlWriter aXmlWriter)
@@ -185,8 +122,6 @@ namespace Button
 
         public override void Load(string aFilePath)
         {
-            
-
             using (XmlReader xmlReader = XmlReader.Create(aFilePath))
             {
                 xmlReader.MoveToContent();
@@ -209,72 +144,81 @@ namespace Button
                 xmlReader.ReadToFollowing("Enemy");
                 for (int loop = 0; loop < count; loop++)
                 {
-                    xmlReader.ReadStartElement("Enemy");
-
-                    Enemy temporaryEnemy = new Enemy();
-
-                    temporaryEnemy.FilePathToGraphic = xmlReader.ReadElementContentAsString("Graphic", "");
-
-                    rawData = xmlReader.ReadElementContentAsString("Position", "");
-                    organizedData = rawData.Split(' ');
-                    xData = organizedData[0].Split(':');
-                    yData = organizedData[1].Split(':');
-                    yData[1] = yData[1].TrimEnd();  // Glitch: This is not working. C# has failed me : (
-                    yData[1] = yData[1].Replace('}', ' ');  // This is another method of doing it. Rather not use it tho for the sake of consistency.
-                    temporaryEnemy.WorldPosition = new Vector2((float)Convert.ToDouble(xData[1]), (float)Convert.ToDouble(yData[1]));
-
-                    EnemyTurret.CreateEnemy(new Vector2((float)Convert.ToDouble(xData[1]), (float)Convert.ToDouble(yData[1])));
-
-                    rawData = xmlReader.ReadElementContentAsString("IsCollidable", "");
-                    if (rawData == "True")
+                    try
                     {
-                        temporaryEnemy.IsCollidable = true;
+                        xmlReader.ReadStartElement("Enemy");
+
+                        Enemy temporaryEnemy = new Enemy();
+
+                        temporaryEnemy.FilePathToGraphic = xmlReader.ReadElementContentAsString("Graphic", "");
+
+                        rawData = xmlReader.ReadElementContentAsString("Position", "");
+                        organizedData = rawData.Split(' ');
+                        xData = organizedData[0].Split(':');
+                        yData = organizedData[1].Split(':');
+                        yData[1] = yData[1].TrimEnd();  // Glitch: This is not working. C# has failed me : (
+                        yData[1] = yData[1].Replace('}', ' ');  // This is another method of doing it. Rather not use it tho for the sake of consistency.
+                        temporaryEnemy.WorldPosition = new Vector2((float)Convert.ToDouble(xData[1]), (float)Convert.ToDouble(yData[1]));
+
+                        EnemyTurret.CreateEnemy(new Vector2((float)Convert.ToDouble(xData[1]), (float)Convert.ToDouble(yData[1])));
+
+                        rawData = xmlReader.ReadElementContentAsString("IsCollidable", "");
+                        if (rawData == "True")
+                        {
+                            temporaryEnemy.IsCollidable = true;
+                        }
+                        else
+                        {
+                            temporaryEnemy.IsCollidable = false;
+                        }
+
+                        rawData = xmlReader.ReadElementContentAsString("Color", "");
+                        organizedData = rawData.Split(' ');
+                        xData = organizedData[0].Split(':');
+                        yData = organizedData[1].Split(':');
+                        zData = organizedData[2].Split(':');
+                        zData[1] = zData[1].TrimEnd();
+                        temporaryEnemy.Color = new Color((float)Convert.ToDouble(xData[1]), (float)Convert.ToDouble(yData[1]), (float)Convert.ToDouble(zData[1]));
+
+                        temporaryEnemy.Rotation = xmlReader.ReadElementContentAsFloat("Rotation", "");
+
+                        temporaryEnemy.Scale = xmlReader.ReadElementContentAsFloat("Scale", "");
+
+                        switch (xmlReader.ReadElementContentAsString("SpriteEffects", ""))
+                        {
+                            case "FlipVertically":
+                                temporaryEnemy.SpriteEffects = SpriteEffects.FlipVertically;
+                                break;
+                            case "FlipHorizontally":
+                                temporaryEnemy.SpriteEffects = SpriteEffects.FlipHorizontally;
+                                break;
+                            case "None":
+                                temporaryEnemy.SpriteEffects = SpriteEffects.None;
+                                break;
+                            default: break;
+                        }
+
+                        temporaryEnemy.LayerDepth = xmlReader.ReadElementContentAsFloat("LayerDepth", "");
+
+                        Enemy.CreateEnemy(temporaryEnemy.WorldPosition);
+
+                        EnemyTurret.CreateEnemy(temporaryEnemy.WorldPosition);
+
+                        xmlReader.ReadEndElement();
+
+                        Add(temporaryEnemy);
                     }
-                    else
+                    catch
                     {
-                        temporaryEnemy.IsCollidable = false;
+                        Console.WriteLine("Something went wrong in enemy loading.");
                     }
 
-                    rawData = xmlReader.ReadElementContentAsString("Color", "");
-                    organizedData = rawData.Split(' ');
-                    xData = organizedData[0].Split(':');
-                    yData = organizedData[1].Split(':');
-                    zData = organizedData[2].Split(':');
-                    zData[1] = zData[1].TrimEnd();
-                    temporaryEnemy.Color = new Color((float)Convert.ToDouble(xData[1]), (float)Convert.ToDouble(yData[1]), (float)Convert.ToDouble(zData[1]));
-
-                    temporaryEnemy.Rotation = xmlReader.ReadElementContentAsFloat("Rotation", "");
-
-                    temporaryEnemy.Scale = xmlReader.ReadElementContentAsFloat("Scale", "");
-
-                    switch (xmlReader.ReadElementContentAsString("SpriteEffects", ""))
-                    {
-                        case "FlipVertically":
-                            temporaryEnemy.SpriteEffects = SpriteEffects.FlipVertically;
-                            break;
-                        case "FlipHorizontally":
-                            temporaryEnemy.SpriteEffects = SpriteEffects.FlipHorizontally;
-                            break;
-                        case "None":
-                            temporaryEnemy.SpriteEffects = SpriteEffects.None;
-                            break;
-                        default: break;
-                    }
-
-                    temporaryEnemy.LayerDepth = xmlReader.ReadElementContentAsFloat("LayerDepth", "");
-
-                    Enemy.CreateEnemy(temporaryEnemy.WorldPosition);
-
-                    EnemyTurret.CreateEnemy(temporaryEnemy.WorldPosition);
-
-                    xmlReader.ReadEndElement();
-
-                    Add(temporaryEnemy);
+                    xmlReader.Close();
                 }
             }
         }
 
-        public string Statistic()
+        public override string Statistic()
         {
             int temporaryStatistic = mList.Count;
 

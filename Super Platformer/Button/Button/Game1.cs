@@ -98,8 +98,8 @@ namespace Button
             EnemyButton.Create(new EnemyTurret(), Keys.F);
          //   EnemyButton.Create("Turret_Gun", Keys.F);
 
-          //  theEnemyManager.Load("Test_First.xml");
-            theTileManager.Load("Test_First.xml");
+            theEnemyManager.Load("Test.xml");
+            theTileManager.Load("Test.xml");
 
             base.Initialize();
         }
@@ -126,11 +126,11 @@ namespace Button
 
             if (theInputManager.SingleKeyPressInput(Keys.V))
             {
-                theEntityComponetManager.SaveAll("Test_First.xml");
+                theEntityComponetManager.SaveAll("Test.xml");
             }
             if (theInputManager.SingleKeyPressInput(Keys.C))
             {
-                theEntityComponetManager.LoadAll("Test_First.xml");
+                theEntityComponetManager.LoadAll("Test.xml");
             }
 
             if (theInputManager.mouseRightDrag)

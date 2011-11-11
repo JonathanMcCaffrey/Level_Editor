@@ -15,6 +15,17 @@ namespace Button
 {
     public class AbstractEntityManager : DrawableGameComponent
     {
+        #region Singletons
+        protected FileManager theFileManager = FileManager.Get();
+        protected InputManager theInputManager = InputManager.Get();
+        protected UtilityManager theUtilityManager = UtilityManager.Get();
+        protected TileManager theTileManager = TileManager.Get();
+        protected ButtonManager theButtonManager = ButtonManager.Get();
+        protected PlayerManager thePlayerManager = PlayerManager.Get();
+        protected ScreenManager theScreenManager = ScreenManager.Get();
+        #endregion
+
+        #region Data
         public AbstractEntityManager Manager
         {
             get { return this; }
@@ -24,6 +35,7 @@ namespace Button
         {
             get { return null; }
         }
+        #endregion
 
         #region Construction
         protected AbstractEntityManager(Game aGame)
@@ -53,11 +65,8 @@ namespace Button
         public virtual void Generate(Vector2 aCoordinate) { }
         public virtual string Statistic() { return "Hi"; }
 
-        public virtual void Save(string aFilePath) { }
-        public virtual void Load(string aFilePath) { }
-
         public virtual void Save(XmlWriter aXmlWriter) { }
-        public virtual void Load(XmlWriter aXmlWriter) { }
+        public virtual void Load(string aFilePath) { }
         #endregion
     }
 }

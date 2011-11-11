@@ -10,6 +10,8 @@ namespace Button
     public class WorldScreen : AbstractGameScreen
     {
         #region Data
+        EntityComponetManager theEntityComponetManager = EntityComponetManager.Get();
+
         Texture2D mBackgroundTexture;
         #endregion
 
@@ -17,7 +19,7 @@ namespace Button
         public WorldScreen()
         {
             mBackgroundTexture = theFileManager.LoadTexture2D("Background");
-         //   Enemy.CreateEnemy(Vector2.Zero);
+            //   Enemy.CreateEnemy(Vector2.Zero);
         }
 
         public WorldScreen(string aFilePath)
@@ -35,22 +37,20 @@ namespace Button
 
             theCollisionManager.Reset();
 
-            theTileManager.Update(aGameTime);
-            thePlayerManager.Update(aGameTime);
+            theEntityComponetManager.Update(aGameTime);
+
             theButtonManager.Update(aGameTime);
-            theEnemyManager.Update(aGameTime);
             theProjectileManager.Update(aGameTime);
         }
 
         public override void Draw(GameTime aGameTime)
         {
-            SpriteBatch.Draw(mBackgroundTexture, new Rectangle(-200,0, 1000,800), Color.White);
+            SpriteBatch.Draw(mBackgroundTexture, new Rectangle(-200, 0, 1000, 800), Color.White);
 
-            theTileManager.Draw(aGameTime);
+            theEntityComponetManager.Draw(aGameTime);
+
             theButtonManager.Draw(aGameTime);
             theProjectileManager.Draw(aGameTime);
-            theEnemyManager.Draw(aGameTime);
-            thePlayerManager.Draw(aGameTime);
         }
         #endregion
     }
