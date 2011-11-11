@@ -164,6 +164,10 @@ namespace Button
 
         public override void Save(XmlWriter aXmlWriter)
         {
+            aXmlWriter.WriteStartElement("EnemyDescription");
+            aXmlWriter.WriteElementString("Count", List.Count.ToString());
+            aXmlWriter.WriteEndElement();
+
             for (int loop = 0; loop < List.Count; loop++)
             {
                 aXmlWriter.WriteStartElement("Enemy");
@@ -181,26 +185,7 @@ namespace Button
 
         public override void Load(string aFilePath)
         {
-            int ButtonsToLoad = 0;
-
-            using (XmlReader xmlReader = XmlReader.Create(aFilePath))
-            {
-                while (xmlReader.Read())
-                {
-                    switch (xmlReader.NodeType)
-                    {
-                        case XmlNodeType.Element:
-                            ButtonsToLoad++;
-                            break;
-                        case XmlNodeType.Text:
-                            ButtonsToLoad--;
-                            break;
-                    }
-                }
-
-                ButtonsToLoad--;
-                xmlReader.Close();
-            }
+            
 
             using (XmlReader xmlReader = XmlReader.Create(aFilePath))
             {
@@ -215,9 +200,14 @@ namespace Button
                 string[] yData;
                 string[] zData;
 
-                xmlReader.ReadToFollowing("Enemy");
+                xmlReader.ReadToFollowing("EnemyDescription");
 
-                for (int loop = 0; loop < 10; loop++)
+                int count;
+                xmlReader.ReadToFollowing("Count");
+                count = xmlReader.ReadElementContentAsInt("Count", "");
+
+                xmlReader.ReadToFollowing("Enemy");
+                for (int loop = 0; loop < count; loop++)
                 {
                     xmlReader.ReadStartElement("Enemy");
 
@@ -290,7 +280,6 @@ namespace Button
 
             return "Total: " + temporaryStatistic.ToString();
         }
-
         #endregion
     }
 }

@@ -146,6 +146,10 @@ namespace Button
 
         public override void Save(XmlWriter aXmlWriter)
         {
+            aXmlWriter.WriteStartElement("TileDescription");
+            aXmlWriter.WriteElementString("Count", List.Count.ToString());
+            aXmlWriter.WriteEndElement();
+
             for (int loop = 0; loop < List.Count; loop++)
             {
                 aXmlWriter.WriteStartElement("Tile");
@@ -163,32 +167,9 @@ namespace Button
 
         public override void Load(string aFilePath)
         {
-            int ButtonsToLoad = 0;
-
-            using (XmlReader xmlReader = XmlReader.Create(aFilePath))
-            {
-                while (xmlReader.Read())
-                {
-                    switch (xmlReader.NodeType)
-                    {
-                        case XmlNodeType.Element:   // Count every element to get amount of items
-                            ButtonsToLoad++;
-                            break;
-                        case XmlNodeType.Text:      // Texts are also elements, uncount them
-                            ButtonsToLoad--;
-                            break;
-                    }
-                }
-
-                ButtonsToLoad--;    // We are also uncounting Data
-                xmlReader.Close();
-            }
-
             using (XmlReader xmlReader = XmlReader.Create(aFilePath))
             {
                 xmlReader.MoveToContent();
-
-                xmlReader.ReadStartElement("Data");
 
                 string rawData;
                 string[] organizedData;
@@ -197,7 +178,14 @@ namespace Button
                 string[] yData;
                 string[] zData;
 
-                for (int loop = 0; loop < ButtonsToLoad; loop++)
+                xmlReader.ReadToFollowing("TileDescription");
+
+                int count;
+                xmlReader.ReadToFollowing("Count");
+                count = xmlReader.ReadElementContentAsInt("Count", "");
+
+                xmlReader.ReadToFollowing("Tile");
+                for (int loop = 0; loop < count; loop++)
                 {
                     try
                     {
@@ -257,10 +245,9 @@ namespace Button
 
                         Add(temporaryTile);
                     }
-
                     catch
                     {
-
+                        Console.WriteLine("Something went wrong in tile loading.");
                     }
                 }
             }
