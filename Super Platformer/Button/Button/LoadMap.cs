@@ -73,8 +73,6 @@ namespace Button
         {
             IsAccessible = false;
             Hide();
-            FileName = "";
-            _FileNameInput.Text = "";
         }
         #endregion
     }

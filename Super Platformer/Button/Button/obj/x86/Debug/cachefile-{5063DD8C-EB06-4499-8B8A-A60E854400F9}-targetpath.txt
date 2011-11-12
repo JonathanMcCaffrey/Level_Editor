@@ -20,3 +20,4 @@ Content\Turret_Base.xnb
 Content\Turret_Gun.xnb
 Content\MainCharacter.xnb
 Content\Title.xnb
+Content\Cube.xnb

@@ -129,73 +129,67 @@ namespace Button
                 xmlReader.ReadToFollowing("Tile");
                 for (int loop = 0; loop < count; loop++)
                 {
-                    try
+                    xmlReader.ReadStartElement("Tile");
+
+                    Tile temporaryTile = new Tile();
+
+                    temporaryTile.FilePathToGraphic = xmlReader.ReadElementContentAsString("Graphic", "");
+
+                    rawData = xmlReader.ReadElementContentAsString("Position", "");
+                    organizedData = rawData.Split(' ');
+                    xData = organizedData[0].Split(':');
+                    yData = organizedData[1].Split(':');
+                    yData[1] = yData[1].TrimEnd();  // Glitch in C#: This will not work at this instance. Wonder why...
+                    yData[1] = yData[1].Replace('}', ' ');  // Here is another solution.
+                    temporaryTile.WorldPosition = new Vector2((float)Convert.ToDouble(xData[1]), (float)Convert.ToDouble(yData[1]));
+
+                    rawData = xmlReader.ReadElementContentAsString("IsCollidable", "");
+                    if (rawData == "True")
                     {
-                        xmlReader.ReadStartElement("Tile");
-
-                        Tile temporaryTile = new Tile();
-
-                        temporaryTile.FilePathToGraphic = xmlReader.ReadElementContentAsString("Graphic", "");
-
-                        rawData = xmlReader.ReadElementContentAsString("Position", "");
-                        organizedData = rawData.Split(' ');
-                        xData = organizedData[0].Split(':');
-                        yData = organizedData[1].Split(':');
-                        yData[1] = yData[1].TrimEnd();  // Glitch in C#: This will not work at this instance. Wonder why...
-                        yData[1] = yData[1].Replace('}', ' ');  // Here is another solution.
-                        temporaryTile.WorldPosition = new Vector2((float)Convert.ToDouble(xData[1]), (float)Convert.ToDouble(yData[1]));
-
-                        rawData = xmlReader.ReadElementContentAsString("IsCollidable", "");
-                        if (rawData == "True")
-                        {
-                            temporaryTile.IsCollidable = true;
-                        }
-                        else
-                        {
-                            temporaryTile.IsCollidable = false;
-                        }
-
-                        rawData = xmlReader.ReadElementContentAsString("Color", "");
-                        organizedData = rawData.Split(' ');
-                        xData = organizedData[0].Split(':');
-                        yData = organizedData[1].Split(':');
-                        zData = organizedData[2].Split(':');
-                        zData[1] = zData[1].TrimEnd();
-                        temporaryTile.Color = new Color((float)Convert.ToDouble(xData[1]), (float)Convert.ToDouble(yData[1]), (float)Convert.ToDouble(zData[1]));
-
-                        temporaryTile.Rotation = xmlReader.ReadElementContentAsFloat("Rotation", "");
-
-                        temporaryTile.Scale = xmlReader.ReadElementContentAsFloat("Scale", "");
-
-                        switch (xmlReader.ReadElementContentAsString("SpriteEffects", ""))
-                        {
-                            case "FlipVertically":
-                                temporaryTile.SpriteEffects = SpriteEffects.FlipVertically;
-                                break;
-                            case "FlipHorizontally":
-                                temporaryTile.SpriteEffects = SpriteEffects.FlipHorizontally;
-                                break;
-                            case "None":
-                                temporaryTile.SpriteEffects = SpriteEffects.None;
-                                break;
-                            default: break;
-                        }
-
-                        temporaryTile.LayerDepth = xmlReader.ReadElementContentAsFloat("LayerDepth", "");
-
-                        xmlReader.ReadEndElement();
-
-                        Add(temporaryTile);
+                        temporaryTile.IsCollidable = true;
                     }
-                    catch
+                    else
                     {
-                        Console.WriteLine("Something went wrong in tile loading.");
+                        temporaryTile.IsCollidable = false;
                     }
 
-                    xmlReader.Close();
+                    rawData = xmlReader.ReadElementContentAsString("Color", "");
+                    organizedData = rawData.Split(' ');
+                    xData = organizedData[0].Split(':');
+                    yData = organizedData[1].Split(':');
+                    zData = organizedData[2].Split(':');
+                    zData[1] = zData[1].TrimEnd();
+                    temporaryTile.Color = new Color((float)Convert.ToDouble(xData[1]), (float)Convert.ToDouble(yData[1]), (float)Convert.ToDouble(zData[1]));
+
+                    temporaryTile.Rotation = xmlReader.ReadElementContentAsFloat("Rotation", "");
+
+                    temporaryTile.Scale = xmlReader.ReadElementContentAsFloat("Scale", "");
+
+                    switch (xmlReader.ReadElementContentAsString("SpriteEffects", ""))
+                    {
+                        case "FlipVertically":
+                            temporaryTile.SpriteEffects = SpriteEffects.FlipVertically;
+                            break;
+                        case "FlipHorizontally":
+                            temporaryTile.SpriteEffects = SpriteEffects.FlipHorizontally;
+                            break;
+                        case "None":
+                            temporaryTile.SpriteEffects = SpriteEffects.None;
+                            break;
+                        default: break;
+                    }
+
+                    temporaryTile.LayerDepth = xmlReader.ReadElementContentAsFloat("LayerDepth", "");
+
+                    xmlReader.ReadEndElement();
+
+                    Add(temporaryTile);
                 }
+
+                xmlReader.Close();
             }
         }
+
 
         public override string Statistic()
         {

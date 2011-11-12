@@ -144,77 +144,69 @@ namespace Button
                 xmlReader.ReadToFollowing("Enemy");
                 for (int loop = 0; loop < count; loop++)
                 {
-                    try
+                    xmlReader.ReadStartElement("Enemy");
+
+                    Enemy temporaryEnemy = new Enemy();
+
+                    temporaryEnemy.FilePathToGraphic = xmlReader.ReadElementContentAsString("Graphic", "");
+
+                    rawData = xmlReader.ReadElementContentAsString("Position", "");
+                    organizedData = rawData.Split(' ');
+                    xData = organizedData[0].Split(':');
+                    yData = organizedData[1].Split(':');
+                    yData[1] = yData[1].TrimEnd();  // Glitch: This is not working. C# has failed me : (
+                    yData[1] = yData[1].Replace('}', ' ');  // This is another method of doing it. Rather not use it tho for the sake of consistency.
+                    temporaryEnemy.WorldPosition = new Vector2((float)Convert.ToDouble(xData[1]), (float)Convert.ToDouble(yData[1]));
+
+                    EnemyTurret.CreateEnemy(new Vector2((float)Convert.ToDouble(xData[1]), (float)Convert.ToDouble(yData[1])));
+
+                    rawData = xmlReader.ReadElementContentAsString("IsCollidable", "");
+                    if (rawData == "True")
                     {
-                        xmlReader.ReadStartElement("Enemy");
-
-                        Enemy temporaryEnemy = new Enemy();
-
-                        temporaryEnemy.FilePathToGraphic = xmlReader.ReadElementContentAsString("Graphic", "");
-
-                        rawData = xmlReader.ReadElementContentAsString("Position", "");
-                        organizedData = rawData.Split(' ');
-                        xData = organizedData[0].Split(':');
-                        yData = organizedData[1].Split(':');
-                        yData[1] = yData[1].TrimEnd();  // Glitch: This is not working. C# has failed me : (
-                        yData[1] = yData[1].Replace('}', ' ');  // This is another method of doing it. Rather not use it tho for the sake of consistency.
-                        temporaryEnemy.WorldPosition = new Vector2((float)Convert.ToDouble(xData[1]), (float)Convert.ToDouble(yData[1]));
-
-                        EnemyTurret.CreateEnemy(new Vector2((float)Convert.ToDouble(xData[1]), (float)Convert.ToDouble(yData[1])));
-
-                        rawData = xmlReader.ReadElementContentAsString("IsCollidable", "");
-                        if (rawData == "True")
-                        {
-                            temporaryEnemy.IsCollidable = true;
-                        }
-                        else
-                        {
-                            temporaryEnemy.IsCollidable = false;
-                        }
-
-                        rawData = xmlReader.ReadElementContentAsString("Color", "");
-                        organizedData = rawData.Split(' ');
-                        xData = organizedData[0].Split(':');
-                        yData = organizedData[1].Split(':');
-                        zData = organizedData[2].Split(':');
-                        zData[1] = zData[1].TrimEnd();
-                        temporaryEnemy.Color = new Color((float)Convert.ToDouble(xData[1]), (float)Convert.ToDouble(yData[1]), (float)Convert.ToDouble(zData[1]));
-
-                        temporaryEnemy.Rotation = xmlReader.ReadElementContentAsFloat("Rotation", "");
-
-                        temporaryEnemy.Scale = xmlReader.ReadElementContentAsFloat("Scale", "");
-
-                        switch (xmlReader.ReadElementContentAsString("SpriteEffects", ""))
-                        {
-                            case "FlipVertically":
-                                temporaryEnemy.SpriteEffects = SpriteEffects.FlipVertically;
-                                break;
-                            case "FlipHorizontally":
-                                temporaryEnemy.SpriteEffects = SpriteEffects.FlipHorizontally;
-                                break;
-                            case "None":
-                                temporaryEnemy.SpriteEffects = SpriteEffects.None;
-                                break;
-                            default: break;
-                        }
-
-                        temporaryEnemy.LayerDepth = xmlReader.ReadElementContentAsFloat("LayerDepth", "");
-
-                        Enemy.CreateEnemy(temporaryEnemy.WorldPosition);
-
-                        EnemyTurret.CreateEnemy(temporaryEnemy.WorldPosition);
-
-                        xmlReader.ReadEndElement();
-
-                        Add(temporaryEnemy);
+                        temporaryEnemy.IsCollidable = true;
                     }
-                    catch
+                    else
                     {
-                        Console.WriteLine("Something went wrong in enemy loading.");
+                        temporaryEnemy.IsCollidable = false;
                     }
 
-                    xmlReader.Close();
+                    rawData = xmlReader.ReadElementContentAsString("Color", "");
+                    organizedData = rawData.Split(' ');
+                    xData = organizedData[0].Split(':');
+                    yData = organizedData[1].Split(':');
+                    zData = organizedData[2].Split(':');
+                    zData[1] = zData[1].TrimEnd();
+                    temporaryEnemy.Color = new Color((float)Convert.ToDouble(xData[1]), (float)Convert.ToDouble(yData[1]), (float)Convert.ToDouble(zData[1]));
+
+                    temporaryEnemy.Rotation = xmlReader.ReadElementContentAsFloat("Rotation", "");
+
+                    temporaryEnemy.Scale = xmlReader.ReadElementContentAsFloat("Scale", "");
+
+                    switch (xmlReader.ReadElementContentAsString("SpriteEffects", ""))
+                    {
+                        case "FlipVertically":
+                            temporaryEnemy.SpriteEffects = SpriteEffects.FlipVertically;
+                            break;
+                        case "FlipHorizontally":
+                            temporaryEnemy.SpriteEffects = SpriteEffects.FlipHorizontally;
+                            break;
+                        case "None":
+                            temporaryEnemy.SpriteEffects = SpriteEffects.None;
+                            break;
+                        default: break;
+                    }
+
+                    temporaryEnemy.LayerDepth = xmlReader.ReadElementContentAsFloat("LayerDepth", "");
+
+                    Enemy.CreateEnemy(temporaryEnemy.WorldPosition);
+
+                    EnemyTurret.CreateEnemy(temporaryEnemy.WorldPosition);
+
+                    xmlReader.ReadEndElement();
+
+                    Add(temporaryEnemy);
                 }
+                xmlReader.Close();
             }
         }
 

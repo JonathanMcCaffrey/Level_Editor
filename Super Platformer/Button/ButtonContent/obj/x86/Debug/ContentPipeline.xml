@@ -7,8 +7,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\mcca0442\Desktop\trunk\Super Platformer\Button\Button\bin\x86\Debug\Content\Border.xnb</Output>
-      <Time>2011-11-11T16:29:55.1753612-05:00</Time>
+      <Output>C:\Users\mcca0442\Desktop\super-platformer\trunk\Super Platformer\Button\Button\bin\x86\Debug\Content\Border.xnb</Output>
+      <Time>2011-11-12T16:30:45.5407566-05:00</Time>
     </Item>
     <Item>
       <Source>Background.png</Source>
@@ -16,8 +16,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\mcca0442\Desktop\trunk\Super Platformer\Button\Button\bin\x86\Debug\Content\Background.xnb</Output>
-      <Time>2011-11-11T16:29:55.1903627-05:00</Time>
+      <Output>C:\Users\mcca0442\Desktop\super-platformer\trunk\Super Platformer\Button\Button\bin\x86\Debug\Content\Background.xnb</Output>
+      <Time>2011-11-12T16:30:45.5497566-05:00</Time>
     </Item>
     <Item>
       <Source>Bullet.png</Source>
@@ -25,8 +25,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\mcca0442\Desktop\trunk\Super Platformer\Button\Button\bin\x86\Debug\Content\Bullet.xnb</Output>
-      <Time>2011-11-11T16:29:55.2613698-05:00</Time>
+      <Output>C:\Users\mcca0442\Desktop\super-platformer\trunk\Super Platformer\Button\Button\bin\x86\Debug\Content\Bullet.xnb</Output>
+      <Time>2011-11-12T16:30:45.8557566-05:00</Time>
     </Item>
     <Item>
       <Source>Metal.png</Source>
@@ -34,8 +34,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\mcca0442\Desktop\trunk\Super Platformer\Button\Button\bin\x86\Debug\Content\Metal.xnb</Output>
-      <Time>2011-11-11T16:29:55.1373574-05:00</Time>
+      <Output>C:\Users\mcca0442\Desktop\super-platformer\trunk\Super Platformer\Button\Button\bin\x86\Debug\Content\Metal.xnb</Output>
+      <Time>2011-11-12T16:30:45.5147566-05:00</Time>
     </Item>
     <Item>
       <Source>MetalFloor.png</Source>
@@ -43,8 +43,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\mcca0442\Desktop\trunk\Super Platformer\Button\Button\bin\x86\Debug\Content\MetalFloor.xnb</Output>
-      <Time>2011-11-11T16:29:55.1483585-05:00</Time>
+      <Output>C:\Users\mcca0442\Desktop\super-platformer\trunk\Super Platformer\Button\Button\bin\x86\Debug\Content\MetalFloor.xnb</Output>
+      <Time>2011-11-12T16:30:45.5217566-05:00</Time>
     </Item>
     <Item>
       <Source>MetalWall.png</Source>
@@ -52,8 +52,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\mcca0442\Desktop\trunk\Super Platformer\Button\Button\bin\x86\Debug\Content\MetalWall.xnb</Output>
-      <Time>2011-11-11T16:29:55.2003637-05:00</Time>
+      <Output>C:\Users\mcca0442\Desktop\super-platformer\trunk\Super Platformer\Button\Button\bin\x86\Debug\Content\MetalWall.xnb</Output>
+      <Time>2011-11-12T16:30:45.5567566-05:00</Time>
     </Item>
     <Item>
       <Source>Wooden.png</Source>
@@ -61,8 +61,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\mcca0442\Desktop\trunk\Super Platformer\Button\Button\bin\x86\Debug\Content\Wooden.xnb</Output>
-      <Time>2011-11-11T16:29:55.2783715-05:00</Time>
+      <Output>C:\Users\mcca0442\Desktop\super-platformer\trunk\Super Platformer\Button\Button\bin\x86\Debug\Content\Wooden.xnb</Output>
+      <Time>2011-11-12T16:30:45.8707566-05:00</Time>
     </Item>
     <Item>
       <Source>WoodenFloor.png</Source>
@@ -70,8 +70,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\mcca0442\Desktop\trunk\Super Platformer\Button\Button\bin\x86\Debug\Content\WoodenFloor.xnb</Output>
-      <Time>2011-11-11T16:29:55.113355-05:00</Time>
+      <Output>C:\Users\mcca0442\Desktop\super-platformer\trunk\Super Platformer\Button\Button\bin\x86\Debug\Content\WoodenFloor.xnb</Output>
+      <Time>2011-11-12T16:30:45.4897566-05:00</Time>
     </Item>
     <Item>
       <Source>WoodenWall.png</Source>
@@ -79,8 +79,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\mcca0442\Desktop\trunk\Super Platformer\Button\Button\bin\x86\Debug\Content\WoodenWall.xnb</Output>
-      <Time>2011-11-11T16:29:55.1703607-05:00</Time>
+      <Output>C:\Users\mcca0442\Desktop\super-platformer\trunk\Super Platformer\Button\Button\bin\x86\Debug\Content\WoodenWall.xnb</Output>
+      <Time>2011-11-12T16:30:45.5367566-05:00</Time>
     </Item>
     <Item>
       <Source>X.png</Source>
@@ -88,8 +88,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\mcca0442\Desktop\trunk\Super Platformer\Button\Button\bin\x86\Debug\Content\X.xnb</Output>
-      <Time>2011-11-11T16:29:55.1593596-05:00</Time>
+      <Output>C:\Users\mcca0442\Desktop\super-platformer\trunk\Super Platformer\Button\Button\bin\x86\Debug\Content\X.xnb</Output>
+      <Time>2011-11-12T16:30:45.5297566-05:00</Time>
     </Item>
     <Item>
       <Source>Y.png</Source>
@@ -97,8 +97,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\mcca0442\Desktop\trunk\Super Platformer\Button\Button\bin\x86\Debug\Content\Y.xnb</Output>
-      <Time>2011-11-11T16:29:55.1643601-05:00</Time>
+      <Output>C:\Users\mcca0442\Desktop\super-platformer\trunk\Super Platformer\Button\Button\bin\x86\Debug\Content\Y.xnb</Output>
+      <Time>2011-11-12T16:30:45.5327566-05:00</Time>
     </Item>
     <Item>
       <Source>IconOne.png</Source>
@@ -106,8 +106,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\mcca0442\Desktop\trunk\Super Platformer\Button\Button\bin\x86\Debug\Content\IconOne.xnb</Output>
-      <Time>2011-11-11T16:29:55.2723709-05:00</Time>
+      <Output>C:\Users\mcca0442\Desktop\super-platformer\trunk\Super Platformer\Button\Button\bin\x86\Debug\Content\IconOne.xnb</Output>
+      <Time>2011-11-12T16:30:45.8647566-05:00</Time>
     </Item>
     <Item>
       <Source>StartGame.png</Source>
@@ -115,8 +115,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\mcca0442\Desktop\trunk\Super Platformer\Button\Button\bin\x86\Debug\Content\StartGame.xnb</Output>
-      <Time>2011-11-11T16:29:55.2243661-05:00</Time>
+      <Output>C:\Users\mcca0442\Desktop\super-platformer\trunk\Super Platformer\Button\Button\bin\x86\Debug\Content\StartGame.xnb</Output>
+      <Time>2011-11-12T16:30:45.8227566-05:00</Time>
     </Item>
     <Item>
       <Source>TitleImage.png</Source>
@@ -124,8 +124,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\mcca0442\Desktop\trunk\Super Platformer\Button\Button\bin\x86\Debug\Content\TitleImage.xnb</Output>
-      <Time>2011-11-11T16:29:55.2043641-05:00</Time>
+      <Output>C:\Users\mcca0442\Desktop\super-platformer\trunk\Super Platformer\Button\Button\bin\x86\Debug\Content\TitleImage.xnb</Output>
+      <Time>2011-11-12T16:30:45.5607566-05:00</Time>
     </Item>
     <Item>
       <Source>Website.png</Source>
@@ -133,8 +133,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\mcca0442\Desktop\trunk\Super Platformer\Button\Button\bin\x86\Debug\Content\Website.xnb</Output>
-      <Time>2011-11-11T16:29:55.1313568-05:00</Time>
+      <Output>C:\Users\mcca0442\Desktop\super-platformer\trunk\Super Platformer\Button\Button\bin\x86\Debug\Content\Website.xnb</Output>
+      <Time>2011-11-12T16:30:45.5117566-05:00</Time>
     </Item>
     <Item>
       <Source>UI_LevelSelect.png</Source>
@@ -142,8 +142,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\mcca0442\Desktop\trunk\Super Platformer\Button\Button\bin\x86\Debug\Content\UI_LevelSelect.xnb</Output>
-      <Time>2011-11-11T16:29:55.1543591-05:00</Time>
+      <Output>C:\Users\mcca0442\Desktop\super-platformer\trunk\Super Platformer\Button\Button\bin\x86\Debug\Content\UI_LevelSelect.xnb</Output>
+      <Time>2011-11-12T16:30:45.5257566-05:00</Time>
     </Item>
     <Item>
       <Source>UI_StartGame.png</Source>
@@ -151,8 +151,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\mcca0442\Desktop\trunk\Super Platformer\Button\Button\bin\x86\Debug\Content\UI_StartGame.xnb</Output>
-      <Time>2011-11-11T16:29:55.2203657-05:00</Time>
+      <Output>C:\Users\mcca0442\Desktop\super-platformer\trunk\Super Platformer\Button\Button\bin\x86\Debug\Content\UI_StartGame.xnb</Output>
+      <Time>2011-11-12T16:30:45.8147566-05:00</Time>
     </Item>
     <Item>
       <Source>UI_Title.png</Source>
@@ -160,8 +160,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\mcca0442\Desktop\trunk\Super Platformer\Button\Button\bin\x86\Debug\Content\UI_Title.xnb</Output>
-      <Time>2011-11-11T16:29:55.1813618-05:00</Time>
+      <Output>C:\Users\mcca0442\Desktop\super-platformer\trunk\Super Platformer\Button\Button\bin\x86\Debug\Content\UI_Title.xnb</Output>
+      <Time>2011-11-12T16:30:45.5437566-05:00</Time>
     </Item>
     <Item>
       <Source>Turret_Base.png</Source>
@@ -169,8 +169,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\mcca0442\Desktop\trunk\Super Platformer\Button\Button\bin\x86\Debug\Content\Turret_Base.xnb</Output>
-      <Time>2011-11-11T16:29:55.1963633-05:00</Time>
+      <Output>C:\Users\mcca0442\Desktop\super-platformer\trunk\Super Platformer\Button\Button\bin\x86\Debug\Content\Turret_Base.xnb</Output>
+      <Time>2011-11-12T16:30:45.5537566-05:00</Time>
     </Item>
     <Item>
       <Source>Turret_Gun.png</Source>
@@ -178,8 +178,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\mcca0442\Desktop\trunk\Super Platformer\Button\Button\bin\x86\Debug\Content\Turret_Gun.xnb</Output>
-      <Time>2011-11-11T16:29:55.1193556-05:00</Time>
+      <Output>C:\Users\mcca0442\Desktop\super-platformer\trunk\Super Platformer\Button\Button\bin\x86\Debug\Content\Turret_Gun.xnb</Output>
+      <Time>2011-11-12T16:30:45.4927566-05:00</Time>
     </Item>
     <Item>
       <Source>MainCharacter.png</Source>
@@ -187,8 +187,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\mcca0442\Desktop\trunk\Super Platformer\Button\Button\bin\x86\Debug\Content\MainCharacter.xnb</Output>
-      <Time>2011-11-11T16:29:55.1253562-05:00</Time>
+      <Output>C:\Users\mcca0442\Desktop\super-platformer\trunk\Super Platformer\Button\Button\bin\x86\Debug\Content\MainCharacter.xnb</Output>
+      <Time>2011-11-12T16:30:45.4967566-05:00</Time>
     </Item>
     <Item>
       <Source>Title.spritefont</Source>
@@ -196,8 +196,28 @@
       <Importer>FontDescriptionImporter</Importer>
       <Processor>FontDescriptionProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\mcca0442\Desktop\trunk\Super Platformer\Button\Button\bin\x86\Debug\Content\Title.xnb</Output>
-      <Time>2011-11-11T16:29:55.2663703-05:00</Time>
+      <Output>C:\Users\mcca0442\Desktop\super-platformer\trunk\Super Platformer\Button\Button\bin\x86\Debug\Content\Title.xnb</Output>
+      <Time>2011-11-12T16:30:45.8597566-05:00</Time>
+    </Item>
+    <Item>
+      <Source>Cube.FBX</Source>
+      <Name>Cube</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\mcca0442\Desktop\super-platformer\trunk\Super Platformer\Button\Button\bin\x86\Debug\Content\Cube.xnb</Output>
+      <Time>2011-11-12T16:52:04.1704281-05:00</Time>
+      <Dependency>
+        <Key>obj\x86\Debug\Cube_0.xml</Key>
+        <Value>2011-11-12T16:55:58.1097498-05:00</Value>
+      </Dependency>
+    </Item>
+    <Item>
+      <Source>Cube.FBX</Source>
+      <Importer>FbxImporter</Importer>
+      <Options>IntermediateFile, DontCacheImportedData</Options>
+      <Output>obj\x86\Debug\Cube_0.xml</Output>
+      <Time>2011-11-12T16:52:04.1704281-05:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
@@ -205,10 +225,10 @@
       <TargetProfile>HiDef</TargetProfile>
       <BuildConfiguration>Debug</BuildConfiguration>
       <CompressContent>false</CompressContent>
-      <RootDirectory>C:\Users\mcca0442\Desktop\trunk\Super Platformer\Button\ButtonContent\</RootDirectory>
-      <LoggerRootDirectory>C:\Users\mcca0442\Desktop\trunk\Super Platformer\Button\Button\</LoggerRootDirectory>
-      <IntermediateDirectory>C:\Users\mcca0442\Desktop\trunk\Super Platformer\Button\ButtonContent\obj\x86\Debug\</IntermediateDirectory>
-      <OutputDirectory>C:\Users\mcca0442\Desktop\trunk\Super Platformer\Button\Button\bin\x86\Debug\Content\</OutputDirectory>
+      <RootDirectory>C:\Users\mcca0442\Desktop\super-platformer\trunk\Super Platformer\Button\ButtonContent\</RootDirectory>
+      <LoggerRootDirectory>C:\Users\mcca0442\Desktop\super-platformer\trunk\Super Platformer\Button\Button\</LoggerRootDirectory>
+      <IntermediateDirectory>C:\Users\mcca0442\Desktop\super-platformer\trunk\Super Platformer\Button\ButtonContent\obj\x86\Debug\</IntermediateDirectory>
+      <OutputDirectory>C:\Users\mcca0442\Desktop\super-platformer\trunk\Super Platformer\Button\Button\bin\x86\Debug\Content\</OutputDirectory>
     </Settings>
     <Assemblies>
       <Assembly>

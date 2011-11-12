@@ -9,6 +9,12 @@ namespace Button
 {
     public class Tile : AbstractEntity
     {
+        Model mModel = FileManager.Get().LoadModel("Cube");
+        Matrix mWorldMatrix = Matrix.Identity;
+        Matrix mProjectionMatrix = Matrix.CreatePerspectiveFieldOfView(MathHelper.PiOver4, 1, 1, 10000);
+        Matrix mViewMatrix = Matrix.CreateLookAt(new Vector3(0, 0, 500), Vector3.Zero, Vector3.Up);
+
+
         #region Construction
         public Tile()
         {
@@ -36,6 +42,8 @@ namespace Button
         #region Methods
         public override void Update()
         {
+            mWorldMatrix = Matrix.CreateTranslation(mWorldPosition.X, -mWorldPosition.Y, 0);
+
             base.Update();
 
            // DeleteTile(); // Uncomment this if you want to remove tiles. Leftclick to remove.
@@ -43,10 +51,26 @@ namespace Button
 
         public override void Draw()
         {
+
+            theFileManager.SpriteBatch.GraphicsDevice.BlendState = BlendState.Opaque;
+            theFileManager.SpriteBatch.GraphicsDevice.DepthStencilState = DepthStencilState.Default;
+
+            mModel.Draw(mWorldMatrix, mViewMatrix, mProjectionMatrix);
+            theFileManager.SpriteBatch.End();
+
+            theFileManager.SpriteBatch.Begin();
+            theFileManager.SpriteBatch.GraphicsDevice.BlendState = BlendState.AlphaBlend;
+            theFileManager.SpriteBatch.GraphicsDevice.DepthStencilState = DepthStencilState.None;
+            theFileManager.SpriteBatch.GraphicsDevice.RasterizerState = RasterizerState.CullCounterClockwise;
+            theFileManager.SpriteBatch.GraphicsDevice.SamplerStates[0] = SamplerState.LinearClamp;
+
             if (IsOnScreen)
             {
                 theFileManager.SpriteBatch.Draw(Graphic, ScreenPosition, SourceRectangle, Color, Rotation, Origin, Scale, SpriteEffects, LayerDepth);
             }
+            theFileManager.SpriteBatch.End();
+
+            theFileManager.SpriteBatch.Begin();
         }
 
         protected void CollideWithTile()

@@ -104,23 +104,17 @@ namespace Button
 
         public void SaveAll(string aFilePath)
         {
-            try
+
+            using (XmlWriter xmlWriter = XmlWriter.Create(aFilePath))
             {
-                using (XmlWriter xmlWriter = XmlWriter.Create(aFilePath))
+                xmlWriter.WriteStartElement("Data");
+
+                for (int loop = 0; loop < mList.Count; loop++)
                 {
-                    xmlWriter.WriteStartElement("Data");
-
-                    for (int loop = 0; loop < mList.Count; loop++)
-                    {
-                        mList[loop].Save(xmlWriter);
-                    }
-
-                    xmlWriter.Close();
+                    mList[loop].Save(xmlWriter);
                 }
-            }
-            catch
-            {
-                Console.WriteLine("The saving process is already being used");
+
+                xmlWriter.Close();
             }
         }
 
@@ -135,7 +129,7 @@ namespace Button
             }
             catch
             {
-                Console.WriteLine("The loading process is already being used");
+                Console.WriteLine("Could not load");
             }
         }
         #endregion
