@@ -176,9 +176,10 @@ namespace Button
             set { isCollidable = value; }
         }
 
+        float berth = 300;
         public virtual BoundingBox BoundingBox
         {
-            get { return new BoundingBox(WorldPosition - new Vector3(100, 100, 100), WorldPosition + new Vector3(100, 100, 100)); }
+            get { return new BoundingBox(WorldPosition - new Vector3(berth, berth, berth), WorldPosition + new Vector3(berth, berth, berth)); }
         }
 
         public virtual Rectangle CollisionRectangle

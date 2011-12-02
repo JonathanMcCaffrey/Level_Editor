@@ -72,19 +72,19 @@ namespace Button
                 float xDifference = 0;
                 float yDifference = 0;
 
-                if (input.KeyHeldDown(Keys.Up))
+                if (input.KeyHeldDown(Keys.NumPad8))
                 {
                     yDifference = -10;
                 }
-                if (input.KeyHeldDown(Keys.Down))
+                if (input.KeyHeldDown(Keys.NumPad2))
                 {
                     yDifference = 10;
                 }
-                if (input.KeyHeldDown(Keys.Left))
+                if (input.KeyHeldDown(Keys.NumPad4))
                 {
                     xDifference = -10;
                 }
-                if (input.KeyHeldDown(Keys.Right))
+                if (input.KeyHeldDown(Keys.NumPad6))
                 {
                     xDifference = 10;
                 }
@@ -93,15 +93,17 @@ namespace Button
                 updownRot -= rotationSpeed * yDifference;
                 UpdateViewMatrix();                
             }
-            
+
+            float cameraSpeed = 50;
+
             if (keyState.IsKeyDown(Keys.Up) || keyState.IsKeyDown(Keys.W))      //Forward
-                AddToCameraPosition(new Vector3(0, 0, -1));
+                AddToCameraPosition(new Vector3(0, cameraSpeed, 0));
             if (keyState.IsKeyDown(Keys.Down) || keyState.IsKeyDown(Keys.S))    //Backward
-                AddToCameraPosition(new Vector3(0, 0, 1));
+                AddToCameraPosition(new Vector3(0, -cameraSpeed, 0));
             if (keyState.IsKeyDown(Keys.Right) || keyState.IsKeyDown(Keys.D))   //Right
-                AddToCameraPosition(new Vector3(1, 0, 0));
+                AddToCameraPosition(new Vector3(cameraSpeed, 0, 0));
             if (keyState.IsKeyDown(Keys.Left) || keyState.IsKeyDown(Keys.A))    //Left
-                AddToCameraPosition(new Vector3(-1, 0, 0));
+                AddToCameraPosition(new Vector3(-cameraSpeed, 0, 0));
             if (keyState.IsKeyDown(Keys.Q))                                     //Up
                 AddToCameraPosition(new Vector3(0, 1, 0));
             if (keyState.IsKeyDown(Keys.Z))                                     //Down
