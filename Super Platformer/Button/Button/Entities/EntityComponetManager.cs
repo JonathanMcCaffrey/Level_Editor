@@ -51,6 +51,8 @@ namespace Button
 
         public override void Initialize()
         {
+            assetDescription.Visible = true;
+
             mList.Add(TileManager.Get());
             mList.Add(EnemyManager.Get());
 
@@ -61,8 +63,6 @@ namespace Button
         #region Methods
         public override void Update(GameTime aGameTime)
         {
-            assetDescription.Visible = true;
-
             if (saveFile.Done)
             {
                 SaveAll(saveFile.FileName);

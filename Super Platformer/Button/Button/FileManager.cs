@@ -126,13 +126,13 @@ namespace Button
         private Matrix mViewMatrix;
         public Matrix ViewMatrix
         {
-            get { return Matrix.CreateLookAt(CameraPosition, Vector3.Zero, Vector3.Up); }
+            get { return mViewMatrix; }
             set { mViewMatrix = value; }
         }
         private Matrix mProjectionMatrix;
         public Matrix ProjectionMatrix
         {
-            get { return Matrix.CreatePerspectiveFieldOfView(MathHelper.PiOver4, (float)GraphicsDevice.Viewport.Width / (float)GraphicsDevice.Viewport.Height, 1f, 9000f); ; }
+            get { return mProjectionMatrix; }
             set { mProjectionMatrix = value; }
         }
 
@@ -144,6 +144,10 @@ namespace Button
         {
             mGraphicsDevice = aGame.GraphicsDevice;
             mContentManager = Game.Content;
+
+            mViewMatrix = Matrix.CreateLookAt(CameraPosition, Vector3.Zero, Vector3.Up);
+            mProjectionMatrix = Matrix.CreatePerspectiveFieldOfView(MathHelper.PiOver4, (float)GraphicsDevice.Viewport.Width / (float)GraphicsDevice.Viewport.Height, 1f, 9000f);
+
         }
         static FileManager Instance;
         static public FileManager Get(Game aGame)

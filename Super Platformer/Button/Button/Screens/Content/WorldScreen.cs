@@ -5,6 +5,7 @@ using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
+
 namespace Button
 {
     public class WorldScreen : AbstractGameScreen
@@ -15,6 +16,9 @@ namespace Button
         Texture2D mBackgroundTexture;
 
         GizmoComponent gizmo;
+
+        QuakeCamera mQuakeCamera;
+
         #endregion
 
         #region Construction
@@ -24,6 +28,8 @@ namespace Button
             gizmo.Initialize();
 
             mBackgroundTexture = theFileManager.LoadTexture2D("Background");
+
+            mQuakeCamera = new QuakeCamera(theFileManager.GraphicsDevice.Viewport);
             //   Enemy.CreateEnemy(Vector2.Zero);
         }
 
@@ -40,6 +46,8 @@ namespace Button
         {
             base.Update(aGameTime);
 
+            mQuakeCamera.Update();
+
             gizmo.HandleInput();
             gizmo.Update(aGameTime);
 
@@ -54,8 +62,6 @@ namespace Button
         public override void Draw(GameTime aGameTime)
         {
           //  SpriteBatch.Draw(mBackgroundTexture, new Rectangle(-200, 0, 1000, 800), Color.White);
-
-            
 
             theEntityComponetManager.Draw(aGameTime);
 

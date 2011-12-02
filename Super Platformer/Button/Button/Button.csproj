@@ -120,6 +120,7 @@
     <Compile Include="AI\Hostile\Content\HostileSeek.cs" />
     <Compile Include="AI\Hostile\HostileState.cs" />
     <Compile Include="AI\Hostile\HostileStateMachine.cs" />
+    <Compile Include="Camera\QuakeCamera.cs" />
     <Compile Include="Description.cs">
       <SubType>Form</SubType>
     </Compile>

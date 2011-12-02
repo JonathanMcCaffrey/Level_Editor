@@ -9,10 +9,27 @@ namespace Button
     {
         #region Fields
         private KeyboardState mCurrentKeyboardState;
+        public KeyboardState CurrentKeyboardState
+        {
+            get { return mCurrentKeyboardState; }
+            set { mCurrentKeyboardState = value; }
+        }
         private KeyboardState mLastKeyboardState;
+
         private MouseState mCurrentMouseState;
+        public MouseState CurrentMouseState
+        {
+            get { return mCurrentMouseState; }
+            set { mCurrentMouseState = value; }
+        }
         private MouseState mLastMouseState;
+
         private GamePadState mCurrentGamePadState = GamePad.GetState(PlayerIndex.One);
+        public GamePadState CurrentGamePadState
+        {
+            get { return mCurrentGamePadState; }
+            set { mCurrentGamePadState = value; }
+        }
         private GamePadState mLastGamePadState = GamePad.GetState(PlayerIndex.One);
        
 
