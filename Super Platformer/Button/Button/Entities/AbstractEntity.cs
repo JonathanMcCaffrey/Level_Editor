@@ -47,6 +47,13 @@ namespace Button
             set { mFilePathToGraphic = value; }
         }
 
+        protected string mFilePathToModel = "Spike";
+        public string FilePathToModel
+        {
+            get { return mFilePathToModel; }
+            set { mFilePathToModel = value; }
+        }
+
         protected Vector3 mWorldPosition = Vector3.Zero;
         public virtual Vector3 WorldPosition
         {

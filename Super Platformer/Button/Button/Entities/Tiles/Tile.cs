@@ -9,8 +9,26 @@ namespace Button
 {
     public class Tile : AbstractEntity
     {
-        public Model mModel = FileManager.Get().LoadModel("Spike");
+        private Model mModel = null;
+        public Model Model
+        {
+            get
+            {
+                if (mModel == null)
+                {
+                    mModel = FileManager.Get().LoadModel(FilePathToModel);
+                }
+
+                return mModel;
+            }
+            set { mModel = value; }
+        }
         Matrix mWorldMatrix = Matrix.Identity;
+        public Matrix WorldMatrix
+        {
+            get { return Matrix.CreateTranslation(mWorldPosition.X, mWorldPosition.Y, mWorldPosition.Z); }
+            set { mWorldMatrix = value; }
+        }
 
         Matrix mScaleMatrix;
         public Matrix ScaleMatrix
@@ -22,10 +40,10 @@ namespace Button
         Matrix mRotationMatrix;
         public Matrix RotationMatrix
         {
-            get { return Matrix.CreateRotationX(mRotation.X) *Matrix.CreateRotationY(mRotation.Y) *Matrix.CreateRotationZ(mRotation.Z); }
+            get { return Matrix.CreateRotationX(mRotation.X) * Matrix.CreateRotationY(mRotation.Y) * Matrix.CreateRotationZ(mRotation.Z); }
             set { mRotationMatrix = value; }
         }
-     
+
         #region Construction
         public Tile()
         {
@@ -57,7 +75,7 @@ namespace Button
 
             base.Update();
 
-           // DeleteTile(); // Uncomment this if you want to remove tiles. Leftclick to remove.
+            // DeleteTile(); // Uncomment this if you want to remove tiles. Leftclick to remove.
         }
 
         public override void Draw()
@@ -67,8 +85,8 @@ namespace Button
             theFileManager.SpriteBatch.GraphicsDevice.BlendState = BlendState.Opaque;
             theFileManager.SpriteBatch.GraphicsDevice.DepthStencilState = DepthStencilState.Default;
 
-            mModel.Draw(ScaleMatrix * RotationMatrix * mWorldMatrix, theFileManager.ViewMatrix, theFileManager.ProjectionMatrix);
-       //     theFileManager.SpriteBatch.End();
+            Model.Draw(ScaleMatrix * RotationMatrix * mWorldMatrix, theFileManager.ViewMatrix, theFileManager.ProjectionMatrix);
+            //     theFileManager.SpriteBatch.End();
 
             theFileManager.SpriteBatch.Begin();
             theFileManager.SpriteBatch.GraphicsDevice.BlendState = BlendState.AlphaBlend;
@@ -82,9 +100,9 @@ namespace Button
 
             if (IsOnScreen)
             {
-           //     theFileManager.SpriteBatch.Draw(Graphic, ScreenPosition, SourceRectangle, Color, Rotation, Origin, Scale, SpriteEffects, LayerDepth);
+                //     theFileManager.SpriteBatch.Draw(Graphic, ScreenPosition, SourceRectangle, Color, Rotation, Origin, Scale, SpriteEffects, LayerDepth);
             }
-           
+
         }
 
         protected void CollideWithTile()
@@ -104,10 +122,10 @@ namespace Button
         {
             if (theInputManager.mouseLeftDrag)
             {
-                if (CollisionRectangle.X - Graphic.Width/2 < theInputManager.mousePosition.X &&
+                if (CollisionRectangle.X - Graphic.Width / 2 < theInputManager.mousePosition.X &&
                     CollisionRectangle.X + Graphic.Width - Graphic.Width / 2 > theInputManager.mousePosition.X &&
-                    CollisionRectangle.Y - Graphic.Height  / 2< theInputManager.mousePosition.Y &&
-                    CollisionRectangle.Y + Graphic.Height - Graphic.Height /2> theInputManager.mousePosition.Y)
+                    CollisionRectangle.Y - Graphic.Height / 2 < theInputManager.mousePosition.Y &&
+                    CollisionRectangle.Y + Graphic.Height - Graphic.Height / 2 > theInputManager.mousePosition.Y)
                 {
                     theTileManager.Remove(this);
                 }

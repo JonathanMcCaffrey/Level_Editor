@@ -154,11 +154,9 @@ namespace Button
                     organizedData = rawData.Split(' ');
                     xData = organizedData[0].Split(':');
                     yData = organizedData[1].Split(':');
-                    yData[1] = yData[1].TrimEnd();  // Glitch: This is not working. C# has failed me : (
-                    yData[1] = yData[1].Replace('}', ' ');  // This is another method of doing it. Rather not use it tho for the sake of consistency.
-                    temporaryEnemy.WorldPosition = new Vector3((float)Convert.ToDouble(xData[1]),0, (float)Convert.ToDouble(yData[1]));
-
-                    EnemyTurret.CreateEnemy(new Vector3((float)Convert.ToDouble(xData[1]),0, (float)Convert.ToDouble(yData[1])));
+                    yData[1] = yData[1].TrimEnd();
+                    yData[1] = yData[1].Replace('}', ' ');
+                    temporaryEnemy.WorldPosition = new Vector3((float)Convert.ToDouble(xData[1]), (float)Convert.ToDouble(yData[1]), (float)Convert.ToDouble(yData[1]));
 
                     rawData = xmlReader.ReadElementContentAsString("IsCollidable", "");
                     if (rawData == "True")
@@ -183,18 +181,18 @@ namespace Button
                     organizedData = rawData.Split(' ');
                     xData = organizedData[0].Split(':');
                     yData = organizedData[1].Split(':');
-                    yData[1] = yData[1].TrimEnd();  // Glitch in C#: This will not work at this instance. Wonder why...
-                    yData[1] = yData[1].Replace('}', ' ');  // Here is another solution.
-                    temporaryEnemy.Rotation = new Vector3((float)Convert.ToDouble(xData[1]), 0, (float)Convert.ToDouble(yData[1]));
+                    yData[1] = yData[1].TrimEnd();
+                    yData[1] = yData[1].Replace('}', ' ');
+                    temporaryEnemy.Rotation = new Vector3((float)Convert.ToDouble(xData[1]), (float)Convert.ToDouble(yData[1]), (float)Convert.ToDouble(yData[1]));
 
 
                     rawData = xmlReader.ReadElementContentAsString("Scale", "");
                     organizedData = rawData.Split(' ');
                     xData = organizedData[0].Split(':');
                     yData = organizedData[1].Split(':');
-                    yData[1] = yData[1].TrimEnd();  // Glitch in C#: This will not work at this instance. Wonder why...
-                    yData[1] = yData[1].Replace('}', ' ');  // Here is another solution.
-                    temporaryEnemy.Scale = new Vector3((float)Convert.ToDouble(xData[1]), 0, (float)Convert.ToDouble(yData[1]));
+                    yData[1] = yData[1].TrimEnd();
+                    yData[1] = yData[1].Replace('}', ' ');
+                    temporaryEnemy.Scale = new Vector3((float)Convert.ToDouble(xData[1]), (float)Convert.ToDouble(yData[1]), (float)Convert.ToDouble(yData[1]));
 
 
 

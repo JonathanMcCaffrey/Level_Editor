@@ -12,7 +12,7 @@ namespace Button
         {
             IsCollidable = false;
             FilePathToGraphic = "Wooden";
-            mModel = FileManager.Get().LoadModel("Satelite");
+            Model = FileManager.Get().LoadModel("Satelite");
         }
 
         public override void Create(Vector3 aCoordinate)
@@ -20,7 +20,8 @@ namespace Button
             Tile newTile = new Tile(aCoordinate);
             newTile.FilePathToGraphic = "Wooden";
             newTile.IsCollidable = true;
-            newTile.mModel = FileManager.Get().LoadModel("Satelite");
+            newTile.Model = FileManager.Get().LoadModel("Satelite");
+            newTile.FilePathToModel = "Satelite";
         }
     }
 }
