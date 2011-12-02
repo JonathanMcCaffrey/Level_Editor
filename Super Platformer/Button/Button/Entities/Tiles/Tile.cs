@@ -11,6 +11,20 @@ namespace Button
     {
         public Model mModel = FileManager.Get().LoadModel("Spike");
         Matrix mWorldMatrix = Matrix.Identity;
+
+        Matrix mScaleMatrix;
+        public Matrix ScaleMatrix
+        {
+            get { return Matrix.CreateScale(mScale.X, mScale.Y, mScale.Z); }
+            set { mScaleMatrix = value; }
+        }
+
+        Matrix mRotationMatrix;
+        public Matrix RotationMatrix
+        {
+            get { return Matrix.CreateRotationX(mRotation.X) *Matrix.CreateRotationY(mRotation.Y) *Matrix.CreateRotationZ(mRotation.Z); }
+            set { mRotationMatrix = value; }
+        }
      
         #region Construction
         public Tile()
@@ -53,7 +67,7 @@ namespace Button
             theFileManager.SpriteBatch.GraphicsDevice.BlendState = BlendState.Opaque;
             theFileManager.SpriteBatch.GraphicsDevice.DepthStencilState = DepthStencilState.Default;
 
-            mModel.Draw(mWorldMatrix, theFileManager.ViewMatrix, theFileManager.ProjectionMatrix);
+            mModel.Draw(ScaleMatrix * RotationMatrix * mWorldMatrix, theFileManager.ViewMatrix, theFileManager.ProjectionMatrix);
        //     theFileManager.SpriteBatch.End();
 
             theFileManager.SpriteBatch.Begin();

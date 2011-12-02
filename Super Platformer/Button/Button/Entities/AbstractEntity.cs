@@ -186,7 +186,7 @@ namespace Button
             set { mColor = value; }
         }
 
-        protected Vector3 mRotation = Vector3.Zero;
+        public Vector3 mRotation = Vector3.Zero;
         public Vector3 Rotation
         {
             get { return mRotation; }

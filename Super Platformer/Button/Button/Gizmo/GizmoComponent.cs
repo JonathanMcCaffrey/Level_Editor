@@ -580,19 +580,19 @@ namespace Button
                             // -- Apply Scale -- //
                             foreach (Tile entity in Selection)
                             {
-                                entity.Scale += delta;
+                                entity.Scale += delta / 500.0f;
                                 entity.Scale = Vector3.Clamp(entity.Scale, Vector3.Zero, entity.Scale);
                             }
                         }
                         else if (ActiveMode == GizmoMode.UniformScale)
                         {
 
-                            float diff = 1 + ((delta.X + delta.Y + delta.Z) / 3);
+                            float diff = 1 + ((delta.X + delta.Y + delta.Z) / 50.0f);
                             foreach (Tile entity in Selection)
                             {
                                 entity.Scale *= diff;
 
-                                entity.Scale = Vector3.Clamp(entity.Scale, Vector3.Zero, entity.Scale);
+                                entity.Scale = Vector3.Clamp(entity.Scale, new Vector3(0.1f,0.1f,0.1f), entity.Scale);
                             }
                         }
                         #endregion
@@ -601,73 +601,33 @@ namespace Button
                     {
                         #region Rotate
                         float delta = theInputManager.mouseTranslation.X;
-                        delta *= inputScale;
 
+                        float rotateX =0;
+                        float rotateY=0;
+                        float rotateZ=0;
 
-                        if (SnapEnabled)
-                        {
-                            float snapValue = MathHelper.ToRadians(RotationSnapValue);
-                            if (precisionMode)
-                            {
-                                delta *= precisionModeScale;
-                                snapValue *= precisionModeScale;
-                            }
-
-                            rotationSnapDelta += delta;
-
-                            float snapped = (int)(rotationSnapDelta / snapValue) * snapValue;
-                            rotationSnapDelta -= snapped;
-
-                            delta = snapped;
-                        }
-                        else if (precisionMode)
-                        {
-                            delta *= precisionModeScale;
-                        }
-
-                        // rotation matrix to transform - if more than one objects selected, always use world-space.
-                        Matrix rot = Matrix.Identity;
-                        rot.Forward = sceneWorld.Forward;
-                        rot.Up = sceneWorld.Up;
-                        rot.Right = sceneWorld.Right;
 
                         if (ActiveAxis == GizmoAxis.X)
                         {
-                            rot *= Matrix.CreateFromAxisAngle(rotationMatrix.Right, delta);
+                            rotateX += delta;
                         }
                         else if (ActiveAxis == GizmoAxis.Y)
                         {
-                            rot *= Matrix.CreateFromAxisAngle(rotationMatrix.Up, delta);
+                            rotateY += delta;
                         }
                         else if (ActiveAxis == GizmoAxis.Z)
                         {
-                            rot *= Matrix.CreateFromAxisAngle(rotationMatrix.Forward, delta);
+                            rotateZ += delta;
                         }
 
-                        // -- Apply rotation -- //
+
                         foreach (Tile entity in Selection)
                         {
-                            // use gizmo position for all PivotTypes except for object-center, it should use the entity.position instead.
-                            Vector3 pos = position;
-                            if (ActivePivot == PivotType.ObjectCenter)
-                            {
-                                pos = entity.WorldPosition;
-                            }
-
-                            Matrix localRot = Matrix.Identity;
-                            localRot.Forward = entity.Forward;
-                            localRot.Up = entity.Up;
-                            localRot.Right = Vector3.Cross(entity.Forward, entity.Up);
-                            localRight.Normalize();
-                            localRot.Translation = entity.WorldPosition - pos;
-
-                            Matrix newRot = localRot * rot;
-
-                            entity.Forward = newRot.Forward;
-                            entity.Up = newRot.Up;
-                            entity.WorldPosition = newRot.Translation + pos;
-
+                            entity.mRotation.X += rotateX;
+                            entity.mRotation.Y += rotateY;
+                            entity.mRotation.Z += rotateZ;
                         }
+
                         #endregion
                     }
                 }
