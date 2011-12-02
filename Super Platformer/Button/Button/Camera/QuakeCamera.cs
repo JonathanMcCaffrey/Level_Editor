@@ -31,8 +31,8 @@ namespace Button
         Matrix projectionMatrix;
         Viewport viewPort;
 
-        float leftrightRot;
-        float updownRot;
+        float leftrightRot = -10;
+        float updownRot = 0;
         const float rotationSpeed = 0.005f;
         Vector3 cameraPosition;
 
@@ -42,7 +42,8 @@ namespace Button
             projectionMatrix = FileManager.Get().ProjectionMatrix;
             
             cameraPosition = FileManager.Get().CameraPosition;
-;
+            leftrightRot = -17.3000031f;
+
 
             UpdateViewMatrix();
 
@@ -73,23 +74,21 @@ namespace Button
 
                 if (input.KeyHeldDown(Keys.Up))
                 {
-
+                    yDifference = -10;
                 }
                 if (input.KeyHeldDown(Keys.Down))
                 {
-
+                    yDifference = 10;
                 }
                 if (input.KeyHeldDown(Keys.Left))
                 {
-
+                    xDifference = -10;
                 }
                 if (input.KeyHeldDown(Keys.Right))
                 {
-
+                    xDifference = 10;
                 }
 
-                float xDifference = InputManager.Get().mouseTranslation.X;
-                float yDifference = InputManager.Get().mouseTranslation.Y;
                 leftrightRot -= rotationSpeed * xDifference;
                 updownRot -= rotationSpeed * yDifference;
                 UpdateViewMatrix();                

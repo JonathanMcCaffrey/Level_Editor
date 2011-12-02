@@ -143,7 +143,7 @@ namespace Button
                     yData = organizedData[1].Split(':');
                     zData = organizedData[2].Split(':');
                     zData[1] = zData[1].TrimEnd();
-                    zData[1] = yData[1].Replace('}', ' ');
+                    zData[1] = zData[1].Replace('}', ' ');
                     temporaryTile.WorldPosition = new Vector3((float)Convert.ToDouble(xData[1]), (float)Convert.ToDouble(yData[1]), (float)Convert.ToDouble(zData[1]));
 
                     rawData = xmlReader.ReadElementContentAsString("IsCollidable", "");
@@ -162,7 +162,7 @@ namespace Button
                     yData = organizedData[1].Split(':');
                     zData = organizedData[2].Split(':');
                     zData[1] = zData[1].TrimEnd();
-                    zData[1] = yData[1].Replace('}', ' ');
+                    zData[1] = zData[1].Replace('}', ' ');
                     temporaryTile.Color = new Color((float)Convert.ToDouble(xData[1]), (float)Convert.ToDouble(yData[1]), (float)Convert.ToDouble(zData[1]));
 
 
@@ -172,7 +172,7 @@ namespace Button
                     yData = organizedData[1].Split(':');
                     zData = organizedData[2].Split(':');
                     zData[1] = zData[1].TrimEnd();
-                    zData[1] = yData[1].Replace('}', ' ');
+                    zData[1] = zData[1].Replace('}', ' ');
                     temporaryTile.Rotation = new Vector3((float)Convert.ToDouble(xData[1]), (float)Convert.ToDouble(yData[1]), (float)Convert.ToDouble(zData[1]));
 
 
@@ -182,7 +182,7 @@ namespace Button
                     yData = organizedData[1].Split(':');
                     zData = organizedData[2].Split(':');
                     zData[1] = zData[1].TrimEnd();
-                    zData[1] = yData[1].Replace('}', ' ');
+                    zData[1] = zData[1].Replace('}', ' ');
                     temporaryTile.Scale = new Vector3((float)Convert.ToDouble(xData[1]), (float)Convert.ToDouble(yData[1]), (float)Convert.ToDouble(zData[1]));
 
 

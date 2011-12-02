@@ -61,7 +61,7 @@ namespace Button
 
         public override void Draw(GameTime aGameTime)
         {
-          //  SpriteBatch.Draw(mBackgroundTexture, new Rectangle(-200, 0, 1000, 800), Color.White);
+            SpriteBatch.Draw(mBackgroundTexture, new Rectangle(-200, 0, 1000, 800), Color.White);
 
             theEntityComponetManager.Draw(aGameTime);
 

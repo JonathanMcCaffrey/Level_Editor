@@ -108,6 +108,7 @@ namespace Button
             for (int loop = 0; loop < List.Count; loop++)
             {
                 aXmlWriter.WriteStartElement("Enemy");
+                aXmlWriter.WriteElementString("Model", List[loop].FilePathToModel);
                 aXmlWriter.WriteElementString("Graphic", List[loop].FilePathToGraphic);
                 aXmlWriter.WriteElementString("Position", List[loop].WorldPosition.ToString());
                 aXmlWriter.WriteElementString("IsCollidable", List[loop].IsCollidable.ToString());
@@ -148,15 +149,17 @@ namespace Button
 
                     Enemy temporaryEnemy = new Enemy();
 
+                    temporaryEnemy.FilePathToModel = xmlReader.ReadElementContentAsString("Model", "");
                     temporaryEnemy.FilePathToGraphic = xmlReader.ReadElementContentAsString("Graphic", "");
 
                     rawData = xmlReader.ReadElementContentAsString("Position", "");
                     organizedData = rawData.Split(' ');
                     xData = organizedData[0].Split(':');
                     yData = organizedData[1].Split(':');
-                    yData[1] = yData[1].TrimEnd();
-                    yData[1] = yData[1].Replace('}', ' ');
-                    temporaryEnemy.WorldPosition = new Vector3((float)Convert.ToDouble(xData[1]), (float)Convert.ToDouble(yData[1]), (float)Convert.ToDouble(yData[1]));
+                    zData = organizedData[2].Split(':');
+                    zData[1] = zData[1].TrimEnd();
+                    zData[1] = zData[1].Replace('}', ' ');
+                    temporaryEnemy.WorldPosition = new Vector3((float)Convert.ToDouble(xData[1]), (float)Convert.ToDouble(yData[1]), (float)Convert.ToDouble(zData[1]));
 
                     rawData = xmlReader.ReadElementContentAsString("IsCollidable", "");
                     if (rawData == "True")
@@ -174,6 +177,7 @@ namespace Button
                     yData = organizedData[1].Split(':');
                     zData = organizedData[2].Split(':');
                     zData[1] = zData[1].TrimEnd();
+                    zData[1] = zData[1].Replace('}', ' ');
                     temporaryEnemy.Color = new Color((float)Convert.ToDouble(xData[1]), (float)Convert.ToDouble(yData[1]), (float)Convert.ToDouble(zData[1]));
 
 
@@ -181,18 +185,20 @@ namespace Button
                     organizedData = rawData.Split(' ');
                     xData = organizedData[0].Split(':');
                     yData = organizedData[1].Split(':');
-                    yData[1] = yData[1].TrimEnd();
-                    yData[1] = yData[1].Replace('}', ' ');
-                    temporaryEnemy.Rotation = new Vector3((float)Convert.ToDouble(xData[1]), (float)Convert.ToDouble(yData[1]), (float)Convert.ToDouble(yData[1]));
+                    zData = organizedData[2].Split(':');
+                    zData[1] = zData[1].TrimEnd();
+                    zData[1] = zData[1].Replace('}', ' ');
+                    temporaryEnemy.Rotation = new Vector3((float)Convert.ToDouble(xData[1]), (float)Convert.ToDouble(yData[1]), (float)Convert.ToDouble(zData[1]));
 
 
                     rawData = xmlReader.ReadElementContentAsString("Scale", "");
                     organizedData = rawData.Split(' ');
                     xData = organizedData[0].Split(':');
                     yData = organizedData[1].Split(':');
-                    yData[1] = yData[1].TrimEnd();
-                    yData[1] = yData[1].Replace('}', ' ');
-                    temporaryEnemy.Scale = new Vector3((float)Convert.ToDouble(xData[1]), (float)Convert.ToDouble(yData[1]), (float)Convert.ToDouble(yData[1]));
+                    zData = organizedData[2].Split(':');
+                    zData[1] = zData[1].TrimEnd();
+                    zData[1] = zData[1].Replace('}', ' ');
+                    temporaryEnemy.Scale = new Vector3((float)Convert.ToDouble(xData[1]), (float)Convert.ToDouble(yData[1]), (float)Convert.ToDouble(zData[1]));
 
 
 
