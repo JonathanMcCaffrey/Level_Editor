@@ -9,7 +9,7 @@ namespace Button
 {
     public class Tile : AbstractEntity
     {
-        Model mModel = FileManager.Get().LoadModel("Spike");
+        public Model mModel = FileManager.Get().LoadModel("Spike");
         Matrix mWorldMatrix = Matrix.Identity;
      
         #region Construction
@@ -48,6 +48,7 @@ namespace Button
 
         public override void Draw()
         {
+            theFileManager.SpriteBatch.End();
 
             theFileManager.SpriteBatch.GraphicsDevice.BlendState = BlendState.Opaque;
             theFileManager.SpriteBatch.GraphicsDevice.DepthStencilState = DepthStencilState.Default;
@@ -60,12 +61,16 @@ namespace Button
             theFileManager.SpriteBatch.GraphicsDevice.DepthStencilState = DepthStencilState.None;
             theFileManager.SpriteBatch.GraphicsDevice.RasterizerState = RasterizerState.CullCounterClockwise;
             theFileManager.SpriteBatch.GraphicsDevice.SamplerStates[0] = SamplerState.LinearClamp;
+            theFileManager.SpriteBatch.End();
+
+
+            theFileManager.SpriteBatch.Begin();
 
             if (IsOnScreen)
             {
-          //      theFileManager.SpriteBatch.Draw(Graphic, ScreenPosition, SourceRectangle, Color, Rotation, Origin, Scale, SpriteEffects, LayerDepth);
+           //     theFileManager.SpriteBatch.Draw(Graphic, ScreenPosition, SourceRectangle, Color, Rotation, Origin, Scale, SpriteEffects, LayerDepth);
             }
-            theFileManager.SpriteBatch.End();
+           
         }
 
         protected void CollideWithTile()

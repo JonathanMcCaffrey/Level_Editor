@@ -98,8 +98,8 @@ namespace Button
             EnemyButton.Create(new EnemyTurret(), Keys.F);
          //   EnemyButton.Create("Turret_Gun", Keys.F);
 
-            theEnemyManager.Load("Test.xml");
-            theTileManager.Load("Test.xml");
+         //   theEnemyManager.Load("Test.xml");
+         //   theTileManager.Load("Test.xml");
 
             base.Initialize();
         }
@@ -108,7 +108,7 @@ namespace Button
         #region Methods
         protected override void Update(GameTime aGameTime)
         {
-            for (int loop = 0; loop < 12; loop++)
+         /*   for (int loop = 0; loop < 12; loop++)
             {
                 if (theInputManager.KeyHeldDown((Keys)(loop + 112)))
                 {
@@ -116,7 +116,7 @@ namespace Button
                     theTileManager.Load("Level_" + (loop + 1) + ".xml");
                 }
             }
-
+            */
             if (theInputManager.SingleKeyPressInput(Keys.Escape))
             {
                 this.Exit();
@@ -133,18 +133,11 @@ namespace Button
                 theEntityComponetManager.LoadAll("Test.xml");
             }
 
-            if (theInputManager.mouseRightDrag)
+            if (theInputManager.SingleKeyPressInput(Keys.Space))
             {
                 Vector2 mousePosition = new Vector2(theInputManager.mousePosition.X, theInputManager.mousePosition.Y);
 
                 theButtonManager.GenerateEntity(new Vector3(theInputManager.mousePosition.X, 0, theInputManager.mousePosition.Y) + thePlayerManager.List[0].WorldPosition);
-            }
-
-            if (theInputManager.mouseLeftDrag)
-            {
-              //  theTileManager.Remove();
-
-                Vector2 mousePosition = new Vector2(theInputManager.mousePosition.X, theInputManager.mousePosition.Y);
             }
 
             theInputManager.Update(aGameTime);
@@ -156,9 +149,9 @@ namespace Button
           //  theScreenManager.Draw(aGameTime);
 
            GraphicsDevice.Clear(Color.CornflowerBlue);
-        //    theFileManager.SpriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend);
+            theFileManager.SpriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend);
             theScreenManager.Draw(aGameTime);
-        //    theFileManager.SpriteBatch.End();
+            theFileManager.SpriteBatch.End();
         }
         #endregion
     }

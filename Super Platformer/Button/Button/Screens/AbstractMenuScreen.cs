@@ -81,7 +81,7 @@ namespace Button
 
             Vector2 textPosition = new Vector2(GraphicsDevice.Viewport.Width / 10, GraphicsDevice.Viewport.Height / 3);
 //
-       //     SpriteBatch.Draw(BackgroundTexture, theUtilityManager.GetRectangle(GraphicsDevice), BackgroundColor);
+            SpriteBatch.Draw(BackgroundTexture, theUtilityManager.GetRectangle(GraphicsDevice), BackgroundColor);
 
             for (int i = 0; i < MenuEntries.Count; i++)
             {
@@ -99,7 +99,7 @@ namespace Button
             float textScale = isSelected ? textSize : textSize;
             aPosition = isSelected ? aPosition + new Vector2(10, 0) : aPosition;
 
-        //    SpriteBatch.DrawString(mTextFont, aEntry, aPosition, textColor, 0, textOrigin, textScale, SpriteEffects.None, 0);
+            SpriteBatch.DrawString(mTextFont, aEntry, aPosition, textColor, 0, textOrigin, textScale, SpriteEffects.None, 0);
         }
         #endregion
     }

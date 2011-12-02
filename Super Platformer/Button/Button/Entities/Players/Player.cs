@@ -135,19 +135,19 @@ namespace Button
             if (theInputManager.MulitKeyPressInput(Keys.Up))
             {
                 Velocity += new Vector3(0,0, -Speed / 20) * 20;
-                mRotation = (float)Math.Atan2(Velocity.X, -Velocity.Y);
+                mRotation.Y = (float)Math.Atan2(Velocity.X, -Velocity.Y);
                 isMoving = true;
             }
             if (theInputManager.MulitKeyPressInput(Keys.Right))
             {
                 Velocity += new Vector3(Speed / 20, 0, 0);
-                mRotation = (float)Math.Atan2(Velocity.X, -Velocity.Y);
+                mRotation.Y = (float)Math.Atan2(Velocity.X, -Velocity.Y);
                 isMoving = true;
             }
             if (theInputManager.MulitKeyPressInput(Keys.Left))
             {
                 Velocity += new Vector3(-Speed / 20, 0, 0);
-                mRotation = (float)Math.Atan2(Velocity.X, -Velocity.Y);
+                mRotation.Y = (float)Math.Atan2(Velocity.X, -Velocity.Y);
                 isMoving = true;
             }
 

@@ -358,7 +358,7 @@ namespace Button
             ApplyColor(GizmoAxis.Y, axisColors[1]);
             ApplyColor(GizmoAxis.Z, axisColors[2]);
 
-            // -- Apply Highlight -- //
+            // -- Apply Highlight -- //Ta
             ApplyColor(ActiveAxis, highlightColor);
 
         }
@@ -366,25 +366,25 @@ namespace Button
         public void HandleInput()
         {
             // -- Select Gizmo Mode -- //
-         /*   if (input.WasKeyPressed(Keys.D1))
+            if (theInputManager.SingleKeyPressInput(Keys.D1))
             {
                 ActiveMode = GizmoMode.Translate;
             }
-            else if (input.WasKeyPressed(Keys.D2))
+            else if (theInputManager.SingleKeyPressInput(Keys.D2))
             {
                 ActiveMode = GizmoMode.Rotate;
             }
-            else if (input.WasKeyPressed(Keys.D3))
+            else if (theInputManager.SingleKeyPressInput(Keys.D3))
             {
                 ActiveMode = GizmoMode.NonUniformScale;
             }
-            else if (input.WasKeyPressed(Keys.D4))
+            else if (theInputManager.SingleKeyPressInput(Keys.D4))
             {
                 ActiveMode = GizmoMode.UniformScale;
-            }*/
+            }
 
             // -- Cycle TransformationSpaces -- //
-          /*  if (input.WasKeyPressed(Keys.Space))
+            if (theInputManager.SingleKeyPressInput(Keys.L))
             {
                 if (ActiveSpace == TransformSpace.Local)
                     ActiveSpace = TransformSpace.World;
@@ -393,7 +393,7 @@ namespace Button
             }
 
             // -- Cycle PivotTypes -- //
-            if (input.WasKeyPressed(Keys.P))
+            if (theInputManager.SingleKeyPressInput(Keys.P))
             {
                 if (ActivePivot == PivotType.WorldOrigin)
                     ActivePivot = PivotType.ObjectCenter;
@@ -401,8 +401,21 @@ namespace Button
                     ActivePivot++;
             }
 
+            // -- Delete Selected Tiles -- //
+            if (theInputManager.SingleKeyPressInput(Keys.Delete))
+            {
+                for(int loop = 0; loop < Selection.Count(); loop++)
+                {
+                    theTileManager.Remove(Selection[loop]);
+                };
+
+                Selection.Clear();
+
+                ActiveAxis = GizmoAxis.None;
+            };
+
             // -- Toggle PrecisionMode -- //
-            if (input.IsKeyDown(Keys.LeftShift))
+            if (theInputManager.SingleKeyPressInput(Keys.O))
             {
                 precisionMode = true;
             }
@@ -410,15 +423,22 @@ namespace Button
                 precisionMode = false;
 
             // -- Toggle Snapping -- //
-            if (input.WasKeyPressed(Keys.S))
+            if (theInputManager.SingleKeyPressInput(Keys.I))
             {
                 SnapEnabled = !SnapEnabled;
             }
-            */
+
+            // -- Resent Active Axis -- //
+            if (theInputManager.SingleKeyPressInput(Keys.Tab) || theInputManager.mouseRightDrag)
+            {
+                ActiveAxis = GizmoAxis.None;
+            }
+          
+
             if (theInputManager.mouseLeftPressed && ActiveAxis == GizmoAxis.None)
             {
                 // add to selection or clear current selection
-             //   if (input.IsKeyUp(addToSelection) && input.IsKeyUp(removeFromSelection))
+                if (theInputManager.KeyIsUp(addToSelection) && theInputManager.KeyIsUp(removeFromSelection))
                 {
                     Selection.Clear();
                 }
@@ -1201,6 +1221,7 @@ namespace Button
                     " Y: " + Selection[0].Scale.Y.ToString("0.00") +
                     " Z: " + Selection[0].Scale.Z.ToString("0.00");
 
+                spriteBatch.End();
                 spriteBatch.Begin();
 
                 spriteBatch.DrawString(font, selection,
@@ -1251,6 +1272,7 @@ namespace Button
                 spriteBatch.DrawString(font, statusInfo, position, Color.White);
 
                 spriteBatch.End();
+                spriteBatch.Begin();
             }
         }
     }

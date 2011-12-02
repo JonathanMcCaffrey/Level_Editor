@@ -178,11 +178,25 @@ namespace Button
                     zData[1] = zData[1].TrimEnd();
                     temporaryEnemy.Color = new Color((float)Convert.ToDouble(xData[1]), (float)Convert.ToDouble(yData[1]), (float)Convert.ToDouble(zData[1]));
 
-                    temporaryEnemy.Rotation = xmlReader.ReadElementContentAsFloat("Rotation", "");
 
-                    float tempScale = xmlReader.ReadElementContentAsFloat("Scale", "");
+                    rawData = xmlReader.ReadElementContentAsString("Rotation", "");
+                    organizedData = rawData.Split(' ');
+                    xData = organizedData[0].Split(':');
+                    yData = organizedData[1].Split(':');
+                    yData[1] = yData[1].TrimEnd();  // Glitch in C#: This will not work at this instance. Wonder why...
+                    yData[1] = yData[1].Replace('}', ' ');  // Here is another solution.
+                    temporaryEnemy.Rotation = new Vector3((float)Convert.ToDouble(xData[1]), 0, (float)Convert.ToDouble(yData[1]));
 
-                    temporaryEnemy.Scale = new Vector3(tempScale, tempScale, tempScale);
+
+                    rawData = xmlReader.ReadElementContentAsString("Scale", "");
+                    organizedData = rawData.Split(' ');
+                    xData = organizedData[0].Split(':');
+                    yData = organizedData[1].Split(':');
+                    yData[1] = yData[1].TrimEnd();  // Glitch in C#: This will not work at this instance. Wonder why...
+                    yData[1] = yData[1].Replace('}', ' ');  // Here is another solution.
+                    temporaryEnemy.Scale = new Vector3((float)Convert.ToDouble(xData[1]), 0, (float)Convert.ToDouble(yData[1]));
+
+
 
                     switch (xmlReader.ReadElementContentAsString("SpriteEffects", ""))
                     {

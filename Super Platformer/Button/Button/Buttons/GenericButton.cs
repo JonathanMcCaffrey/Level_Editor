@@ -269,9 +269,9 @@ namespace Button
 
         public void Draw()
         {
-     //       theFileManager.SpriteBatch.Draw(Graphic, Position, SourceRectangle, Color, Rotation, Origin, Scale, SpriteEffects, LayerDepth);
-      //      theFileManager.SpriteBatch.Draw(Border, Position, SourceRectangle, Color, Rotation, Origin, Scale, SpriteEffects, LayerDepth);
-       //     theFileManager.SpriteBatch.DrawString(theFileManager.SpriteFont, HotKey + " ", new Vector2(Position.X - 2 + Graphic.Width / 2, Position.Y - 10 + Graphic.Height / 2), Color.Orange, Rotation, Origin, Scale, SpriteEffects, LayerDepth);
+            theFileManager.SpriteBatch.Draw(Graphic, Position, SourceRectangle, Color, Rotation, Origin, Scale, SpriteEffects, LayerDepth);
+            theFileManager.SpriteBatch.Draw(Border, Position, SourceRectangle, Color, Rotation, Origin, Scale, SpriteEffects, LayerDepth);
+            theFileManager.SpriteBatch.DrawString(theFileManager.SpriteFont, HotKey + " ", new Vector2(Position.X - 2 + Graphic.Width / 2, Position.Y - 10 + Graphic.Height / 2), Color.Orange, Rotation, Origin, Scale, SpriteEffects, LayerDepth);
         }
         #endregion
     }

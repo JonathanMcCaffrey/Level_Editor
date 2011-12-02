@@ -12,6 +12,7 @@ namespace Button
         {
             IsCollidable = false;
             FilePathToGraphic = "WoodenFloor";
+            mModel = FileManager.Get().LoadModel("Spike");
         }
 
         public override void Create(Vector3 aCoordinate)
