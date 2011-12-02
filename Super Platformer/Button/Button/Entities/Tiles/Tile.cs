@@ -9,11 +9,6 @@ namespace Button
 {
     public class Tile : AbstractEntity
     {
-        Matrix projection;
-        Matrix view;
-
-
-
         private Model mModel = null;
         public Model Model
         {
@@ -104,9 +99,9 @@ namespace Button
             theFileManager.SpriteBatch.Begin();
 
             Vector3 projectedPosition = theFileManager.GraphicsDevice.Viewport.Project(WorldPosition, theFileManager.ProjectionMatrix, theFileManager.ViewMatrix, Matrix.Identity);
-            Vector2 screenPosition = new Vector2(projectedPosition.X, projectedPosition.Y);
+            Vector2 screenPosition = new Vector2(projectedPosition.X + 40, projectedPosition.Y - 150);
 
-            Vector2 spacing = new Vector2(0, 20);
+            Vector2 heightSpace = new Vector2(0, 20);
 
             bool isSelected = false;
 
@@ -122,9 +117,9 @@ namespace Button
             if (isSelected)
             {
                 theFileManager.SpriteBatch.DrawString(theFileManager.SpriteFont, "Position: " + mWorldPosition.ToString(), screenPosition, Color.White);
-                theFileManager.SpriteBatch.DrawString(theFileManager.SpriteFont, "Rotation: " + mRotation.ToString(), screenPosition + spacing, Color.White);
-                theFileManager.SpriteBatch.DrawString(theFileManager.SpriteFont, "Scale: " + mScale.ToString(), screenPosition + spacing * 2, Color.White);
-                theFileManager.SpriteBatch.DrawString(theFileManager.SpriteFont, "Color: " + mColor.ToString(), screenPosition + spacing * 3, Color.White);
+                theFileManager.SpriteBatch.DrawString(theFileManager.SpriteFont, "Rotation: " + mRotation.ToString(), screenPosition + heightSpace, Color.White);
+                theFileManager.SpriteBatch.DrawString(theFileManager.SpriteFont, "Scale: " + mScale.ToString(), screenPosition + heightSpace * 2, Color.White);
+                theFileManager.SpriteBatch.DrawString(theFileManager.SpriteFont, "Color: " + mColor.ToString(), screenPosition + heightSpace * 3, Color.White);
             }
         }
 
