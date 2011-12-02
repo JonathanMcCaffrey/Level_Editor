@@ -25,6 +25,7 @@ namespace Button
 
         private SaveMap saveFile = new SaveMap();
         private LoadMap loadFile = new LoadMap();
+        private Description assetDescription = new Description();
         #endregion
 
         #region Construction
@@ -60,6 +61,8 @@ namespace Button
         #region Methods
         public override void Update(GameTime aGameTime)
         {
+            assetDescription.Visible = true;
+
             if (saveFile.Done)
             {
                 SaveAll(saveFile.FileName);
