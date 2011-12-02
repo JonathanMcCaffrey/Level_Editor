@@ -81,7 +81,7 @@ namespace Button
             List.Clear();
         }
 
-        public override void Generate(Vector2 aCoordinate)
+        public override void Generate(Vector3 aCoordinate)
         {
             Tile newTile = new Tile(aCoordinate);
         }
@@ -141,7 +141,7 @@ namespace Button
                     yData = organizedData[1].Split(':');
                     yData[1] = yData[1].TrimEnd();  // Glitch in C#: This will not work at this instance. Wonder why...
                     yData[1] = yData[1].Replace('}', ' ');  // Here is another solution.
-                    temporaryTile.WorldPosition = new Vector2((float)Convert.ToDouble(xData[1]), (float)Convert.ToDouble(yData[1]));
+                    temporaryTile.WorldPosition = new Vector3((float)Convert.ToDouble(xData[1]),0, (float)Convert.ToDouble(yData[1]));
 
                     rawData = xmlReader.ReadElementContentAsString("IsCollidable", "");
                     if (rawData == "True")
@@ -163,7 +163,9 @@ namespace Button
 
                     temporaryTile.Rotation = xmlReader.ReadElementContentAsFloat("Rotation", "");
 
-                    temporaryTile.Scale = xmlReader.ReadElementContentAsFloat("Scale", "");
+                    float tempScale = xmlReader.ReadElementContentAsFloat("Scale", "");
+
+                    temporaryTile.Scale = new Vector3(tempScale, tempScale, tempScale);
 
                     switch (xmlReader.ReadElementContentAsString("SpriteEffects", ""))
                     {

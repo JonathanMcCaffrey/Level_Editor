@@ -26,7 +26,7 @@ namespace Button
         {
         }
 
-        private EnemyTurret(Vector2 aCoordinate)
+        private EnemyTurret(Vector3 aCoordinate)
         {
             //    FilePathToGraphic = theEnemyManager.FilePathToGraphic;
 
@@ -44,7 +44,7 @@ namespace Button
             CollideWithTile();
         }
 
-        public override void Create(Vector2 aCoordinate)
+        public override void Create(Vector3 aCoordinate)
         {
             new EnemyTurret(aCoordinate);
         }
@@ -60,7 +60,7 @@ namespace Button
         {
             if (IsOnScreen)
             {
-                Velocity = Vector2.Zero;
+                Velocity = Vector3.Zero;
 
                 HostileStateMachine.Update();
             }
@@ -70,8 +70,8 @@ namespace Button
         {
             if (IsOnScreen)
             {
-                theFileManager.SpriteBatch.Draw(Graphic, ScreenPosition, SourceRectangle, Color, GunDirection, Origin, Scale, SpriteEffects, LayerDepth);
-                theFileManager.SpriteBatch.Draw(TurretGun, ScreenPosition, SourceRectangle, Color, (Rotation + MathHelper.PiOver4) + MathHelper.Pi, Origin, Scale, SpriteEffects, LayerDepth);
+           //     theFileManager.SpriteBatch.Draw(Graphic, ScreenPosition, SourceRectangle, Color, GunDirection, Origin, Scale, SpriteEffects, LayerDepth);
+           //     theFileManager.SpriteBatch.Draw(TurretGun, ScreenPosition, SourceRectangle, Color, (Rotation + MathHelper.PiOver4) + MathHelper.Pi, Origin, Scale, SpriteEffects, LayerDepth);
             }
         }
 

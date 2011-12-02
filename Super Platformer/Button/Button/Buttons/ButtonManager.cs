@@ -119,7 +119,7 @@ namespace Button
 
         }
 
-        public void GenerateEntity(Vector2 aWorldPosition)
+        public void GenerateEntity(Vector3 aWorldPosition)
         {
             if (mEntity != null)
             {

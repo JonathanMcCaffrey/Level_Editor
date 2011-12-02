@@ -86,7 +86,7 @@ namespace Button
 
             theScreenManager.WorldScreen = new MainMenu();
 
-            Player.CreatePlayer("test", new Vector2(mScreenDimensions.X / 2.0f, mScreenDimensions.Y / 2.0f), Vector2.Zero);
+            Player.CreatePlayer("test", new Vector3(mScreenDimensions.X / 2.0f, 0, mScreenDimensions.Y / 2.0f), Vector3.Zero);
 
             TileButton.Create(new FloorCopper(), Keys.E);
             TileButton.Create(new FloorMetal(), Keys.R);
@@ -137,7 +137,7 @@ namespace Button
             {
                 Vector2 mousePosition = new Vector2(theInputManager.mousePosition.X, theInputManager.mousePosition.Y);
 
-                theButtonManager.GenerateEntity(theInputManager.mousePosition + thePlayerManager.List[0].WorldPosition);
+                theButtonManager.GenerateEntity(new Vector3(theInputManager.mousePosition.X, 0, theInputManager.mousePosition.Y) + thePlayerManager.List[0].WorldPosition);
             }
 
             if (theInputManager.mouseLeftDrag)
@@ -153,10 +153,12 @@ namespace Button
 
         protected override void Draw(GameTime aGameTime)
         {
-            GraphicsDevice.Clear(Color.CornflowerBlue);
-            theFileManager.SpriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend);
+          //  theScreenManager.Draw(aGameTime);
+
+           GraphicsDevice.Clear(Color.CornflowerBlue);
+        //    theFileManager.SpriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend);
             theScreenManager.Draw(aGameTime);
-            theFileManager.SpriteBatch.End();
+        //    theFileManager.SpriteBatch.End();
         }
         #endregion
     }

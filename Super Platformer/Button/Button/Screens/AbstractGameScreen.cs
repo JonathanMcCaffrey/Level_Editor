@@ -69,7 +69,7 @@ namespace Button
         }
         public virtual void Draw(GameTime aGameTime)
         {
-            theFileManager.SpriteBatch.Draw(mBackgroundTexture, Vector2.Zero, BackgroundColor);
+       //     theFileManager.SpriteBatch.Draw(mBackgroundTexture, Vector2.Zero, BackgroundColor);
         }
         #endregion
     }

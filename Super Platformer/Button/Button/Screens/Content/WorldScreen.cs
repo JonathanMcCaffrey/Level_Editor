@@ -13,11 +13,16 @@ namespace Button
         EntityComponetManager theEntityComponetManager = EntityComponetManager.Get();
 
         Texture2D mBackgroundTexture;
+
+        GizmoComponent gizmo;
         #endregion
 
         #region Construction
         public WorldScreen()
         {
+            gizmo = new GizmoComponent(theFileManager.ContentManager ,theFileManager.GraphicsDevice);
+            gizmo.Initialize();
+
             mBackgroundTexture = theFileManager.LoadTexture2D("Background");
             //   Enemy.CreateEnemy(Vector2.Zero);
         }
@@ -35,6 +40,9 @@ namespace Button
         {
             base.Update(aGameTime);
 
+            gizmo.HandleInput();
+            gizmo.Update(aGameTime);
+
             theCollisionManager.Reset();
 
             theEntityComponetManager.Update(aGameTime);
@@ -45,12 +53,17 @@ namespace Button
 
         public override void Draw(GameTime aGameTime)
         {
-            SpriteBatch.Draw(mBackgroundTexture, new Rectangle(-200, 0, 1000, 800), Color.White);
+          //  SpriteBatch.Draw(mBackgroundTexture, new Rectangle(-200, 0, 1000, 800), Color.White);
+
+            
 
             theEntityComponetManager.Draw(aGameTime);
 
             theButtonManager.Draw(aGameTime);
             theProjectileManager.Draw(aGameTime);
+
+            gizmo.Draw3D();
+            gizmo.DrawUI(theFileManager.SpriteBatch);
         }
         #endregion
     }

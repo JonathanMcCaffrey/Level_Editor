@@ -16,7 +16,7 @@ namespace Button
         protected TileManager theTileManager = TileManager.Get();
         protected ButtonManager theButtonManager = ButtonManager.Get();
         protected PlayerManager thePlayerManager = PlayerManager.Get();
-    //    protected ObjectManager theObjectManager = ObjectManager.Get();
+        //    protected ObjectManager theObjectManager = ObjectManager.Get();
         protected ScreenManager theScreenManager = ScreenManager.Get();
         protected EnemyManager theEnemyManager = EnemyManager.Get();
         protected ProjectileManager theProjectileManager = ProjectileManager.Get();
@@ -48,26 +48,26 @@ namespace Button
         }
         public string FilePathToGraphic
         {
-            get            {                return mFilePathToGraphic;            }
+            get { return mFilePathToGraphic; }
             set { mFilePathToGraphic = value; }
         }
 
-        protected Vector2 mWorldPosition = Vector2.Zero;
-        public virtual Vector2 WorldPosition
+        protected Vector3 mWorldPosition = Vector3.Zero;
+        public virtual Vector3 WorldPosition
         {
             get { return mWorldPosition; }
             set { mWorldPosition = value; }
         }
 
-        private Vector2 mOldPosition = Vector2.Zero;
-        public Vector2 OldPosition
+        private Vector3 mOldPosition = Vector3.Zero;
+        public Vector3 OldPosition
         {
             get { return mOldPosition; }
             set { mOldPosition = value; }
         }
 
-        protected Vector2 mStartinPosition = Vector2.Zero;
-        public virtual Vector2 StartinPosition
+        protected Vector3 mStartinPosition = Vector3.Zero;
+        public virtual Vector3 StartinPosition
         {
             get { return mStartinPosition; }
         }
@@ -79,8 +79,8 @@ namespace Button
             set { mSpeed = value; }
         }
 
-        protected Vector2 mVelocity = Vector2.Zero;
-        public virtual Vector2 Velocity
+        protected Vector3 mVelocity = Vector3.Zero;
+        public virtual Vector3 Velocity
         {
             get { return mVelocity * Speed; }
             set { mVelocity = value; }
@@ -94,7 +94,7 @@ namespace Button
         }
 
 
-        public virtual Vector2 ScreenPosition
+        public virtual Vector3 ScreenPosition
         {
             get
             {
@@ -164,7 +164,7 @@ namespace Button
         #region Construction
         public AbstractProjectile() { }
 
-        protected AbstractProjectile(Vector2 aCoordinate)
+        protected AbstractProjectile(Vector3 aCoordinate)
         {
             mWorldPosition = aCoordinate;
 
@@ -174,7 +174,7 @@ namespace Button
             Manager.Add(this);
         }
 
-        static public void CreateProjectile(Vector2 aCoordinate)
+        static public void CreateProjectile(Vector3 aCoordinate)
         {
             new AbstractProjectile(aCoordinate);
         }
@@ -220,47 +220,47 @@ namespace Button
 
         public void Collision()
         {
-        /*    for (int loop = 0; loop < theTileManager.List.Count; loop++)
-            {
-                if (theTileManager.List[loop].IsCollidable)
+            /*    for (int loop = 0; loop < theTileManager.List.Count; loop++)
                 {
-                    if (this.CollisionRectangle.Intersects(theTileManager.List[loop].CollisionRectangle))
+                    if (theTileManager.List[loop].IsCollidable)
                     {
-                        theProjectileManager.Remove(this);
+                        if (this.CollisionRectangle.Intersects(theTileManager.List[loop].CollisionRectangle))
+                        {
+                            theProjectileManager.Remove(this);
+                        }
                     }
                 }
-            }
 
-            for (int loop = 0; loop < thePlayerManager.List.Count; loop++)
-            {
-                if (thePlayerManager.List[loop] == mShooter) continue;
-                if (thePlayerManager.List[loop].IsCollidable == false) continue;
-
-                if (this.CollisionRectangle.Intersects(thePlayerManager.List[loop].CollisionRectangle))
+                for (int loop = 0; loop < thePlayerManager.List.Count; loop++)
                 {
-                    theProjectileManager.Remove(this);
-                    thePlayerManager.List[loop].Damage();
+                    if (thePlayerManager.List[loop] == mShooter) continue;
+                    if (thePlayerManager.List[loop].IsCollidable == false) continue;
+
+                    if (this.CollisionRectangle.Intersects(thePlayerManager.List[loop].CollisionRectangle))
+                    {
+                        theProjectileManager.Remove(this);
+                        thePlayerManager.List[loop].Damage();
+                    }
                 }
-            }
 
-            for (int loop = 0; loop < theEnemyManager.List.Count; loop++)
-            {
-                if (theEnemyManager.List[loop] == mShooter) continue;
-                if (theEnemyManager.List[loop].IsCollidable == false) continue;
-
-                if (this.CollisionRectangle.Intersects(theEnemyManager.List[loop].CollisionRectangle))
+                for (int loop = 0; loop < theEnemyManager.List.Count; loop++)
                 {
-                    theProjectileManager.Remove(this);
-                    theEnemyManager.List[loop].Damage();
-                }
-            }*/
+                    if (theEnemyManager.List[loop] == mShooter) continue;
+                    if (theEnemyManager.List[loop].IsCollidable == false) continue;
+
+                    if (this.CollisionRectangle.Intersects(theEnemyManager.List[loop].CollisionRectangle))
+                    {
+                        theProjectileManager.Remove(this);
+                        theEnemyManager.List[loop].Damage();
+                    }
+                }*/
         }
 
         public virtual void Draw()
         {
             if (IsOnScreen)
             {
-                theFileManager.SpriteBatch.Draw(Graphic, ScreenPosition, SourceRectangle, Color, Rotation, Origin, Scale, SpriteEffects, LayerDepth);
+                //      theFileManager.SpriteBatch.Draw(Graphic, ScreenPosition, SourceRectangle, Color, Rotation, Origin, Scale, SpriteEffects, LayerDepth);
             }
         }
         #endregion

@@ -156,9 +156,9 @@ namespace Button
                     yData = organizedData[1].Split(':');
                     yData[1] = yData[1].TrimEnd();  // Glitch: This is not working. C# has failed me : (
                     yData[1] = yData[1].Replace('}', ' ');  // This is another method of doing it. Rather not use it tho for the sake of consistency.
-                    temporaryEnemy.WorldPosition = new Vector2((float)Convert.ToDouble(xData[1]), (float)Convert.ToDouble(yData[1]));
+                    temporaryEnemy.WorldPosition = new Vector3((float)Convert.ToDouble(xData[1]),0, (float)Convert.ToDouble(yData[1]));
 
-                    EnemyTurret.CreateEnemy(new Vector2((float)Convert.ToDouble(xData[1]), (float)Convert.ToDouble(yData[1])));
+                    EnemyTurret.CreateEnemy(new Vector3((float)Convert.ToDouble(xData[1]),0, (float)Convert.ToDouble(yData[1])));
 
                     rawData = xmlReader.ReadElementContentAsString("IsCollidable", "");
                     if (rawData == "True")
@@ -180,7 +180,9 @@ namespace Button
 
                     temporaryEnemy.Rotation = xmlReader.ReadElementContentAsFloat("Rotation", "");
 
-                    temporaryEnemy.Scale = xmlReader.ReadElementContentAsFloat("Scale", "");
+                    float tempScale = xmlReader.ReadElementContentAsFloat("Scale", "");
+
+                    temporaryEnemy.Scale = new Vector3(tempScale, tempScale, tempScale);
 
                     switch (xmlReader.ReadElementContentAsString("SpriteEffects", ""))
                     {

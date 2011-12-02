@@ -14,7 +14,7 @@ namespace Button
             FilePathToGraphic = "MetalWall";
         }
 
-        public override void Create(Vector2 aCoordinate)
+        public override void Create(Vector3 aCoordinate)
         {
             Tile newTile = new Tile(aCoordinate);
             newTile.FilePathToGraphic = "MetalWall";

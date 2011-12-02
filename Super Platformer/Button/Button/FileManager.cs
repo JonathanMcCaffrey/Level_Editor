@@ -116,6 +116,26 @@ namespace Button
             }
         }
 
+        private Vector3 mCameraPosition = new Vector3(5000, 500, 0);
+
+        public Vector3 CameraPosition
+        {
+            get { return mCameraPosition; }
+            set { mCameraPosition = value; }
+        }
+        private Matrix mViewMatrix;
+        public Matrix ViewMatrix
+        {
+            get { return Matrix.CreateLookAt(CameraPosition, Vector3.Zero, Vector3.Up); }
+            set { mViewMatrix = value; }
+        }
+        private Matrix mProjectionMatrix;
+        public Matrix ProjectionMatrix
+        {
+            get { return Matrix.CreatePerspectiveFieldOfView(MathHelper.PiOver4, (float)GraphicsDevice.Viewport.Width / (float)GraphicsDevice.Viewport.Height, 1f, 9000f); ; }
+            set { mProjectionMatrix = value; }
+        }
+
         #endregion
 
         #region Construction

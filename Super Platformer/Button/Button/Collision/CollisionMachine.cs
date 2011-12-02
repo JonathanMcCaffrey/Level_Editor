@@ -26,16 +26,16 @@ namespace Button
 
         protected float mRange = 600;
 
-        protected Vector2 mCheckPositionOld = Vector2.Zero;
-        protected Vector2 mCheckPositionCurrent = Vector2.Zero;
+        protected Vector3 mCheckPositionOld = Vector3.Zero;
+        protected Vector3 mCheckPositionCurrent = Vector3.Zero;
         protected float mCheckMaxDisplacement = 25;
         protected float CheckDisplacement
         {
             get { return Displacement(mCheckPositionOld, mCheckPositionCurrent); }
         }
 
-        protected Vector2 mUpdatePositionOld = Vector2.Zero;
-        protected Vector2 mUpdatePositionCurrent = Vector2.Zero;
+        protected Vector3 mUpdatePositionOld = Vector3.Zero;
+        protected Vector3 mUpdatePositionCurrent = Vector3.Zero;
         protected float mUpdateMaxDisplacement = 300;
         protected float UpdateDisplacement
         {
@@ -49,7 +49,7 @@ namespace Button
            
         }
 
-        protected float Displacement(Vector2 aPosition_1, Vector2 aPosition_2)
+        protected float Displacement(Vector3 aPosition_1, Vector3 aPosition_2)
         {
             float tempDisplacement = 0;
 
@@ -60,7 +60,7 @@ namespace Button
 
         protected virtual void UpdateCollision()
         {
-            for (int loop = 0; loop < theCollisionManager.ListEntity.Count; loop++)
+          /*  for (int loop = 0; loop < theCollisionManager.ListEntity.Count; loop++)
             {
                 if (Displacement(mUpdatePositionCurrent, theCollisionManager.ListEntity[loop].WorldPosition) < mRange)
                 {
@@ -74,7 +74,7 @@ namespace Button
                 {
                     mProjectileList.Add(theCollisionManager.ListProjectile[loop]);
                 }
-            }
+            }*/
         }
 
         protected virtual bool CheckCollision()

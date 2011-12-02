@@ -35,7 +35,7 @@ namespace Button
             mHostileStateMachine = new HostileStateMachine(this);
         }
 
-        private Enemy(Vector2 aCoordinate)
+        private Enemy(Vector3 aCoordinate)
         {
             FilePathToGraphic = theEnemyManager.FilePathToGraphic;
             IsCollidable = theEnemyManager.IsCollidable;
@@ -53,7 +53,7 @@ namespace Button
             CollideWithTile();
         }
 
-        static public void CreateEnemy(Vector2 aCoordinate)
+        static public void CreateEnemy(Vector3 aCoordinate)
         {
             new Enemy(aCoordinate);
         }
@@ -76,8 +76,8 @@ namespace Button
         {
             if (IsOnScreen)
             {
-                theFileManager.SpriteBatch.Draw(Graphic, ScreenPosition, SourceRectangle, Color, GunDirection, Origin, Scale, SpriteEffects, LayerDepth);
-                theFileManager.SpriteBatch.Draw(Gun, ScreenPosition, SourceRectangle, Color, (Rotation + MathHelper.PiOver4) + MathHelper.Pi, Origin, Scale, SpriteEffects, LayerDepth);
+           //     theFileManager.SpriteBatch.Draw(Graphic, ScreenPosition, SourceRectangle, Color, GunDirection, Origin, Scale, SpriteEffects, LayerDepth);
+           //     theFileManager.SpriteBatch.Draw(Gun, ScreenPosition, SourceRectangle, Color, (Rotation + MathHelper.PiOver4) + MathHelper.Pi, Origin, Scale, SpriteEffects, LayerDepth);
             }
         }
 

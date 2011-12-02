@@ -27,7 +27,13 @@ namespace Button
         {
             get { return mManager; }
         }
-        protected string mName;
+
+        private string mName;
+        public string Name
+        {
+            get { return mName; }
+            set { mName = value; }
+        }
 
         const float BORDER_LENGTH = 4.0f;
         protected string mFilePathToGraphic = "IconOne";
@@ -41,49 +47,49 @@ namespace Button
             set { mFilePathToGraphic = value; }
         }
 
-        protected Vector2 mWorldPosition = Vector2.Zero;
-        public virtual Vector2 WorldPosition
+        protected Vector3 mWorldPosition = Vector3.Zero;
+        public virtual Vector3 WorldPosition
         {
             get
             {
-                if (mWorldPosition.X % Graphic.Width < 32)
-                {
-                    if (mWorldPosition.X % Graphic.Width != 0)
-                    {
-                        float x = mWorldPosition.X % Graphic.Width;
+                /*  if (mWorldPosition.X % Graphic.Width < 32)
+                  {
+                      if (mWorldPosition.X % Graphic.Width != 0)
+                      {
+                          float x = mWorldPosition.X % Graphic.Width;
 
-                        mWorldPosition.X -= x;
-                    }
-                }
-                else
-                {
-                    if (mWorldPosition.X % Graphic.Width != 0)
-                    {
-                        float x = Graphic.Width - (mWorldPosition.X % Graphic.Width);
+                          mWorldPosition.X -= x;
+                      }
+                  }
+                  else
+                  {
+                      if (mWorldPosition.X % Graphic.Width != 0)
+                      {
+                          float x = Graphic.Width - (mWorldPosition.X % Graphic.Width);
 
-                        mWorldPosition.X += x;
-                    }
-                }
+                          mWorldPosition.X += x;
+                      }
+                  }
 
-                if (mWorldPosition.Y % Graphic.Width < 32)
-                {
-                    if (mWorldPosition.Y % Graphic.Height != 0)
-                    {
-                        float y = mWorldPosition.Y % Graphic.Height;
+                  if (mWorldPosition.Y % Graphic.Width < 32)
+                  {
+                      if (mWorldPosition.Y % Graphic.Height != 0)
+                      {
+                          float y = mWorldPosition.Y % Graphic.Height;
 
-                        mWorldPosition.Y -= y;
-                    }
-                }
-                else
-                {
-                    if (mWorldPosition.Y % Graphic.Height != 0)
-                    {
-                        float y = Graphic.Height - (mWorldPosition.Y % Graphic.Height);
+                          mWorldPosition.Y -= y;
+                      }
+                  }
+                  else
+                  {
+                      if (mWorldPosition.Y % Graphic.Height != 0)
+                      {
+                          float y = Graphic.Height - (mWorldPosition.Y % Graphic.Height);
 
-                        mWorldPosition.Y += y;
-                    }
-                }
-
+                          mWorldPosition.Y += y;
+                      }
+                  }
+                  */
                 return mWorldPosition;
             }
             set
@@ -92,26 +98,40 @@ namespace Button
             }
         }
 
-        protected Vector2 mOldPosition = Vector2.Zero;
-        public Vector2 OldPosition
+        protected Vector3 mOldPosition = Vector3.Zero;
+        public Vector3 OldPosition
         {
             get { return mOldPosition; }
             set { mOldPosition = value; }
         }
 
-        protected Vector2 mVelocity = Vector2.Zero;
-        public virtual Vector2 Velocity
+        protected Vector3 mVelocity = Vector3.Zero;
+        public virtual Vector3 Velocity
         {
             get { return mVelocity; }
             set { mVelocity = value; }
         }
 
-        public virtual Vector2 ScreenPosition
+        public virtual Vector3 ScreenPosition
         {
             get
             {
                 return WorldPosition - thePlayerManager.List[0].WorldPosition;
             }
+        }
+
+        private Vector3 mForward = Vector3.Forward;
+        public Vector3 Forward
+        {
+            get { return mForward; }
+            set { mForward = value; }
+        }
+
+        private Vector3 mUp = Vector3.Up;
+        public Vector3 Up
+        {
+            get { return mUp; }
+            set { mUp = value; }
         }
 
         public virtual bool IsOnScreen
@@ -149,6 +169,11 @@ namespace Button
             set { isCollidable = value; }
         }
 
+        public virtual BoundingBox BoundingBox
+        {
+            get { return new BoundingBox(WorldPosition - new Vector3(100, 100, 100), WorldPosition + new Vector3(100, 100, 100)); }
+        }
+
         public virtual Rectangle CollisionRectangle
         {
             get { return new Rectangle((int)ScreenPosition.X, (int)ScreenPosition.Y, Graphic.Width, Graphic.Height); }
@@ -173,8 +198,8 @@ namespace Button
             get { return theUtilityManager.GetOrigin(Graphic); }
         }
 
-        protected float mScale = 1.0f;
-        public float Scale
+        protected Vector3 mScale = Vector3.One;
+        public Vector3 Scale
         {
             get { return mScale; }
             set { mScale = value; }
@@ -243,14 +268,14 @@ namespace Button
         {
         }
 
-        protected AbstractEntity(Vector2 aCoordinate)
+        protected AbstractEntity(Vector3 aCoordinate)
         {
             mWorldPosition = aCoordinate;
 
             mManager.Add(this);
         }
 
-        static public void CreateEntity(Vector2 aCoordinate)
+        static public void CreateEntity(Vector3 aCoordinate)
         {
             new AbstractEntity(aCoordinate);
         }
@@ -264,11 +289,11 @@ namespace Button
 
         public virtual void Draw()
         {
-            theFileManager.SpriteBatch.Draw(Graphic, ScreenPosition, SourceRectangle, Color, Rotation, Origin, Scale, SpriteEffects, LayerDepth);
+            // theFileManager.SpriteBatch.Draw(Graphic, ScreenPosition, SourceRectangle, Color, Rotation, Origin, Scale, SpriteEffects, LayerDepth);
         }
 
         public virtual void Damage() { }
-        public virtual void Create(Vector2 aCoordinate) { }
+        public virtual void Create(Vector3 aCoordinate) { }
 
 
 

@@ -47,14 +47,14 @@ namespace Button
 
         protected override void UpdateCollision()
         {
-            mEntityList.Clear();
+          /*  mEntityList.Clear();
             for (int loop = 0; loop < theCollisionManager.ListEntity.Count; loop++)
             {
                 if (Displacement(mUpdatePositionCurrent, theCollisionManager.ListEntity[loop].WorldPosition) < mRange)
                 {
                     mEntityList.Add(theCollisionManager.ListEntity[loop]);
                 }
-            }
+            }*/
         }
 
         protected override bool CheckCollision()

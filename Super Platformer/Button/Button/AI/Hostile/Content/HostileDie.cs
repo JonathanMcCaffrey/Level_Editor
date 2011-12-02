@@ -28,7 +28,7 @@ namespace Button
         #region Methods
         public override void Update()
         {
-            Vector2 velocity = -mEnemy.WorldPosition + (mPlayer.WorldPosition + mPlayer.ScreenPosition);
+         /*   Vector2 velocity = -mEnemy.WorldPosition + (mPlayer.WorldPosition + mPlayer.ScreenPosition);
             velocity.Normalize();
 
             mEnemy.Velocity = velocity;
@@ -47,7 +47,7 @@ namespace Button
 
             EnemyShell.CreateProjectile(new Vector2(velocity.X, velocity.Y), mEnemy.WorldPosition, mEnemy);
 
-
+            */
             /*
 			float distance = SquareRoot(Square(mEnemy.WorldPosition.X - mPlayer.WorldPosition.X + mPlayer.ScreenPosition.X) +
                 Square(mEnemy.WorldPosition.Y - mPlayer.WorldPosition.Y + mPlayer.ScreenPosition.Y));

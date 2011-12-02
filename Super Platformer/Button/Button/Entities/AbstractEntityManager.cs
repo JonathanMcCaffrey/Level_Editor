@@ -62,7 +62,7 @@ namespace Button
         public virtual void Add(AbstractEntity aEntity) { }
         public virtual void Remove(AbstractEntity aEntity) { }
         public virtual void Clear() { }
-        public virtual void Generate(Vector2 aCoordinate) { }
+        public virtual void Generate(Vector3 aCoordinate) { }
         public virtual string Statistic() { return "Hi"; }
 
         public virtual void Save(XmlWriter aXmlWriter) { }

@@ -9,19 +9,16 @@ namespace Button
 {
     public class Tile : AbstractEntity
     {
-        Model mModel = FileManager.Get().LoadModel("Cube");
+        Model mModel = FileManager.Get().LoadModel("Spike");
         Matrix mWorldMatrix = Matrix.Identity;
-        Matrix mProjectionMatrix = Matrix.CreatePerspectiveFieldOfView(MathHelper.PiOver4, 1, 1, 10000);
-        Matrix mViewMatrix = Matrix.CreateLookAt(new Vector3(0, 0, 500), Vector3.Zero, Vector3.Up);
-
-
+     
         #region Construction
         public Tile()
         {
             Initialize();
         }
 
-        public Tile(Vector2 aCoordinate)
+        public Tile(Vector3 aCoordinate)
         {
             mWorldPosition = aCoordinate;
 
@@ -33,7 +30,7 @@ namespace Button
         private void Initialize()
         {
             mManager = theTileManager;
-            mName = "tile";
+            Name = "tile";
 
             CollideWithTile();
         }
@@ -42,7 +39,7 @@ namespace Button
         #region Methods
         public override void Update()
         {
-            mWorldMatrix = Matrix.CreateTranslation(mWorldPosition.X, -mWorldPosition.Y, 0);
+            mWorldMatrix = Matrix.CreateTranslation(mWorldPosition.X, mWorldPosition.Y, mWorldPosition.Z);
 
             base.Update();
 
@@ -55,8 +52,8 @@ namespace Button
             theFileManager.SpriteBatch.GraphicsDevice.BlendState = BlendState.Opaque;
             theFileManager.SpriteBatch.GraphicsDevice.DepthStencilState = DepthStencilState.Default;
 
-            mModel.Draw(mWorldMatrix, mViewMatrix, mProjectionMatrix);
-            theFileManager.SpriteBatch.End();
+            mModel.Draw(mWorldMatrix, theFileManager.ViewMatrix, theFileManager.ProjectionMatrix);
+       //     theFileManager.SpriteBatch.End();
 
             theFileManager.SpriteBatch.Begin();
             theFileManager.SpriteBatch.GraphicsDevice.BlendState = BlendState.AlphaBlend;
@@ -66,11 +63,9 @@ namespace Button
 
             if (IsOnScreen)
             {
-                theFileManager.SpriteBatch.Draw(Graphic, ScreenPosition, SourceRectangle, Color, Rotation, Origin, Scale, SpriteEffects, LayerDepth);
+          //      theFileManager.SpriteBatch.Draw(Graphic, ScreenPosition, SourceRectangle, Color, Rotation, Origin, Scale, SpriteEffects, LayerDepth);
             }
             theFileManager.SpriteBatch.End();
-
-            theFileManager.SpriteBatch.Begin();
         }
 
         protected void CollideWithTile()

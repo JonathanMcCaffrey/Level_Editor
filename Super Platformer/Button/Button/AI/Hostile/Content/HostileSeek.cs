@@ -29,7 +29,7 @@ namespace Button
         int x = 0;
         public override void Update()
         {
-            Vector2 velocity = -mEnemy.WorldPosition + (mPlayer.WorldPosition + mPlayer.ScreenPosition);
+    /*        Vector2 velocity = -mEnemy.WorldPosition + (mPlayer.WorldPosition + mPlayer.ScreenPosition);
             velocity.Normalize();
 
             velocity /= 3;
@@ -45,7 +45,7 @@ namespace Button
 
             if (x % 16 == 0)
             {
-                EnemyShell.CreateProjectile(new Vector2(velocity.X, velocity.Y), mEnemy.WorldPosition, mEnemy);
+         //       EnemyShell.CreateProjectile(new Vector2(velocity.X, velocity.Y), mEnemy.WorldPosition, mEnemy);
             }
 
 

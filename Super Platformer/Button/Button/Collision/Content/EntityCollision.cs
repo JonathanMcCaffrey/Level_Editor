@@ -23,7 +23,7 @@ namespace Button
         #region Methods
         public override void Update()
         {
-            mCheckPositionCurrent = mEntity.WorldPosition;
+        /*    mCheckPositionCurrent = mEntity.WorldPosition;
             mUpdatePositionCurrent = mEntity.WorldPosition;
 
             if (UpdateDisplacement > mUpdateMaxDisplacement)
@@ -42,12 +42,12 @@ namespace Button
                 {
                     mEntity.OldPosition = mEntity.WorldPosition;
                 }
-            }
+            }*/
         }
 
         protected override void UpdateCollision()
         {
-            mEntityList.Clear();
+       /*     mEntityList.Clear();
             for (int loop = 0; loop < theCollisionManager.ListEntity.Count; loop++)
             {
                 if (Displacement(mUpdatePositionCurrent, theCollisionManager.ListEntity[loop].WorldPosition) < mRange)
@@ -63,7 +63,7 @@ namespace Button
                 {
                     mProjectileList.Add(theCollisionManager.ListProjectile[loop]);
                 }
-            }
+            }*/
         }
 
         protected override bool CheckCollision()

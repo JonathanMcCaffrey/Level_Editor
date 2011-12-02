@@ -14,7 +14,7 @@ namespace Button
         float mHealthSize = 10;
         float mHealthLeft = 10;
 
-        public override Vector2 WorldPosition
+        public override Vector3 WorldPosition
         {
             get
             {
@@ -22,8 +22,8 @@ namespace Button
             }
         }
 
-        private Vector2 mScreenPosition = Vector2.Zero;
-        public override Vector2 ScreenPosition
+        private Vector3 mScreenPosition = Vector3.Zero;
+        public override Vector3 ScreenPosition
         {
             get
             {
@@ -88,7 +88,7 @@ namespace Button
             Initialize();
         }
 
-        private Player(string aFilePathToGraphic, Vector2 aScreenCoordinate, Vector2 aWorldCoordinate)
+        private Player(string aFilePathToGraphic, Vector3 aScreenCoordinate, Vector3 aWorldCoordinate)
         {
             mScreenPosition = aScreenCoordinate;
             mWorldPosition = aWorldCoordinate;
@@ -103,10 +103,10 @@ namespace Button
             mCollisionMachine = new EntityCollision(this);
             mManager = thePlayerManager;
             mFilePathToGraphic = "MainCharacter";
-            mName = "player";
+            Name = "player";
         }
 
-        static public void CreatePlayer(string aFilePathToGraphic, Vector2 aScreenCoordinate, Vector2 aWorldCoordinate)
+        static public void CreatePlayer(string aFilePathToGraphic, Vector3 aScreenCoordinate, Vector3 aWorldCoordinate)
         {
             new Player(aFilePathToGraphic, aScreenCoordinate, aWorldCoordinate);
         }
@@ -123,30 +123,30 @@ namespace Button
 
         private void Movement()
         {
-            Vector2 positionPostWorldCollision = WorldPosition;
-            Vector2 positionPostScreenCollision = ScreenPosition;
+            Vector3 positionPostWorldCollision = WorldPosition;
+            Vector3 positionPostScreenCollision = ScreenPosition;
 
             mWorldPosition = positionPostWorldCollision;
 
             bool isMoving = false;
 
-            Velocity -= new Vector2(0, -Speed / 20) * 10;
+            Velocity -= new Vector3(0, 0, -Speed / 20) * 10;
 
             if (theInputManager.MulitKeyPressInput(Keys.Up))
             {
-                Velocity += new Vector2(0, -Speed / 20) * 20;
+                Velocity += new Vector3(0,0, -Speed / 20) * 20;
                 mRotation = (float)Math.Atan2(Velocity.X, -Velocity.Y);
                 isMoving = true;
             }
             if (theInputManager.MulitKeyPressInput(Keys.Right))
             {
-                Velocity += new Vector2(Speed / 20, 0);
+                Velocity += new Vector3(Speed / 20, 0, 0);
                 mRotation = (float)Math.Atan2(Velocity.X, -Velocity.Y);
                 isMoving = true;
             }
             if (theInputManager.MulitKeyPressInput(Keys.Left))
             {
-                Velocity += new Vector2(-Speed / 20, 0);
+                Velocity += new Vector3(-Speed / 20, 0, 0);
                 mRotation = (float)Math.Atan2(Velocity.X, -Velocity.Y);
                 isMoving = true;
             }
@@ -219,14 +219,14 @@ namespace Button
 
         void Gun()
         {
-            Vector2 tempVector;
-            tempVector = mScreenPosition - theInputManager.mousePosition;
+            Vector3 tempVector;
+            tempVector = mScreenPosition - new Vector3(theInputManager.mousePosition.X, 0, theInputManager.mousePosition.Y);
             tempVector.Normalize();
             mGunDirection = (float)Math.Atan2(tempVector.Y, tempVector.X) - MathHelper.PiOver2;
 
             if (theInputManager.mouseLeftDrag)
             {
-                TankShell.CreateProjectile(ScreenPosition, WorldPosition - new Vector2(0, 25), this);
+           //     TankShell.CreateProjectile(ScreenPosition, WorldPosition - new Vector3(0, 0, 25), this);
             }
         }
 
@@ -235,7 +235,7 @@ namespace Button
         {
             if (IsOnScreen)
             {
-                theFileManager.SpriteBatch.Draw(Graphic, ScreenPosition, SourceRectangle, Color, Rotation, Origin + new Vector2(0, 10), Scale, SpriteEffects, LayerDepth);
+             //   theFileManager.SpriteBatch.Draw(Graphic, ScreenPosition, SourceRectangle, Color, Rotation, Origin + new Vector2(0, 10), Scale, SpriteEffects, LayerDepth);
             }
         }
 

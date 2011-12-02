@@ -120,6 +120,7 @@
     <Compile Include="AI\Hostile\Content\HostileSeek.cs" />
     <Compile Include="AI\Hostile\HostileState.cs" />
     <Compile Include="AI\Hostile\HostileStateMachine.cs" />
+    <Compile Include="Gizmo\BoundingOrientedBox.cs" />
     <Compile Include="Buttons\Content\EnemyButton.cs" />
     <Compile Include="Buttons\Content\TileButton.cs" />
     <Compile Include="Buttons\GenericButton.cs" />
@@ -141,6 +142,7 @@
     <Compile Include="Entities\Tiles\Content\HardWallCopper.cs" />
     <Compile Include="Entities\Tiles\Content\HardWallMetal.cs" />
     <Compile Include="Entities\Tiles\Content\FloorMetal.cs" />
+    <Compile Include="Gizmo\GizmoComponent.cs" />
     <Compile Include="LoadMap.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -151,6 +153,7 @@
     <Compile Include="Projectiles\Content\EnemyShell.cs" />
     <Compile Include="Projectiles\Content\TankShell.cs" />
     <Compile Include="Projectiles\ProjectileManager.cs" />
+    <Compile Include="Gizmo\Quad.cs" />
     <Compile Include="SaveAndLoad.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -9,7 +9,7 @@ namespace Button
     class EnemyShell : AbstractProjectile
     {
         #region Construction
-        private EnemyShell(Vector2 aVelocity, Vector2 aWorldCoordinate, AbstractEntity aShooter)
+        private EnemyShell(Vector3 aVelocity, Vector3 aWorldCoordinate, AbstractEntity aShooter)
         {
             mCollisionMachine = new ProjectileCollision(this);
             mVelocity = aVelocity;
@@ -23,7 +23,7 @@ namespace Button
             Manager.Add(this);
         }
 
-        static public void CreateProjectile(Vector2 aVelocity, Vector2 aWorldCoordinate, AbstractEntity aShooter)
+        static public void CreateProjectile(Vector3 aVelocity, Vector3 aWorldCoordinate, AbstractEntity aShooter)
         {
             new EnemyShell(aVelocity, aWorldCoordinate, aShooter);
         }

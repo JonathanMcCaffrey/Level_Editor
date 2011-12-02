@@ -11,7 +11,7 @@ namespace Button
         #region Construction
         private TankShell(Vector2 aScreenCoordinate, Vector2 aWorldCoordinate, AbstractEntity aShooter)
         {
-            mCollisionMachine = new ProjectileCollision(this);
+       /*     mCollisionMachine = new ProjectileCollision(this);
             WorldPosition = aWorldCoordinate + aScreenCoordinate;
             mStartinPosition = WorldPosition;
             mShooter = aShooter;
@@ -28,7 +28,7 @@ namespace Button
 
             Velocity.Normalize();
 
-            Manager.Add(this);
+            Manager.Add(this);*/
         }
 
         static public void CreateProjectile(Vector2 aScreenCoordinate, Vector2 aWorldCoordinate, AbstractEntity aShooter)
