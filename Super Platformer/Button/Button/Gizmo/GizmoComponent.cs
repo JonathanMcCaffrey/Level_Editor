@@ -214,6 +214,8 @@ namespace Button
             quadEffect.DiffuseColor = highlightColor.ToVector3();
             quadEffect.Alpha = 0.5f;
 
+            theFileManager.GizmoSelection = Selection;
+
 
             translationModel = content.Load<Model>("gizmo_translate");
             rotationModel = content.Load<Model>("gizmo_rotate");
@@ -404,7 +406,7 @@ namespace Button
             // -- Delete Selected Tiles -- //
             if (theInputManager.SingleKeyPressInput(Keys.Delete))
             {
-                for(int loop = 0; loop < Selection.Count(); loop++)
+                for (int loop = 0; loop < Selection.Count(); loop++)
                 {
                     theTileManager.Remove(Selection[loop]);
                 };
@@ -433,7 +435,7 @@ namespace Button
             {
                 ActiveAxis = GizmoAxis.None;
             }
-          
+
 
             if (theInputManager.mouseLeftPressed && ActiveAxis == GizmoAxis.None)
             {
@@ -592,7 +594,7 @@ namespace Button
                             {
                                 entity.Scale *= diff;
 
-                                entity.Scale = Vector3.Clamp(entity.Scale, new Vector3(0.1f,0.1f,0.1f), entity.Scale);
+                                entity.Scale = Vector3.Clamp(entity.Scale, new Vector3(0.1f, 0.1f, 0.1f), entity.Scale);
                             }
                         }
                         #endregion
@@ -602,9 +604,9 @@ namespace Button
                         #region Rotate
                         float delta = theInputManager.mouseTranslation.X;
 
-                        float rotateX =0;
-                        float rotateY=0;
-                        float rotateZ=0;
+                        float rotateX = 0;
+                        float rotateY = 0;
+                        float rotateZ = 0;
 
 
                         if (ActiveAxis == GizmoAxis.X)
@@ -1151,88 +1153,6 @@ namespace Button
                 }
 
                 graphics.DepthStencilState = DepthStencilState.Default;
-            }
-        }
-
-        public void DrawUI(SpriteBatch spriteBatch)
-        {
-
-            if (Enabled)
-            {
-                int textOffset = 40;
-
-                string objcount;
-                if (Selection.Count > 1)
-                {
-                    objcount = "Multiple Objects Selected(" + Selection.Count.ToString() + ")";
-                }
-                else
-                    objcount = Selection[0].Name;
-
-                string selection = objcount +
-                    "   Position X: " + Selection[0].WorldPosition.X.ToString("0.00") +
-                    " Y: " + Selection[0].WorldPosition.Y.ToString("0.00") +
-                    " Z: " + Selection[0].WorldPosition.Z.ToString("0.00") +
-                    //" Rotation X: " + Selection[0].AnglesRotation.X.ToString("00.0") +
-                    //    " Y: " + Selection[0].AnglesRotation.Y.ToString("00.0") +
-                    //    " Z: " + Selection[0].AnglesRotation.Z.ToString("00.0") +
-                    //"   Scale " + Selection[0].Scale.ToString();
-                "   Scale X: " + Selection[0].Scale.X.ToString("0.00") +
-                    " Y: " + Selection[0].Scale.Y.ToString("0.00") +
-                    " Z: " + Selection[0].Scale.Z.ToString("0.00");
-
-                spriteBatch.End();
-                spriteBatch.Begin();
-
-                spriteBatch.DrawString(font, selection,
-                    new Vector2(graphics.Viewport.Width - font.MeasureString(selection).X - textOffset, 2), Color.White);
-
-
-                // -- Draw Axis Text ("X","Y","Z") -- //
-                for (int i = 0; i < 3; i++)
-                {
-                    Vector3 screenPos = graphics.Viewport.Project(modelLocalSpace[i].Translation + modelLocalSpace[i].Backward + axisTextOffset, projection, view, gizmoWorld);
-
-                    Color color = axisColors[i];
-                    if (i == 0)
-                    {
-                        if (ActiveAxis == GizmoAxis.X || ActiveAxis == GizmoAxis.XY || ActiveAxis == GizmoAxis.ZX)
-                        {
-                            color = highlightColor;
-                        }
-                    }
-                    else if (i == 1)
-                    {
-                        if (ActiveAxis == GizmoAxis.Y || ActiveAxis == GizmoAxis.XY || ActiveAxis == GizmoAxis.YZ)
-                        {
-                            color = highlightColor;
-                        }
-                    }
-                    else
-                    {
-                        if (ActiveAxis == GizmoAxis.Z || ActiveAxis == GizmoAxis.YZ || ActiveAxis == GizmoAxis.ZX)
-                        {
-                            color = highlightColor;
-                        }
-                    }
-
-                    spriteBatch.DrawString(font, axisText[i], new Vector2(screenPos.X, screenPos.Y), color);
-                }
-
-
-                // -- Draw StatusInfo -- //
-
-                // , pivotType, snapping values, , 
-                string statusInfo = "Mode: " + ActiveMode.ToString() + " | Space: " + ActiveSpace.ToString() + " | Snapping:" + (SnapEnabled ? "ON" : "OFF") +
-                    " | Precision:" + (precisionMode ? "ON" : "OFF") + " | Pivot: " + ActivePivot.ToString() + " ";
-                Vector2 stringDims = font.MeasureString(statusInfo);
-
-                Vector2 position = new Vector2(graphics.Viewport.Width - stringDims.X, graphics.Viewport.Height - stringDims.Y);
-
-                spriteBatch.DrawString(font, statusInfo, position, Color.White);
-
-                spriteBatch.End();
-                spriteBatch.Begin();
             }
         }
     }

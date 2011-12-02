@@ -9,6 +9,11 @@ namespace Button
 {
     public class Tile : AbstractEntity
     {
+        Matrix projection;
+        Matrix view;
+
+
+
         private Model mModel = null;
         public Model Model
         {
@@ -98,11 +103,29 @@ namespace Button
 
             theFileManager.SpriteBatch.Begin();
 
-            if (IsOnScreen)
+            Vector3 projectedPosition = theFileManager.GraphicsDevice.Viewport.Project(WorldPosition, theFileManager.ProjectionMatrix, theFileManager.ViewMatrix, Matrix.Identity);
+            Vector2 screenPosition = new Vector2(projectedPosition.X, projectedPosition.Y);
+
+            Vector2 spacing = new Vector2(0, 20);
+
+            bool isSelected = false;
+
+            for(int loop = 0; loop < theFileManager.GizmoSelection.Count; loop++)
             {
-                //     theFileManager.SpriteBatch.Draw(Graphic, ScreenPosition, SourceRectangle, Color, Rotation, Origin, Scale, SpriteEffects, LayerDepth);
+                if (theFileManager.GizmoSelection[loop] == this)
+                {
+                    isSelected = true;
+                }
+
             }
 
+            if (isSelected)
+            {
+                theFileManager.SpriteBatch.DrawString(theFileManager.SpriteFont, "Position: " + mWorldPosition.ToString(), screenPosition, Color.White);
+                theFileManager.SpriteBatch.DrawString(theFileManager.SpriteFont, "Rotation: " + mRotation.ToString(), screenPosition + spacing, Color.White);
+                theFileManager.SpriteBatch.DrawString(theFileManager.SpriteFont, "Scale: " + mScale.ToString(), screenPosition + spacing * 2, Color.White);
+                theFileManager.SpriteBatch.DrawString(theFileManager.SpriteFont, "Color: " + mColor.ToString(), screenPosition + spacing * 3, Color.White);
+            }
         }
 
         protected void CollideWithTile()

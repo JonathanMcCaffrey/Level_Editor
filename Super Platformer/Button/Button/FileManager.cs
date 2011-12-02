@@ -136,6 +136,8 @@ namespace Button
             set { mProjectionMatrix = value; }
         }
 
+        public List<Tile> GizmoSelection;
+
         #endregion
 
         #region Construction

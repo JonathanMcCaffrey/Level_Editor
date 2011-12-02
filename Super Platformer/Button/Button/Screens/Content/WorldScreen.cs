@@ -69,7 +69,6 @@ namespace Button
             theProjectileManager.Draw(aGameTime);
 
             gizmo.Draw3D();
-            gizmo.DrawUI(theFileManager.SpriteBatch);
         }
         #endregion
     }
