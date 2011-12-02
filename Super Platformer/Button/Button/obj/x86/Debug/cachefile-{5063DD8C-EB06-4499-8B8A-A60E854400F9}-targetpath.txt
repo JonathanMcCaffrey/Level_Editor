@@ -34,7 +34,7 @@ Content\Asteroid.xnb
 Content\Blob.xnb
 Content\Satelite.xnb
 Content\Spaceship.xnb
+Content\Rock_0.xnb
 Content\Necron_0.xnb
 Content\Metalic_0.xnb
-Content\Rock_0.xnb
 Content\Blueness_0.xnb
