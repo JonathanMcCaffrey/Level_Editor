@@ -150,6 +150,12 @@
     <Compile Include="Entities\Tiles\Content\HardWallMetal.cs" />
     <Compile Include="Entities\Tiles\Content\FloorMetal.cs" />
     <Compile Include="Gizmo\GizmoComponent.cs" />
+    <Compile Include="LevelEditorInterface.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LevelEditorInterface.Designer.cs">
+      <DependentUpon>LevelEditorInterface.cs</DependentUpon>
+    </Compile>
     <Compile Include="LoadMap.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -235,6 +241,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Description.resx">
       <DependentUpon>Description.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LevelEditorInterface.resx">
+      <DependentUpon>LevelEditorInterface.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LoadMap.resx">
       <DependentUpon>LoadMap.cs</DependentUpon>

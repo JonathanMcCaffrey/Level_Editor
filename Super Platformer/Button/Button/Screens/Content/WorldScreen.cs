@@ -12,11 +12,8 @@ namespace Button
     {
         #region Data
         EntityComponetManager theEntityComponetManager = EntityComponetManager.Get();
-
         Texture2D mBackgroundTexture;
-
         GizmoComponent gizmo;
-
         QuakeCamera mQuakeCamera;
 
         #endregion
