@@ -101,9 +101,16 @@ namespace Button
             return temporaryViewport;
         }
 
-        public Vector2 GetScreenmCenter(GraphicsDevice aGraphicsDevice)
+        public Vector2 GetScreenCenter(GraphicsDevice aGraphicsDevice)
         {
             Vector2 temporaryScreenmCenter = new Vector2(aGraphicsDevice.Viewport.Width / 2, aGraphicsDevice.Viewport.Height / 2);
+
+            return temporaryScreenmCenter;
+        }
+
+        public Vector2 GetScreenCenter()
+        {
+            Vector2 temporaryScreenmCenter = new Vector2(FileManager.Get().GraphicsDevice.Viewport.Width / 2, FileManager.Get().GraphicsDevice.Viewport.Height / 2);
 
             return temporaryScreenmCenter;
         }

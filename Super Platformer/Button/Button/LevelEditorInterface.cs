@@ -13,6 +13,11 @@ namespace Button
     {
         public LevelEditorInterface()
         {
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
+            this.TopMost = true;
+            
+
             InitializeComponent();
 
             InitializeImages();
@@ -42,6 +47,8 @@ namespace Button
 
         private void IconStrip_MouseDown(object sender, EventArgs e)
         {
+            this.Location = new Point((int)UtilityManager.Get().GetScreenCenter().X, 20);
+
             Point tempPoint = iIconStrip.Location;
 
             tempPoint.X += (int)InputManager.Get().mouseTranslation.X;
