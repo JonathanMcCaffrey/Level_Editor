@@ -13,15 +13,14 @@ namespace Button
     {
         public LevelEditorInterface()
         {
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
+           /* this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;*/
             this.TopMost = true;
             
-
             InitializeComponent();
-
             InitializeImages();
-            
+
+            this.Location = new Point((int)UtilityManager.Get().GetScreenCenter().X, 20);
         }
 
         /** Windows Form cannot preload images with XNA 4.0. Microsoft stated the problem will not be fixed in future updates.
@@ -44,26 +43,20 @@ namespace Button
             itFlatten.BackgroundImage = Image.FromFile("C:\\Users\\mcca0442\\Desktop\\trunk\\Super Platformer\\Button\\ButtonContent\\Flatten.jpg");
             itSmooth.BackgroundImage = Image.FromFile("C:\\Users\\mcca0442\\Desktop\\trunk\\Super Platformer\\Button\\ButtonContent\\Smooth.jpg");
             itNoise.BackgroundImage = Image.FromFile("C:\\Users\\mcca0442\\Desktop\\trunk\\Super Platformer\\Button\\ButtonContent\\Noise.jpg");
-            
-
-
-            iIconStrip.Location = new Point((int)InputManager.Get().mousePosition.X, (int)InputManager.Get().mousePosition.Y);
-
         }
 
-        private void IconStrip_MouseDown(object sender, EventArgs e)
+        private void itOpen_Click(object sender, EventArgs e)
         {
-            this.Location = new Point((int)UtilityManager.Get().GetScreenCenter().X, 20);
+            OpenFileDialog tempFileDialog = new OpenFileDialog();
+            tempFileDialog.ShowDialog();
+            tempFileDialog.Dispose();
+        }
 
-            Point tempPoint = iIconStrip.Location;
-
-            tempPoint.X += (int)InputManager.Get().mouseTranslation.X;
-            tempPoint.Y += (int)InputManager.Get().mouseTranslation.Y;
-
-            Console.WriteLine((int)InputManager.Get().mouseTranslation.X);
-
-
-            iIconStrip.Location = tempPoint;
+        private void itSave_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog tempFileDialog = new SaveFileDialog();
+            tempFileDialog.ShowDialog();
+            tempFileDialog.Dispose();
         }
     }
 }

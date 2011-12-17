@@ -121,12 +121,6 @@
     <Compile Include="AI\Hostile\HostileState.cs" />
     <Compile Include="AI\Hostile\HostileStateMachine.cs" />
     <Compile Include="Camera\QuakeCamera.cs" />
-    <Compile Include="Description.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Description.Designer.cs">
-      <DependentUpon>Description.cs</DependentUpon>
-    </Compile>
     <Compile Include="Gizmo\BoundingOrientedBox.cs" />
     <Compile Include="Buttons\Content\EnemyButton.cs" />
     <Compile Include="Buttons\Content\TileButton.cs" />
@@ -239,9 +233,6 @@
     <Folder Include="Entities\Players\Content\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Description.resx">
-      <DependentUpon>Description.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="LevelEditorInterface.resx">
       <DependentUpon>LevelEditorInterface.cs</DependentUpon>
     </EmbeddedResource>

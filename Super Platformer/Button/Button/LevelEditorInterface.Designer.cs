@@ -41,6 +41,7 @@
             this.itScale = new System.Windows.Forms.ToolStripButton();
             this.itScaleLinear = new System.Windows.Forms.ToolStripButton();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.Game = new System.Windows.Forms.Panel();
             this.Modes = new System.Windows.Forms.TabControl();
             this.tabInfo = new System.Windows.Forms.TabPage();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -55,7 +56,6 @@
             this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.lPosition = new System.Windows.Forms.Label();
-            this.lableInfo = new System.Windows.Forms.Label();
             this.tabAssets = new System.Windows.Forms.TabPage();
             this.numericUpDown13 = new System.Windows.Forms.NumericUpDown();
             this.numericUpDown14 = new System.Windows.Forms.NumericUpDown();
@@ -75,14 +75,18 @@
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.listView2 = new System.Windows.Forms.ListView();
-            this.lableAsset = new System.Windows.Forms.Label();
             this.tabTerrain = new System.Windows.Forms.TabPage();
+            this.itNoise = new System.Windows.Forms.PictureBox();
+            this.itSmooth = new System.Windows.Forms.PictureBox();
+            this.itFlatten = new System.Windows.Forms.PictureBox();
+            this.itSubtract = new System.Windows.Forms.PictureBox();
+            this.itAdd = new System.Windows.Forms.PictureBox();
             this.button7 = new System.Windows.Forms.Button();
             this.button8 = new System.Windows.Forms.Button();
             this.button9 = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.lableTerrain = new System.Windows.Forms.Label();
             this.tabLights = new System.Windows.Forms.TabPage();
+            this.listView1 = new System.Windows.Forms.ListView();
             this.numericUpDown6 = new System.Windows.Forms.NumericUpDown();
             this.numericUpDown8 = new System.Windows.Forms.NumericUpDown();
             this.numericUpDown9 = new System.Windows.Forms.NumericUpDown();
@@ -100,17 +104,8 @@
             this.button5 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.tabShaders = new System.Windows.Forms.TabPage();
-            this.lableShaders = new System.Windows.Forms.Label();
-            this.tabLogic = new System.Windows.Forms.TabPage();
-            this.lableLogic = new System.Windows.Forms.Label();
-            this.Game = new System.Windows.Forms.Panel();
-            this.itAdd = new System.Windows.Forms.PictureBox();
-            this.itSubtract = new System.Windows.Forms.PictureBox();
-            this.itFlatten = new System.Windows.Forms.PictureBox();
-            this.itSmooth = new System.Windows.Forms.PictureBox();
-            this.itNoise = new System.Windows.Forms.PictureBox();
             this.iIconStrip.SuspendLayout();
+            this.Game.SuspendLayout();
             this.Modes.SuspendLayout();
             this.tabInfo.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -133,6 +128,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown24)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.iAssetPreview)).BeginInit();
             this.tabTerrain.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.itNoise)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.itSmooth)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.itFlatten)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.itSubtract)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.itAdd)).BeginInit();
             this.tabLights.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown8)).BeginInit();
@@ -143,14 +143,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown25)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown26)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown27)).BeginInit();
-            this.tabShaders.SuspendLayout();
-            this.tabLogic.SuspendLayout();
-            this.Game.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.itAdd)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.itSubtract)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.itFlatten)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.itSmooth)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.itNoise)).BeginInit();
             this.SuspendLayout();
             // 
             // iIconStrip
@@ -180,7 +172,6 @@
             this.iIconStrip.Stretch = true;
             this.iIconStrip.TabIndex = 0;
             this.iIconStrip.Text = "Tool Strip";
-            this.iIconStrip.MouseHover += new System.EventHandler(this.IconStrip_MouseDown);
             // 
             // itNew
             // 
@@ -190,7 +181,7 @@
             this.itNew.Name = "itNew";
             this.itNew.Size = new System.Drawing.Size(23, 28);
             this.itNew.Text = "New";
-            this.itNew.ToolTipText = "Save";
+            this.itNew.ToolTipText = "New";
             // 
             // itOpen
             // 
@@ -200,6 +191,7 @@
             this.itOpen.Name = "itOpen";
             this.itOpen.Size = new System.Drawing.Size(23, 28);
             this.itOpen.Text = "Open";
+            this.itOpen.Click += new System.EventHandler(this.itOpen_Click);
             // 
             // itSave
             // 
@@ -210,6 +202,7 @@
             this.itSave.Size = new System.Drawing.Size(23, 28);
             this.itSave.Text = "toolStripButton3";
             this.itSave.ToolTipText = "Save";
+            this.itSave.Click += new System.EventHandler(this.itSave_Click);
             // 
             // itUndo
             // 
@@ -283,14 +276,22 @@
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
+            // Game
+            // 
+            this.Game.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.Game.Controls.Add(this.Modes);
+            this.Game.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Game.Location = new System.Drawing.Point(0, 31);
+            this.Game.Name = "Game";
+            this.Game.Size = new System.Drawing.Size(728, 191);
+            this.Game.TabIndex = 1;
+            // 
             // Modes
             // 
             this.Modes.Controls.Add(this.tabInfo);
             this.Modes.Controls.Add(this.tabAssets);
             this.Modes.Controls.Add(this.tabTerrain);
             this.Modes.Controls.Add(this.tabLights);
-            this.Modes.Controls.Add(this.tabShaders);
-            this.Modes.Controls.Add(this.tabLogic);
             this.Modes.Dock = System.Windows.Forms.DockStyle.Top;
             this.Modes.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Modes.Location = new System.Drawing.Point(0, 0);
@@ -311,7 +312,6 @@
             this.tabInfo.Controls.Add(this.numericUpDown2);
             this.tabInfo.Controls.Add(this.numericUpDown1);
             this.tabInfo.Controls.Add(this.lPosition);
-            this.tabInfo.Controls.Add(this.lableInfo);
             this.tabInfo.ForeColor = System.Drawing.SystemColors.ControlText;
             this.tabInfo.Location = new System.Drawing.Point(4, 25);
             this.tabInfo.Name = "tabInfo";
@@ -435,16 +435,6 @@
             this.lPosition.TabIndex = 3;
             this.lPosition.Text = "Dimension:";
             // 
-            // lableInfo
-            // 
-            this.lableInfo.BackColor = System.Drawing.Color.Gainsboro;
-            this.lableInfo.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.lableInfo.Location = new System.Drawing.Point(4, 4);
-            this.lableInfo.Name = "lableInfo";
-            this.lableInfo.Size = new System.Drawing.Size(241, 17);
-            this.lableInfo.TabIndex = 0;
-            this.lableInfo.Text = "This tab controls the info of the level.";
-            // 
             // tabAssets
             // 
             this.tabAssets.BackColor = System.Drawing.Color.WhiteSmoke;
@@ -466,7 +456,6 @@
             this.tabAssets.Controls.Add(this.label11);
             this.tabAssets.Controls.Add(this.label12);
             this.tabAssets.Controls.Add(this.listView2);
-            this.tabAssets.Controls.Add(this.lableAsset);
             this.tabAssets.Location = new System.Drawing.Point(4, 25);
             this.tabAssets.Name = "tabAssets";
             this.tabAssets.Padding = new System.Windows.Forms.Padding(3);
@@ -612,16 +601,6 @@
             this.listView2.TabIndex = 33;
             this.listView2.UseCompatibleStateImageBehavior = false;
             // 
-            // lableAsset
-            // 
-            this.lableAsset.BackColor = System.Drawing.Color.Gainsboro;
-            this.lableAsset.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.lableAsset.Location = new System.Drawing.Point(4, 4);
-            this.lableAsset.Name = "lableAsset";
-            this.lableAsset.Size = new System.Drawing.Size(357, 17);
-            this.lableAsset.TabIndex = 0;
-            this.lableAsset.Text = "This tab controls the stats and placement of the assets.";
-            // 
             // tabTerrain
             // 
             this.tabTerrain.BackColor = System.Drawing.Color.WhiteSmoke;
@@ -634,13 +613,57 @@
             this.tabTerrain.Controls.Add(this.button8);
             this.tabTerrain.Controls.Add(this.button9);
             this.tabTerrain.Controls.Add(this.panel3);
-            this.tabTerrain.Controls.Add(this.lableTerrain);
             this.tabTerrain.Location = new System.Drawing.Point(4, 25);
             this.tabTerrain.Name = "tabTerrain";
             this.tabTerrain.Padding = new System.Windows.Forms.Padding(3);
             this.tabTerrain.Size = new System.Drawing.Size(720, 164);
             this.tabTerrain.TabIndex = 2;
             this.tabTerrain.Text = "Terrain";
+            // 
+            // itNoise
+            // 
+            this.itNoise.BackColor = System.Drawing.Color.Transparent;
+            this.itNoise.Location = new System.Drawing.Point(328, 46);
+            this.itNoise.Name = "itNoise";
+            this.itNoise.Size = new System.Drawing.Size(64, 64);
+            this.itNoise.TabIndex = 62;
+            this.itNoise.TabStop = false;
+            // 
+            // itSmooth
+            // 
+            this.itSmooth.BackColor = System.Drawing.Color.Transparent;
+            this.itSmooth.Location = new System.Drawing.Point(258, 46);
+            this.itSmooth.Name = "itSmooth";
+            this.itSmooth.Size = new System.Drawing.Size(64, 64);
+            this.itSmooth.TabIndex = 61;
+            this.itSmooth.TabStop = false;
+            // 
+            // itFlatten
+            // 
+            this.itFlatten.BackColor = System.Drawing.Color.Transparent;
+            this.itFlatten.Location = new System.Drawing.Point(188, 46);
+            this.itFlatten.Name = "itFlatten";
+            this.itFlatten.Size = new System.Drawing.Size(64, 64);
+            this.itFlatten.TabIndex = 60;
+            this.itFlatten.TabStop = false;
+            // 
+            // itSubtract
+            // 
+            this.itSubtract.BackColor = System.Drawing.Color.Transparent;
+            this.itSubtract.Location = new System.Drawing.Point(118, 46);
+            this.itSubtract.Name = "itSubtract";
+            this.itSubtract.Size = new System.Drawing.Size(64, 64);
+            this.itSubtract.TabIndex = 59;
+            this.itSubtract.TabStop = false;
+            // 
+            // itAdd
+            // 
+            this.itAdd.BackColor = System.Drawing.Color.Transparent;
+            this.itAdd.Location = new System.Drawing.Point(48, 46);
+            this.itAdd.Name = "itAdd";
+            this.itAdd.Size = new System.Drawing.Size(64, 64);
+            this.itAdd.TabIndex = 58;
+            this.itAdd.TabStop = false;
             // 
             // button7
             // 
@@ -681,18 +704,9 @@
             this.panel3.Size = new System.Drawing.Size(189, 124);
             this.panel3.TabIndex = 47;
             // 
-            // lableTerrain
-            // 
-            this.lableTerrain.BackColor = System.Drawing.Color.Gainsboro;
-            this.lableTerrain.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.lableTerrain.Location = new System.Drawing.Point(4, 4);
-            this.lableTerrain.Name = "lableTerrain";
-            this.lableTerrain.Size = new System.Drawing.Size(377, 17);
-            this.lableTerrain.TabIndex = 0;
-            this.lableTerrain.Text = "This tab controls the heightmaping and texturing of terrain.";
-            // 
             // tabLights
             // 
+            this.tabLights.Controls.Add(this.listView1);
             this.tabLights.Controls.Add(this.numericUpDown6);
             this.tabLights.Controls.Add(this.numericUpDown8);
             this.tabLights.Controls.Add(this.numericUpDown9);
@@ -717,6 +731,14 @@
             this.tabLights.TabIndex = 5;
             this.tabLights.Text = "Lights";
             this.tabLights.UseVisualStyleBackColor = true;
+            // 
+            // listView1
+            // 
+            this.listView1.Location = new System.Drawing.Point(35, 26);
+            this.listView1.Name = "listView1";
+            this.listView1.Size = new System.Drawing.Size(126, 126);
+            this.listView1.TabIndex = 65;
+            this.listView1.UseCompatibleStateImageBehavior = false;
             // 
             // numericUpDown6
             // 
@@ -834,7 +856,7 @@
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(122, 23);
             this.button5.TabIndex = 41;
-            this.button5.Text = "Reset All Lights";
+            this.button5.Text = "Save Light";
             this.button5.UseVisualStyleBackColor = false;
             // 
             // button6
@@ -856,103 +878,6 @@
             this.panel2.Size = new System.Drawing.Size(189, 124);
             this.panel2.TabIndex = 43;
             // 
-            // tabShaders
-            // 
-            this.tabShaders.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.tabShaders.Controls.Add(this.lableShaders);
-            this.tabShaders.Location = new System.Drawing.Point(4, 25);
-            this.tabShaders.Name = "tabShaders";
-            this.tabShaders.Padding = new System.Windows.Forms.Padding(3);
-            this.tabShaders.Size = new System.Drawing.Size(720, 164);
-            this.tabShaders.TabIndex = 3;
-            this.tabShaders.Text = "Shaders";
-            // 
-            // lableShaders
-            // 
-            this.lableShaders.BackColor = System.Drawing.Color.Gainsboro;
-            this.lableShaders.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.lableShaders.Location = new System.Drawing.Point(4, 4);
-            this.lableShaders.Name = "lableShaders";
-            this.lableShaders.Size = new System.Drawing.Size(393, 17);
-            this.lableShaders.TabIndex = 0;
-            this.lableShaders.Text = "This tab controls the shaders variables and used techniques.";
-            // 
-            // tabLogic
-            // 
-            this.tabLogic.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.tabLogic.Controls.Add(this.lableLogic);
-            this.tabLogic.Location = new System.Drawing.Point(4, 25);
-            this.tabLogic.Name = "tabLogic";
-            this.tabLogic.Padding = new System.Windows.Forms.Padding(3);
-            this.tabLogic.Size = new System.Drawing.Size(720, 164);
-            this.tabLogic.TabIndex = 4;
-            this.tabLogic.Text = "Logic";
-            // 
-            // lableLogic
-            // 
-            this.lableLogic.BackColor = System.Drawing.Color.Gainsboro;
-            this.lableLogic.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.lableLogic.Location = new System.Drawing.Point(4, 4);
-            this.lableLogic.Name = "lableLogic";
-            this.lableLogic.Size = new System.Drawing.Size(265, 17);
-            this.lableLogic.TabIndex = 0;
-            this.lableLogic.Text = "This tab controls the AI and Game Logic.";
-            // 
-            // Game
-            // 
-            this.Game.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.Game.Controls.Add(this.Modes);
-            this.Game.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Game.Location = new System.Drawing.Point(0, 31);
-            this.Game.Name = "Game";
-            this.Game.Size = new System.Drawing.Size(728, 191);
-            this.Game.TabIndex = 1;
-            // 
-            // itAdd
-            // 
-            this.itAdd.BackColor = System.Drawing.Color.Transparent;
-            this.itAdd.Location = new System.Drawing.Point(27, 54);
-            this.itAdd.Name = "itAdd";
-            this.itAdd.Size = new System.Drawing.Size(64, 64);
-            this.itAdd.TabIndex = 58;
-            this.itAdd.TabStop = false;
-            // 
-            // itSubtract
-            // 
-            this.itSubtract.BackColor = System.Drawing.Color.Transparent;
-            this.itSubtract.Location = new System.Drawing.Point(97, 54);
-            this.itSubtract.Name = "itSubtract";
-            this.itSubtract.Size = new System.Drawing.Size(64, 64);
-            this.itSubtract.TabIndex = 59;
-            this.itSubtract.TabStop = false;
-            // 
-            // itFlatten
-            // 
-            this.itFlatten.BackColor = System.Drawing.Color.Transparent;
-            this.itFlatten.Location = new System.Drawing.Point(167, 54);
-            this.itFlatten.Name = "itFlatten";
-            this.itFlatten.Size = new System.Drawing.Size(64, 64);
-            this.itFlatten.TabIndex = 60;
-            this.itFlatten.TabStop = false;
-            // 
-            // itSmooth
-            // 
-            this.itSmooth.BackColor = System.Drawing.Color.Transparent;
-            this.itSmooth.Location = new System.Drawing.Point(237, 54);
-            this.itSmooth.Name = "itSmooth";
-            this.itSmooth.Size = new System.Drawing.Size(64, 64);
-            this.itSmooth.TabIndex = 61;
-            this.itSmooth.TabStop = false;
-            // 
-            // itNoise
-            // 
-            this.itNoise.BackColor = System.Drawing.Color.Transparent;
-            this.itNoise.Location = new System.Drawing.Point(307, 54);
-            this.itNoise.Name = "itNoise";
-            this.itNoise.Size = new System.Drawing.Size(64, 64);
-            this.itNoise.TabIndex = 62;
-            this.itNoise.TabStop = false;
-            // 
             // LevelEditorInterface
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -965,6 +890,7 @@
             this.Text = "Level Editor";
             this.iIconStrip.ResumeLayout(false);
             this.iIconStrip.PerformLayout();
+            this.Game.ResumeLayout(false);
             this.Modes.ResumeLayout(false);
             this.tabInfo.ResumeLayout(false);
             this.tabInfo.PerformLayout();
@@ -989,6 +915,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown24)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.iAssetPreview)).EndInit();
             this.tabTerrain.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.itNoise)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.itSmooth)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.itFlatten)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.itSubtract)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.itAdd)).EndInit();
             this.tabLights.ResumeLayout(false);
             this.tabLights.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown6)).EndInit();
@@ -1000,14 +931,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown25)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown26)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown27)).EndInit();
-            this.tabShaders.ResumeLayout(false);
-            this.tabLogic.ResumeLayout(false);
-            this.Game.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.itAdd)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.itSubtract)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.itFlatten)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.itSmooth)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.itNoise)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1026,6 +949,7 @@
         private System.Windows.Forms.ToolStripButton itScale;
         private System.Windows.Forms.ToolStripButton itScaleLinear;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.Panel Game;
         private System.Windows.Forms.TabControl Modes;
         private System.Windows.Forms.TabPage tabInfo;
         private System.Windows.Forms.Panel panel1;
@@ -1040,7 +964,6 @@
         private System.Windows.Forms.NumericUpDown numericUpDown2;
         private System.Windows.Forms.NumericUpDown numericUpDown1;
         private System.Windows.Forms.Label lPosition;
-        private System.Windows.Forms.Label lableInfo;
         private System.Windows.Forms.TabPage tabAssets;
         private System.Windows.Forms.NumericUpDown numericUpDown13;
         private System.Windows.Forms.NumericUpDown numericUpDown14;
@@ -1060,23 +983,18 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.ListView listView2;
-        private System.Windows.Forms.Label lableAsset;
         private System.Windows.Forms.TabPage tabTerrain;
-        private System.Windows.Forms.Label lableTerrain;
-        private System.Windows.Forms.TabPage tabShaders;
-        private System.Windows.Forms.Label lableShaders;
-        private System.Windows.Forms.TabPage tabLogic;
-        private System.Windows.Forms.Label lableLogic;
-        private System.Windows.Forms.Panel Game;
-        private System.Windows.Forms.TabPage tabLights;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.PictureBox itNoise;
+        private System.Windows.Forms.PictureBox itSmooth;
+        private System.Windows.Forms.PictureBox itFlatten;
+        private System.Windows.Forms.PictureBox itSubtract;
+        private System.Windows.Forms.PictureBox itAdd;
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Button button8;
         private System.Windows.Forms.Button button9;
         private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.TabPage tabLights;
+        private System.Windows.Forms.ListView listView1;
         private System.Windows.Forms.NumericUpDown numericUpDown6;
         private System.Windows.Forms.NumericUpDown numericUpDown8;
         private System.Windows.Forms.NumericUpDown numericUpDown9;
@@ -1090,10 +1008,9 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.PictureBox itAdd;
-        private System.Windows.Forms.PictureBox itNoise;
-        private System.Windows.Forms.PictureBox itSmooth;
-        private System.Windows.Forms.PictureBox itFlatten;
-        private System.Windows.Forms.PictureBox itSubtract;
+        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Panel panel2;
     }
 }

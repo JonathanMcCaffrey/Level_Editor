@@ -25,7 +25,6 @@ namespace Button
 
         private SaveMap saveFile = new SaveMap();
         private LoadMap loadFile = new LoadMap();
-        private Description assetDescription = new Description();
         private LevelEditorInterface levelEditor = new LevelEditorInterface();
         #endregion
 
@@ -52,7 +51,6 @@ namespace Button
 
         public override void Initialize()
         {
-            assetDescription.Visible = true;
             levelEditor.Visible = true;
 
             mList.Add(TileManager.Get());

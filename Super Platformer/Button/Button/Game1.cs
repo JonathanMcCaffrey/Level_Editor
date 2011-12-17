@@ -13,8 +13,10 @@ using Microsoft.Xna.Framework.Media;
 namespace Button
 {
 #if WINDOWS || XBOX
+
     static class TheGame
     {
+          [STAThread]
         static int Main()
         {
             using (Game1 game = new Game1())
