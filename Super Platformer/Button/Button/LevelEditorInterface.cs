@@ -39,8 +39,14 @@ namespace Button
             itScale.Image = Image.FromFile("C:\\Users\\mcca0442\\Desktop\\trunk\\Super Platformer\\Button\\ButtonContent\\Scale.jpg");
             itScaleLinear.Image = Image.FromFile("C:\\Users\\mcca0442\\Desktop\\trunk\\Super Platformer\\Button\\ButtonContent\\ScaleLinear.jpg");
 
-            iAssetPreview.Image = Image.FromFile("C:\\Users\\mcca0442\\Desktop\\trunk\\Super Platformer\\Button\\ButtonContent\\PlaceholderAsset.jpg");
+            itAdd.BackgroundImage = Image.FromFile("C:\\Users\\mcca0442\\Desktop\\trunk\\Super Platformer\\Button\\ButtonContent\\Add.jpg");
+            itSubtract.BackgroundImage = Image.FromFile("C:\\Users\\mcca0442\\Desktop\\trunk\\Super Platformer\\Button\\ButtonContent\\Subtract.jpg");
+            itFlatten.BackgroundImage = Image.FromFile("C:\\Users\\mcca0442\\Desktop\\trunk\\Super Platformer\\Button\\ButtonContent\\Flatten.jpg");
+            itSmooth.BackgroundImage = Image.FromFile("C:\\Users\\mcca0442\\Desktop\\trunk\\Super Platformer\\Button\\ButtonContent\\Smooth.jpg");
+            itNoise.BackgroundImage = Image.FromFile("C:\\Users\\mcca0442\\Desktop\\trunk\\Super Platformer\\Button\\ButtonContent\\Noise.jpg");
             
+
+
             iIconStrip.Location = new Point((int)InputManager.Get().mousePosition.X, (int)InputManager.Get().mousePosition.Y);
 
         }
