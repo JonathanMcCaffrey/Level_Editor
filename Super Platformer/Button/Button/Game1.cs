@@ -16,7 +16,7 @@ namespace Button
 
     static class TheGame
     {
-          [STAThread]
+        [STAThread]
         static int Main()
         {
             using (Game1 game = new Game1())

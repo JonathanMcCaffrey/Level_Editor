@@ -41,7 +41,6 @@ namespace Button
             get { return mNextWorldScreen; }
             set { mNextWorldScreen = value; }
         }
-
         #endregion
 
         #region Construction

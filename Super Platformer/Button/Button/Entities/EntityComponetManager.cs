@@ -26,6 +26,7 @@ namespace Button
         private SaveMap saveFile = new SaveMap();
         private LoadMap loadFile = new LoadMap();
         private LevelEditorInterface levelEditor = new LevelEditorInterface();
+        private TextureEditorInterface textureEditor = new TextureEditorInterface();
         #endregion
 
         #region Construction
@@ -52,6 +53,7 @@ namespace Button
         public override void Initialize()
         {
             levelEditor.Visible = true;
+            textureEditor.Visible = true;
 
             mList.Add(TileManager.Get());
             mList.Add(EnemyManager.Get());
@@ -63,6 +65,10 @@ namespace Button
         #region Methods
         public override void Update(GameTime aGameTime)
         {
+            levelEditor.Update();
+
+            textureEditor.UpdateWindow();
+
             if (saveFile.Done)
             {
                 SaveAll(saveFile.FileName);
