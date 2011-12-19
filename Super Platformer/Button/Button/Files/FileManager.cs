@@ -20,8 +20,8 @@ namespace Button
         private List<Texture2D> mTexture2DList = new List<Texture2D>();
         private List<string> mTexture2DFilePathList = new List<string>();
 
-        private Texture2D mSelectedTextureForTextureEditor = null;
-        public Texture2D SelectedTextureForTextureEditor
+        private RenderTarget2D mSelectedTextureForTextureEditor = null;
+        public RenderTarget2D SelectedTextureForTextureEditor
         {
             get { return mSelectedTextureForTextureEditor; }
             set { mSelectedTextureForTextureEditor = value; }

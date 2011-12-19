@@ -56,6 +56,7 @@ namespace Button
         public override void Initialize()
         {
             textureEditor = new TextureEditor("TextureEditorTest", textureEditorInterface);
+            textureEditorInterface.TextureEditor = textureEditor;
 
             levelEditor.Visible = true;
             textureEditorInterface.Visible = true;
@@ -107,6 +108,8 @@ namespace Button
 
         public override void Draw(GameTime aGameTime)
         {
+            textureEditor.DrawIntoTextureEditor();
+
             for (int loop = 0; loop < mList.Count; loop++)
             {
                 mList[loop].Draw(aGameTime);

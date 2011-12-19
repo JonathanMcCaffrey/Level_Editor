@@ -16,8 +16,8 @@ namespace Button
         private Texture2D mTexture2D = null;
         private string mFilepath;
 
-        private RenderTarget2D mRenderTarget2D = null;
-        private List<EditorTexture2D> mTexturesToDraw = null;
+        private RenderTarget2D mRenderTarget2D;
+        private List<EditorTexture2D> mTexturesToDraw = new List<EditorTexture2D>();
         private SpriteBatch mSpriteBatch = null;
         private GraphicsDevice mGraphicsDevice = null;
 
@@ -36,14 +36,12 @@ namespace Button
         public void Initialize()
         {
             mTexture2D = FileManager.Get().LoadTexture2D(@mFilepath);
-            FileManager.Get().SelectedTextureForTextureEditor = mTexture2D;
-
             mRenderTarget2D = new RenderTarget2D(FileManager.Get().GraphicsDevice, (int)mTextureDimensions.X, (int)mTextureDimensions.Y);
+            FileManager.Get().SelectedTextureForTextureEditor = mRenderTarget2D;
             mSpriteBatch = FileManager.Get().SpriteBatch;
             mGraphicsDevice = FileManager.Get().GraphicsDevice;
 
             mGraphicsDevice.SetRenderTarget(mRenderTarget2D);
-
             mGraphicsDevice.Clear(Color.Black);
 
             if (mTexture2D == null)
@@ -61,7 +59,7 @@ namespace Button
                 }
                 mGraphicsDevice.SetRenderTarget(null);
 
-                mTextureEditorInterface.UpdateWindow();
+           //     mTextureEditorInterface.UpdateWindow();
             }
         }
         #endregion
@@ -74,10 +72,13 @@ namespace Button
 
         public void DrawIntoTextureEditor()
         {
-            if (mTexturesToDraw != null)
+            if (mTexturesToDraw.Count > 0)
             {
+                mSpriteBatch.End();
                 mGraphicsDevice.SetRenderTarget(mRenderTarget2D);
                 mSpriteBatch.Begin();
+
+                mSpriteBatch.Draw(mTexture2D, Vector2.Zero, Color.White);
 
                 for (int loop = 0; loop < mTexturesToDraw.Count; loop++)
                 {
@@ -86,12 +87,27 @@ namespace Button
                         mTexturesToDraw[loop].mRotation, mTexturesToDraw[loop].mOrigin,
                          mTexturesToDraw[loop].mScale, mTexturesToDraw[loop].mSpriteEffect, 0);
                 }
-
                 mSpriteBatch.End();
                 mTexturesToDraw.Clear();
+                
                 mGraphicsDevice.SetRenderTarget(null);
 
+                MemoryStream tempMemoryStream = new MemoryStream();
+
+                mRenderTarget2D.SaveAsPng(tempMemoryStream, mRenderTarget2D.Width, mRenderTarget2D.Height);
+                tempMemoryStream.Seek(0, SeekOrigin.Begin);
+
+                Texture2D tempTextureToUpdate = Texture2D.FromStream(FileManager.Get().GraphicsDevice, tempMemoryStream);
+                mTexture2D = tempTextureToUpdate;
+
+                tempMemoryStream.Close();
+                tempMemoryStream = null;
+
+                mSpriteBatch.Begin();
+
                 mTextureEditorInterface.UpdateWindow();
+
+                mTexturesToDraw.Clear();
             }
         }
 
