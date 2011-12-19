@@ -17,11 +17,9 @@ namespace Button
         private string mFilepath;
 
         private RenderTarget2D mRenderTarget2D = null;
-        private List<Texture2D> mTexturesToDraw = null;
+        private List<EditorTexture2D> mTexturesToDraw = null;
         private SpriteBatch mSpriteBatch = null;
         private GraphicsDevice mGraphicsDevice = null;
-
-
         #endregion
 
         #region Construction
@@ -35,6 +33,7 @@ namespace Button
         public void Initialize()
         {
             mTexture2D = FileManager.Get().LoadTexture2D(@mFilepath);
+            FileManager.Get().SelectedTextureForTextureEditor = mTexture2D;
 
             mRenderTarget2D = new RenderTarget2D(FileManager.Get().GraphicsDevice, (int)mTextureDimensions.X, (int)mTextureDimensions.Y);
             mSpriteBatch = FileManager.Get().SpriteBatch;
@@ -60,6 +59,11 @@ namespace Button
         #endregion
 
         #region Methods
+        public void AddTextureToStack(EditorTexture2D aTexture2D)
+        {
+            mTexturesToDraw.Add(aTexture2D);
+        }
+
         public void DrawIntoTextureEditor()
         {
             mGraphicsDevice.SetRenderTarget(mRenderTarget2D);
@@ -69,7 +73,10 @@ namespace Button
             {
                 for (int loop = 0; loop < mTexturesToDraw.Count; loop++)
                 {
-                    mSpriteBatch.Draw(mTexturesToDraw[loop], Vector2.Zero, mTexturesToDraw[loop].Bounds, Color.White, 0, Vector2.Zero, 1, SpriteEffects.None, 0);
+                    mSpriteBatch.Draw(mTexturesToDraw[loop].mTexture2D, mTexturesToDraw[loop].mPosition, 
+                        mTexturesToDraw[loop].mSourceRectangle, mTexturesToDraw[loop].mColor,
+                        mTexturesToDraw[loop].mRotation, mTexturesToDraw[loop].mOrigin,
+                         mTexturesToDraw[loop].mScale, mTexturesToDraw[loop].mSpriteEffect, 0);
                 }
             }
             mSpriteBatch.End();
