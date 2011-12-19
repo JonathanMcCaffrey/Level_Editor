@@ -49,7 +49,7 @@ namespace Button
             this.iTextureEditor.Name = "iTextureEditor";
             this.iTextureEditor.Size = new System.Drawing.Size(256, 256);
             this.iTextureEditor.TabIndex = 0;
-            this.iTextureEditor.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+            this.iTextureEditor.MouseClick += new System.Windows.Forms.MouseEventHandler(this.iTextureEditor_Paint);// //(this.iTextureEditor_Paint_1);
             // 
             // toolStrip1
             // 
@@ -132,14 +132,14 @@ namespace Button
             this.toolStripButton7.Size = new System.Drawing.Size(21, 20);
             this.toolStripButton7.Text = "toolStripButton7";
             // 
-            // TextureEditor
+            // TextureEditorInterface
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(296, 274);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.iTextureEditor);
-            this.Name = "TextureEditor";
+            this.Name = "TextureEditorInterface";
             this.Text = "TextureEditor";
             this.Load += new System.EventHandler(this.TextureEditor_Load);
             this.toolStrip1.ResumeLayout(false);

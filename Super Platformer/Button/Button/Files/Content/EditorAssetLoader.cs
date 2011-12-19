@@ -20,7 +20,7 @@ namespace Button
             {
                 if (mSortedModelFiles == null)
                 {
-                    throw new Exception(this.ToString() + "Model files did not load\n\r");
+                    throw new Exception(this.ToString() + "\n\rModel files did not load\n\r");
                 }
 
                 return mSortedModelFiles;
@@ -34,7 +34,7 @@ namespace Button
             {
                 if (mStortedTextureFiles == null)
                 {
-                    throw new Exception(this.ToString() + "Texture files did not load\n\r");
+                    throw new Exception(this.ToString() + "\n\rTexture files did not load\n\r");
                 }
 
                 return mStortedTextureFiles;

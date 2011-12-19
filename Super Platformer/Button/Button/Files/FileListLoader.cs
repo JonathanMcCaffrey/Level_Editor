@@ -23,7 +23,7 @@ namespace Button
             {
                 if (mFilePathToDirectory == null)
                 {
-                    throw new Exception(this.ToString() + "Null directory filepath\n\r");
+                    throw new Exception(this.ToString() + "\n\rNull directory filepath\n\r");
                 }
 
                 return mFilePathToDirectory;

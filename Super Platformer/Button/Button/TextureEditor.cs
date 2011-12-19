@@ -20,12 +20,15 @@ namespace Button
         private List<EditorTexture2D> mTexturesToDraw = null;
         private SpriteBatch mSpriteBatch = null;
         private GraphicsDevice mGraphicsDevice = null;
+
+        private TextureEditorInterface mTextureEditorInterface = null;
         #endregion
 
         #region Construction
-        public TextureEditor(string aFilepath)
+        public TextureEditor(string aFilepath, TextureEditorInterface aTextureEditorInterface)
         {
             mFilepath = aFilepath;
+            mTextureEditorInterface = aTextureEditorInterface;
 
             Initialize();
         }
@@ -52,8 +55,13 @@ namespace Button
                 mSpriteBatch.Begin();
                 mSpriteBatch.Draw(mTexture2D, Vector2.Zero, Color.White);
                 mSpriteBatch.End();
-                mTexturesToDraw.Clear();
+                if (mTexturesToDraw != null)
+                {
+                    mTexturesToDraw.Clear();
+                }
                 mGraphicsDevice.SetRenderTarget(null);
+
+                mTextureEditorInterface.UpdateWindow();
             }
         }
         #endregion
@@ -66,24 +74,25 @@ namespace Button
 
         public void DrawIntoTextureEditor()
         {
-            mGraphicsDevice.SetRenderTarget(mRenderTarget2D);
-
-            mSpriteBatch.Begin();
             if (mTexturesToDraw != null)
             {
+                mGraphicsDevice.SetRenderTarget(mRenderTarget2D);
+                mSpriteBatch.Begin();
+
                 for (int loop = 0; loop < mTexturesToDraw.Count; loop++)
                 {
-                    mSpriteBatch.Draw(mTexturesToDraw[loop].mTexture2D, mTexturesToDraw[loop].mPosition, 
+                    mSpriteBatch.Draw(mTexturesToDraw[loop].mTexture2D, mTexturesToDraw[loop].mPosition,
                         mTexturesToDraw[loop].mSourceRectangle, mTexturesToDraw[loop].mColor,
                         mTexturesToDraw[loop].mRotation, mTexturesToDraw[loop].mOrigin,
                          mTexturesToDraw[loop].mScale, mTexturesToDraw[loop].mSpriteEffect, 0);
                 }
+
+                mSpriteBatch.End();
+                mTexturesToDraw.Clear();
+                mGraphicsDevice.SetRenderTarget(null);
+
+                mTextureEditorInterface.UpdateWindow();
             }
-            mSpriteBatch.End();
-
-            mTexturesToDraw.Clear();
-
-            mGraphicsDevice.SetRenderTarget(null);
         }
 
         public void SaveTexture(string aFilePath)

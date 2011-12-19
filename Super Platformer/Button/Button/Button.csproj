@@ -121,7 +121,7 @@
     <Compile Include="AI\Hostile\HostileState.cs" />
     <Compile Include="AI\Hostile\HostileStateMachine.cs" />
     <Compile Include="Camera\QuakeCamera.cs" />
-    <Compile Include="EditorTexture.cs" />
+    <Compile Include="EditorTexture2D.cs" />
     <Compile Include="Files\Content\EditorAssetLoader.cs" />
     <Compile Include="Files\FileListLoader.cs" />
     <Compile Include="Gizmo\BoundingOrientedBox.cs" />
