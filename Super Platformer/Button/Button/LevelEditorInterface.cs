@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework;
 using System.IO;
 
 namespace Button
@@ -54,12 +55,16 @@ namespace Button
             itSmooth.BackgroundImage = Image.FromFile("C:\\Users\\mcca0442\\Desktop\\trunk\\Super Platformer\\Button\\ButtonContent\\Smooth.jpg");
             itNoise.BackgroundImage = Image.FromFile("C:\\Users\\mcca0442\\Desktop\\trunk\\Super Platformer\\Button\\ButtonContent\\Noise.jpg");
 
-            iGame.BackgroundImage = Image.FromFile("C:\\Users\\mcca0442\\Desktop\\trunk\\Super Platformer\\Button\\ButtonContent\\Noise.jpg");
+            // Placeholder
+             iTopGraphic.Image = Image.FromFile("C:\\Users\\mcca0442\\Desktop\\trunk\\Super Platformer\\Button\\ButtonContent\\Noise.jpg");
+             iFrontGraphic.Image = Image.FromFile("C:\\Users\\mcca0442\\Desktop\\trunk\\Super Platformer\\Button\\ButtonContent\\Flatten.jpg");
+             iRightGraphic.Image = Image.FromFile("C:\\Users\\mcca0442\\Desktop\\trunk\\Super Platformer\\Button\\ButtonContent\\Subtract.jpg");
+            // Placeholder
         }
 
         public void UpdateWindow()
         {
-            RenderTarget2D tempTextureToConvert = FileManager.Get().SelectedTextureForTextureEditor;
+            RenderTarget2D tempTextureToConvert = FileManager.Get().EditorWorkAreaRenderTexture2D;
 
             MemoryStream tempMemoryStream = new MemoryStream();
 
@@ -71,42 +76,35 @@ namespace Button
             tempMemoryStream.Close();
             tempMemoryStream = null;
 
-            iGame.BackgroundImage = tempImageToUpdate;
+            iPerspectiveGraphic.Image = tempImageToUpdate;
 
             Invalidate();
-            /*
-            if (isDrawing)
-            {
-                //TODO: Do this;
-
-                 Vector2 tempMousePosition = new Vector2(e.X, e.Y);
-            Console.Write(tempMousePosition);
-
-            if (mTextureEditor == null)
-            {
-                throw new Exception(ToString() + "\n\rNo set Texture Editior\n\r");
-            }
-            else
-            {
-                mTextureEditor.AddTextureToStack(new EditorTexture2D(FileManager.Get().LoadTexture2D("MetalWall"), tempMousePosition, Microsoft.Xna.Framework.Color.White));
-            }
-
-            Console.WriteLine(" ");
-            }*/
         }
 
-        private void itOpen_Click(object sender, EventArgs e)
+        private void itOpen_Click(object sender, EventArgs aEvent)
         {
             OpenFileDialog tempFileDialog = new OpenFileDialog();
             tempFileDialog.ShowDialog();
             tempFileDialog.Dispose();
         }
 
-       private void itSave_Click(object sender, EventArgs e)
+       private void itSave_Click(object sender, EventArgs aEvent)
         {
             SaveFileDialog tempFileDialog = new SaveFileDialog();
             tempFileDialog.ShowDialog();
             tempFileDialog.Dispose();
         }
+
+       void iGameGraphic_MouseDoubleClick(object sender, MouseEventArgs aMouseEvent)
+       {
+           Vector2 tempMousePosition = new Vector2(aMouseEvent.X, aMouseEvent.Y);
+
+           ButtonManager.Get().GenerateEntity(new Vector3(tempMousePosition.X, 0, tempMousePosition.Y));
+       }
+
+       void iGameGraphic_MouseClick(object sender, MouseEventArgs aMouseEvent)
+       {
+           Vector2 tempMousePosition = new Vector2(aMouseEvent.X, aMouseEvent.Y);
+       }
     }
 }

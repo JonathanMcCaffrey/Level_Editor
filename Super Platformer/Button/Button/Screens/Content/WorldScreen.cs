@@ -13,7 +13,6 @@ namespace Button
         #region Data
         EntityComponetManager theEntityComponetManager = EntityComponetManager.Get();
         Texture2D mBackgroundTexture;
-        GizmoComponent gizmo;
         QuakeCamera mQuakeCamera;
 
         #endregion
@@ -21,9 +20,6 @@ namespace Button
         #region Construction
         public WorldScreen()
         {
-            gizmo = new GizmoComponent(theFileManager.ContentManager ,theFileManager.GraphicsDevice);
-            gizmo.Initialize();
-
             mBackgroundTexture = theFileManager.LoadTexture2D("Background");
 
             mQuakeCamera = new QuakeCamera(theFileManager.GraphicsDevice.Viewport);
@@ -45,9 +41,6 @@ namespace Button
 
             mQuakeCamera.Update();
 
-            gizmo.HandleInput();
-            gizmo.Update(aGameTime);
-
             theEntityComponetManager.Update(aGameTime);
 
             theButtonManager.Update(aGameTime);
@@ -55,13 +48,7 @@ namespace Button
 
         public override void Draw(GameTime aGameTime)
         {
-
-            theEntityComponetManager.Draw(aGameTime);
-
-           /* theButtonManager.Draw(aGameTime);
-            theProjectileManager.Draw(aGameTime);*/
-
-            gizmo.Draw3D();
+            theEntityComponetManager.Draw(aGameTime); 
         }
         #endregion
     }

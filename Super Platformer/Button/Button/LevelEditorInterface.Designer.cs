@@ -42,6 +42,12 @@
             this.itScaleLinear = new System.Windows.Forms.ToolStripButton();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.iBackPanel = new System.Windows.Forms.Panel();
+            this.Views = new System.Windows.Forms.TabControl();
+            this.tabPerspective = new System.Windows.Forms.TabPage();
+            this.iPerspectiveGraphic = new System.Windows.Forms.PictureBox();
+            this.tabTop = new System.Windows.Forms.TabPage();
+            this.tabFront = new System.Windows.Forms.TabPage();
+            this.tabRight = new System.Windows.Forms.TabPage();
             this.Modes = new System.Windows.Forms.TabControl();
             this.tabInfo = new System.Windows.Forms.TabPage();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -104,9 +110,17 @@
             this.button5 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.iGame = new System.Windows.Forms.Panel();
+            this.iTopGraphic = new System.Windows.Forms.PictureBox();
+            this.iFrontGraphic = new System.Windows.Forms.PictureBox();
+            this.iRightGraphic = new System.Windows.Forms.PictureBox();
             this.iIconStrip.SuspendLayout();
             this.iBackPanel.SuspendLayout();
+            this.Views.SuspendLayout();
+            this.tabPerspective.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.iPerspectiveGraphic)).BeginInit();
+            this.tabTop.SuspendLayout();
+            this.tabFront.SuspendLayout();
+            this.tabRight.SuspendLayout();
             this.Modes.SuspendLayout();
             this.tabInfo.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -144,6 +158,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown25)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown26)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown27)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.iTopGraphic)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.iFrontGraphic)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.iRightGraphic)).BeginInit();
             this.SuspendLayout();
             // 
             // iIconStrip
@@ -281,13 +298,81 @@
             // 
             this.iBackPanel.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.iBackPanel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.iBackPanel.Controls.Add(this.iGame);
+            this.iBackPanel.Controls.Add(this.Views);
             this.iBackPanel.Controls.Add(this.Modes);
             this.iBackPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.iBackPanel.Location = new System.Drawing.Point(0, 31);
             this.iBackPanel.Name = "iBackPanel";
             this.iBackPanel.Size = new System.Drawing.Size(728, 754);
             this.iBackPanel.TabIndex = 1;
+            // 
+            // Views
+            // 
+            this.Views.Controls.Add(this.tabPerspective);
+            this.Views.Controls.Add(this.tabTop);
+            this.Views.Controls.Add(this.tabFront);
+            this.Views.Controls.Add(this.tabRight);
+            this.Views.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Views.Location = new System.Drawing.Point(0, 193);
+            this.Views.Name = "Views";
+            this.Views.SelectedIndex = 0;
+            this.Views.Size = new System.Drawing.Size(728, 561);
+            this.Views.TabIndex = 3;
+            // 
+            // tabPerspective
+            // 
+            this.tabPerspective.Controls.Add(this.iPerspectiveGraphic);
+            this.tabPerspective.Location = new System.Drawing.Point(4, 22);
+            this.tabPerspective.Name = "tabPerspective";
+            this.tabPerspective.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPerspective.Size = new System.Drawing.Size(720, 535);
+            this.tabPerspective.TabIndex = 0;
+            this.tabPerspective.Text = "Perspective";
+            this.tabPerspective.UseVisualStyleBackColor = true;
+            // 
+            // iPerspectiveGraphic
+            // 
+            this.iPerspectiveGraphic.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.iPerspectiveGraphic.Location = new System.Drawing.Point(3, 3);
+            this.iPerspectiveGraphic.Name = "iPerspectiveGraphic";
+            this.iPerspectiveGraphic.Size = new System.Drawing.Size(714, 529);
+            this.iPerspectiveGraphic.TabIndex = 2;
+            this.iPerspectiveGraphic.TabStop = false;
+            this.iPerspectiveGraphic.MouseClick += new System.Windows.Forms.MouseEventHandler(this.iGameGraphic_MouseClick);
+            this.iPerspectiveGraphic.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.iGameGraphic_MouseDoubleClick);
+            // 
+            // tabTop
+            // 
+            this.tabTop.Controls.Add(this.iTopGraphic);
+            this.tabTop.Location = new System.Drawing.Point(4, 22);
+            this.tabTop.Name = "tabTop";
+            this.tabTop.Padding = new System.Windows.Forms.Padding(3);
+            this.tabTop.Size = new System.Drawing.Size(720, 535);
+            this.tabTop.TabIndex = 1;
+            this.tabTop.Text = "Top";
+            this.tabTop.UseVisualStyleBackColor = true;
+            // 
+            // tabFront
+            // 
+            this.tabFront.Controls.Add(this.iFrontGraphic);
+            this.tabFront.Location = new System.Drawing.Point(4, 22);
+            this.tabFront.Name = "tabFront";
+            this.tabFront.Padding = new System.Windows.Forms.Padding(3);
+            this.tabFront.Size = new System.Drawing.Size(720, 535);
+            this.tabFront.TabIndex = 2;
+            this.tabFront.Text = "Front";
+            this.tabFront.UseVisualStyleBackColor = true;
+            // 
+            // tabRight
+            // 
+            this.tabRight.Controls.Add(this.iRightGraphic);
+            this.tabRight.Location = new System.Drawing.Point(4, 22);
+            this.tabRight.Name = "tabRight";
+            this.tabRight.Padding = new System.Windows.Forms.Padding(3);
+            this.tabRight.Size = new System.Drawing.Size(720, 535);
+            this.tabRight.TabIndex = 3;
+            this.tabRight.Text = "Right";
+            this.tabRight.UseVisualStyleBackColor = true;
             // 
             // Modes
             // 
@@ -881,15 +966,32 @@
             this.panel2.Size = new System.Drawing.Size(189, 124);
             this.panel2.TabIndex = 43;
             // 
-            // iGame
+            // iTopGraphic
             // 
-            this.iGame.BackColor = System.Drawing.SystemColors.AppWorkspace;
-            this.iGame.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.iGame.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.iGame.Location = new System.Drawing.Point(0, 193);
-            this.iGame.Name = "iGame";
-            this.iGame.Size = new System.Drawing.Size(728, 561);
-            this.iGame.TabIndex = 1;
+            this.iTopGraphic.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.iTopGraphic.Location = new System.Drawing.Point(3, 3);
+            this.iTopGraphic.Name = "iTopGraphic";
+            this.iTopGraphic.Size = new System.Drawing.Size(714, 529);
+            this.iTopGraphic.TabIndex = 0;
+            this.iTopGraphic.TabStop = false;
+            // 
+            // iFrontGraphic
+            // 
+            this.iFrontGraphic.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.iFrontGraphic.Location = new System.Drawing.Point(3, 3);
+            this.iFrontGraphic.Name = "iFrontGraphic";
+            this.iFrontGraphic.Size = new System.Drawing.Size(714, 529);
+            this.iFrontGraphic.TabIndex = 0;
+            this.iFrontGraphic.TabStop = false;
+            // 
+            // iRightGraphic
+            // 
+            this.iRightGraphic.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.iRightGraphic.Location = new System.Drawing.Point(3, 3);
+            this.iRightGraphic.Name = "iRightGraphic";
+            this.iRightGraphic.Size = new System.Drawing.Size(714, 529);
+            this.iRightGraphic.TabIndex = 0;
+            this.iRightGraphic.TabStop = false;
             // 
             // LevelEditorInterface
             // 
@@ -904,6 +1006,12 @@
             this.iIconStrip.ResumeLayout(false);
             this.iIconStrip.PerformLayout();
             this.iBackPanel.ResumeLayout(false);
+            this.Views.ResumeLayout(false);
+            this.tabPerspective.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.iPerspectiveGraphic)).EndInit();
+            this.tabTop.ResumeLayout(false);
+            this.tabFront.ResumeLayout(false);
+            this.tabRight.ResumeLayout(false);
             this.Modes.ResumeLayout(false);
             this.tabInfo.ResumeLayout(false);
             this.tabInfo.PerformLayout();
@@ -944,11 +1052,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown25)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown26)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown27)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.iTopGraphic)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.iFrontGraphic)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.iRightGraphic)).EndInit();
             this.ResumeLayout(false);
 
         }
 
-        #endregion
+       #endregion
 
         private System.Windows.Forms.ToolStrip iIconStrip;
         private System.Windows.Forms.ToolStripButton itNew;
@@ -1025,6 +1136,14 @@
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Panel iGame;
+        private System.Windows.Forms.PictureBox iPerspectiveGraphic;
+        private System.Windows.Forms.TabControl Views;
+        private System.Windows.Forms.TabPage tabPerspective;
+        private System.Windows.Forms.TabPage tabTop;
+        private System.Windows.Forms.TabPage tabFront;
+        private System.Windows.Forms.TabPage tabRight;
+        private System.Windows.Forms.PictureBox iTopGraphic;
+        private System.Windows.Forms.PictureBox iFrontGraphic;
+        private System.Windows.Forms.PictureBox iRightGraphic;
     }
 }

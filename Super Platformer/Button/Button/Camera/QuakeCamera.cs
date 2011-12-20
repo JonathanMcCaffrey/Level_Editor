@@ -40,7 +40,7 @@ namespace Button
         {
             viewMatrix = FileManager.Get().ViewMatrix;
             projectionMatrix = FileManager.Get().ProjectionMatrix;
-            
+
             cameraPosition = FileManager.Get().CameraPosition;
             leftrightRot = -17.3000031f;
 
@@ -91,24 +91,24 @@ namespace Button
 
                 leftrightRot -= rotationSpeed * xDifference;
                 updownRot -= rotationSpeed * yDifference;
-                UpdateViewMatrix();                
+                UpdateViewMatrix();
             }
 
             float cameraSpeed = 50;
 
-            if (keyState.IsKeyDown(Keys.Up) || keyState.IsKeyDown(Keys.W))      //Forward
+            if (keyState.IsKeyDown(Keys.Up))      //Forward
                 AddToCameraPosition(new Vector3(0, cameraSpeed, 0));
-            if (keyState.IsKeyDown(Keys.Down) || keyState.IsKeyDown(Keys.S))    //Backward
+            if (keyState.IsKeyDown(Keys.Down))    //Backward
                 AddToCameraPosition(new Vector3(0, -cameraSpeed, 0));
-            if (keyState.IsKeyDown(Keys.Right) || keyState.IsKeyDown(Keys.D))   //Right
+            if (keyState.IsKeyDown(Keys.Right))   //Right
                 AddToCameraPosition(new Vector3(cameraSpeed, 0, 0));
-            if (keyState.IsKeyDown(Keys.Left) || keyState.IsKeyDown(Keys.A))    //Left
+            if (keyState.IsKeyDown(Keys.Left))    //Left
                 AddToCameraPosition(new Vector3(-cameraSpeed, 0, 0));
-            if (keyState.IsKeyDown(Keys.Q))                                     //Up
+            if (keyState.IsKeyDown(Keys.Q))       //Up
                 AddToCameraPosition(new Vector3(0, 1, 0));
-            if (keyState.IsKeyDown(Keys.Z))                                     //Down
-                AddToCameraPosition(new Vector3(0, -1, 0));            
-#endif            
+            if (keyState.IsKeyDown(Keys.Z))       //Down
+                AddToCameraPosition(new Vector3(0, -1, 0));
+#endif
         }
 
         private void AddToCameraPosition(Vector3 vectorToAdd)
@@ -165,14 +165,15 @@ namespace Button
         public Vector3 Position
         {
             get { return cameraPosition; }
-            set { 
+            set
+            {
                 cameraPosition = value;
                 UpdateViewMatrix();
             }
         }
         public Vector3 TargetPosition
         {
-            get 
+            get
             {
                 Matrix cameraRotation = Matrix.CreateRotationX(updownRot) * Matrix.CreateRotationY(leftrightRot);
                 Vector3 cameraOriginalTarget = new Vector3(0, 0, -1);

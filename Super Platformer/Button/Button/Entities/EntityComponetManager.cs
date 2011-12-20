@@ -22,8 +22,6 @@ namespace Button
         #endregion
 
         #region Data
-        private SaveMap saveFile = new SaveMap();
-        private LoadMap loadFile = new LoadMap();
         private LevelEditorInterface levelEditor = new LevelEditorInterface();
         private TextureEditorInterface textureEditorInterface = new TextureEditorInterface();
 
@@ -34,9 +32,7 @@ namespace Button
 
         private RenderTarget2D mEditorWorkAreaRenderTexture2D;
 
-        
-
-
+        private GizmoComponent gizmo;
 
         #endregion
 
@@ -75,11 +71,12 @@ namespace Button
             mSpriteBatch = theFileManager.SpriteBatch;
             mGraphicDevice = theFileManager.GraphicsDevice;
 
-            mEditorWorkAreaRenderTexture2D = new RenderTarget2D(mGraphicDevice, 500, 500);
+            mEditorWorkAreaRenderTexture2D = new RenderTarget2D(mGraphicDevice, 728, 561);
 
             theFileManager.EditorWorkAreaRenderTexture2D = mEditorWorkAreaRenderTexture2D;
 
-        //    mGraphicDevice.SetRenderTarget(theFileManager.EditorWorkAreaRenderTexture2D);
+            gizmo = new GizmoComponent(theFileManager.ContentManager, theFileManager.GraphicsDevice);
+            gizmo.Initialize();
 
         }
         #endregion
@@ -87,34 +84,12 @@ namespace Button
         #region Methods
         public override void Update(GameTime aGameTime)
         {
+            gizmo.HandleInput();
+            gizmo.Update(aGameTime);
 
-            if (saveFile.Done)
+            for (int loop = 0; loop < mList.Count; loop++)
             {
-                SaveAll(saveFile.FileName);
-                saveFile.Done = false;
-            }
-            if (loadFile.Done)
-            {
-                LoadAll(loadFile.FileName);
-                loadFile.Done = false;
-            }
-
-            if (theInputManager.SingleKeyPressInput(Keys.A) && loadFile.IsAccessible == false)
-            {
-                saveFile.On();
-            }
-
-            if (theInputManager.SingleKeyPressInput(Keys.D) && saveFile.IsAccessible == false)
-            {
-                loadFile.On();
-            }
-
-            if (!saveFile.IsAccessible && !loadFile.IsAccessible)
-            {
-                for (int loop = 0; loop < mList.Count; loop++)
-                {
-                    mList[loop].Update(aGameTime);
-                }
+                mList[loop].Update(aGameTime);
             }
         }
 
@@ -122,21 +97,27 @@ namespace Button
         {
             textureEditor.DrawIntoTextureEditor();
 
-            mGraphicDevice.SetRenderTarget(theFileManager.EditorWorkAreaRenderTexture2D);
-
+            mGraphicDevice.SetRenderTarget(mEditorWorkAreaRenderTexture2D);
             mSpriteBatch.Begin();
-           
             mGraphicDevice.Clear(Color.Green);
 
             for (int loop = 0; loop < mList.Count; loop++)
             {
                 mList[loop].Draw(aGameTime);
             }
+            mSpriteBatch.Draw(FileManager.Get().LoadTexture2D("Arrow"), Vector2.Zero, Color.White);
+
+            ButtonManager.Get().Draw(aGameTime);
+
+            gizmo.Draw3D();
+
             mSpriteBatch.End();
 
             mGraphicDevice.SetRenderTarget(null);
 
+            levelEditor.UpdateWindow();
          
+            theFileManager.EditorWorkAreaRenderTexture2D = mEditorWorkAreaRenderTexture2D;
         }
 
         public void SaveAll(string aFilePath)

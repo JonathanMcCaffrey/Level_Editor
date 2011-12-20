@@ -61,6 +61,9 @@ namespace Button
 
             mGraphicsDeviceManager.PreferredBackBufferWidth = (int)mScreenDimensions.X;
             mGraphicsDeviceManager.PreferredBackBufferHeight = (int)mScreenDimensions.Y;
+
+            mGraphicsDeviceManager.PreferredBackBufferWidth = (int)1;
+            mGraphicsDeviceManager.PreferredBackBufferHeight = (int)1;
         }
 
         protected override void Initialize()

@@ -31,7 +31,6 @@ namespace Button
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TextureEditorInterface));
-            this.iTextureEditor = new System.Windows.Forms.Panel();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.itNew = new System.Windows.Forms.ToolStripButton();
             this.itOpen = new System.Windows.Forms.ToolStripButton();
@@ -56,21 +55,13 @@ namespace Button
             this.it7 = new System.Windows.Forms.ToolStripButton();
             this.it8 = new System.Windows.Forms.ToolStripButton();
             this.it9 = new System.Windows.Forms.ToolStripButton();
+            this.iTextureGraphic = new System.Windows.Forms.PictureBox();
             this.toolStrip1.SuspendLayout();
             this.toolStrip2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.toolStrip3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.iTextureGraphic)).BeginInit();
             this.SuspendLayout();
-            // 
-            // iTextureEditor
-            // 
-            this.iTextureEditor.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.iTextureEditor.Location = new System.Drawing.Point(45, 62);
-            this.iTextureEditor.Name = "iTextureEditor";
-            this.iTextureEditor.Size = new System.Drawing.Size(256, 256);
-            this.iTextureEditor.TabIndex = 0;
-            this.iTextureEditor.MouseDown += new System.Windows.Forms.MouseEventHandler(this.iTextureEditor_Paint);
-            this.iTextureEditor.MouseUp += new System.Windows.Forms.MouseEventHandler(this.iTextureEditor_Paint);
             // 
             // toolStrip1
             // 
@@ -330,19 +321,27 @@ namespace Button
             this.it9.Size = new System.Drawing.Size(22, 20);
             this.it9.Text = "toolStripButton16";
             // 
+            // iTextureGraphic
+            // 
+            this.iTextureGraphic.Location = new System.Drawing.Point(56, 62);
+            this.iTextureGraphic.Name = "iTextureGraphic";
+            this.iTextureGraphic.Size = new System.Drawing.Size(256, 256);
+            this.iTextureGraphic.TabIndex = 0;
+            this.iTextureGraphic.TabStop = false;
+            this.iTextureGraphic.MouseClick +=new System.Windows.Forms.MouseEventHandler(this.iTextureGraphic_Click);
+            // 
             // TextureEditorInterface
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(337, 352);
+            this.Controls.Add(this.iTextureGraphic);
             this.Controls.Add(this.toolStrip3);
             this.Controls.Add(this.numericUpDown1);
             this.Controls.Add(this.toolStrip2);
             this.Controls.Add(this.toolStrip1);
-            this.Controls.Add(this.iTextureEditor);
             this.Name = "TextureEditorInterface";
             this.Text = "TextureEditor";
-            this.Load += new System.EventHandler(this.TextureEditor_Load);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             this.toolStrip2.ResumeLayout(false);
@@ -350,6 +349,7 @@ namespace Button
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.toolStrip3.ResumeLayout(false);
             this.toolStrip3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.iTextureGraphic)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -359,10 +359,8 @@ namespace Button
 
         public void UpdateEditor()
         {
-            Console.WriteLine(InputManager.Get().mouseTranslation); 
+            Console.WriteLine(InputManager.Get().mouseTranslation);
         }
-
-        private System.Windows.Forms.Panel iTextureEditor;
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.ToolStripButton itNew;
         private System.Windows.Forms.ToolStripButton itOpen;
@@ -387,6 +385,7 @@ namespace Button
         private System.Windows.Forms.ToolStripButton it7;
         private System.Windows.Forms.ToolStripButton it8;
         private System.Windows.Forms.ToolStripButton it9;
+        private System.Windows.Forms.PictureBox iTextureGraphic;
 
     }
 }

@@ -70,8 +70,6 @@ namespace Button
         public override void Update()
         {
             mWorldMatrix = Matrix.CreateTranslation(mWorldPosition.X, mWorldPosition.Y, mWorldPosition.Z);
-
-            base.Update();
         }
 
         public override void Draw()

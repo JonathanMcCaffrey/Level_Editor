@@ -10,6 +10,8 @@ using System.Runtime.InteropServices;
 
 namespace Button
 {
+    /** These saved and load forms are deprecated for the built-in save and load forms. After I steal some
+     * code from them they will be deleted. */
     public partial class LoadMap : Form
     {
         #region Data

@@ -38,8 +38,6 @@ namespace Button
         #endregion
 
         #region Methods
-
-
         public void UpdateWindow()
         {
             RenderTarget2D tempTextureToConvert = FileManager.Get().SelectedTextureForTextureEditor;
@@ -54,54 +52,13 @@ namespace Button
             tempMemoryStream.Close();
             tempMemoryStream = null;
 
-            iTextureEditor.BackgroundImage = tempImageToUpdate;
+            iTextureGraphic.Image = tempImageToUpdate;
 
             Invalidate();
-            /*
-            if (isDrawing)
-            {
-                //TODO: Do this;
-
-                 Vector2 tempMousePosition = new Vector2(e.X, e.Y);
-            Console.Write(tempMousePosition);
-
-            if (mTextureEditor == null)
-            {
-                throw new Exception(ToString() + "\n\rNo set Texture Editior\n\r");
-            }
-            else
-            {
-                mTextureEditor.AddTextureToStack(new EditorTexture2D(FileManager.Get().LoadTexture2D("MetalWall"), tempMousePosition, Microsoft.Xna.Framework.Color.White));
-            }
-
-            Console.WriteLine(" ");
-            }*/
-        }
-
-        private void TextureEditor_Load(object sender, EventArgs e)
-        {
-
-        }
-
-
-        private void iTextureEditor_Paint(object sender, MouseEventArgs e)
-        {
-            Vector2 tempMousePosition = new Vector2(e.X, e.Y);
-
-            if (mTextureEditor == null)
-            {
-                throw new Exception(ToString() + "\n\rNo set Texture Editior\n\r");
-            }
-            else
-            {
-                mTextureEditor.AddTextureToStack(new EditorTexture2D(FileManager.Get().LoadTexture2D("MetalWall"), tempMousePosition, Microsoft.Xna.Framework.Color.White));
-            }
         }
 
         private void InitializeImages()
         {
-            iTextureEditor.BackgroundImageLayout = ImageLayout.Center;
-
             itNew.Image = Image.FromFile("C:\\Users\\mcca0442\\Desktop\\trunk\\Super Platformer\\Button\\ButtonContent\\New.jpg");
             itOpen.Image = Image.FromFile("C:\\Users\\mcca0442\\Desktop\\trunk\\Super Platformer\\Button\\ButtonContent\\Open.jpg");
             itSave.Image = Image.FromFile("C:\\Users\\mcca0442\\Desktop\\trunk\\Super Platformer\\Button\\ButtonContent\\Save.jpg");
@@ -124,17 +81,16 @@ namespace Button
             itAddDiffuse.Image = Image.FromFile("C:\\Users\\mcca0442\\Desktop\\trunk\\Super Platformer\\Button\\ButtonContent\\AddDiffuse.jpg");
             itSubtractSolid.Image = Image.FromFile("C:\\Users\\mcca0442\\Desktop\\trunk\\Super Platformer\\Button\\ButtonContent\\SubtractSolid.jpg");
             itSubtractDiffuse.Image = Image.FromFile("C:\\Users\\mcca0442\\Desktop\\trunk\\Super Platformer\\Button\\ButtonContent\\SubtractDiffuse.jpg");
-        
         }
 
-        private void itOpen_Click(object sender, EventArgs e)
+        private void itOpen_Click(object aSender, EventArgs aEvent)
         {
             OpenFileDialog tempFileDialog = new OpenFileDialog();
             tempFileDialog.ShowDialog();
             tempFileDialog.Dispose();
         }
 
-        private void itSave_Click(object sender, EventArgs e)
+        private void itSave_Click(object aSender, EventArgs aEvent)
         {
             SaveFileDialog tempFileDialog = new SaveFileDialog();
             tempFileDialog.ShowDialog();
@@ -147,6 +103,20 @@ namespace Button
             return "TextureEditorInterface.cs";
         }
         #endregion
+
+        private void iTextureGraphic_Click(object aSender, MouseEventArgs aMouseEvent)
+        {
+            Vector2 tempMousePosition = new Vector2(aMouseEvent.X, aMouseEvent.Y);
+
+            if (mTextureEditor == null)
+            {
+                throw new Exception(ToString() + "\n\rNo set Texture Editior\n\r");
+            }
+            else
+            {
+                mTextureEditor.AddTextureToStack(new EditorTexture2D(FileManager.Get().LoadTexture2D("MetalWall"), tempMousePosition, Microsoft.Xna.Framework.Color.White));
+            }
+        }
         #endregion
     }
 }

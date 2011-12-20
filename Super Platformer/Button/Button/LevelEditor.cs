@@ -8,10 +8,13 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace Button
 {
-    public class TextureEditor
+    public class LevelEditor
     {
+        /** Not actually used. Windows form uses the MVC design pattern. I wonder if I should keep this 'editor' code seperate, 
+         * or shove it into the C[ontroller] part of the pattern. Meh... MVCC is the way to go. */
+
         #region Data
-        private readonly Vector2 mTextureDimensions = new Vector2(256, 256);
+        private readonly Vector2 mTextureDimensions = new Vector2(256, 265);
 
         private Texture2D mTexture2D = null;
         private string mFilepath;
@@ -21,14 +24,14 @@ namespace Button
         private SpriteBatch mSpriteBatch = null;
         private GraphicsDevice mGraphicsDevice = null;
 
-        private TextureEditorInterface mTextureEditorInterface = null;
+        private LevelEditorInterface mLevelEditorInterface = null;
         #endregion
 
         #region Construction
-        public TextureEditor(string aFilepath, TextureEditorInterface aTextureEditorInterface)
+        public LevelEditor(string aFilepath, LevelEditorInterface aLevelEditorInterface)
         {
             mFilepath = aFilepath;
-            mTextureEditorInterface = aTextureEditorInterface;
+            mLevelEditorInterface = aLevelEditorInterface;
 
             Initialize();
         }
@@ -59,8 +62,6 @@ namespace Button
                 }
                 mGraphicsDevice.SetRenderTarget(null);
             }
-
-            mTextureEditorInterface.UpdateWindow();
         }
         #endregion
 
@@ -102,7 +103,7 @@ namespace Button
                 tempMemoryStream.Close();
                 tempMemoryStream = null;
 
-                mTextureEditorInterface.UpdateWindow();
+                mLevelEditorInterface.UpdateWindow();
 
                 mTexturesToDraw.Clear();
             }

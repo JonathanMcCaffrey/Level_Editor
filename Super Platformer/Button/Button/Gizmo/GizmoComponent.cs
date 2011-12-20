@@ -216,7 +216,6 @@ namespace Button
 
             theFileManager.GizmoSelection = Selection;
 
-
             translationModel = content.Load<Model>("gizmo_translate");
             rotationModel = content.Load<Model>("gizmo_rotate");
             scaleModel = content.Load<Model>("gizmo_scale");
