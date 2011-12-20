@@ -14,32 +14,11 @@ namespace Button
     public class ScreenManager : Microsoft.Xna.Framework.DrawableGameComponent
     {
         #region Data
-        private AbstractGameScreen mMenuScreen;
-        public AbstractGameScreen MenuScreen
-        {
-            get { return mMenuScreen; }
-            set { mMenuScreen = value; }
-        }
-
-        private AbstractGameScreen mNextMenuScreen;
-        public AbstractGameScreen NextMenuScreen
-        {
-            get { return mNextMenuScreen; }
-            set { mNextMenuScreen = value; }
-        }
-
         private AbstractGameScreen mWorldScreen;
         public AbstractGameScreen WorldScreen
         {
             get { return mWorldScreen; }
             set { mWorldScreen = value; }
-        }
-
-        private AbstractGameScreen mNextWorldScreen;
-        public AbstractGameScreen NextWorldScreen
-        {
-            get { return mNextWorldScreen; }
-            set { mNextWorldScreen = value; }
         }
         #endregion
 
@@ -72,65 +51,18 @@ namespace Button
         #region GameLoop
         public override void Update(GameTime aGameTime)
         {
-            if (mMenuScreen != null)
+            if (mWorldScreen != null)
             {
-                mMenuScreen.Update(aGameTime);
-            }
-            else if (mWorldScreen != null)
-            {
-                if (mWorldScreen is MainMenu)
-                {
-                    mWorldScreen = new WorldScreen();
-                }
-
                 mWorldScreen.Update(aGameTime);
             }
         }
 
         public override void Draw(GameTime aGameTime)
         {
-            if (mMenuScreen != null)
-            {
-                mMenuScreen.Draw(aGameTime);
-            }
-            else if (mWorldScreen != null)
+            if (mWorldScreen != null)
             {
                 mWorldScreen.Draw(aGameTime);
             }
-        }
-        #endregion
-
-        #region ScreenList
-        public void SetBattleScreen(AbstractGameScreen aAbstractScreen)
-        {
-            mMenuScreen = aAbstractScreen;
-            mMenuScreen.LoadContent();
-        }
-
-        public void SetWorldScreen(AbstractGameScreen aAbstractScreen)
-        {
-            mWorldScreen = aAbstractScreen;
-            mWorldScreen.LoadContent();
-        }
-
-        public AbstractGameScreen GetHighState()
-        {
-            return mMenuScreen;
-        }
-
-        public AbstractGameScreen GetLowState()
-        {
-            return mWorldScreen;
-        }
-
-        public void RemoveBattleScreen()
-        {
-            mMenuScreen = null;
-        }
-
-        public string Statistic()
-        {
-            return "State: " + mMenuScreen.ToString();
         }
         #endregion
     }

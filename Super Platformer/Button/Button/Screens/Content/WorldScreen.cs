@@ -48,22 +48,18 @@ namespace Button
             gizmo.HandleInput();
             gizmo.Update(aGameTime);
 
-            theCollisionManager.Reset();
-
             theEntityComponetManager.Update(aGameTime);
 
             theButtonManager.Update(aGameTime);
-            theProjectileManager.Update(aGameTime);
         }
 
         public override void Draw(GameTime aGameTime)
         {
-            SpriteBatch.Draw(mBackgroundTexture, new Rectangle(-200, 0, 1000, 800), Color.White);
 
             theEntityComponetManager.Draw(aGameTime);
 
-            theButtonManager.Draw(aGameTime);
-            theProjectileManager.Draw(aGameTime);
+           /* theButtonManager.Draw(aGameTime);
+            theProjectileManager.Draw(aGameTime);*/
 
             gizmo.Draw3D();
         }

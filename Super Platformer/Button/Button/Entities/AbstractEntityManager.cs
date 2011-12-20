@@ -13,6 +13,8 @@ using System.Xml;
 
 namespace Button
 {
+    /** All entities are a deprecated interface and will be replaced with the proper componet system when this level editior project
+     * is transfered into the main project. */
     public class AbstractEntityManager : DrawableGameComponent
     {
         #region Singletons
@@ -21,7 +23,6 @@ namespace Button
         protected UtilityManager theUtilityManager = UtilityManager.Get();
         protected TileManager theTileManager = TileManager.Get();
         protected ButtonManager theButtonManager = ButtonManager.Get();
-        protected PlayerManager thePlayerManager = PlayerManager.Get();
         protected ScreenManager theScreenManager = ScreenManager.Get();
         #endregion
 

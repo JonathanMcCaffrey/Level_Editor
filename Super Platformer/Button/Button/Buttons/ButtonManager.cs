@@ -13,6 +13,7 @@ using System.Xml;
 
 namespace Button
 {
+    /** All buttons are a deprecated interface and will be replaced with windows form upon that toolset's completion. */
     public class ButtonManager : DrawableGameComponent
     {
         #region Singletons
@@ -20,9 +21,7 @@ namespace Button
         protected InputManager theInputManager = InputManager.Get();
         protected UtilityManager theUtilityManager = UtilityManager.Get();
         protected TileManager theTileManager = TileManager.Get();
-        protected EnemyManager theEnemyManager = EnemyManager.Get();
         protected ButtonManager theButtonManager = ButtonManager.Get();
-        protected PlayerManager thePlayerManager = PlayerManager.Get();
         protected ScreenManager theScreenManager = ScreenManager.Get();
         #endregion
 

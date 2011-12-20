@@ -14,27 +14,23 @@ namespace Button
 {
     public partial class TextureEditorInterface : Form
     {
+        //TODO: Add draw dragging.
+
         #region Data
         private TextureEditor mTextureEditor = null;
-        public TextureEditor TextureEditor
+        public TextureEditor TextureEditor 
         {
             set
             {
-                if (mTextureEditor == null)
-                {
-                    //      throw new Exception(ToString() + "\n\rNull texture editor\n\r");
-                }
                 mTextureEditor = value;
             }
         }
-
-        private bool isDrawing = false;
         #endregion
 
         #region Construction
         public TextureEditorInterface()
         {
-            this.TopMost = true;
+            this.TopMost = false;
 
             InitializeComponent();
             InitializeImages();
@@ -47,11 +43,6 @@ namespace Button
         public void UpdateWindow()
         {
             RenderTarget2D tempTextureToConvert = FileManager.Get().SelectedTextureForTextureEditor;
-
-            if (tempTextureToConvert == null)
-            {
-                //      throw new Exception(this.ToString() + "\n\rNo texture to draw\n\r");
-            }
 
             MemoryStream tempMemoryStream = new MemoryStream();
 
@@ -66,7 +57,7 @@ namespace Button
             iTextureEditor.BackgroundImage = tempImageToUpdate;
 
             Invalidate();
-
+            /*
             if (isDrawing)
             {
                 //TODO: Do this;
@@ -84,7 +75,7 @@ namespace Button
             }
 
             Console.WriteLine(" ");
-            }
+            }*/
         }
 
         private void TextureEditor_Load(object sender, EventArgs e)
@@ -95,10 +86,7 @@ namespace Button
 
         private void iTextureEditor_Paint(object sender, MouseEventArgs e)
         {
-            isDrawing = true;
-
             Vector2 tempMousePosition = new Vector2(e.X, e.Y);
-            Console.Write(tempMousePosition);
 
             if (mTextureEditor == null)
             {
@@ -108,9 +96,6 @@ namespace Button
             {
                 mTextureEditor.AddTextureToStack(new EditorTexture2D(FileManager.Get().LoadTexture2D("MetalWall"), tempMousePosition, Microsoft.Xna.Framework.Color.White));
             }
-
-            Console.WriteLine(" ");
-
         }
 
         private void InitializeImages()

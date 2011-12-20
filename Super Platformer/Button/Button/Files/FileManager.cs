@@ -27,6 +27,15 @@ namespace Button
             set { mSelectedTextureForTextureEditor = value; }
         }
 
+        /** This is game texture that the level editor uses for rendering
+         * the game in its main work window.*/
+        private RenderTarget2D mTextureForEditorWorkArea = null;
+        public RenderTarget2D EditorWorkAreaRenderTexture2D
+        {
+            get { return mTextureForEditorWorkArea; }
+            set { mTextureForEditorWorkArea = value; }
+        }
+
         private RenderTarget2D mRenderTarget2D;
         public RenderTarget2D RenderTarget2D
         {

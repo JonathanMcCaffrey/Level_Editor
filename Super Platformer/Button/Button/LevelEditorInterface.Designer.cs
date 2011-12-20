@@ -41,7 +41,7 @@
             this.itScale = new System.Windows.Forms.ToolStripButton();
             this.itScaleLinear = new System.Windows.Forms.ToolStripButton();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.Game = new System.Windows.Forms.Panel();
+            this.iBackPanel = new System.Windows.Forms.Panel();
             this.Modes = new System.Windows.Forms.TabControl();
             this.tabInfo = new System.Windows.Forms.TabPage();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -104,8 +104,9 @@
             this.button5 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.iGame = new System.Windows.Forms.Panel();
             this.iIconStrip.SuspendLayout();
-            this.Game.SuspendLayout();
+            this.iBackPanel.SuspendLayout();
             this.Modes.SuspendLayout();
             this.tabInfo.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -276,15 +277,17 @@
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
-            // Game
+            // iBackPanel
             // 
-            this.Game.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.Game.Controls.Add(this.Modes);
-            this.Game.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Game.Location = new System.Drawing.Point(0, 31);
-            this.Game.Name = "Game";
-            this.Game.Size = new System.Drawing.Size(728, 754);
-            this.Game.TabIndex = 1;
+            this.iBackPanel.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.iBackPanel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.iBackPanel.Controls.Add(this.iGame);
+            this.iBackPanel.Controls.Add(this.Modes);
+            this.iBackPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.iBackPanel.Location = new System.Drawing.Point(0, 31);
+            this.iBackPanel.Name = "iBackPanel";
+            this.iBackPanel.Size = new System.Drawing.Size(728, 754);
+            this.iBackPanel.TabIndex = 1;
             // 
             // Modes
             // 
@@ -878,19 +881,29 @@
             this.panel2.Size = new System.Drawing.Size(189, 124);
             this.panel2.TabIndex = 43;
             // 
+            // iGame
+            // 
+            this.iGame.BackColor = System.Drawing.SystemColors.AppWorkspace;
+            this.iGame.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.iGame.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.iGame.Location = new System.Drawing.Point(0, 193);
+            this.iGame.Name = "iGame";
+            this.iGame.Size = new System.Drawing.Size(728, 561);
+            this.iGame.TabIndex = 1;
+            // 
             // LevelEditorInterface
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.ClientSize = new System.Drawing.Size(728, 785);
-            this.Controls.Add(this.Game);
+            this.Controls.Add(this.iBackPanel);
             this.Controls.Add(this.iIconStrip);
             this.Name = "LevelEditorInterface";
             this.Text = "Level Editor";
             this.iIconStrip.ResumeLayout(false);
             this.iIconStrip.PerformLayout();
-            this.Game.ResumeLayout(false);
+            this.iBackPanel.ResumeLayout(false);
             this.Modes.ResumeLayout(false);
             this.tabInfo.ResumeLayout(false);
             this.tabInfo.PerformLayout();
@@ -949,7 +962,7 @@
         private System.Windows.Forms.ToolStripButton itScale;
         private System.Windows.Forms.ToolStripButton itScaleLinear;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
-        private System.Windows.Forms.Panel Game;
+        private System.Windows.Forms.Panel iBackPanel;
         private System.Windows.Forms.TabControl Modes;
         private System.Windows.Forms.TabPage tabInfo;
         private System.Windows.Forms.Panel panel1;
@@ -1012,5 +1025,6 @@
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel iGame;
     }
 }

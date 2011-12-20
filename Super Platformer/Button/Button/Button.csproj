@@ -113,13 +113,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AI\AbstractState.cs" />
-    <Compile Include="AI\AbstractStateMachine.cs" />
-    <Compile Include="AI\Hostile\Content\HostileAttack.cs" />
-    <Compile Include="AI\Hostile\Content\HostileDie.cs" />
-    <Compile Include="AI\Hostile\Content\HostileSeek.cs" />
-    <Compile Include="AI\Hostile\HostileState.cs" />
-    <Compile Include="AI\Hostile\HostileStateMachine.cs" />
     <Compile Include="Camera\QuakeCamera.cs" />
     <Compile Include="EditorTexture2D.cs" />
     <Compile Include="Files\Content\EditorAssetLoader.cs" />
@@ -130,15 +123,8 @@
     <Compile Include="Buttons\GenericButton.cs" />
     <Compile Include="Camera\Camera.cs" />
     <Compile Include="Camera\CameraManager.cs" />
-    <Compile Include="Collision\CollisionMachine.cs" />
-    <Compile Include="Collision\CollisionManager.cs" />
-    <Compile Include="Collision\Content\EntityCollision.cs" />
-    <Compile Include="Collision\Content\ProjectileCollision.cs" />
     <Compile Include="Entities\AbstractEntity.cs" />
     <Compile Include="Entities\AbstractEntityManager.cs" />
-    <Compile Include="Entities\Enemies\Enemy.cs" />
-    <Compile Include="Entities\Enemies\EnemyManager.cs" />
-    <Compile Include="Entities\Enemies\Content\EnemyTurret.cs" />
     <Compile Include="Entities\EntityComponetManager.cs" />
     <Compile Include="Entities\Tiles\Content\WallCopper.cs" />
     <Compile Include="Entities\Tiles\Content\WallMetal.cs" />
@@ -159,10 +145,6 @@
     <Compile Include="LoadMap.Designer.cs">
       <DependentUpon>LoadMap.cs</DependentUpon>
     </Compile>
-    <Compile Include="Projectiles\AbstractProjectile.cs" />
-    <Compile Include="Projectiles\Content\EnemyShell.cs" />
-    <Compile Include="Projectiles\Content\TankShell.cs" />
-    <Compile Include="Projectiles\ProjectileManager.cs" />
     <Compile Include="Gizmo\Quad.cs" />
     <Compile Include="SaveAndLoad.cs">
       <SubType>Form</SubType>
@@ -177,15 +159,9 @@
       <DependentUpon>SaveMap.cs</DependentUpon>
     </Compile>
     <Compile Include="Screens\AbstractGameScreen.cs" />
-    <Compile Include="Screens\AbstractMenuScreen.cs" />
     <Compile Include="Buttons\ButtonManager.cs" />
-    <Compile Include="Screens\Content\LevelSelect.cs" />
-    <Compile Include="Screens\Content\MainMenu.cs" />
-    <Compile Include="Screens\Content\SplashScreen.cs" />
     <Compile Include="Screens\Content\WorldScreen.cs" />
     <Compile Include="Screens\ScreenManager.cs" />
-    <Compile Include="Entities\Players\PlayerManager.cs" />
-    <Compile Include="Entities\Players\Player.cs" />
     <Compile Include="Entities\Tiles\TileManager.cs" />
     <Compile Include="Entities\Tiles\Tile.cs" />
     <Compile Include="Files\FileManager.cs" />
@@ -238,10 +214,7 @@
       <Install>true</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Entities\Objects\" />
-    <Folder Include="Entities\Players\Content\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <EmbeddedResource Include="LevelEditorInterface.resx">
       <DependentUpon>LevelEditorInterface.cs</DependentUpon>

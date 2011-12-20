@@ -74,7 +74,6 @@ namespace Button
         {
             if (mTexturesToDraw.Count > 0)
             {
-                mSpriteBatch.End();
                 mGraphicsDevice.SetRenderTarget(mRenderTarget2D);
                 mSpriteBatch.Begin();
 
@@ -102,8 +101,6 @@ namespace Button
 
                 tempMemoryStream.Close();
                 tempMemoryStream = null;
-
-                mSpriteBatch.Begin();
 
                 mTextureEditorInterface.UpdateWindow();
 

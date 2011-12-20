@@ -18,11 +18,10 @@ namespace Button
     {
         #region Singletons
         InputManager theInputManager = InputManager.Get();
+        FileManager theFileManager = FileManager.Get();
         #endregion
 
         #region Data
-        private bool mIsSaving = false;
-
         private SaveMap saveFile = new SaveMap();
         private LoadMap loadFile = new LoadMap();
         private LevelEditorInterface levelEditor = new LevelEditorInterface();
@@ -30,11 +29,19 @@ namespace Button
 
         private TextureEditor textureEditor;
 
+        private SpriteBatch mSpriteBatch;
+        private GraphicsDevice mGraphicDevice;
+
+        private RenderTarget2D mEditorWorkAreaRenderTexture2D;
+
+        
+
+
+
         #endregion
 
         #region Construction
         List<AbstractEntityManager> mList = new List<AbstractEntityManager>();
-        PlayerManager thePlayerManager;
 
         protected EntityComponetManager(Game aGame)
             : base(aGame) { }
@@ -62,10 +69,17 @@ namespace Button
             textureEditorInterface.Visible = true;
 
             mList.Add(TileManager.Get());
-            mList.Add(EnemyManager.Get());
 
-            thePlayerManager = PlayerManager.Get();
+            theFileManager = FileManager.Get();
 
+            mSpriteBatch = theFileManager.SpriteBatch;
+            mGraphicDevice = theFileManager.GraphicsDevice;
+
+            mEditorWorkAreaRenderTexture2D = new RenderTarget2D(mGraphicDevice, 500, 500);
+
+            theFileManager.EditorWorkAreaRenderTexture2D = mEditorWorkAreaRenderTexture2D;
+
+        //    mGraphicDevice.SetRenderTarget(theFileManager.EditorWorkAreaRenderTexture2D);
 
         }
         #endregion
@@ -73,7 +87,7 @@ namespace Button
         #region Methods
         public override void Update(GameTime aGameTime)
         {
-            
+
             if (saveFile.Done)
             {
                 SaveAll(saveFile.FileName);
@@ -101,8 +115,6 @@ namespace Button
                 {
                     mList[loop].Update(aGameTime);
                 }
-
-                thePlayerManager.Update(aGameTime);
             }
         }
 
@@ -110,17 +122,25 @@ namespace Button
         {
             textureEditor.DrawIntoTextureEditor();
 
+            mGraphicDevice.SetRenderTarget(theFileManager.EditorWorkAreaRenderTexture2D);
+
+            mSpriteBatch.Begin();
+           
+            mGraphicDevice.Clear(Color.Green);
+
             for (int loop = 0; loop < mList.Count; loop++)
             {
                 mList[loop].Draw(aGameTime);
             }
+            mSpriteBatch.End();
 
-            thePlayerManager.Draw(aGameTime);
+            mGraphicDevice.SetRenderTarget(null);
+
+         
         }
 
         public void SaveAll(string aFilePath)
         {
-
             using (XmlWriter xmlWriter = XmlWriter.Create(aFilePath))
             {
                 xmlWriter.WriteStartElement("Data");

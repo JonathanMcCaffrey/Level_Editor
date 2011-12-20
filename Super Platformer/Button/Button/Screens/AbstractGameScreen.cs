@@ -15,11 +15,7 @@ namespace Button
         protected UtilityManager theUtilityManager = UtilityManager.Get();
         protected TileManager theTileManager = TileManager.Get();
         protected ButtonManager theButtonManager = ButtonManager.Get();
-        protected PlayerManager thePlayerManager = PlayerManager.Get();
         protected ScreenManager theScreenManager = ScreenManager.Get();
-        protected ProjectileManager theProjectileManager = ProjectileManager.Get();
-        protected EnemyManager theEnemyManager = EnemyManager.Get();
-        protected CollisionManager theCollisionManager = CollisionManager.Get();
         #endregion
 
         #region Data
@@ -69,7 +65,6 @@ namespace Button
         }
         public virtual void Draw(GameTime aGameTime)
         {
-            theFileManager.SpriteBatch.Draw(mBackgroundTexture, Vector2.Zero, BackgroundColor);
         }
         #endregion
     }
