@@ -283,7 +283,7 @@
             this.Game.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Game.Location = new System.Drawing.Point(0, 31);
             this.Game.Name = "Game";
-            this.Game.Size = new System.Drawing.Size(728, 191);
+            this.Game.Size = new System.Drawing.Size(728, 754);
             this.Game.TabIndex = 1;
             // 
             // Modes
@@ -883,7 +883,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.ClientSize = new System.Drawing.Size(728, 222);
+            this.ClientSize = new System.Drawing.Size(728, 785);
             this.Controls.Add(this.Game);
             this.Controls.Add(this.iIconStrip);
             this.Name = "LevelEditorInterface";

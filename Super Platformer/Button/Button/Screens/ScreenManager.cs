@@ -78,6 +78,11 @@ namespace Button
             }
             else if (mWorldScreen != null)
             {
+                if (mWorldScreen is MainMenu)
+                {
+                    mWorldScreen = new WorldScreen();
+                }
+
                 mWorldScreen.Update(aGameTime);
             }
         }

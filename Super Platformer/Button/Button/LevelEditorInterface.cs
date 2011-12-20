@@ -19,8 +19,6 @@ namespace Button
             
             InitializeComponent();
             InitializeImages();
-
-            this.Location = new Point((int)UtilityManager.Get().GetScreenCenter().X, 20);
         }
         /** Windows Form cannot preload images with XNA 4.0. Microsoft stated the problem will not be fixed in future updates.
             So, this function call intializes all images in the interface. */
