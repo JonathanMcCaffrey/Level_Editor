@@ -20,20 +20,37 @@ namespace Button
         private List<Texture2D> mTexture2DList = new List<Texture2D>();
         private List<string> mTexture2DFilePathList = new List<string>();
 
-        private RenderTarget2D mSelectedTextureForTextureEditor = null;
-        public RenderTarget2D SelectedTextureForTextureEditor
+        private LevelEditorInterface mLevelEditorInterface = null;
+
+
+        private RenderTarget2D mTextureEditorRenderTarget2D = null;
+        public RenderTarget2D TextureEditorRenderTarget2D
         {
-            get { return mSelectedTextureForTextureEditor; }
-            set { mSelectedTextureForTextureEditor = value; }
+            get
+            {
+                if (mTextureEditorRenderTarget2D == null)
+                {
+                    throw new Exception(this.ToString() + "\n\rThe TextureEditorRenderTarget2D is being called before be set/n/r");
+                }
+
+                return mTextureEditorRenderTarget2D;
+            }
+            set { mTextureEditorRenderTarget2D = value; }
         }
 
         /** This is game texture that the level editor uses for rendering
          * the game in its main work window.*/
-        private RenderTarget2D mTextureForEditorWorkArea = null;
+        private RenderTarget2D mEditorWorkAreaRenderTarget2D = null;
         public RenderTarget2D EditorWorkAreaRenderTexture2D
         {
-            get { return mTextureForEditorWorkArea; }
-            set { mTextureForEditorWorkArea = value; }
+            get {
+                if (mTextureEditorRenderTarget2D == null)
+                {
+                    throw new Exception(this.ToString() + "\n\rThe EditorWorkAreaRenderTexture2D is being called before be set/n/r");
+                }
+
+                return mEditorWorkAreaRenderTarget2D; }
+            set { mEditorWorkAreaRenderTarget2D = value; }
         }
 
         private RenderTarget2D mRenderTarget2D;
@@ -45,6 +62,7 @@ namespace Button
                 {
                     mRenderTarget2D = new RenderTarget2D(mGraphicsDevice, mGraphicsDevice.Viewport.Width, mGraphicsDevice.Viewport.Height);
                 }
+
                 return mRenderTarget2D;
             }
             set { mRenderTarget2D = value; }
@@ -59,6 +77,7 @@ namespace Button
                 {
                     mBasicEffect = new BasicEffect(mGraphicsDevice);
                 }
+
                 return mBasicEffect;
             }
         }
@@ -72,6 +91,7 @@ namespace Button
                 {
                     mEffect = mContentManager.Load<Effect>(@"Shader\Standard");
                 }
+
                 return mEffect;
             }
         }
@@ -93,28 +113,41 @@ namespace Button
         private SpriteFont mSpriteFont;
         public SpriteFont SpriteFont
         {
-            get {
+            get
+            {
                 if (mSpriteFont == null)
                 {
                     mSpriteFont = LoadFont("Title");
                 }
 
                 return mSpriteFont;
-            
+
             }
             set { mSpriteFont = value; }
         }
 
-        private ContentManager mContentManager;
+        private ContentManager mContentManager = null;
         public ContentManager ContentManager
         {
-            get { return mContentManager; }
+            get {
+                if (mContentManager == null)
+                {
+                    throw new Exception(this.ToString() + "\n\rThe ContentManager is being called before the FileManager is initialized/n/r");
+                }
+                
+                return mContentManager; }
         }
 
-        private GraphicsDevice mGraphicsDevice;
+        private GraphicsDevice mGraphicsDevice = null;
         public new GraphicsDevice GraphicsDevice
         {
-            get { return mGraphicsDevice; }
+            get {
+                if (mGraphicsDevice == null)
+                {
+                    throw new Exception(this.ToString() + "\n\rThe GraphicsDevice is being called before the FileManager is initialized/n/r");
+                }
+
+                return mGraphicsDevice; }
         }
 
         private Vector2 mScreenCenter;
@@ -122,6 +155,11 @@ namespace Button
         {
             get
             {
+                if (mGraphicsDevice == null)
+                {
+                    throw new Exception(this.ToString() + "\n\rThe ScreenCenter is being called before the FileManager is initialized/n/r");
+                }
+
 
                 if (mScreenCenter.Y == 0)
                 {
@@ -132,8 +170,8 @@ namespace Button
             }
         }
 
+        /** PlaceHolder */
         private Vector3 mCameraPosition = new Vector3(5000, 500, 0);
-
         public Vector3 CameraPosition
         {
             get { return mCameraPosition; }
@@ -151,8 +189,20 @@ namespace Button
             get { return mProjectionMatrix; }
             set { mProjectionMatrix = value; }
         }
+        /** PlaceHolder */
 
-        public List<Tile> GizmoSelection;
+        private List<Tile> mGizmoSelection = null;
+        public List<Tile> GizmoSelection
+        {
+            get {
+                if (mGizmoSelection == null)
+                {
+                    throw new Exception(this.ToString() + "\n\rThe GizmoSelection is being called before it is set/n/r");
+                }
+
+                return mGizmoSelection; }
+            set { mGizmoSelection = value; }
+        }
 
         #endregion
 
@@ -242,6 +292,12 @@ namespace Button
             return "Total Files: " + temporaryStatistic.ToString();
         }
 
+        #region Common .NET Overrides
+        public override string ToString()
+        {
+            return "FileManager.cs";
+        }
+        #endregion
         #endregion
     }
 }

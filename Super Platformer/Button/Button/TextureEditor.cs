@@ -37,7 +37,7 @@ namespace Button
         {
             mTexture2D = FileManager.Get().LoadTexture2D(@mFilepath);
             mRenderTarget2D = new RenderTarget2D(FileManager.Get().GraphicsDevice, (int)mTextureDimensions.X, (int)mTextureDimensions.Y);
-            FileManager.Get().SelectedTextureForTextureEditor = mRenderTarget2D;
+            FileManager.Get().TextureEditorRenderTarget2D = mRenderTarget2D;
             mSpriteBatch = FileManager.Get().SpriteBatch;
             mGraphicsDevice = FileManager.Get().GraphicsDevice;
 

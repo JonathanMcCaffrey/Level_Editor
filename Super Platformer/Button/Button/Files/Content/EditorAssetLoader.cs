@@ -7,13 +7,12 @@ namespace Button
 {
     //<summary>
     // Inherits from FileListLoader.
-    // Contains specific schematics for loading files form the editor.
+    // Contains specific schematics for loading files for the editor.
     //</summary>
-
     public class EditorAssetLoader : FileListLoader
     {
         #region Data
-        private List<string> mSortedModelFiles = null;
+        private List<string> mSortedModelFiles = new List<string>();
         public List<string> SortedModelFiles
         {
             get
@@ -27,7 +26,7 @@ namespace Button
             }
         }
 
-        private List<string> mStortedTextureFiles = null;
+        private List<string> mStortedTextureFiles = new List<string>();
         public List<string> StortedTextureFiles
         {
             get
@@ -70,6 +69,9 @@ namespace Button
                         break;
 
                     case "png":
+                        Console.WriteLine(ListOfFilePaths[loop]);
+
+
                         mStortedTextureFiles.Add(ListOfFilePaths[loop]);
                         break;
 

@@ -40,7 +40,7 @@ namespace Button
         #region Methods
         public void UpdateWindow()
         {
-            RenderTarget2D tempTextureToConvert = FileManager.Get().SelectedTextureForTextureEditor;
+            RenderTarget2D tempTextureToConvert = FileManager.Get().TextureEditorRenderTarget2D;
 
             MemoryStream tempMemoryStream = new MemoryStream();
 
@@ -97,13 +97,6 @@ namespace Button
             tempFileDialog.Dispose();
         }
 
-        #region Common .NET Overrides
-        public override string ToString()
-        {
-            return "TextureEditorInterface.cs";
-        }
-        #endregion
-
         private void iTextureGraphic_Click(object aSender, MouseEventArgs aMouseEvent)
         {
             Vector2 tempMousePosition = new Vector2(aMouseEvent.X, aMouseEvent.Y);
@@ -117,6 +110,13 @@ namespace Button
                 mTextureEditor.AddTextureToStack(new EditorTexture2D(FileManager.Get().LoadTexture2D("MetalWall"), tempMousePosition, Microsoft.Xna.Framework.Color.White));
             }
         }
+
+        #region Common .NET Overrides
+        public override string ToString()
+        {
+            return "TextureEditorInterface.cs";
+        }
+        #endregion
         #endregion
     }
 }

@@ -114,7 +114,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Camera\QuakeCamera.cs" />
-    <Compile Include="LevelEditor.cs" />
     <Compile Include="EditorTexture2D.cs" />
     <Compile Include="Files\Content\EditorAssetLoader.cs" />
     <Compile Include="Files\FileListLoader.cs" />

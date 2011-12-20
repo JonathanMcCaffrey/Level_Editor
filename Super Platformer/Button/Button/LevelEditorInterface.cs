@@ -15,7 +15,7 @@ namespace Button
     public partial class LevelEditorInterface : Form
     {
         #region Data
-     /*   private LevelEditorInterface mLevelEditorInterface = null;
+        /*   private LevelEditorInterface mLevelEditorInterface = null;
         public LevelEditorInterface LevelEditorInterface
         {
             set
@@ -23,17 +23,29 @@ namespace Button
                 mLevelEditorInterface = value;
             }
         }*/
+
+        EditorAssetLoader mEditorAssetLoader = new EditorAssetLoader(@"C:\Users\mcca0442\Desktop\trunk\Super Platformer\Button\ButtonContent\Assets");
         #endregion
 
+        #region Construction
         public LevelEditorInterface()
         {
-           /* this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;*/
+            /* this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;*/
             this.TopMost = false;
-            
+
             InitializeComponent();
             InitializeImages();
+
+            mEditorAssetLoader.Load();
+
+            for (int loop = 0; loop < 12; loop++)
+            {
+                iAssetList.Items.Add("BlaBlaBla");
+            }
+
         }
+
         /** Windows Form cannot preload images with XNA 4.0. Microsoft stated the problem will not be fixed in future updates.
             So, this function call intializes all images in the interface. */
         private void InitializeImages()
@@ -56,12 +68,14 @@ namespace Button
             itNoise.BackgroundImage = Image.FromFile("C:\\Users\\mcca0442\\Desktop\\trunk\\Super Platformer\\Button\\ButtonContent\\Noise.jpg");
 
             // Placeholder
-             iTopGraphic.Image = Image.FromFile("C:\\Users\\mcca0442\\Desktop\\trunk\\Super Platformer\\Button\\ButtonContent\\Noise.jpg");
-             iFrontGraphic.Image = Image.FromFile("C:\\Users\\mcca0442\\Desktop\\trunk\\Super Platformer\\Button\\ButtonContent\\Flatten.jpg");
-             iRightGraphic.Image = Image.FromFile("C:\\Users\\mcca0442\\Desktop\\trunk\\Super Platformer\\Button\\ButtonContent\\Subtract.jpg");
+            iTopGraphic.Image = Image.FromFile("C:\\Users\\mcca0442\\Desktop\\trunk\\Super Platformer\\Button\\ButtonContent\\Noise.jpg");
+            iFrontGraphic.Image = Image.FromFile("C:\\Users\\mcca0442\\Desktop\\trunk\\Super Platformer\\Button\\ButtonContent\\Flatten.jpg");
+            iRightGraphic.Image = Image.FromFile("C:\\Users\\mcca0442\\Desktop\\trunk\\Super Platformer\\Button\\ButtonContent\\Subtract.jpg");
             // Placeholder
         }
+        #endregion
 
+        #region Methods
         public void UpdateWindow()
         {
             RenderTarget2D tempTextureToConvert = FileManager.Get().EditorWorkAreaRenderTexture2D;
@@ -88,23 +102,24 @@ namespace Button
             tempFileDialog.Dispose();
         }
 
-       private void itSave_Click(object sender, EventArgs aEvent)
+        private void itSave_Click(object sender, EventArgs aEvent)
         {
             SaveFileDialog tempFileDialog = new SaveFileDialog();
             tempFileDialog.ShowDialog();
             tempFileDialog.Dispose();
         }
 
-       void iGameGraphic_MouseDoubleClick(object sender, MouseEventArgs aMouseEvent)
-       {
-           Vector2 tempMousePosition = new Vector2(aMouseEvent.X, aMouseEvent.Y);
+        void iGameGraphic_MouseDoubleClick(object sender, MouseEventArgs aMouseEvent)
+        {
+            Vector2 tempMousePosition = new Vector2(aMouseEvent.X, aMouseEvent.Y);
 
-           ButtonManager.Get().GenerateEntity(new Vector3(tempMousePosition.X, 0, tempMousePosition.Y));
-       }
+            ButtonManager.Get().GenerateEntity(new Vector3(tempMousePosition.X, 0, tempMousePosition.Y));
+        }
 
-       void iGameGraphic_MouseClick(object sender, MouseEventArgs aMouseEvent)
-       {
-           Vector2 tempMousePosition = new Vector2(aMouseEvent.X, aMouseEvent.Y);
-       }
+        void iGameGraphic_MouseClick(object sender, MouseEventArgs aMouseEvent)
+        {
+            Vector2 tempMousePosition = new Vector2(aMouseEvent.X, aMouseEvent.Y);
+        }
+        #endregion
     }
 }
