@@ -42,9 +42,7 @@ namespace Button
         protected TileManager theTileManager;
         protected ButtonManager theButtonManager;
         protected ScreenManager theScreenManager;
-        protected CameraManager theCameraManager;
         protected EntityComponetManager theEntityComponetManager;
-
         #endregion
 
         #region Data
@@ -74,7 +72,6 @@ namespace Button
             theTileManager = TileManager.Get(this);
             theButtonManager = ButtonManager.Get(this);
             theScreenManager = ScreenManager.Get(this);
-            theCameraManager = CameraManager.Get(this);
 
             theEntityComponetManager = EntityComponetManager.Get(this);
             theEntityComponetManager.Initialize();

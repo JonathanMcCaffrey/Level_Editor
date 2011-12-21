@@ -268,7 +268,7 @@ namespace Button
         }
         #endregion
 
-        #region Construction and Intialization
+        #region Construction
         public AbstractEntity()
         {
         }
@@ -297,11 +297,7 @@ namespace Button
             // theFileManager.SpriteBatch.Draw(Graphic, ScreenPosition, SourceRectangle, Color, Rotation, Origin, Scale, SpriteEffects, LayerDepth);
         }
 
-        public virtual void Damage() { }
         public virtual void Create(Vector3 aCoordinate) { }
-
-
-
         #endregion
     }
 }

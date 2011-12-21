@@ -74,6 +74,14 @@ namespace Button
 
         public override void Draw()
         {
+
+            //TODO: Dynamically add Textures.
+        /*    for (int outterLoop = 0; outterLoop < Model.Bones.Count; outterLoop++)
+            {
+                ModelBone tempModelBone = Model.Bones[outterLoop];
+            }
+            */
+
             Model.Draw(ScaleMatrix * RotationMatrix * mWorldMatrix, theFileManager.ViewMatrix, theFileManager.ProjectionMatrix);
         }
         #endregion

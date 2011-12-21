@@ -121,8 +121,6 @@
     <Compile Include="Buttons\Content\EnemyButton.cs" />
     <Compile Include="Buttons\Content\TileButton.cs" />
     <Compile Include="Buttons\GenericButton.cs" />
-    <Compile Include="Camera\Camera.cs" />
-    <Compile Include="Camera\CameraManager.cs" />
     <Compile Include="Entities\AbstractEntity.cs" />
     <Compile Include="Entities\AbstractEntityManager.cs" />
     <Compile Include="Entities\EntityComponetManager.cs" />
