@@ -29,13 +29,6 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LevelEditorInterface));
-            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem("PlaceHolder");
-            System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem("PlaceHolder");
-            System.Windows.Forms.ListViewItem listViewItem3 = new System.Windows.Forms.ListViewItem("PlaceHolder");
-            System.Windows.Forms.ListViewItem listViewItem4 = new System.Windows.Forms.ListViewItem(new string[] {
-            "PlaceHolder"}, -1, System.Drawing.Color.Empty, System.Drawing.SystemColors.HotTrack, null);
-            System.Windows.Forms.ListViewItem listViewItem5 = new System.Windows.Forms.ListViewItem(new string[] {
-            "PlaceHolder"}, -1, System.Drawing.Color.Empty, System.Drawing.SystemColors.InactiveCaption, null);
             this.iIconStrip = new System.Windows.Forms.ToolStrip();
             this.itNew = new System.Windows.Forms.ToolStripButton();
             this.itOpen = new System.Windows.Forms.ToolStripButton();
@@ -73,6 +66,7 @@
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.lPosition = new System.Windows.Forms.Label();
             this.tabAssets = new System.Windows.Forms.TabPage();
+            this.iAssetList = new System.Windows.Forms.ListView();
             this.numericUpDown13 = new System.Windows.Forms.NumericUpDown();
             this.numericUpDown14 = new System.Windows.Forms.NumericUpDown();
             this.numericUpDown15 = new System.Windows.Forms.NumericUpDown();
@@ -119,7 +113,6 @@
             this.button5 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.iAssetList = new System.Windows.Forms.ListView();
             this.iIconStrip.SuspendLayout();
             this.iBackPanel.SuspendLayout();
             this.Views.SuspendLayout();
@@ -585,6 +578,23 @@
             this.tabAssets.TabIndex = 1;
             this.tabAssets.Text = "Assets";
             // 
+            // iAssetList
+            // 
+            this.iAssetList.Alignment = System.Windows.Forms.ListViewAlignment.SnapToGrid;
+            this.iAssetList.AutoArrange = false;
+            this.iAssetList.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.iAssetList.BackgroundImageTiled = true;
+            this.iAssetList.GridLines = true;
+            this.iAssetList.Location = new System.Drawing.Point(12, 18);
+            this.iAssetList.MultiSelect = false;
+            this.iAssetList.Name = "iAssetList";
+            this.iAssetList.ShowGroups = false;
+            this.iAssetList.Size = new System.Drawing.Size(158, 126);
+            this.iAssetList.TabIndex = 51;
+            this.iAssetList.TileSize = new System.Drawing.Size(32, 32);
+            this.iAssetList.UseCompatibleStateImageBehavior = false;
+            this.iAssetList.View = System.Windows.Forms.View.Tile;
+            // 
             // numericUpDown13
             // 
             this.numericUpDown13.Location = new System.Drawing.Point(404, 119);
@@ -991,27 +1001,6 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(189, 124);
             this.panel2.TabIndex = 43;
-            // 
-            // iAssetList
-            // 
-            this.iAssetList.BackColor = System.Drawing.SystemColors.ScrollBar;
-            listViewItem1.ToolTipText = "PlaceHolder";
-            listViewItem2.ToolTipText = "PlaceHolder";
-            listViewItem3.ToolTipText = "PlaceHolder";
-            listViewItem4.ToolTipText = "PlaceHolder";
-            listViewItem5.ToolTipText = "PlaceHolder";
-            this.iAssetList.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem1,
-            listViewItem2,
-            listViewItem3,
-            listViewItem4,
-            listViewItem5});
-            this.iAssetList.Location = new System.Drawing.Point(8, 21);
-            this.iAssetList.Name = "iAssetList";
-            this.iAssetList.Size = new System.Drawing.Size(174, 131);
-            this.iAssetList.TabIndex = 51;
-            this.iAssetList.UseCompatibleStateImageBehavior = false;
-            this.iAssetList.View = System.Windows.Forms.View.Tile;
             // 
             // LevelEditorInterface
             // 

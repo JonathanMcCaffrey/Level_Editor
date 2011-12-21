@@ -70,8 +70,6 @@ namespace Button
 
                     case "png":
                         Console.WriteLine(ListOfFilePaths[loop]);
-
-
                         mStortedTextureFiles.Add(ListOfFilePaths[loop]);
                         break;
 

@@ -39,11 +39,22 @@ namespace Button
 
             mEditorAssetLoader.Load();
 
-            for (int loop = 0; loop < 12; loop++)
-            {
-                iAssetList.Items.Add("BlaBlaBla");
-            }
+            List<string> tempList = mEditorAssetLoader.StortedTextureFiles;
 
+            ImageList test = new ImageList();
+
+           
+
+
+
+            for (int loop = 0; loop < tempList.Count; loop++)
+            {
+               test.Images.Add(Image.FromFile(tempList[loop]));
+               iAssetList.Items.Add(tempList[loop]);
+               iAssetList.Items[loop].BackColor = System.Drawing.Color.White;
+               iAssetList.LargeImageList = test;
+               iAssetList.Items[loop].ImageIndex = loop;
+            }
         }
 
         /** Windows Form cannot preload images with XNA 4.0. Microsoft stated the problem will not be fixed in future updates.
