@@ -107,6 +107,8 @@ namespace Button
 
             iPerspectiveGraphic.Image = tempImageToUpdate;
 
+            iPerspectiveGraphic.
+
             Invalidate();
 
           //  Console.WriteLine(iPerspectiveGraphic.ClientRectangle);
