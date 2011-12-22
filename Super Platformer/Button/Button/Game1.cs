@@ -47,7 +47,7 @@ namespace Button
 
         #region Data
         GraphicsDeviceManager mGraphicsDeviceManager;
-        Vector2 mScreenDimensions = new Vector2(800, 800);
+        Vector2 mScreenDimensions = new Vector2(736, 573);
         #endregion
 
         #region Construction
@@ -60,8 +60,8 @@ namespace Button
             mGraphicsDeviceManager.PreferredBackBufferWidth = (int)mScreenDimensions.X;
             mGraphicsDeviceManager.PreferredBackBufferHeight = (int)mScreenDimensions.Y;
 
-            mGraphicsDeviceManager.PreferredBackBufferWidth = (int)1;
-            mGraphicsDeviceManager.PreferredBackBufferHeight = (int)1;
+           // mGraphicsDeviceManager.PreferredBackBufferWidth = (int)1;
+           // mGraphicsDeviceManager.PreferredBackBufferHeight = (int)1;
         }
 
         protected override void Initialize()

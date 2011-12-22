@@ -444,7 +444,7 @@ namespace Button
                     Selection.Clear();
                 }
 
-                PickObject(theInputManager.mousePosition, true);
+                PickObject(theInputManager.MousePositionOnWindow, true);
             }
 
             if (Enabled)
@@ -466,7 +466,7 @@ namespace Button
                     {
                         #region Translate & Scale
                         Vector3 delta = Vector3.Zero;
-                        Ray ray = ConvertMouseToRay(theInputManager.mousePosition);
+                        Ray ray = ConvertMouseToRay(theInputManager.MousePositionOnWindow);
 
                         Matrix transform = Matrix.Invert(rotationMatrix);
                         ray.Position = Vector3.Transform(ray.Position, transform);
@@ -634,7 +634,7 @@ namespace Button
                 }
                 else
                 {
-                    UpdateAxisSelection(theInputManager.mousePosition);
+                    UpdateAxisSelection(theInputManager.MousePositionOnWindow);
                 }
             }
 

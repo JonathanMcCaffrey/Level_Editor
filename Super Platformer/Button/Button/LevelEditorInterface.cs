@@ -25,6 +25,9 @@ namespace Button
         }*/
 
         EditorAssetLoader mEditorAssetLoader = new EditorAssetLoader(@"C:\Users\mcca0442\Desktop\trunk\Super Platformer\Button\ButtonContent\Assets");
+
+        private bool mIsHoveringOnEditor = false;
+        
         #endregion
 
         #region Construction
@@ -43,17 +46,17 @@ namespace Button
 
             ImageList test = new ImageList();
 
-           
+
 
 
 
             for (int loop = 0; loop < tempList.Count; loop++)
             {
-               test.Images.Add(Image.FromFile(tempList[loop]));
-               iAssetList.Items.Add(tempList[loop]);
-               iAssetList.Items[loop].BackColor = System.Drawing.Color.White;
-               iAssetList.LargeImageList = test;
-               iAssetList.Items[loop].ImageIndex = loop;
+                test.Images.Add(Image.FromFile(tempList[loop]));
+                iAssetList.Items.Add(tempList[loop]);
+                iAssetList.Items[loop].BackColor = System.Drawing.Color.White;
+                iAssetList.LargeImageList = test;
+                iAssetList.Items[loop].ImageIndex = loop;
             }
         }
 
@@ -97,13 +100,25 @@ namespace Button
             tempMemoryStream.Seek(0, SeekOrigin.Begin);
 
             Image tempImageToUpdate = System.Drawing.Bitmap.FromStream(tempMemoryStream);
-
+            
             tempMemoryStream.Close();
+            tempMemoryStream.Dispose();
             tempMemoryStream = null;
 
             iPerspectiveGraphic.Image = tempImageToUpdate;
 
             Invalidate();
+
+          //  Console.WriteLine(iPerspectiveGraphic.ClientRectangle);
+            Console.WriteLine(iPerspectiveGraphic.Location.X);
+
+            if (mIsHoveringOnEditor)
+            {
+                InputManager.Get().MousePositionOnWindow = new Vector2(MousePosition.X - this.Location.X,
+                    MousePosition.Y - this.Location.Y);
+                Console.WriteLine(InputManager.Get().MousePositionOnWindow);
+            
+            }
         }
 
         private void itOpen_Click(object sender, EventArgs aEvent)
@@ -132,5 +147,20 @@ namespace Button
             Vector2 tempMousePosition = new Vector2(aMouseEvent.X, aMouseEvent.Y);
         }
         #endregion
+
+        private void iPerspectiveGraphic_Click(object sender, MouseEventArgs e)
+        {
+            InputManager.Get().MousePositionOnWindow = new Vector2(e.X, e.Y);
+        }
+
+        void iPerspectiveGraphic_MouseHover(object sender, EventArgs e)
+        {
+            mIsHoveringOnEditor = true;
+        }
+
+        void iPerspectiveGraphic_MouseLeave(object sender, EventArgs e)
+        {
+            mIsHoveringOnEditor = false;
+        }
     }
 }

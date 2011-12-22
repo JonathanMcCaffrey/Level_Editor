@@ -186,7 +186,7 @@
             this.iIconStrip.Location = new System.Drawing.Point(0, 0);
             this.iIconStrip.Name = "iIconStrip";
             this.iIconStrip.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.iIconStrip.Size = new System.Drawing.Size(728, 31);
+            this.iIconStrip.Size = new System.Drawing.Size(750, 31);
             this.iIconStrip.Stretch = true;
             this.iIconStrip.TabIndex = 0;
             this.iIconStrip.Text = "Tool Strip";
@@ -303,7 +303,7 @@
             this.iBackPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.iBackPanel.Location = new System.Drawing.Point(0, 31);
             this.iBackPanel.Name = "iBackPanel";
-            this.iBackPanel.Size = new System.Drawing.Size(728, 754);
+            this.iBackPanel.Size = new System.Drawing.Size(750, 792);
             this.iBackPanel.TabIndex = 1;
             // 
             // Views
@@ -313,10 +313,10 @@
             this.Views.Controls.Add(this.tabFront);
             this.Views.Controls.Add(this.tabRight);
             this.Views.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Views.Location = new System.Drawing.Point(0, 193);
+            this.Views.Location = new System.Drawing.Point(0, 187);
             this.Views.Name = "Views";
             this.Views.SelectedIndex = 0;
-            this.Views.Size = new System.Drawing.Size(728, 561);
+            this.Views.Size = new System.Drawing.Size(750, 605);
             this.Views.TabIndex = 3;
             // 
             // tabPerspective
@@ -325,7 +325,7 @@
             this.tabPerspective.Location = new System.Drawing.Point(4, 22);
             this.tabPerspective.Name = "tabPerspective";
             this.tabPerspective.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPerspective.Size = new System.Drawing.Size(720, 535);
+            this.tabPerspective.Size = new System.Drawing.Size(742, 579);
             this.tabPerspective.TabIndex = 0;
             this.tabPerspective.Text = "Perspective";
             this.tabPerspective.UseVisualStyleBackColor = true;
@@ -335,9 +335,15 @@
             this.iPerspectiveGraphic.Dock = System.Windows.Forms.DockStyle.Fill;
             this.iPerspectiveGraphic.Location = new System.Drawing.Point(3, 3);
             this.iPerspectiveGraphic.Name = "iPerspectiveGraphic";
-            this.iPerspectiveGraphic.Size = new System.Drawing.Size(714, 529);
+            this.iPerspectiveGraphic.Size = new System.Drawing.Size(736, 573);
             this.iPerspectiveGraphic.TabIndex = 2;
             this.iPerspectiveGraphic.TabStop = false;
+
+            this.iPerspectiveGraphic.MouseEnter += new System.EventHandler(iPerspectiveGraphic_MouseHover);
+            this.iPerspectiveGraphic.MouseLeave += new System.EventHandler(iPerspectiveGraphic_MouseLeave);
+                
+
+            this.iPerspectiveGraphic.MouseDown += new System.Windows.Forms.MouseEventHandler(this.iPerspectiveGraphic_Click);
             this.iPerspectiveGraphic.MouseClick += new System.Windows.Forms.MouseEventHandler(this.iGameGraphic_MouseClick);
             this.iPerspectiveGraphic.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.iGameGraphic_MouseDoubleClick);
             // 
@@ -412,7 +418,7 @@
             this.Modes.Location = new System.Drawing.Point(0, 0);
             this.Modes.Name = "Modes";
             this.Modes.SelectedIndex = 0;
-            this.Modes.Size = new System.Drawing.Size(728, 193);
+            this.Modes.Size = new System.Drawing.Size(750, 187);
             this.Modes.TabIndex = 0;
             // 
             // tabInfo
@@ -431,7 +437,7 @@
             this.tabInfo.Location = new System.Drawing.Point(4, 25);
             this.tabInfo.Name = "tabInfo";
             this.tabInfo.Padding = new System.Windows.Forms.Padding(3);
-            this.tabInfo.Size = new System.Drawing.Size(720, 164);
+            this.tabInfo.Size = new System.Drawing.Size(742, 158);
             this.tabInfo.TabIndex = 0;
             this.tabInfo.Text = "Info";
             // 
@@ -1007,7 +1013,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.ClientSize = new System.Drawing.Size(728, 785);
+            this.ClientSize = new System.Drawing.Size(750, 823);
             this.Controls.Add(this.iBackPanel);
             this.Controls.Add(this.iIconStrip);
             this.Name = "LevelEditorInterface";

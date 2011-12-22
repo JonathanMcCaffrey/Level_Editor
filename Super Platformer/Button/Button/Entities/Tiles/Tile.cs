@@ -74,15 +74,31 @@ namespace Button
 
         public override void Draw()
         {
-
-            //TODO: Dynamically add Textures.
-        /*    for (int outterLoop = 0; outterLoop < Model.Bones.Count; outterLoop++)
+            if (FileManager.Get().TextureEditorRenderTarget2D != null)
             {
-                ModelBone tempModelBone = Model.Bones[outterLoop];
-            }
-            */
+                Matrix[] tempTransforms = new Matrix[Model.Bones.Count];
+                Model.CopyAbsoluteBoneTransformsTo(tempTransforms);
 
-            Model.Draw(ScaleMatrix * RotationMatrix * mWorldMatrix, theFileManager.ViewMatrix, theFileManager.ProjectionMatrix);
+
+                for (int outerLoop = 0; outerLoop < Model.Meshes.Count; outerLoop++)
+                {
+                    ModelMesh tempMesh = Model.Meshes[outerLoop];
+
+                    for (int innerLoop = 0; innerLoop < tempMesh.Effects.Count; innerLoop++)
+                    {
+                        BasicEffect tempEffect = tempMesh.Effects[innerLoop] as BasicEffect;
+
+                        tempEffect.EnableDefaultLighting();
+                        tempEffect.World = tempTransforms[tempMesh.ParentBone.Index] * ScaleMatrix * RotationMatrix * mWorldMatrix;
+                        tempEffect.View = theFileManager.ViewMatrix;
+                        tempEffect.Projection = theFileManager.ProjectionMatrix;
+
+                        tempEffect.Texture = FileManager.Get().TextureEditorRenderTarget2D as Texture2D;
+                    }
+
+                    tempMesh.Draw();
+                }
+            }
         }
         #endregion
     }

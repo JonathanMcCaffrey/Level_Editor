@@ -41,6 +41,13 @@ namespace Button
             get { return new Vector2(mCurrentMouseState.X - mLastMouseState.X, mCurrentMouseState.Y - mLastMouseState.Y); }
         }
 
+        private Vector2 mMousePositionOnWindow;
+        public Vector2 MousePositionOnWindow
+        {
+            get { return mMousePositionOnWindow; }
+            set { mMousePositionOnWindow = value; }
+        }
+        
         public Vector2 mousePosition
         {
             get { return new Vector2(mCurrentMouseState.X, mCurrentMouseState.Y); }

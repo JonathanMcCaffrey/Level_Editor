@@ -118,6 +118,29 @@ namespace Button
             levelEditor.UpdateWindow();
          
             theFileManager.EditorWorkAreaRenderTexture2D = mEditorWorkAreaRenderTexture2D;
+
+
+
+
+
+
+
+
+            mSpriteBatch.Begin();
+            mGraphicDevice.Clear(Color.Green);
+
+            for (int loop = 0; loop < mList.Count; loop++)
+            {
+                mList[loop].Draw(aGameTime);
+            }
+            mSpriteBatch.Draw(FileManager.Get().LoadTexture2D("Arrow"), Vector2.Zero, Color.White);
+
+            ButtonManager.Get().Draw(aGameTime);
+
+            gizmo.Draw3D();
+
+            mSpriteBatch.End();
+
         }
 
         public void SaveAll(string aFilePath)
