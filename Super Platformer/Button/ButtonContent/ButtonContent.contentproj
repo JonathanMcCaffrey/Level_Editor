@@ -121,18 +121,8 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="StartGame.png">
-      <Name>StartGame</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
     <Compile Include="TitleImage.png">
       <Name>TitleImage</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="Website.png">
-      <Name>Website</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>

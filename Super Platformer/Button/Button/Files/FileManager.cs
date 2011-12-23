@@ -30,7 +30,7 @@ namespace Button
             {
                 if (mTextureEditorRenderTarget2D == null)
                 {
-                    throw new Exception(this.ToString() + "\n\rThe TextureEditorRenderTarget2D is being called before be set/n/r");
+                    Console.WriteLine("{0} is being called before {1} is initialized. {2}.", "mTextureEditorRenderTarget2D", "mTextureEditorRenderTarget2D", this.ToString());
                 }
 
                 return mTextureEditorRenderTarget2D;
@@ -46,7 +46,7 @@ namespace Button
             get {
                 if (mTextureEditorRenderTarget2D == null)
                 {
-                    throw new Exception(this.ToString() + "\n\rThe EditorWorkAreaRenderTexture2D is being called before be set/n/r");
+                    Console.WriteLine("{0} is being called before {1} is initialized. {2}.", "mEditorWorkAreaRenderTarget2D", "mEditorWorkAreaRenderTarget2D", this.ToString());
                 }
 
                 return mEditorWorkAreaRenderTarget2D; }
@@ -132,7 +132,7 @@ namespace Button
             get {
                 if (mContentManager == null)
                 {
-                    throw new Exception(this.ToString() + "\n\rThe ContentManager is being called before the FileManager is initialized/n/r");
+                    Console.WriteLine("{0} is being called before {1} is initialized. {2}.", "mContentManager", "FileManager", this.ToString());
                 }
                 
                 return mContentManager; }
@@ -144,7 +144,7 @@ namespace Button
             get {
                 if (mGraphicsDevice == null)
                 {
-                    throw new Exception(this.ToString() + "\n\rThe GraphicsDevice is being called before the FileManager is initialized/n/r");
+                    Console.WriteLine("{0} is being called before {1} is initialized. {2}.", "mGraphicsDevice", "FileManager", this.ToString());
                 }
 
                 return mGraphicsDevice; }
@@ -157,9 +157,8 @@ namespace Button
             {
                 if (mGraphicsDevice == null)
                 {
-                    throw new Exception(this.ToString() + "\n\rThe ScreenCenter is being called before the FileManager is initialized/n/r");
+                    Console.WriteLine("{0} is being called before {1} is initialized. {2}.", "mScreenCenter", "FileManager", this.ToString());
                 }
-
 
                 if (mScreenCenter.Y == 0)
                 {
@@ -197,7 +196,7 @@ namespace Button
             get {
                 if (mGizmoSelection == null)
                 {
-                    throw new Exception(this.ToString() + "\n\rThe GizmoSelection is being called before it is set/n/r");
+                    Console.WriteLine("{0} is being called before {1} is initialized. {2}.", "mGizmoSelection", "mGizmoSelection", this.ToString());
                 }
 
                 return mGizmoSelection; }

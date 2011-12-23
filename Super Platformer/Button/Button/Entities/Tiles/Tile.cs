@@ -9,6 +9,7 @@ namespace Button
 {
     public class Tile : AbstractEntity
     {
+        #region Data
         private Model mModel = null;
         public Model Model
         {
@@ -44,6 +45,22 @@ namespace Button
             set { mRotationMatrix = value; }
         }
 
+        private RenderTarget2D mRenderTarget;
+        public RenderTarget2D RenderTarget
+        {
+            get { return mRenderTarget; }
+            set { mRenderTarget = value; }
+        }
+        
+
+        private Texture2D mColorMap;
+        public Texture2D ColorMap
+        {
+            get { return mColorMap; }
+            set { mColorMap = value; }
+        }
+        #endregion
+
         #region Construction
         public Tile()
         {
@@ -63,6 +80,7 @@ namespace Button
         {
             mManager = theTileManager;
             Name = "tile";
+            mRenderTarget = new RenderTarget2D(FileManager.Get().GraphicsDevice, 512, 512);
         }
         #endregion
 
@@ -70,8 +88,20 @@ namespace Button
         public override void Update()
         {
             mWorldMatrix = Matrix.CreateTranslation(mWorldPosition.X, mWorldPosition.Y, mWorldPosition.Z);
+
+            if (!once)
+            {
+                FileManager.Get().GraphicsDevice.SetRenderTarget(mRenderTarget);
+                FileManager.Get().SpriteBatch.Begin();
+
+                FileManager.Get().SpriteBatch.Draw(mColorMap, Vector2.Zero, Color.White);
+
+                FileManager.Get().SpriteBatch.End();
+                FileManager.Get().GraphicsDevice.SetRenderTarget(null);
+            }
         }
 
+        bool once = false;
         public override void Draw()
         {
             if (FileManager.Get().TextureEditorRenderTarget2D != null)
@@ -93,7 +123,7 @@ namespace Button
                         tempEffect.View = theFileManager.ViewMatrix;
                         tempEffect.Projection = theFileManager.ProjectionMatrix;
 
-                        tempEffect.Texture = FileManager.Get().TextureEditorRenderTarget2D as Texture2D;
+                        tempEffect.Texture = FileManager.Get().TextureEditorRenderTarget2D;
                     }
 
                     tempMesh.Draw();

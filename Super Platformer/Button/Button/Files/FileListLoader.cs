@@ -23,7 +23,7 @@ namespace Button
             {
                 if (mFilePathToDirectory == null)
                 {
-                    throw new Exception(this.ToString() + "\n\rNull directory filepath\n\r");
+                    Console.WriteLine("{0} is being called before {1} is initialized. {2}.", "mFilePathToDirectory", "mFilePathToDirectory", this.ToString());
                 }
 
                 return mFilePathToDirectory;

@@ -18,13 +18,17 @@ namespace Button
 
         #region Data
         private TextureEditor mTextureEditor = null;
-        public TextureEditor TextureEditor 
+        public TextureEditor TextureEditor
         {
             set
             {
                 mTextureEditor = value;
             }
         }
+
+        private bool mIsDrawing = false;
+
+        RenderTarget2D tempTextureToConvert;
         #endregion
 
         #region Construction
@@ -40,7 +44,8 @@ namespace Button
         #region Methods
         public void UpdateWindow()
         {
-            RenderTarget2D tempTextureToConvert = FileManager.Get().TextureEditorRenderTarget2D;
+
+            tempTextureToConvert = FileManager.Get().TextureEditorRenderTarget2D;
 
             MemoryStream tempMemoryStream = new MemoryStream();
 
@@ -55,6 +60,31 @@ namespace Button
             iTextureGraphic.Image = tempImageToUpdate;
 
             Invalidate();
+
+            /*
+
+            if (FileManager.Get().GizmoSelection != null && FileManager.Get().GizmoSelection.Count >= 1)
+            {
+                tempTextureToConvert = FileManager.Get().GizmoSelection[0].RenderTarget;
+
+                MemoryStream tempMemoryStream = new MemoryStream();
+
+                tempTextureToConvert.SaveAsPng(tempMemoryStream, tempTextureToConvert.Width, tempTextureToConvert.Height);
+                tempMemoryStream.Seek(0, SeekOrigin.Begin);
+
+                Image tempImageToUpdate = System.Drawing.Bitmap.FromStream(tempMemoryStream);
+
+                tempMemoryStream.Close();
+                tempMemoryStream = null;
+
+                iTextureGraphic.Image = tempImageToUpdate;
+
+                Invalidate();
+            }
+          */
+
+
+
         }
 
         private void InitializeImages()
@@ -103,12 +133,24 @@ namespace Button
 
             if (mTextureEditor == null)
             {
-                throw new Exception(ToString() + "\n\rNo set Texture Editior\n\r");
+                Console.WriteLine("{0} is being called before {1} is initialized. {2}.", "mTextureEditor", "mTextureEditor", this.ToString());
             }
             else
             {
+                UpdateWindow();
                 mTextureEditor.AddTextureToStack(new EditorTexture2D(FileManager.Get().LoadTexture2D("MetalWall"), tempMousePosition, Microsoft.Xna.Framework.Color.White));
             }
+        }
+
+        //TODO: Use this instead of clickity clicks. Give all windows there own mouse coords from InputManager.
+        void iTextureGraphic_MouseUp(object sender, System.Windows.Forms.MouseEventArgs e)
+        {
+            mIsDrawing = false;
+        }
+
+        void iTextureGraphic_MouseDown(object sender, System.Windows.Forms.MouseEventArgs e)
+        {
+            mIsDrawing = true;
         }
 
         #region Common .NET Overrides
@@ -117,6 +159,12 @@ namespace Button
             return "TextureEditorInterface.cs";
         }
         #endregion
+
+        private void itNew_Click(object sender, EventArgs e)
+        {
+            mTextureEditor.Texture2D = FileManager.Get().LoadTexture2D("TextureEditorTest");
+            mTextureEditor.Reset();
+        }
         #endregion
     }
 }

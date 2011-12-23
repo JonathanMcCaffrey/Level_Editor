@@ -22,6 +22,7 @@ namespace Button
             newTile.IsCollidable = false;
             newTile.Model = FileManager.Get().LoadModel("Spike");
             newTile.FilePathToModel = "Spike";
+            newTile.ColorMap = FileManager.Get().LoadTexture2D("Necron");
         }
     }
 }

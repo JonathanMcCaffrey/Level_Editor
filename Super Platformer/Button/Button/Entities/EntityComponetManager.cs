@@ -118,43 +118,35 @@ namespace Button
             levelEditor.UpdateWindow();
          
             theFileManager.EditorWorkAreaRenderTexture2D = mEditorWorkAreaRenderTexture2D;
+        }
 
-
-
-
-
-
-
-
-            mSpriteBatch.Begin();
-            mGraphicDevice.Clear(Color.Green);
-
+        public void Clear()
+        {
             for (int loop = 0; loop < mList.Count; loop++)
             {
-                mList[loop].Draw(aGameTime);
+                mList[loop].Clear();
             }
-            mSpriteBatch.Draw(FileManager.Get().LoadTexture2D("Arrow"), Vector2.Zero, Color.White);
-
-            ButtonManager.Get().Draw(aGameTime);
-
-            gizmo.Draw3D();
-
-            mSpriteBatch.End();
-
         }
 
         public void SaveAll(string aFilePath)
         {
-            using (XmlWriter xmlWriter = XmlWriter.Create(aFilePath))
+            try
             {
-                xmlWriter.WriteStartElement("Data");
-
-                for (int loop = 0; loop < mList.Count; loop++)
+                using (XmlWriter xmlWriter = XmlWriter.Create(aFilePath))
                 {
-                    mList[loop].Save(xmlWriter);
-                }
+                    xmlWriter.WriteStartElement("Data");
 
-                xmlWriter.Close();
+                    for (int loop = 0; loop < mList.Count; loop++)
+                    {
+                        mList[loop].Save(xmlWriter);
+                    }
+
+                    xmlWriter.Close();
+                }
+            }
+            catch
+            {
+                Console.WriteLine("Error occured in {0}. {1}", "SaveAll", this.ToString());
             }
         }
 
@@ -169,9 +161,16 @@ namespace Button
             }
             catch
             {
-                Console.WriteLine("Could not load");
+                Console.WriteLine("Error occured in {0}. {1}", "LoadAll", this.ToString());
             }
         }
+
+        #region Common .NET Overrides
+        public override string ToString()
+        {
+            return "EntityComponetManager.cs";
+        }
+        #endregion
         #endregion
     }
 }

@@ -14,6 +14,11 @@ namespace Button
         private readonly Vector2 mTextureDimensions = new Vector2(256, 256);
 
         private Texture2D mTexture2D = null;
+        public Texture2D Texture2D
+        {
+            get { return mTexture2D; }
+            set { mTexture2D = value; }
+        }
         private string mFilepath;
 
         private RenderTarget2D mRenderTarget2D;
@@ -46,7 +51,7 @@ namespace Button
 
             if (mTexture2D == null)
             {
-                throw new Exception(this.ToString() + "No Starting Texture for Editing");
+                Console.WriteLine("{0} is being called before {1} is initialized. {2}.", "mTexture2D", "mTexture2D", this.ToString());
             }
             else
             {
@@ -70,42 +75,66 @@ namespace Button
             mTexturesToDraw.Add(aTexture2D);
         }
 
+        public void Reset()
+        {
+            mGraphicsDevice.SetRenderTarget(mRenderTarget2D);
+            mSpriteBatch.Begin();
+            mSpriteBatch.Draw(mTexture2D, Vector2.Zero, Color.White);
+            mSpriteBatch.End();
+            mTexturesToDraw.Clear();
+
+            mGraphicsDevice.SetRenderTarget(null);
+
+            MemoryStream tempMemoryStream = new MemoryStream();
+
+            mRenderTarget2D.SaveAsPng(tempMemoryStream, mRenderTarget2D.Width, mRenderTarget2D.Height);
+            tempMemoryStream.Seek(0, SeekOrigin.Begin);
+
+            Texture2D tempTextureToUpdate = Texture2D.FromStream(FileManager.Get().GraphicsDevice, tempMemoryStream);
+            mTexture2D = tempTextureToUpdate;
+
+            tempMemoryStream.Close();
+            tempMemoryStream = null;
+
+            mTextureEditorInterface.UpdateWindow();
+        }
+
         public void DrawIntoTextureEditor()
         {
-            if (mTexturesToDraw.Count > 0)
-            {
-                mGraphicsDevice.SetRenderTarget(mRenderTarget2D);
-                mSpriteBatch.Begin();
-
-                mSpriteBatch.Draw(mTexture2D, Vector2.Zero, Color.White);
-
-                for (int loop = 0; loop < mTexturesToDraw.Count; loop++)
+                if (mTexturesToDraw.Count > 0)
                 {
-                    mSpriteBatch.Draw(mTexturesToDraw[loop].mTexture2D, mTexturesToDraw[loop].mPosition,
-                        mTexturesToDraw[loop].mSourceRectangle, mTexturesToDraw[loop].mColor,
-                        mTexturesToDraw[loop].mRotation, mTexturesToDraw[loop].mOrigin,
-                         mTexturesToDraw[loop].mScale, mTexturesToDraw[loop].mSpriteEffect, 0);
+                    mGraphicsDevice.SetRenderTarget(mRenderTarget2D);
+                    mSpriteBatch.Begin();
+
+                    mSpriteBatch.Draw(mTexture2D, Vector2.Zero, Color.White);
+
+                    for (int loop = 0; loop < mTexturesToDraw.Count; loop++)
+                    {
+                        mSpriteBatch.Draw(mTexturesToDraw[loop].mTexture2D, mTexturesToDraw[loop].mPosition,
+                            mTexturesToDraw[loop].mSourceRectangle, mTexturesToDraw[loop].mColor,
+                            mTexturesToDraw[loop].mRotation, mTexturesToDraw[loop].mOrigin,
+                             mTexturesToDraw[loop].mScale, mTexturesToDraw[loop].mSpriteEffect, 0);
+                    }
+                    mSpriteBatch.End();
+                    mTexturesToDraw.Clear();
+
+                    mGraphicsDevice.SetRenderTarget(null);
+
+                    MemoryStream tempMemoryStream = new MemoryStream();
+
+                    mRenderTarget2D.SaveAsPng(tempMemoryStream, mRenderTarget2D.Width, mRenderTarget2D.Height);
+                    tempMemoryStream.Seek(0, SeekOrigin.Begin);
+
+                    Texture2D tempTextureToUpdate = Texture2D.FromStream(FileManager.Get().GraphicsDevice, tempMemoryStream);
+                    mTexture2D = tempTextureToUpdate;
+
+                    tempMemoryStream.Close();
+                    tempMemoryStream = null;
+
+                    mTextureEditorInterface.UpdateWindow();
+
+                    mTexturesToDraw.Clear();
                 }
-                mSpriteBatch.End();
-                mTexturesToDraw.Clear();
-                
-                mGraphicsDevice.SetRenderTarget(null);
-
-                MemoryStream tempMemoryStream = new MemoryStream();
-
-                mRenderTarget2D.SaveAsPng(tempMemoryStream, mRenderTarget2D.Width, mRenderTarget2D.Height);
-                tempMemoryStream.Seek(0, SeekOrigin.Begin);
-
-                Texture2D tempTextureToUpdate = Texture2D.FromStream(FileManager.Get().GraphicsDevice, tempMemoryStream);
-                mTexture2D = tempTextureToUpdate;
-
-                tempMemoryStream.Close();
-                tempMemoryStream = null;
-
-                mTextureEditorInterface.UpdateWindow();
-
-                mTexturesToDraw.Clear();
-            }
         }
 
         public void SaveTexture(string aFilePath)

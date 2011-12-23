@@ -200,6 +200,7 @@
             this.itNew.Size = new System.Drawing.Size(23, 28);
             this.itNew.Text = "New";
             this.itNew.ToolTipText = "New";
+            this.itNew.Click += new System.EventHandler(this.itNew_Click);
             // 
             // itOpen
             // 
@@ -338,14 +339,11 @@
             this.iPerspectiveGraphic.Size = new System.Drawing.Size(736, 573);
             this.iPerspectiveGraphic.TabIndex = 2;
             this.iPerspectiveGraphic.TabStop = false;
-
-            this.iPerspectiveGraphic.MouseEnter += new System.EventHandler(iPerspectiveGraphic_MouseHover);
-            this.iPerspectiveGraphic.MouseLeave += new System.EventHandler(iPerspectiveGraphic_MouseLeave);
-                
-
-            this.iPerspectiveGraphic.MouseDown += new System.Windows.Forms.MouseEventHandler(this.iPerspectiveGraphic_Click);
             this.iPerspectiveGraphic.MouseClick += new System.Windows.Forms.MouseEventHandler(this.iGameGraphic_MouseClick);
             this.iPerspectiveGraphic.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.iGameGraphic_MouseDoubleClick);
+            this.iPerspectiveGraphic.MouseDown += new System.Windows.Forms.MouseEventHandler(this.iPerspectiveGraphic_Click);
+            this.iPerspectiveGraphic.MouseEnter += new System.EventHandler(this.iPerspectiveGraphic_MouseHover);
+            this.iPerspectiveGraphic.MouseLeave += new System.EventHandler(this.iPerspectiveGraphic_MouseLeave);
             // 
             // tabTop
             // 
@@ -353,7 +351,7 @@
             this.tabTop.Location = new System.Drawing.Point(4, 22);
             this.tabTop.Name = "tabTop";
             this.tabTop.Padding = new System.Windows.Forms.Padding(3);
-            this.tabTop.Size = new System.Drawing.Size(720, 535);
+            this.tabTop.Size = new System.Drawing.Size(742, 579);
             this.tabTop.TabIndex = 1;
             this.tabTop.Text = "Top";
             this.tabTop.UseVisualStyleBackColor = true;
@@ -373,7 +371,7 @@
             this.tabFront.Location = new System.Drawing.Point(4, 22);
             this.tabFront.Name = "tabFront";
             this.tabFront.Padding = new System.Windows.Forms.Padding(3);
-            this.tabFront.Size = new System.Drawing.Size(720, 535);
+            this.tabFront.Size = new System.Drawing.Size(742, 579);
             this.tabFront.TabIndex = 2;
             this.tabFront.Text = "Front";
             this.tabFront.UseVisualStyleBackColor = true;
@@ -393,7 +391,7 @@
             this.tabRight.Location = new System.Drawing.Point(4, 22);
             this.tabRight.Name = "tabRight";
             this.tabRight.Padding = new System.Windows.Forms.Padding(3);
-            this.tabRight.Size = new System.Drawing.Size(720, 535);
+            this.tabRight.Size = new System.Drawing.Size(742, 579);
             this.tabRight.TabIndex = 3;
             this.tabRight.Text = "Right";
             this.tabRight.UseVisualStyleBackColor = true;
@@ -580,7 +578,7 @@
             this.tabAssets.Location = new System.Drawing.Point(4, 25);
             this.tabAssets.Name = "tabAssets";
             this.tabAssets.Padding = new System.Windows.Forms.Padding(3);
-            this.tabAssets.Size = new System.Drawing.Size(720, 164);
+            this.tabAssets.Size = new System.Drawing.Size(742, 158);
             this.tabAssets.TabIndex = 1;
             this.tabAssets.Text = "Assets";
             // 
@@ -746,7 +744,7 @@
             this.tabTerrain.Location = new System.Drawing.Point(4, 25);
             this.tabTerrain.Name = "tabTerrain";
             this.tabTerrain.Padding = new System.Windows.Forms.Padding(3);
-            this.tabTerrain.Size = new System.Drawing.Size(720, 164);
+            this.tabTerrain.Size = new System.Drawing.Size(742, 158);
             this.tabTerrain.TabIndex = 2;
             this.tabTerrain.Text = "Terrain";
             // 
@@ -857,7 +855,7 @@
             this.tabLights.Location = new System.Drawing.Point(4, 25);
             this.tabLights.Name = "tabLights";
             this.tabLights.Padding = new System.Windows.Forms.Padding(3);
-            this.tabLights.Size = new System.Drawing.Size(720, 164);
+            this.tabLights.Size = new System.Drawing.Size(742, 158);
             this.tabLights.TabIndex = 5;
             this.tabLights.Text = "Lights";
             this.tabLights.UseVisualStyleBackColor = true;

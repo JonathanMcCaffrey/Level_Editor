@@ -46,10 +46,6 @@ namespace Button
 
             ImageList test = new ImageList();
 
-
-
-
-
             for (int loop = 0; loop < tempList.Count; loop++)
             {
                 test.Images.Add(Image.FromFile(tempList[loop]));
@@ -107,19 +103,11 @@ namespace Button
 
             iPerspectiveGraphic.Image = tempImageToUpdate;
 
-            iPerspectiveGraphic.
-
             Invalidate();
-
-          //  Console.WriteLine(iPerspectiveGraphic.ClientRectangle);
-            Console.WriteLine(iPerspectiveGraphic.Location.X);
 
             if (mIsHoveringOnEditor)
             {
-                InputManager.Get().MousePositionOnWindow = new Vector2(MousePosition.X - this.Location.X,
-                    MousePosition.Y - this.Location.Y);
-                Console.WriteLine(InputManager.Get().MousePositionOnWindow);
-            
+                InputManager.Get().MousePositionOnWindow = new Vector2(MousePosition.X - this.Location.X - 16, MousePosition.Y - this.Location.Y -273);
             }
         }
 
@@ -163,6 +151,11 @@ namespace Button
         void iPerspectiveGraphic_MouseLeave(object sender, EventArgs e)
         {
             mIsHoveringOnEditor = false;
+        }
+
+        private void itNew_Click(object sender, EventArgs e)
+        {
+            EntityComponetManager.Get().Clear();
         }
     }
 }

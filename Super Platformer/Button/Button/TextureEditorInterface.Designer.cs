@@ -90,6 +90,7 @@ namespace Button
             this.itNew.Name = "itNew";
             this.itNew.Size = new System.Drawing.Size(23, 22);
             this.itNew.Text = "toolStripButton1";
+            this.itNew.Click += new System.EventHandler(this.itNew_Click);
             // 
             // itOpen
             // 
@@ -328,7 +329,9 @@ namespace Button
             this.iTextureGraphic.Size = new System.Drawing.Size(256, 256);
             this.iTextureGraphic.TabIndex = 0;
             this.iTextureGraphic.TabStop = false;
-            this.iTextureGraphic.MouseClick +=new System.Windows.Forms.MouseEventHandler(this.iTextureGraphic_Click);
+            this.iTextureGraphic.MouseClick += new System.Windows.Forms.MouseEventHandler(this.iTextureGraphic_Click);
+            this.iTextureGraphic.MouseDown += new System.Windows.Forms.MouseEventHandler(this.iTextureGraphic_MouseDown);
+            this.iTextureGraphic.MouseUp += new System.Windows.Forms.MouseEventHandler(this.iTextureGraphic_MouseUp);
             // 
             // TextureEditorInterface
             // 
@@ -357,10 +360,6 @@ namespace Button
 
         #endregion
 
-        public void UpdateEditor()
-        {
-            Console.WriteLine(InputManager.Get().mouseTranslation);
-        }
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.ToolStripButton itNew;
         private System.Windows.Forms.ToolStripButton itOpen;

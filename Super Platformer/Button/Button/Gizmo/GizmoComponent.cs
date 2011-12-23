@@ -435,16 +435,16 @@ namespace Button
                 ActiveAxis = GizmoAxis.None;
             }
 
+            if (theInputManager.SingleKeyPressInput(Keys.Back) || theInputManager.SingleKeyPressInput(Keys.RightControl))
+            {
+                 Selection.Clear();
+            }
 
             if (theInputManager.mouseLeftPressed && ActiveAxis == GizmoAxis.None)
             {
-                // add to selection or clear current selection
-                if (theInputManager.KeyIsUp(addToSelection) && theInputManager.KeyIsUp(removeFromSelection))
-                {
-                    Selection.Clear();
-                }
+                Selection.Clear();
 
-                PickObject(theInputManager.MousePositionOnWindow, true);
+                PickObject(theInputManager.mousePosition, true);
             }
 
             if (Enabled)

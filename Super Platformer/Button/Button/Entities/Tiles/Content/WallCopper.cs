@@ -22,6 +22,7 @@ namespace Button
             newTile.IsCollidable = true;
             newTile.Model = FileManager.Get().LoadModel("Satelite");
             newTile.FilePathToModel = "Satelite";
+            newTile.ColorMap = FileManager.Get().LoadTexture2D("Rock");
         }
     }
 }

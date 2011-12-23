@@ -22,6 +22,7 @@ namespace Button
             newTile.IsCollidable = true;
             newTile.Model = FileManager.Get().LoadModel("Monolith");
             newTile.FilePathToModel = "Monolith";
+            newTile.ColorMap = FileManager.Get().LoadTexture2D("Metalic");
         }
     }
 }

@@ -50,7 +50,8 @@ namespace Button
         
         public Vector2 mousePosition
         {
-            get { return new Vector2(mCurrentMouseState.X, mCurrentMouseState.Y); }
+             get { return mMousePositionOnWindow; }
+            //get { return new Vector2(mCurrentMouseState.X, mCurrentMouseState.Y); }
         }
 
         public bool mouseLeftPressed
