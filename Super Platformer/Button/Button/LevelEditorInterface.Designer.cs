@@ -78,7 +78,6 @@
             this.numericUpDown22 = new System.Windows.Forms.NumericUpDown();
             this.numericUpDown23 = new System.Windows.Forms.NumericUpDown();
             this.numericUpDown24 = new System.Windows.Forms.NumericUpDown();
-            this.iAssetPreview = new System.Windows.Forms.PictureBox();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
@@ -143,7 +142,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown22)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown23)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown24)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.iAssetPreview)).BeginInit();
             this.tabTerrain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.itNoise)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.itSmooth)).BeginInit();
@@ -568,7 +566,6 @@
             this.tabAssets.Controls.Add(this.numericUpDown22);
             this.tabAssets.Controls.Add(this.numericUpDown23);
             this.tabAssets.Controls.Add(this.numericUpDown24);
-            this.tabAssets.Controls.Add(this.iAssetPreview);
             this.tabAssets.Controls.Add(this.label8);
             this.tabAssets.Controls.Add(this.label9);
             this.tabAssets.Controls.Add(this.label11);
@@ -663,16 +660,6 @@
             this.numericUpDown24.Name = "numericUpDown24";
             this.numericUpDown24.Size = new System.Drawing.Size(64, 23);
             this.numericUpDown24.TabIndex = 39;
-            // 
-            // iAssetPreview
-            // 
-            this.iAssetPreview.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.iAssetPreview.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.iAssetPreview.Location = new System.Drawing.Point(558, 26);
-            this.iAssetPreview.Name = "iAssetPreview";
-            this.iAssetPreview.Size = new System.Drawing.Size(126, 126);
-            this.iAssetPreview.TabIndex = 38;
-            this.iAssetPreview.TabStop = false;
             // 
             // label8
             // 
@@ -1031,7 +1018,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown22)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown23)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown24)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.iAssetPreview)).EndInit();
             this.tabTerrain.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.itNoise)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.itSmooth)).EndInit();
@@ -1095,7 +1081,6 @@
         private System.Windows.Forms.NumericUpDown numericUpDown22;
         private System.Windows.Forms.NumericUpDown numericUpDown23;
         private System.Windows.Forms.NumericUpDown numericUpDown24;
-        private System.Windows.Forms.PictureBox iAssetPreview;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label11;

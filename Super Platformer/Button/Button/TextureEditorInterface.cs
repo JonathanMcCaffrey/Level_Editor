@@ -138,7 +138,7 @@ namespace Button
             else
             {
                 UpdateWindow();
-                mTextureEditor.AddTextureToStack(new EditorTexture2D(FileManager.Get().LoadTexture2D("MetalWall"), tempMousePosition, Microsoft.Xna.Framework.Color.White));
+                mTextureEditor.AddTextureToStack(new EditorTexture2D(FileManager.Get().LoadTexture2D("Background"), tempMousePosition, Microsoft.Xna.Framework.Color.White));
             }
         }
 

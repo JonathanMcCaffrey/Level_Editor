@@ -89,7 +89,7 @@ namespace Button
 
             mObjFilePath = "C:\\Users\\mcca0442\\Desktop\\trunk\\Super Platformer\\Button\\ButtonContent\\Assets\\Asteroid.obj";
             mObjModel = new ObjModel(mObjFilePath);
-            ColorMap = theFileManager.LoadTexture2D("Necron");
+            ColorMap = theFileManager.LoadTexture2D("TextureEditorTest");
         }
         #endregion
 

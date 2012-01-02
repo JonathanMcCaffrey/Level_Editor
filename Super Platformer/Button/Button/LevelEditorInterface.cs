@@ -15,19 +15,7 @@ namespace Button
     public partial class LevelEditorInterface : Form
     {
         #region Data
-        /*   private LevelEditorInterface mLevelEditorInterface = null;
-        public LevelEditorInterface LevelEditorInterface
-        {
-            set
-            {
-                mLevelEditorInterface = value;
-            }
-        }*/
-
-        EditorAssetLoader mEditorAssetLoader = new EditorAssetLoader(@"C:\Users\mcca0442\Desktop\trunk\Super Platformer\Button\ButtonContent\Assets");
-
         private bool mIsHoveringOnEditor = false;
-        
         #endregion
 
         #region Construction
@@ -39,22 +27,6 @@ namespace Button
 
             InitializeComponent();
             InitializeImages();
-
-            mEditorAssetLoader.Load();
-
-            List<string> tempList = mEditorAssetLoader.StortedIconFiles;
-
-            ImageList tempImageList = new ImageList();
-
-            for (int loop = 0; loop < tempList.Count; loop++)
-            {
-                tempImageList.Images.Add(Image.FromFile(tempList[loop]));
-                iAssetList.Items.Add(tempList[loop]);
-                iAssetList.Items[loop].BackColor = System.Drawing.Color.White;
-                iAssetList.Items[loop].Name = tempList[loop];
-                iAssetList.LargeImageList = tempImageList;
-                iAssetList.Items[loop].ImageIndex = loop;
-            }
         }
 
         /** Windows Form cannot preload images with XNA 4.0. Microsoft stated the problem will not be fixed in future updates.
