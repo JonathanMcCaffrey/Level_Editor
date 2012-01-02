@@ -43,13 +43,15 @@ namespace Button
         private RenderTarget2D mEditorWorkAreaRenderTarget2D = null;
         public RenderTarget2D EditorWorkAreaRenderTexture2D
         {
-            get {
+            get
+            {
                 if (mTextureEditorRenderTarget2D == null)
                 {
                     Console.WriteLine("{0} is being called before {1} is initialized. {2}.", "mEditorWorkAreaRenderTarget2D", "mEditorWorkAreaRenderTarget2D", this.ToString());
                 }
 
-                return mEditorWorkAreaRenderTarget2D; }
+                return mEditorWorkAreaRenderTarget2D;
+            }
             set { mEditorWorkAreaRenderTarget2D = value; }
         }
 
@@ -89,7 +91,7 @@ namespace Button
             {
                 if (mEffect == null)
                 {
-                    mEffect = mContentManager.Load<Effect>(@"Shader\Standard");
+                    mEffect = mContentManager.Load<Effect>(@"Basic");
                 }
 
                 return mEffect;
@@ -129,25 +131,29 @@ namespace Button
         private ContentManager mContentManager = null;
         public ContentManager ContentManager
         {
-            get {
+            get
+            {
                 if (mContentManager == null)
                 {
                     Console.WriteLine("{0} is being called before {1} is initialized. {2}.", "mContentManager", "FileManager", this.ToString());
                 }
-                
-                return mContentManager; }
+
+                return mContentManager;
+            }
         }
 
         private GraphicsDevice mGraphicsDevice = null;
         public new GraphicsDevice GraphicsDevice
         {
-            get {
+            get
+            {
                 if (mGraphicsDevice == null)
                 {
                     Console.WriteLine("{0} is being called before {1} is initialized. {2}.", "mGraphicsDevice", "FileManager", this.ToString());
                 }
 
-                return mGraphicsDevice; }
+                return mGraphicsDevice;
+            }
         }
 
         private Vector2 mScreenCenter;
@@ -193,14 +199,31 @@ namespace Button
         private List<Tile> mGizmoSelection = null;
         public List<Tile> GizmoSelection
         {
-            get {
+            get
+            {
                 if (mGizmoSelection == null)
                 {
                     Console.WriteLine("{0} is being called before {1} is initialized. {2}.", "mGizmoSelection", "mGizmoSelection", this.ToString());
                 }
 
-                return mGizmoSelection; }
+                return mGizmoSelection;
+            }
             set { mGizmoSelection = value; }
+        }
+
+        private Tile mCurrentTile = null;
+        public Tile CurrentTile
+        {
+            get
+            {
+                if (mCurrentTile == null)
+                {
+                    Console.WriteLine("{0} is being called before {1} is initialized. {2}.", "mCurrentTile", "mCurrentTile", this.ToString());
+                }
+
+                return mCurrentTile;
+            }
+            set { mCurrentTile = value; }
         }
 
         #endregion

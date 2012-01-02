@@ -14,7 +14,6 @@ namespace Button
         protected InputManager theInputManager = InputManager.Get();
         protected UtilityManager theUtilityManager = UtilityManager.Get();
         protected TileManager theTileManager = TileManager.Get();
-        protected ButtonManager theButtonManager = ButtonManager.Get();
         protected ScreenManager theScreenManager = ScreenManager.Get();
         #endregion
 

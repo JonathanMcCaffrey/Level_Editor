@@ -47,10 +47,12 @@ namespace Button
         private Vector3 mLowestPointOnModel = Vector3.Zero;
         
         private VertexPositionColor[] mCollisionBox;
-        private VertexPositionNormalTexture[] mModel;
+        private VertexPositionNormalTexture[] mObjModel;
 
         private StreamReader mStreamReader;
         private string rawData = "";
+
+        private Effect mEffect;
 
         #endregion
 
@@ -79,6 +81,9 @@ namespace Button
         {
             // TODO: Change technique of extracting the current graphic device.
             theFileManager = FileManager.Get();
+
+            mEffect = theFileManager.Effect;
+
 
             mStreamReader = new StreamReader(aObjFilePath);
 
@@ -261,23 +266,42 @@ namespace Button
             mCollisionBox[temporaryInt] = new VertexPositionColor(new Vector3(mHighestPointOnModel.X, mHighestPointOnModel.Y, mLowestPointOnModel.Z), temporaryColor); temporaryInt++;
             mCollisionBox[temporaryInt] = new VertexPositionColor(new Vector3(mLowestPointOnModel.X, mHighestPointOnModel.Y, mLowestPointOnModel.Z), temporaryColor); temporaryInt++;
 
-            mModel = new VertexPositionNormalTexture[mFaceList.Length / 3];
+            mObjModel = new VertexPositionNormalTexture[mFaceList.Length / 3];
 
             int index = 0;
-            for (int loop = 0; loop < mModel.Length; loop++)
+            for (int loop = 0; loop < mObjModel.Length; loop++)
             {
-                mModel[loop] = new VertexPositionNormalTexture(mColorVerts[mFaceList[index]], mNormalVerts[mFaceList[index + 2]], mTextureCoordinates[mFaceList[index + 1]]);
+                mObjModel[loop] = new VertexPositionNormalTexture(mColorVerts[mFaceList[index]], mNormalVerts[mFaceList[index + 2]], mTextureCoordinates[mFaceList[index + 1]]);
                 index += 3;
             }
 
-            mVertexBuffer = new VertexBuffer(theFileManager.GraphicsDevice, VertexPositionNormalTexture.VertexDeclaration, mModel.Length, BufferUsage.WriteOnly);
-            mVertexBuffer.SetData(mModel);
+            mVertexBuffer = new VertexBuffer(theFileManager.GraphicsDevice, VertexPositionNormalTexture.VertexDeclaration, mObjModel.Length, BufferUsage.WriteOnly);
+            mVertexBuffer.SetData(mObjModel);
             mIndexBuffer = new IndexBuffer(theFileManager.GraphicsDevice, typeof(int), mFaceList.Length, BufferUsage.None);
             mIndexBuffer.SetData(mFaceList);
         }
         #endregion
 
         #region Methods
+        public void Draw(Tile aTile)
+        {
+            theFileManager.GraphicsDevice.RasterizerState = RasterizerState.CullClockwise;
+            theFileManager.GraphicsDevice.BlendState = BlendState.Opaque;
+            theFileManager.GraphicsDevice.DepthStencilState = DepthStencilState.Default;
+
+
+            foreach (EffectPass pass in mEffect.CurrentTechnique.Passes)
+            {
+                mEffect.CurrentTechnique = mEffect.Techniques["Standard"];
+                mEffect.Parameters["xWorldViewProjectionMatrix"].SetValue(aTile.ScaleMatrix * aTile.RotationMatrix * aTile.WorldMatrix * theFileManager.ViewMatrix * theFileManager.ProjectionMatrix);
+
+                mEffect.Parameters["xColorMap"].SetValue(aTile.Graphic);
+
+                pass.Apply();
+
+                theFileManager.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleList, mObjModel, 0, mObjModel.Length / 3);
+            }
+        }
 
         #region ToString
         public override string ToString()

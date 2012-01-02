@@ -66,7 +66,6 @@
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.lPosition = new System.Windows.Forms.Label();
             this.tabAssets = new System.Windows.Forms.TabPage();
-            this.iAssetList = new System.Windows.Forms.ListView();
             this.numericUpDown13 = new System.Windows.Forms.NumericUpDown();
             this.numericUpDown14 = new System.Windows.Forms.NumericUpDown();
             this.numericUpDown15 = new System.Windows.Forms.NumericUpDown();
@@ -557,7 +556,6 @@
             // tabAssets
             // 
             this.tabAssets.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.tabAssets.Controls.Add(this.iAssetList);
             this.tabAssets.Controls.Add(this.numericUpDown13);
             this.tabAssets.Controls.Add(this.numericUpDown14);
             this.tabAssets.Controls.Add(this.numericUpDown15);
@@ -578,27 +576,9 @@
             this.tabAssets.Location = new System.Drawing.Point(4, 25);
             this.tabAssets.Name = "tabAssets";
             this.tabAssets.Padding = new System.Windows.Forms.Padding(3);
-            this.tabAssets.Size = new System.Drawing.Size(1159, 158);
+            this.tabAssets.Size = new System.Drawing.Size(742, 158);
             this.tabAssets.TabIndex = 1;
             this.tabAssets.Text = "Assets";
-            // 
-            // iAssetList
-            // 
-            this.iAssetList.Alignment = System.Windows.Forms.ListViewAlignment.SnapToGrid;
-            this.iAssetList.AutoArrange = false;
-            this.iAssetList.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.iAssetList.BackgroundImageTiled = true;
-            this.iAssetList.GridLines = true;
-            this.iAssetList.Location = new System.Drawing.Point(12, 18);
-            this.iAssetList.MultiSelect = false;
-            this.iAssetList.Name = "iAssetList";
-            this.iAssetList.ShowGroups = false;
-            this.iAssetList.Size = new System.Drawing.Size(158, 126);
-            this.iAssetList.TabIndex = 51;
-            this.iAssetList.TileSize = new System.Drawing.Size(32, 32);
-            this.iAssetList.UseCompatibleStateImageBehavior = false;
-            this.iAssetList.View = System.Windows.Forms.View.Tile;
-            this.iAssetList.SelectedIndexChanged += new System.EventHandler(this.iAssetList_SelectedIndexChanged);
             // 
             // numericUpDown13
             // 
@@ -1158,6 +1138,5 @@
         private System.Windows.Forms.PictureBox iTopGraphic;
         private System.Windows.Forms.PictureBox iFrontGraphic;
         private System.Windows.Forms.PictureBox iRightGraphic;
-        private System.Windows.Forms.ListView iAssetList;
     }
 }

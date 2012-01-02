@@ -14,7 +14,6 @@ namespace Button
         protected InputManager theInputManager = InputManager.Get();
         protected UtilityManager theUtilityManager = UtilityManager.Get();
         protected TileManager theTileManager = TileManager.Get();
-        protected ButtonManager theButtonManager = ButtonManager.Get();
         protected ScreenManager theScreenManager = ScreenManager.Get();
         #endregion
 
@@ -36,7 +35,7 @@ namespace Button
         protected string mFilePathToGraphic = "IconOne";
         public Texture2D Graphic
         {
-            get { return theFileManager.LoadTexture2D(FilePathToGraphic); }
+            get { return theFileManager.TextureEditorRenderTarget2D; }// theFileManager.LoadTexture2D(FilePathToGraphic); }
         }
         public string FilePathToGraphic
         {
@@ -44,7 +43,7 @@ namespace Button
             set { mFilePathToGraphic = value; }
         }
 
-        protected string mFilePathToModel = "Spike";
+        protected string mFilePathToModel = "Asteroid.obj";
         public string FilePathToModel
         {
             get { return mFilePathToModel; }
@@ -56,44 +55,6 @@ namespace Button
         {
             get
             {
-                /*  if (mWorldPosition.X % Graphic.Width < 32)
-                  {
-                      if (mWorldPosition.X % Graphic.Width != 0)
-                      {
-                          float x = mWorldPosition.X % Graphic.Width;
-
-                          mWorldPosition.X -= x;
-                      }
-                  }
-                  else
-                  {
-                      if (mWorldPosition.X % Graphic.Width != 0)
-                      {
-                          float x = Graphic.Width - (mWorldPosition.X % Graphic.Width);
-
-                          mWorldPosition.X += x;
-                      }
-                  }
-
-                  if (mWorldPosition.Y % Graphic.Width < 32)
-                  {
-                      if (mWorldPosition.Y % Graphic.Height != 0)
-                      {
-                          float y = mWorldPosition.Y % Graphic.Height;
-
-                          mWorldPosition.Y -= y;
-                      }
-                  }
-                  else
-                  {
-                      if (mWorldPosition.Y % Graphic.Height != 0)
-                      {
-                          float y = Graphic.Height - (mWorldPosition.Y % Graphic.Height);
-
-                          mWorldPosition.Y += y;
-                      }
-                  }
-                  */
                 return mWorldPosition;
             }
             set
@@ -159,7 +120,6 @@ namespace Button
         {
             get { return mGunDirection; }
         }
-
 
         protected Rectangle SourceRectangle
         {
@@ -292,10 +252,7 @@ namespace Button
             mOldPosition = mWorldPosition;
         }
 
-        public virtual void Draw()
-        {
-            // theFileManager.SpriteBatch.Draw(Graphic, ScreenPosition, SourceRectangle, Color, Rotation, Origin, Scale, SpriteEffects, LayerDepth);
-        }
+        public virtual void Draw() { }
 
         public virtual void Create(Vector3 aCoordinate) { }
         #endregion

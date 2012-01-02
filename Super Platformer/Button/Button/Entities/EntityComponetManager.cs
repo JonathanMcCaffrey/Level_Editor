@@ -109,8 +109,6 @@ namespace Button
             }
             mSpriteBatch.Draw(FileManager.Get().LoadTexture2D("Arrow"), Vector2.Zero, Color.White);
 
-            ButtonManager.Get().Draw(aGameTime);
-
             gizmo.Draw3D();
 
             mSpriteBatch.End();

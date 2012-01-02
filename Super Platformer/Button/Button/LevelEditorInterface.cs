@@ -129,8 +129,6 @@ namespace Button
         void iGameGraphic_MouseDoubleClick(object sender, MouseEventArgs aMouseEvent)
         {
             Vector2 tempMousePosition = new Vector2(aMouseEvent.X, aMouseEvent.Y);
-
-            ButtonManager.Get().GenerateEntity(new Vector3(tempMousePosition.X, 0, tempMousePosition.Y));
         }
 
         void iGameGraphic_MouseClick(object sender, MouseEventArgs aMouseEvent)

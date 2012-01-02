@@ -10,7 +10,8 @@ namespace Button
     public class Tile : AbstractEntity
     {
         #region Data
-        private Model mModel = null;
+   
+        /*private Model mModel = null;
         public Model Model
         {
             get
@@ -23,7 +24,11 @@ namespace Button
                 return mModel;
             }
             set { mModel = value; }
-        }
+        }*/
+
+        private string mObjFilePath;
+        private ObjModel mObjModel;
+
         Matrix mWorldMatrix = Matrix.Identity;
         public Matrix WorldMatrix
         {
@@ -53,7 +58,7 @@ namespace Button
         }
         
 
-        private Texture2D mColorMap;
+        private Texture2D mColorMap = null;
         public Texture2D ColorMap
         {
             get { return mColorMap; }
@@ -81,6 +86,10 @@ namespace Button
             mManager = theTileManager;
             Name = "tile";
             mRenderTarget = new RenderTarget2D(FileManager.Get().GraphicsDevice, 512, 512);
+
+            mObjFilePath = "C:\\Users\\mcca0442\\Desktop\\trunk\\Super Platformer\\Button\\ButtonContent\\Assets\\Asteroid.obj";
+            mObjModel = new ObjModel(mObjFilePath);
+            ColorMap = theFileManager.LoadTexture2D("Necron");
         }
         #endregion
 
@@ -104,32 +113,34 @@ namespace Button
         bool once = false;
         public override void Draw()
         {
-            if (FileManager.Get().TextureEditorRenderTarget2D != null)
+            mObjModel.Draw(this);
+        }
+
+        public void Clone()
+        {
+            try
             {
-                Matrix[] tempTransforms = new Matrix[Model.Bones.Count];
-                Model.CopyAbsoluteBoneTransformsTo(tempTransforms);
+                Tile clonedTile = new Tile();
+                clonedTile.WorldPosition = this.WorldPosition;
+                clonedTile.FilePathToGraphic = this.FilePathToGraphic;
+                clonedTile.FilePathToModel = this.FilePathToModel;
+                clonedTile.mObjModel = new ObjModel(this.FilePathToModel);
 
+                theTileManager.Add(clonedTile);
+            }
+            catch
+            {
+                Console.WriteLine("{0} has an incorrect filepath of {1}. {2}.", "clonedTile", this.FilePathToModel, this.ToString());
 
-                for (int outerLoop = 0; outerLoop < Model.Meshes.Count; outerLoop++)
-                {
-                    ModelMesh tempMesh = Model.Meshes[outerLoop];
-
-                    for (int innerLoop = 0; innerLoop < tempMesh.Effects.Count; innerLoop++)
-                    {
-                        BasicEffect tempEffect = tempMesh.Effects[innerLoop] as BasicEffect;
-
-                        tempEffect.EnableDefaultLighting();
-                        tempEffect.World = tempTransforms[tempMesh.ParentBone.Index] * ScaleMatrix * RotationMatrix * mWorldMatrix;
-                        tempEffect.View = theFileManager.ViewMatrix;
-                        tempEffect.Projection = theFileManager.ProjectionMatrix;
-
-                        tempEffect.Texture = FileManager.Get().TextureEditorRenderTarget2D;
-                    }
-
-                    tempMesh.Draw();
-                }
             }
         }
+
+        #region Common .NET Overrides
+        public override string ToString()
+        {
+            return "EditorAssetLoader.cs";
+        }
+        #endregion
         #endregion
     }
 }

@@ -7,7 +7,7 @@ namespace Button
 {
     //<summary>
     // Inherits from FileListLoader.
-    // Contains specific schematics for loading files for the editor.e
+    // Contains specific schematics for loading files for the editor.
     //</summary>
     public class EditorAssetLoader : FileListLoader
     {

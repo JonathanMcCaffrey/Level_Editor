@@ -42,8 +42,6 @@ namespace Button
             mQuakeCamera.Update();
 
             theEntityComponetManager.Update(aGameTime);
-
-            theButtonManager.Update(aGameTime);
         }
 
         public override void Draw(GameTime aGameTime)

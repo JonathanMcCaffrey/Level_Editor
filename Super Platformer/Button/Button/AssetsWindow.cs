@@ -11,14 +11,21 @@ namespace Button
 {
     public partial class AssetsWindow : Form
     {
+        #region Fields
         EditorAssetLoader mEditorAssetLoader = new EditorAssetLoader(@"C:\Users\mcca0442\Desktop\trunk\Super Platformer\Button\ButtonContent\Assets");
 
-        private bool mIsHoveringOnEditor = false;
+        Tile mSelectedTile;
 
+        private bool mIsHoveringOnEditor = false;
+        #endregion
+
+        #region Construction
         public AssetsWindow()
         {
             InitializeComponent();
 
+            mSelectedTile = new Tile();
+            FileManager.Get().CurrentTile = mSelectedTile;
 
             /* this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
              this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;*/
@@ -41,10 +48,17 @@ namespace Button
                 iAssetList.Items[loop].ImageIndex = loop;
             }
         }
+        #endregion
 
+        #region Methods
         private void listView1_SelectedIndexChanged(object sender, EventArgs e)
         {
+            string tempName = iAssetList.SelectedItems[0].Name;
 
+            tempName = tempName.Replace("png", "obj");   // Not working
+
+            mSelectedTile.FilePathToModel = tempName;
         }
+        #endregion
     }
 }

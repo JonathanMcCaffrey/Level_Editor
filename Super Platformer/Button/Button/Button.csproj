@@ -125,18 +125,9 @@
     <Compile Include="Files\Content\EditorAssetLoader.cs" />
     <Compile Include="Files\FileListLoader.cs" />
     <Compile Include="Gizmo\BoundingOrientedBox.cs" />
-    <Compile Include="Buttons\Content\EnemyButton.cs" />
-    <Compile Include="Buttons\Content\TileButton.cs" />
-    <Compile Include="Buttons\GenericButton.cs" />
     <Compile Include="Entities\AbstractEntity.cs" />
     <Compile Include="Entities\AbstractEntityManager.cs" />
     <Compile Include="Entities\EntityComponetManager.cs" />
-    <Compile Include="Entities\Tiles\Content\WallCopper.cs" />
-    <Compile Include="Entities\Tiles\Content\WallMetal.cs" />
-    <Compile Include="Entities\Tiles\Content\FloorCopper.cs" />
-    <Compile Include="Entities\Tiles\Content\HardWallCopper.cs" />
-    <Compile Include="Entities\Tiles\Content\HardWallMetal.cs" />
-    <Compile Include="Entities\Tiles\Content\FloorMetal.cs" />
     <Compile Include="Gizmo\GizmoComponent.cs" />
     <Compile Include="LevelEditorInterface.cs">
       <SubType>Form</SubType>
@@ -159,7 +150,6 @@
       <DependentUpon>SaveMap.cs</DependentUpon>
     </Compile>
     <Compile Include="Screens\AbstractGameScreen.cs" />
-    <Compile Include="Buttons\ButtonManager.cs" />
     <Compile Include="Screens\Content\WorldScreen.cs" />
     <Compile Include="Screens\ScreenManager.cs" />
     <Compile Include="Entities\Tiles\TileManager.cs" />
@@ -231,8 +221,9 @@
       <DependentUpon>TextureEditorInterface.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="Shaders\" />
+    <None Include="Shaders\Basic.fx" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\Microsoft.Xna.GameStudio.targets" />

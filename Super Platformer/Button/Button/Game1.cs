@@ -40,7 +40,6 @@ namespace Button
         protected InputManager theInputManager;
         protected UtilityManager theUtilityManager;
         protected TileManager theTileManager;
-        protected ButtonManager theButtonManager;
         protected ScreenManager theScreenManager;
         protected EntityComponetManager theEntityComponetManager;
         #endregion
@@ -70,20 +69,12 @@ namespace Button
             theInputManager = InputManager.Get(this);
             theUtilityManager = UtilityManager.Get(this);
             theTileManager = TileManager.Get(this);
-            theButtonManager = ButtonManager.Get(this);
             theScreenManager = ScreenManager.Get(this);
 
             theEntityComponetManager = EntityComponetManager.Get(this);
             theEntityComponetManager.Initialize();
 
             theScreenManager.WorldScreen = new WorldScreen();
-
-            TileButton.Create(new FloorCopper(), Keys.E);
-            TileButton.Create(new FloorMetal(), Keys.R);
-            TileButton.Create(new HardWallCopper(), Keys.T);
-            TileButton.Create(new HardWallMetal(), Keys.Y);
-            TileButton.Create(new WallMetal(), Keys.Q);
-            TileButton.Create(new CopperWall(), Keys.W);
 
             base.Initialize();
         }
@@ -112,7 +103,9 @@ namespace Button
             {
                 Vector2 mousePosition = new Vector2(theInputManager.mousePosition.X, theInputManager.mousePosition.Y);
 
-                theButtonManager.GenerateEntity(new Vector3(theInputManager.mousePosition.X, 0, theInputManager.mousePosition.Y));
+                theFileManager.CurrentTile.WorldPosition = new Vector3(mousePosition.X, mousePosition.Y, 0);
+                theFileManager.CurrentTile.Clone();
+
             }
 
             theInputManager.Update(aGameTime);
