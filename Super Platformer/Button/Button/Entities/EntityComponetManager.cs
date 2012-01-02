@@ -24,6 +24,7 @@ namespace Button
         #region Data
         private LevelEditorInterface levelEditor = new LevelEditorInterface();
         private TextureEditorInterface textureEditorInterface = new TextureEditorInterface();
+        private AssetsWindow assetsWindow = new AssetsWindow();
 
         private TextureEditor textureEditor;
 
@@ -63,6 +64,7 @@ namespace Button
 
             levelEditor.Visible = true;
             textureEditorInterface.Visible = true;
+            assetsWindow.Visible = true;
 
             mList.Add(TileManager.Get());
 

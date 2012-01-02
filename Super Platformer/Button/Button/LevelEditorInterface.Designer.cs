@@ -361,7 +361,7 @@
             this.iTopGraphic.Dock = System.Windows.Forms.DockStyle.Fill;
             this.iTopGraphic.Location = new System.Drawing.Point(3, 3);
             this.iTopGraphic.Name = "iTopGraphic";
-            this.iTopGraphic.Size = new System.Drawing.Size(714, 529);
+            this.iTopGraphic.Size = new System.Drawing.Size(736, 573);
             this.iTopGraphic.TabIndex = 0;
             this.iTopGraphic.TabStop = false;
             // 
@@ -381,7 +381,7 @@
             this.iFrontGraphic.Dock = System.Windows.Forms.DockStyle.Fill;
             this.iFrontGraphic.Location = new System.Drawing.Point(3, 3);
             this.iFrontGraphic.Name = "iFrontGraphic";
-            this.iFrontGraphic.Size = new System.Drawing.Size(714, 529);
+            this.iFrontGraphic.Size = new System.Drawing.Size(736, 573);
             this.iFrontGraphic.TabIndex = 0;
             this.iFrontGraphic.TabStop = false;
             // 
@@ -401,7 +401,7 @@
             this.iRightGraphic.Dock = System.Windows.Forms.DockStyle.Fill;
             this.iRightGraphic.Location = new System.Drawing.Point(3, 3);
             this.iRightGraphic.Name = "iRightGraphic";
-            this.iRightGraphic.Size = new System.Drawing.Size(714, 529);
+            this.iRightGraphic.Size = new System.Drawing.Size(736, 573);
             this.iRightGraphic.TabIndex = 0;
             this.iRightGraphic.TabStop = false;
             // 
@@ -578,7 +578,7 @@
             this.tabAssets.Location = new System.Drawing.Point(4, 25);
             this.tabAssets.Name = "tabAssets";
             this.tabAssets.Padding = new System.Windows.Forms.Padding(3);
-            this.tabAssets.Size = new System.Drawing.Size(742, 158);
+            this.tabAssets.Size = new System.Drawing.Size(1159, 158);
             this.tabAssets.TabIndex = 1;
             this.tabAssets.Text = "Assets";
             // 
@@ -598,6 +598,7 @@
             this.iAssetList.TileSize = new System.Drawing.Size(32, 32);
             this.iAssetList.UseCompatibleStateImageBehavior = false;
             this.iAssetList.View = System.Windows.Forms.View.Tile;
+            this.iAssetList.SelectedIndexChanged += new System.EventHandler(this.iAssetList_SelectedIndexChanged);
             // 
             // numericUpDown13
             // 

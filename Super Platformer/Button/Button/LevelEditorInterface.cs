@@ -42,16 +42,17 @@ namespace Button
 
             mEditorAssetLoader.Load();
 
-            List<string> tempList = mEditorAssetLoader.StortedTextureFiles;
+            List<string> tempList = mEditorAssetLoader.StortedIconFiles;
 
-            ImageList test = new ImageList();
+            ImageList tempImageList = new ImageList();
 
             for (int loop = 0; loop < tempList.Count; loop++)
             {
-                test.Images.Add(Image.FromFile(tempList[loop]));
+                tempImageList.Images.Add(Image.FromFile(tempList[loop]));
                 iAssetList.Items.Add(tempList[loop]);
                 iAssetList.Items[loop].BackColor = System.Drawing.Color.White;
-                iAssetList.LargeImageList = test;
+                iAssetList.Items[loop].Name = tempList[loop];
+                iAssetList.LargeImageList = tempImageList;
                 iAssetList.Items[loop].ImageIndex = loop;
             }
         }
@@ -156,6 +157,11 @@ namespace Button
         private void itNew_Click(object sender, EventArgs e)
         {
             EntityComponetManager.Get().Clear();
+        }
+
+        private void iAssetList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

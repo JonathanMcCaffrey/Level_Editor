@@ -114,6 +114,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AssetsWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AssetsWindow.Designer.cs">
+      <DependentUpon>AssetsWindow.cs</DependentUpon>
+    </Compile>
     <Compile Include="Camera\QuakeCamera.cs" />
     <Compile Include="EditorTexture2D.cs" />
     <Compile Include="Files\Content\EditorAssetLoader.cs" />
@@ -145,6 +151,7 @@
       <DependentUpon>LoadMap.cs</DependentUpon>
     </Compile>
     <Compile Include="Gizmo\Quad.cs" />
+    <Compile Include="Files\ObjModel.cs" />
     <Compile Include="SaveMap.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -208,6 +215,9 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="AssetsWindow.resx">
+      <DependentUpon>AssetsWindow.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="LevelEditorInterface.resx">
       <DependentUpon>LevelEditorInterface.cs</DependentUpon>
     </EmbeddedResource>

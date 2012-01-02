@@ -7,7 +7,7 @@ namespace Button
 {
     //<summary>
     // Inherits from FileListLoader.
-    // Contains specific schematics for loading files for the editor.
+    // Contains specific schematics for loading files for the editor.e
     //</summary>
     public class EditorAssetLoader : FileListLoader
     {
@@ -26,6 +26,25 @@ namespace Button
             }
         }
 
+        private List<string> mStortedIconFiles = new List<string>();
+        public List<string> StortedIconFiles
+        {
+            get
+            {
+                if (mStortedIconFiles == null)
+                {
+                    Console.WriteLine("{0} did not load/is empty. {1}.", "mStortedIconFiles", this.ToString());
+                }
+
+                if (mSortedModelFiles != null && mSortedModelFiles != null && (mSortedModelFiles.Count != mStortedIconFiles.Count))
+                {
+                    Console.WriteLine("{0} does not have the same amount of graphics as models. {1}.", "mStortedIconFiles", this.ToString());
+                }
+
+                return mStortedIconFiles;
+            }
+        }
+
         private List<string> mStortedTextureFiles = new List<string>();
         public List<string> StortedTextureFiles
         {
@@ -35,6 +54,12 @@ namespace Button
                 {
                     Console.WriteLine("{0} did not load/is empty. {1}.", "mStortedTextureFiles", this.ToString());
                 }
+
+                if (mSortedModelFiles != null && mSortedModelFiles != null && (mSortedModelFiles.Count != mStortedIconFiles.Count))
+                {
+                    Console.WriteLine("{0} does not have the same amount of graphics as models. {1}.", "mStortedTextureFiles", this.ToString());
+                }
+
 
                 return mStortedTextureFiles;
             }
@@ -70,7 +95,7 @@ namespace Button
 
                     case "png":
                         Console.WriteLine(ListOfFilePaths[loop]);
-                        mStortedTextureFiles.Add(ListOfFilePaths[loop]);
+                        mStortedIconFiles.Add(ListOfFilePaths[loop]);
                         break;
 
                     default:
