@@ -10,7 +10,7 @@ using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
 
 #region Program
-namespace Button
+namespace LevelEditor
 {
 #if WINDOWS || XBOX
 
@@ -31,7 +31,7 @@ namespace Button
 }
 #endregion
 
-namespace Button
+namespace LevelEditor
 {
     public class Game1 : Microsoft.Xna.Framework.Game
     {

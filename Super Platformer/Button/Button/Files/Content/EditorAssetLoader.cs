@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Button
+namespace LevelEditor
 {
     //<summary>
     // Inherits from FileListLoader.

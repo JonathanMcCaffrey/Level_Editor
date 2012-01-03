@@ -11,7 +11,7 @@ using System.Runtime.Serialization;
 using System.Xml.Serialization;
 using System.Xml;
 
-namespace Button
+namespace LevelEditor
 {
     /** All entities are a deprecated interface and will be replaced with the proper componet system when this level editior project
      * is transfered into the main project. */

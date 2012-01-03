@@ -12,7 +12,7 @@ using System.Runtime.Serialization;
 using System.Xml.Serialization;
 using System.Xml;
 
-namespace Button
+namespace LevelEditor
 {
 
     public class TileManager : AbstractEntityManager

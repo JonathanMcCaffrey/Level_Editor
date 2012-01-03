@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace Button
+namespace LevelEditor
 {
     public partial class AssetsWindow : Form
     {

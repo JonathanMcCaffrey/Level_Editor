@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.IO;
 
-namespace Button
+namespace LevelEditor
 {
     //<summary>
     // FileListLoader objects take a filepath to a directory.

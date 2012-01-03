@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
-namespace Button
+namespace LevelEditor
 {
     public class InputManager : Microsoft.Xna.Framework.GameComponent
     {

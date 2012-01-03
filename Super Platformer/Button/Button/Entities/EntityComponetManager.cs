@@ -12,7 +12,7 @@ using System.Runtime.Serialization;
 using System.Xml.Serialization;
 using System.Xml;
 
-namespace Button
+namespace LevelEditor
 {
     public class EntityComponetManager : DrawableGameComponent
     {
@@ -34,6 +34,8 @@ namespace Button
         private RenderTarget2D mEditorWorkAreaRenderTexture2D;
 
         private GizmoComponent gizmo;
+
+        Terrain mTerrain;
 
         #endregion
 
@@ -80,6 +82,8 @@ namespace Button
             gizmo = new GizmoComponent(theFileManager.ContentManager, theFileManager.GraphicsDevice);
             gizmo.Initialize();
 
+            mTerrain = new Terrain();
+
         }
         #endregion
 
@@ -110,6 +114,8 @@ namespace Button
             mSpriteBatch.Draw(FileManager.Get().LoadTexture2D("Arrow"), Vector2.Zero, Color.White);
 
             gizmo.Draw3D();
+
+            mTerrain.Draw();
 
             mSpriteBatch.End();
 

@@ -1,7 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace Button
+namespace LevelEditor
 {
     public class UtilityManager : Microsoft.Xna.Framework.GameComponent
     {

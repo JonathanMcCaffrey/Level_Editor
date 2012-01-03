@@ -9,7 +9,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
 
-namespace Button
+namespace LevelEditor
 {
     public class ScreenManager : Microsoft.Xna.Framework.DrawableGameComponent
     {

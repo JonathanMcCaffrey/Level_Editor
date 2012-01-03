@@ -9,7 +9,7 @@ using System.Windows.Forms;
 using System.Runtime.InteropServices;
 
 
-namespace Button
+namespace LevelEditor
 {
     /** These saved and load forms are deprecated for the built-in save and load forms. After I steal some
      * code from them they will be deleted. */

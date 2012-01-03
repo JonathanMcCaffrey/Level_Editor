@@ -1,4 +1,4 @@
-﻿namespace Button
+﻿namespace LevelEditor
 {
     partial class AssetsWindow
     {

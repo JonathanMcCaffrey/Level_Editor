@@ -9,7 +9,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Storage;
 
-namespace Button
+namespace LevelEditor
 {
     //<summary>
     // Custom Obj Loading for dynamic asset loading at runtime,

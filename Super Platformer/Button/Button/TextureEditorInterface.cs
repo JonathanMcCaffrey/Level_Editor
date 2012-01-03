@@ -10,7 +10,7 @@ using System.IO;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
 
-namespace Button
+namespace LevelEditor
 {
     public partial class TextureEditorInterface : Form
     {

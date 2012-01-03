@@ -10,7 +10,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
 using System.IO;
 
-namespace Button
+namespace LevelEditor
 {
     public partial class LevelEditorInterface : Form
     {

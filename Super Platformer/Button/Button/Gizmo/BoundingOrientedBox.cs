@@ -9,7 +9,7 @@ using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 
 
-namespace Button
+namespace LevelEditor
 {
     /// <summary>
     /// Bounding volume using an oriented bounding box.
