@@ -14,8 +14,17 @@ namespace LevelEditor
 {
     public partial class LevelEditorInterface : Form
     {
-        #region Data
+        #region Fields
         private bool mIsHoveringOnEditor = false;
+        #endregion
+
+        #region Properties
+
+        public TabControl Views
+        {
+            get { return iViews; }
+        }
+
         #endregion
 
         #region Construction
@@ -74,7 +83,12 @@ namespace LevelEditor
             tempMemoryStream.Dispose();
             tempMemoryStream = null;
 
+            string bla = iViews.SelectedTab.Name;
+
             iPerspectiveGraphic.Image = tempImageToUpdate;
+            iTopGraphic.Image = tempImageToUpdate;
+            iFrontGraphic.Image = tempImageToUpdate;
+            iRightGraphic.Image = tempImageToUpdate;
 
             Invalidate();
 

@@ -188,11 +188,47 @@ namespace LevelEditor
             get { return mViewMatrix; }
             set { mViewMatrix = value; }
         }
+        private Matrix mCameraViewMatrix;
+        public Matrix CameraViewMatrix
+        {
+            get { return mCameraViewMatrix; }
+            set { mCameraViewMatrix = value; }
+        }
+        private Matrix mTopViewMatrix;
+        public Matrix TopViewMatrix
+        {
+            get { return mTopViewMatrix; }
+            set { mTopViewMatrix = value; }
+        }
+        private Matrix mFrontViewMatrix;
+        public Matrix FrontViewMatrix
+        {
+            get { return mFrontViewMatrix; }
+            set { mFrontViewMatrix = value; }
+        }
+        private Matrix mRightViewMatrix;
+        public Matrix RightViewMatrix
+        {
+            get { return mRightViewMatrix; }
+            set { mRightViewMatrix = value; }
+        }
         private Matrix mProjectionMatrix;
         public Matrix ProjectionMatrix
         {
             get { return mProjectionMatrix; }
             set { mProjectionMatrix = value; }
+        }
+        private Matrix mPerspectiveProjectionMatrix;
+        public Matrix PerspectiveProjectionMatrix
+        {
+            get { return mPerspectiveProjectionMatrix; }
+            set { mPerspectiveProjectionMatrix = value; }
+        }
+        private Matrix mOrthographicProjectionMatrix;
+        public Matrix OrthographicProjectionMatrix
+        {
+            get { return mOrthographicProjectionMatrix; }
+            set { mOrthographicProjectionMatrix = value; }
         }
         /** PlaceHolder */
 
@@ -235,9 +271,18 @@ namespace LevelEditor
             mGraphicsDevice = aGame.GraphicsDevice;
             mContentManager = Game.Content;
 
-            mViewMatrix = Matrix.CreateLookAt(CameraPosition, Vector3.Zero, Vector3.Up);
-            mProjectionMatrix = Matrix.CreatePerspectiveFieldOfView(MathHelper.PiOver4, (float)GraphicsDevice.Viewport.Width / (float)GraphicsDevice.Viewport.Height, 1f, 9000f);
+            mCameraViewMatrix = Matrix.CreateLookAt(CameraPosition, Vector3.Zero, Vector3.Up);
+            mPerspectiveProjectionMatrix = Matrix.CreatePerspectiveFieldOfView(MathHelper.PiOver4, (float)GraphicsDevice.Viewport.Width / (float)GraphicsDevice.Viewport.Height, 1f, 9000f);
+            mOrthographicProjectionMatrix = Matrix.CreateOrthographic(2000, 2000, 1, 9000.0f);
 
+            float reallyFarAway = 5000.0f;
+            mTopViewMatrix = Matrix.CreateLookAt(new Vector3(0, reallyFarAway, 0), Vector3.Zero, Vector3.Right);
+            mFrontViewMatrix = Matrix.CreateLookAt(new Vector3(-reallyFarAway, 1, 1), Vector3.Zero, Vector3.Up);
+            mRightViewMatrix = Matrix.CreateLookAt(new Vector3(1, 1, reallyFarAway), Vector3.Zero, Vector3.Up);
+
+
+            mProjectionMatrix = mPerspectiveProjectionMatrix;
+            mViewMatrix = mCameraViewMatrix;
         }
         static FileManager Instance;
         static public FileManager Get(Game aGame)

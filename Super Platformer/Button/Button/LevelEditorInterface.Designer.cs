@@ -42,7 +42,7 @@
             this.itScaleLinear = new System.Windows.Forms.ToolStripButton();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.iBackPanel = new System.Windows.Forms.Panel();
-            this.Views = new System.Windows.Forms.TabControl();
+            this.iViews = new System.Windows.Forms.TabControl();
             this.tabPerspective = new System.Windows.Forms.TabPage();
             this.iPerspectiveGraphic = new System.Windows.Forms.PictureBox();
             this.tabTop = new System.Windows.Forms.TabPage();
@@ -113,7 +113,7 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.iIconStrip.SuspendLayout();
             this.iBackPanel.SuspendLayout();
-            this.Views.SuspendLayout();
+            this.iViews.SuspendLayout();
             this.tabPerspective.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.iPerspectiveGraphic)).BeginInit();
             this.tabTop.SuspendLayout();
@@ -296,7 +296,7 @@
             // 
             this.iBackPanel.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.iBackPanel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.iBackPanel.Controls.Add(this.Views);
+            this.iBackPanel.Controls.Add(this.iViews);
             this.iBackPanel.Controls.Add(this.Modes);
             this.iBackPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.iBackPanel.Location = new System.Drawing.Point(0, 31);
@@ -304,18 +304,18 @@
             this.iBackPanel.Size = new System.Drawing.Size(750, 792);
             this.iBackPanel.TabIndex = 1;
             // 
-            // Views
+            // iViews
             // 
-            this.Views.Controls.Add(this.tabPerspective);
-            this.Views.Controls.Add(this.tabTop);
-            this.Views.Controls.Add(this.tabFront);
-            this.Views.Controls.Add(this.tabRight);
-            this.Views.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Views.Location = new System.Drawing.Point(0, 187);
-            this.Views.Name = "Views";
-            this.Views.SelectedIndex = 0;
-            this.Views.Size = new System.Drawing.Size(750, 605);
-            this.Views.TabIndex = 3;
+            this.iViews.Controls.Add(this.tabPerspective);
+            this.iViews.Controls.Add(this.tabTop);
+            this.iViews.Controls.Add(this.tabFront);
+            this.iViews.Controls.Add(this.tabRight);
+            this.iViews.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.iViews.Location = new System.Drawing.Point(0, 187);
+            this.iViews.Name = "iViews";
+            this.iViews.SelectedIndex = 0;
+            this.iViews.Size = new System.Drawing.Size(750, 605);
+            this.iViews.TabIndex = 3;
             // 
             // tabPerspective
             // 
@@ -987,7 +987,7 @@
             this.iIconStrip.ResumeLayout(false);
             this.iIconStrip.PerformLayout();
             this.iBackPanel.ResumeLayout(false);
-            this.Views.ResumeLayout(false);
+            this.iViews.ResumeLayout(false);
             this.tabPerspective.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.iPerspectiveGraphic)).EndInit();
             this.tabTop.ResumeLayout(false);
@@ -1115,7 +1115,7 @@
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.PictureBox iPerspectiveGraphic;
-        private System.Windows.Forms.TabControl Views;
+        private System.Windows.Forms.TabControl iViews;
         private System.Windows.Forms.TabPage tabPerspective;
         private System.Windows.Forms.TabPage tabTop;
         private System.Windows.Forms.TabPage tabFront;

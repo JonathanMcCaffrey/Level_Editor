@@ -115,6 +115,7 @@ namespace LevelEditor
                             mTexturesToDraw[loop].mRotation, mTexturesToDraw[loop].mOrigin,
                              mTexturesToDraw[loop].mScale, mTexturesToDraw[loop].mSpriteEffect, 0);
                     }
+
                     mSpriteBatch.End();
                     mTexturesToDraw.Clear();
 

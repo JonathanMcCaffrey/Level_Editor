@@ -90,6 +90,27 @@ namespace LevelEditor
         #region Methods
         public override void Update(GameTime aGameTime)
         {
+            if (levelEditor.Views.SelectedTab.Name == "tabPerspective")
+            {
+                theFileManager.ProjectionMatrix = theFileManager.PerspectiveProjectionMatrix;
+                theFileManager.ViewMatrix = theFileManager.CameraViewMatrix;
+            }
+            else if (levelEditor.Views.SelectedTab.Name == "tabTop")
+            {
+                theFileManager.ProjectionMatrix = theFileManager.OrthographicProjectionMatrix;
+                theFileManager.ViewMatrix = theFileManager.TopViewMatrix;
+            }
+            else if (levelEditor.Views.SelectedTab.Name == "tabFront")
+            {
+                theFileManager.ProjectionMatrix = theFileManager.OrthographicProjectionMatrix;
+                theFileManager.ViewMatrix = theFileManager.FrontViewMatrix;
+            }
+            else if (levelEditor.Views.SelectedTab.Name == "tabRight")
+            {
+                theFileManager.ProjectionMatrix = theFileManager.OrthographicProjectionMatrix;
+                theFileManager.ViewMatrix = theFileManager.RightViewMatrix;
+            }
+
             gizmo.HandleInput();
             gizmo.Update(aGameTime);
 
