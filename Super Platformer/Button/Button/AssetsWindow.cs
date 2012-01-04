@@ -55,9 +55,18 @@ namespace LevelEditor
         {
             string tempName = iAssetList.SelectedItems[0].Name;
 
-            tempName = tempName.Replace("png", "obj");   // Not working
+
+            tempName = tempName.Replace("jpg", "obj");   // Not working
 
             mSelectedTile.FilePathToModel = tempName;
+            mSelectedTile.FilePathToGraphic = iAssetList.SelectedItems[0].Name;
+
+            string otherTempName = iAssetList.SelectedItems[0].Name;
+            string[] sorted = otherTempName.Split('\\');
+            otherTempName = sorted[sorted.Length - 1];
+            otherTempName = otherTempName.Replace(".jpg", "");
+
+            mSelectedTile.FilePathToGraphic = otherTempName;
         }
         #endregion
     }

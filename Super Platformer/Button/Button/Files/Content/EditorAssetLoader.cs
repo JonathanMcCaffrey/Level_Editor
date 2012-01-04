@@ -93,9 +93,14 @@ namespace LevelEditor
                         mSortedModelFiles.Add(ListOfFilePaths[loop]);
                         break;
 
-                    case "png":
+                    case "jpg":
                         Console.WriteLine(ListOfFilePaths[loop]);
                         mStortedIconFiles.Add(ListOfFilePaths[loop]);
+                        break;
+
+                    case "png":
+                        Console.WriteLine(ListOfFilePaths[loop]);
+                        mStortedTextureFiles.Add(ListOfFilePaths[loop]);
                         break;
 
                     default:

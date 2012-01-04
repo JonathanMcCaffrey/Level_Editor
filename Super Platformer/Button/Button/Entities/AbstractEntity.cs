@@ -35,7 +35,7 @@ namespace LevelEditor
         protected string mFilePathToGraphic = "IconOne";
         public Texture2D Graphic
         {
-            get { return theFileManager.TextureEditorRenderTarget2D; }// theFileManager.LoadTexture2D(FilePathToGraphic); }
+            get { return theFileManager.LoadTexture2D(mFilePathToGraphic); }// theFileManager.LoadTexture2D(FilePathToGraphic); }
         }
         public string FilePathToGraphic
         {

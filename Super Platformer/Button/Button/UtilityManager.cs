@@ -40,7 +40,6 @@ namespace LevelEditor
 
         public float GetMagnitude()
         {
-
             return 0;
         }
 
