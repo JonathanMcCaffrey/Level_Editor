@@ -9,6 +9,7 @@ using Microsoft.Xna.Framework.Storage;
 
 namespace LevelEditor
 {
+    // This is Deprecated.
 #if XBOX
     //When compiled for the XBox, Mouse and MouseState are unknown.
     //Define dummy bodies for them, so a MouseState object
@@ -38,10 +39,10 @@ namespace LevelEditor
 
         public QuakeCamera(Viewport viewPort)
         {
-            viewMatrix = GameFileManager.ViewMatrix;
-            projectionMatrix = GameFileManager.ProjectionMatrix;
+            viewMatrix = GameFiles.ViewMatrix;
+            projectionMatrix = GameFiles.ProjectionMatrix;
 
-            cameraPosition = GameFileManager.CameraPosition;
+            cameraPosition = GameFiles.CameraPosition;
             leftrightRot = -17.3000031f;
 
 
@@ -52,63 +53,7 @@ namespace LevelEditor
 
         public void Update()
         {
-            MouseState currentMouseState = InputManager.Get().CurrentMouseState;
-            KeyboardState keyState = InputManager.Get().CurrentKeyboardState;
-            GamePadState gamePadState = InputManager.Get().CurrentGamePadState;
 
-            InputManager input = InputManager.Get();
-
-#if XBOX            
-            leftrightRot -= rotationSpeed * gamePadState.ThumbSticks.Left.X * 5.0f;
-            updownRot += rotationSpeed * gamePadState.ThumbSticks.Left.Y * 5.0f;
-
-            UpdateViewMatrix();
-
-            float moveUp = gamePadState.Triggers.Right - gamePadState.Triggers.Left;
-            AddToCameraPosition(new Vector3(gamePadState.ThumbSticks.Right.X, moveUp, -gamePadState.ThumbSticks.Right.Y));
-#else
-            if (true)
-            {
-                float xDifference = 0;
-                float yDifference = 0;
-
-                if (input.KeyHeldDown(Keys.NumPad8))
-                {
-                    yDifference = -10;
-                }
-                if (input.KeyHeldDown(Keys.NumPad2))
-                {
-                    yDifference = 10;
-                }
-                if (input.KeyHeldDown(Keys.NumPad4))
-                {
-                    xDifference = -10;
-                }
-                if (input.KeyHeldDown(Keys.NumPad6))
-                {
-                    xDifference = 10;
-                }
-
-                leftrightRot -= rotationSpeed * xDifference;
-                updownRot -= rotationSpeed * yDifference;
-                UpdateViewMatrix();
-            }
-
-            float cameraSpeed = 50;
-
-            if (keyState.IsKeyDown(Keys.Up))      //Forward
-                AddToCameraPosition(new Vector3(0, cameraSpeed, 0));
-            if (keyState.IsKeyDown(Keys.Down))    //Backward
-                AddToCameraPosition(new Vector3(0, -cameraSpeed, 0));
-            if (keyState.IsKeyDown(Keys.Right))   //Right
-                AddToCameraPosition(new Vector3(cameraSpeed, 0, 0));
-            if (keyState.IsKeyDown(Keys.Left))    //Left
-                AddToCameraPosition(new Vector3(-cameraSpeed, 0, 0));
-            if (keyState.IsKeyDown(Keys.Q))       //Up
-                AddToCameraPosition(new Vector3(0, 1, 0));
-            if (keyState.IsKeyDown(Keys.Z))       //Down
-                AddToCameraPosition(new Vector3(0, -1, 0));
-#endif
         }
 
         private void AddToCameraPosition(Vector3 vectorToAdd)
@@ -118,7 +63,7 @@ namespace LevelEditor
             Vector3 rotatedVector = Vector3.Transform(vectorToAdd, cameraRotation);
             cameraPosition += moveSpeed * rotatedVector;
 
-            GameFileManager.CameraPosition = cameraPosition;
+            GameFiles.CameraPosition = cameraPosition;
 
             UpdateViewMatrix();
         }
@@ -138,7 +83,7 @@ namespace LevelEditor
 
             viewMatrix = Matrix.CreateLookAt(cameraPosition, cameraFinalTarget, cameraRotatedUpVector);
 
-            GameFileManager.ViewMatrix = viewMatrix;
+            GameFiles.ViewMatrix = viewMatrix;
         }
 
         public float UpDownRot

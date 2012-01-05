@@ -7,11 +7,10 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace LevelEditor
 {
+    // This is Deprecated.
     public class AbstractEntity
     {
         #region Singletons
-        protected InputManager theInputManager = InputManager.Get();
-        protected UtilityManager theUtilityManager = UtilityManager.Get();
         protected TileManager theTileManager = TileManager.Get();
         protected ScreenManager theScreenManager = ScreenManager.Get();
         #endregion
@@ -34,7 +33,7 @@ namespace LevelEditor
         protected string mFilePathToGraphic = "IconOne";
         public Texture2D Graphic
         {
-            get { return GameFileManager.LoadTexture2D(mFilePathToGraphic); }// GameFileManager.LoadTexture2D(FilePathToGraphic); }
+            get { return GameFiles.LoadTexture2D(mFilePathToGraphic); }// GameFileManager.LoadTexture2D(FilePathToGraphic); }
         }
         public string FilePathToGraphic
         {
@@ -122,7 +121,12 @@ namespace LevelEditor
 
         protected Rectangle SourceRectangle
         {
-            get { return theUtilityManager.GetRectangle(Graphic); }
+            get
+            {
+                Rectangle temporaryRectangle = new Rectangle(0, 0, (int)Graphic.Width, (int)Graphic.Height);
+
+                return temporaryRectangle;
+            }
         }
 
         protected bool isCollidable = true;
@@ -159,7 +163,12 @@ namespace LevelEditor
 
         protected Vector2 Origin
         {
-            get { return theUtilityManager.GetOrigin(Graphic); }
+            get
+            {
+                Vector2 temporaryOrigin = new Vector2(Graphic.Width / 2, Graphic.Height / 2);
+
+                return temporaryOrigin;
+            }
         }
 
         protected Vector3 mScale = Vector3.One;
@@ -187,20 +196,20 @@ namespace LevelEditor
         {
             get
             {
-                if (theInputManager.mousePosition.X > mWorldPosition.X - Origin.X &&
-                    theInputManager.mousePosition.X < mWorldPosition.X + Origin.X)
-                {
-                    if (theInputManager.mousePosition.Y > mWorldPosition.Y - Origin.Y &&
-                        theInputManager.mousePosition.Y < mWorldPosition.Y + Origin.Y)
-                    {
-                        if (IsSelected) return false;
+                /*       if (theInputManager.mousePosition.X > mWorldPosition.X - Origin.X &&
+                           theInputManager.mousePosition.X < mWorldPosition.X + Origin.X)
+                       {
+                           if (theInputManager.mousePosition.Y > mWorldPosition.Y - Origin.Y &&
+                               theInputManager.mousePosition.Y < mWorldPosition.Y + Origin.Y)
+                           {
+                               if (IsSelected) return false;
 
-                        Color = Color.Gray;
+                               Color = Color.Gray;
 
-                        return true;
-                    }
-                }
-
+                               return true;
+                           }
+                       }
+                       */
                 Color = Color.Wheat;
 
                 return false;
@@ -211,17 +220,18 @@ namespace LevelEditor
         {
             get
             {
-                if (theInputManager.mousePosition.X > mWorldPosition.X - Origin.X + BORDER_LENGTH &&
-                    theInputManager.mousePosition.X < mWorldPosition.X + Origin.X - BORDER_LENGTH)
-                {
-                    if (theInputManager.mousePosition.Y > mWorldPosition.Y - Origin.Y + BORDER_LENGTH &&
-                        theInputManager.mousePosition.Y < mWorldPosition.Y + Origin.Y - BORDER_LENGTH)
-                    {
-                        Color = Color.White;
+                /*   if (theInputManager.mousePosition.X > mWorldPosition.X - Origin.X + BORDER_LENGTH &&
+                       theInputManager.mousePosition.X < mWorldPosition.X + Origin.X - BORDER_LENGTH)
+                   {
+                       if (theInputManager.mousePosition.Y > mWorldPosition.Y - Origin.Y + BORDER_LENGTH &&
+                           theInputManager.mousePosition.Y < mWorldPosition.Y + Origin.Y - BORDER_LENGTH)
+                       {
+                           Color = Color.White;
 
-                        return true;
-                    }
-                }
+                           return true;
+                       }
+                   }*/
+
                 return false;
             }
         }

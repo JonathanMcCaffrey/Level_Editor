@@ -11,7 +11,6 @@ namespace LevelEditor
 {
     public class GizmoComponent
     {
-        InputManager theInputManager = InputManager.Get();
         TileManager theTileManager = TileManager.Get();
 
         private GraphicsDevice graphics;
@@ -213,7 +212,7 @@ namespace LevelEditor
             quadEffect.DiffuseColor = highlightColor.ToVector3();
             quadEffect.Alpha = 0.5f;
 
-            GameFileManager.GizmoSelection = Selection;
+            GameFiles.GizmoSelection = Selection;
 
             translationModel = content.Load<Model>("gizmo_translate");
             rotationModel = content.Load<Model>("gizmo_rotate");
@@ -302,8 +301,8 @@ namespace LevelEditor
             if (!Enabled)
                 return;
 
-            this.view = GameFileManager.ViewMatrix;
-            this.projection = GameFileManager.ProjectionMatrix;
+            this.view = GameFiles.ViewMatrix;
+            this.projection = GameFiles.ProjectionMatrix;
 
             // scale for mouse.delta
             inputScale = (float)gameTime.ElapsedGameTime.TotalSeconds;
@@ -311,7 +310,7 @@ namespace LevelEditor
             SetPosition();
 
             // -- Scale Gizmo to fit on-screen -- //
-            Vector3 vLength = GameFileManager.CameraPosition - position;
+            Vector3 vLength = GameFiles.CameraPosition - position;
             float scaleFactor = 25;
 
             screenScale = vLength.Length() / scaleFactor;
@@ -366,7 +365,7 @@ namespace LevelEditor
         public void HandleInput()
         {
             // -- Select Gizmo Mode -- //
-            if (theInputManager.SingleKeyPressInput(Keys.D1))
+          /*  if (theInputManager.SingleKeyPressInput(Keys.D1))
             {
                 ActiveMode = GizmoMode.Translate;
             }
@@ -412,10 +411,10 @@ namespace LevelEditor
                 Selection.Clear();
 
                 ActiveAxis = GizmoAxis.None;
-            };
+            };*/
 
             // -- Toggle PrecisionMode -- //
-            if (theInputManager.SingleKeyPressInput(Keys.O))
+         /*   if (theInputManager.SingleKeyPressInput(Keys.O))
             {
                 precisionMode = true;
             }
@@ -641,7 +640,7 @@ namespace LevelEditor
             if (Selection.Count < 1)
                 Enabled = false;
             else
-                Enabled = true;
+                Enabled = true;*/
         }
 
         /// <summary>

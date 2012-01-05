@@ -76,7 +76,7 @@ namespace LevelEditor
         public ObjModel(string aObjFilePath)
         {
             // TODO: Change technique of extracting the current graphic device.
-            mEffect = GameFileManager.Effect;
+            mEffect = GameFiles.Effect;
 
             mStreamReader = new StreamReader(aObjFilePath);
 
@@ -268,9 +268,9 @@ namespace LevelEditor
                 index += 3;
             }
 
-            mVertexBuffer = new VertexBuffer(GameFileManager.GraphicsDevice, VertexPositionNormalTexture.VertexDeclaration, mObjModel.Length, BufferUsage.WriteOnly);
+            mVertexBuffer = new VertexBuffer(GameFiles.GraphicsDevice, VertexPositionNormalTexture.VertexDeclaration, mObjModel.Length, BufferUsage.WriteOnly);
             mVertexBuffer.SetData(mObjModel);
-            mIndexBuffer = new IndexBuffer(GameFileManager.GraphicsDevice, typeof(int), mFaceList.Length, BufferUsage.None);
+            mIndexBuffer = new IndexBuffer(GameFiles.GraphicsDevice, typeof(int), mFaceList.Length, BufferUsage.None);
             mIndexBuffer.SetData(mFaceList);
         }
         #endregion
@@ -278,21 +278,21 @@ namespace LevelEditor
         #region Methods
         public void Draw(Tile aTile)
         {
-            GameFileManager.GraphicsDevice.RasterizerState = RasterizerState.CullClockwise;
-            GameFileManager.GraphicsDevice.BlendState = BlendState.Opaque;
-            GameFileManager.GraphicsDevice.DepthStencilState = DepthStencilState.Default;
+            GameFiles.GraphicsDevice.RasterizerState = RasterizerState.CullClockwise;
+            GameFiles.GraphicsDevice.BlendState = BlendState.Opaque;
+            GameFiles.GraphicsDevice.DepthStencilState = DepthStencilState.Default;
 
 
             foreach (EffectPass pass in mEffect.CurrentTechnique.Passes)
             {
                 mEffect.CurrentTechnique = mEffect.Techniques["Standard"];
-                mEffect.Parameters["xWorldViewProjectionMatrix"].SetValue(aTile.ScaleMatrix * aTile.RotationMatrix * aTile.WorldMatrix * GameFileManager.ViewMatrix * GameFileManager.ProjectionMatrix);
+                mEffect.Parameters["xWorldViewProjectionMatrix"].SetValue(aTile.ScaleMatrix * aTile.RotationMatrix * aTile.WorldMatrix * GameFiles.ViewMatrix * GameFiles.ProjectionMatrix);
 
                 mEffect.Parameters["xColorMap"].SetValue(aTile.Graphic);
 
                 pass.Apply();
 
-                GameFileManager.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleList, mObjModel, 0, mObjModel.Length / 3);
+                GameFiles.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleList, mObjModel, 0, mObjModel.Length / 3);
             }
         }
 

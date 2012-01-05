@@ -12,7 +12,7 @@ namespace LevelEditor
     // Contains helper members for loading.
     // Stores generic variables.
     // </summary>
-    public static class GameFileManager
+    public static class GameFiles
     {
         //TODO: Doxygen everything.
         #region Constants

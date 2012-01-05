@@ -13,13 +13,10 @@ using System.Xml;
 
 namespace LevelEditor
 {
-    /** All entities are a deprecated interface and will be replaced with the proper componet system when this level editior project
-     * is transfered into the main project. */
+    // This is Deprecated.
     public class AbstractEntityManager : DrawableGameComponent
     {
         #region Singletons
-        protected InputManager theInputManager = InputManager.Get();
-        protected UtilityManager theUtilityManager = UtilityManager.Get();
         protected TileManager theTileManager = TileManager.Get();
         protected ScreenManager theScreenManager = ScreenManager.Get();
         #endregion

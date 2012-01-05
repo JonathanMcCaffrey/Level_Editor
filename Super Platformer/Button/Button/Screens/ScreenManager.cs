@@ -11,6 +11,7 @@ using Microsoft.Xna.Framework.Media;
 
 namespace LevelEditor
 {
+    // This is Deprecated.
     public class ScreenManager : Microsoft.Xna.Framework.DrawableGameComponent
     {
         #region Data

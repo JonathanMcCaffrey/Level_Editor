@@ -5,9 +5,9 @@ using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-
 namespace LevelEditor
 {
+    // This is Deprecated.
     public class WorldScreen : AbstractGameScreen
     {
         #region Data
@@ -20,9 +20,9 @@ namespace LevelEditor
         #region Construction
         public WorldScreen()
         {
-            mBackgroundTexture = GameFileManager.LoadTexture2D("Background");
+            mBackgroundTexture = GameFiles.LoadTexture2D("Background");
 
-            mQuakeCamera = new QuakeCamera(GameFileManager.GraphicsDevice.Viewport);
+            mQuakeCamera = new QuakeCamera(GameFiles.GraphicsDevice.Viewport);
             //   Enemy.CreateEnemy(Vector2.Zero);
         }
 

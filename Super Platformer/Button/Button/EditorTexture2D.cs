@@ -7,6 +7,9 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace LevelEditor
 {
+    //<summary>
+    // Contains EditorTexture2D stuff.
+    //</summary>
     public struct EditorTexture2D
     {
         #region Data

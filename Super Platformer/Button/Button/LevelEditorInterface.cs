@@ -72,7 +72,7 @@ namespace LevelEditor
         #region Methods
         public void UpdateWindow()
         {
-            RenderTarget2D tempTextureToConvert = GameFileManager.EditorWorkAreaRenderTexture2D;
+            RenderTarget2D tempTextureToConvert = GameFiles.EditorWorkAreaRenderTexture2D;
 
             MemoryStream tempMemoryStream = new MemoryStream();
 
@@ -96,7 +96,7 @@ namespace LevelEditor
 
             if (mIsHoveringOnEditor)
             {
-                InputManager.Get().MousePositionOnWindow = new Vector2(MousePosition.X - this.Location.X - 16, MousePosition.Y - this.Location.Y -273);
+             //   InputManager.Get().MousePositionOnWindow = new Vector2(MousePosition.X - this.Location.X - 16, MousePosition.Y - this.Location.Y -273);
             }
         }
 
@@ -127,7 +127,7 @@ namespace LevelEditor
 
         private void iPerspectiveGraphic_Click(object sender, MouseEventArgs e)
         {
-            InputManager.Get().MousePositionOnWindow = new Vector2(e.X, e.Y);
+         //   InputManager.Get().MousePositionOnWindow = new Vector2(e.X, e.Y);
         }
 
         void iPerspectiveGraphic_MouseHover(object sender, EventArgs e)

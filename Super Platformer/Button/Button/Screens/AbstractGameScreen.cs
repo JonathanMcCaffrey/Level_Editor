@@ -7,11 +7,10 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace LevelEditor
 {
+    // This is Deprecated.
     public abstract class AbstractGameScreen
     {
         #region Singletons
-        protected InputManager theInputManager = InputManager.Get();
-        protected UtilityManager theUtilityManager = UtilityManager.Get();
         protected TileManager theTileManager = TileManager.Get();
         protected ScreenManager theScreenManager = ScreenManager.Get();
         #endregion
@@ -48,10 +47,10 @@ namespace LevelEditor
         #region Construction
         public AbstractGameScreen()
         {
-            mSpriteBatch = GameFileManager.SpriteBatch;
-            mGraphicsDevice = GameFileManager.GraphicsDevice;
+            mSpriteBatch = GameFiles.SpriteBatch;
+            mGraphicsDevice = GameFiles.GraphicsDevice;
 
-            mBackgroundTexture = GameFileManager.LoadTexture2D(@"Background");
+            mBackgroundTexture = GameFiles.LoadTexture2D(@"Background");
         }
         #endregion
 

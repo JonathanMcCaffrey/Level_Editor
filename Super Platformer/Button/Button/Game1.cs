@@ -34,11 +34,10 @@ namespace LevelEditor
 
 namespace LevelEditor
 {
+    // This is Deprecated.
     public class Game1 : Microsoft.Xna.Framework.Game
     {
         #region Singletons
-        protected InputManager theInputManager;
-        protected UtilityManager theUtilityManager;
         protected TileManager theTileManager;
         protected ScreenManager theScreenManager;
         protected EntityComponetManager theEntityComponetManager;
@@ -64,10 +63,8 @@ namespace LevelEditor
 
         protected override void Initialize()
         {
-            GameFileManager.StartGameFileManager(this);
+            GameFiles.StartGameFileManager(this);
 
-            theInputManager = InputManager.Get(this);
-            theUtilityManager = UtilityManager.Get(this);
             theTileManager = TileManager.Get(this);
             theScreenManager = ScreenManager.Get(this);
 
@@ -83,32 +80,8 @@ namespace LevelEditor
         #region Methods
         protected override void Update(GameTime aGameTime)
         {
-            if (theInputManager.SingleKeyPressInput(Keys.Escape))
-            {
-                this.Exit();
-            }
-
             base.Update(aGameTime);
 
-            if (theInputManager.SingleKeyPressInput(Keys.V))
-            {
-                theEntityComponetManager.SaveAll("Test.xml");
-            }
-            if (theInputManager.SingleKeyPressInput(Keys.C))
-            {
-                theEntityComponetManager.LoadAll("Test.xml");
-            }
-
-            if (theInputManager.SingleKeyPressInput(Keys.Space))
-            {
-                Vector2 mousePosition = new Vector2(theInputManager.mousePosition.X, theInputManager.mousePosition.Y);
-
-                GameFileManager.CurrentTile.WorldPosition = new Vector3(mousePosition.X, mousePosition.Y, 0);
-                GameFileManager.CurrentTile.Clone();
-
-            }
-
-            theInputManager.Update(aGameTime);
             theScreenManager.Update(aGameTime);
         }
 

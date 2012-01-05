@@ -12,7 +12,6 @@ namespace LevelEditor
     // they load all values from the directory.
     // These files paths can then be grabbed from the getter, ListOfFilePaths.
     //</summary>
-
     public class FileListLoader
     {
         #region Data

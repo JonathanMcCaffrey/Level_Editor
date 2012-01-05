@@ -45,7 +45,7 @@ namespace LevelEditor
         public void UpdateWindow()
         {
 
-            tempTextureToConvert = GameFileManager.TextureEditorRenderTarget2D;
+            tempTextureToConvert = GameFiles.TextureEditorRenderTarget2D;
 
             MemoryStream tempMemoryStream = new MemoryStream();
 
@@ -140,7 +140,7 @@ namespace LevelEditor
             else
             {
                 UpdateWindow();
-                mTextureEditor.AddTextureToStack(new EditorTexture2D(GameFileManager.LoadTexture2D("Background"), tempMousePosition, Microsoft.Xna.Framework.Color.White));
+                mTextureEditor.AddTextureToStack(new EditorTexture2D(GameFiles.LoadTexture2D("Background"), tempMousePosition, Microsoft.Xna.Framework.Color.White));
             }
         }
 
@@ -164,7 +164,7 @@ namespace LevelEditor
 
         private void itNew_Click(object sender, EventArgs e)
         {
-            mTextureEditor.Texture2D = GameFileManager.LoadTexture2D("TextureEditorTest");
+            mTextureEditor.Texture2D = GameFiles.LoadTexture2D("TextureEditorTest");
             mTextureEditor.Reset();
         }
         #endregion

@@ -7,6 +7,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace LevelEditor
 {
+    // This is Deprecated.
     public class Tile : AbstractEntity
     {
         #region Data
@@ -85,13 +86,13 @@ namespace LevelEditor
         {
             mManager = theTileManager;
             Name = "tile";
-            mRenderTarget = new RenderTarget2D(GameFileManager.GraphicsDevice, 512, 512);
+            mRenderTarget = new RenderTarget2D(GameFiles.GraphicsDevice, 512, 512);
 
             string tempFilePathToAssetDirectory = DirectoryFinder.FindContentDirectory();
 
             mObjFilePath = tempFilePathToAssetDirectory + "Assets\\Asteroid.obj";
             mObjModel = new ObjModel(mObjFilePath);
-            ColorMap = GameFileManager.LoadTexture2D("TextureEditorTest");
+            ColorMap = GameFiles.LoadTexture2D("TextureEditorTest");
         }
         #endregion
 
@@ -102,13 +103,13 @@ namespace LevelEditor
 
             if (!once)
             {
-                GameFileManager.GraphicsDevice.SetRenderTarget(mRenderTarget);
-                GameFileManager.SpriteBatch.Begin();
+                GameFiles.GraphicsDevice.SetRenderTarget(mRenderTarget);
+                GameFiles.SpriteBatch.Begin();
 
-                GameFileManager.SpriteBatch.Draw(mColorMap, Vector2.Zero, Color.White);
+                GameFiles.SpriteBatch.Draw(mColorMap, Vector2.Zero, Color.White);
 
-                GameFileManager.SpriteBatch.End();
-                GameFileManager.GraphicsDevice.SetRenderTarget(null);
+                GameFiles.SpriteBatch.End();
+                GameFiles.GraphicsDevice.SetRenderTarget(null);
             }
         }
 

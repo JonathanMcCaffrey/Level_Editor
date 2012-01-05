@@ -25,7 +25,7 @@ namespace LevelEditor
             InitializeComponent();
 
             mSelectedTile = new Tile();
-            GameFileManager.CurrentTile = mSelectedTile;
+            GameFiles.CurrentTile = mSelectedTile;
 
             /* this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
              this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;*/

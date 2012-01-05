@@ -14,7 +14,7 @@ using System.Xml;
 
 namespace LevelEditor
 {
-
+    // This is Deprecated.
     public class TileManager : AbstractEntityManager
     {
         #region Data
@@ -48,11 +48,6 @@ namespace LevelEditor
         #region Methods
         public override void Update(GameTime aGameTime)
         {
-            if (theInputManager.SingleKeyPressInput(Keys.S))
-            {
-                Clear();
-            }
-
             for (int i = 0; i < mList.Count; i++)
             {
                 List[i].Update();
