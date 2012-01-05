@@ -42,27 +42,29 @@ namespace LevelEditor
             So, this function call intializes all images in the interface. */
         private void InitializeImages()
         {
-            itNew.Image = Image.FromFile("C:\\Users\\mcca0442\\Desktop\\trunk\\Super Platformer\\Button\\ButtonContent\\New.jpg");
-            itOpen.Image = Image.FromFile("C:\\Users\\mcca0442\\Desktop\\trunk\\Super Platformer\\Button\\ButtonContent\\Open.jpg");
-            itSave.Image = Image.FromFile("C:\\Users\\mcca0442\\Desktop\\trunk\\Super Platformer\\Button\\ButtonContent\\Save.jpg");
-            itUndo.Image = Image.FromFile("C:\\Users\\mcca0442\\Desktop\\trunk\\Super Platformer\\Button\\ButtonContent\\Undo.jpg");
-            itRedo.Image = Image.FromFile("C:\\Users\\mcca0442\\Desktop\\trunk\\Super Platformer\\Button\\ButtonContent\\Redo.jpg");
-            itArrow.Image = Image.FromFile("C:\\Users\\mcca0442\\Desktop\\trunk\\Super Platformer\\Button\\ButtonContent\\Arrow.jpg");
-            itTranslate.Image = Image.FromFile("C:\\Users\\mcca0442\\Desktop\\trunk\\Super Platformer\\Button\\ButtonContent\\Translate.jpg");
-            itRotate.Image = Image.FromFile("C:\\Users\\mcca0442\\Desktop\\trunk\\Super Platformer\\Button\\ButtonContent\\Rotate.jpg");
-            itScale.Image = Image.FromFile("C:\\Users\\mcca0442\\Desktop\\trunk\\Super Platformer\\Button\\ButtonContent\\Scale.jpg");
-            itScaleLinear.Image = Image.FromFile("C:\\Users\\mcca0442\\Desktop\\trunk\\Super Platformer\\Button\\ButtonContent\\ScaleLinear.jpg");
+            string tempFilePathToAssetDirectory = DirectoryFinder.FindContentDirectory(); 
 
-            itAdd.BackgroundImage = Image.FromFile("C:\\Users\\mcca0442\\Desktop\\trunk\\Super Platformer\\Button\\ButtonContent\\Add.jpg");
-            itSubtract.BackgroundImage = Image.FromFile("C:\\Users\\mcca0442\\Desktop\\trunk\\Super Platformer\\Button\\ButtonContent\\Subtract.jpg");
-            itFlatten.BackgroundImage = Image.FromFile("C:\\Users\\mcca0442\\Desktop\\trunk\\Super Platformer\\Button\\ButtonContent\\Flatten.jpg");
-            itSmooth.BackgroundImage = Image.FromFile("C:\\Users\\mcca0442\\Desktop\\trunk\\Super Platformer\\Button\\ButtonContent\\Smooth.jpg");
-            itNoise.BackgroundImage = Image.FromFile("C:\\Users\\mcca0442\\Desktop\\trunk\\Super Platformer\\Button\\ButtonContent\\Noise.jpg");
+            itNew.Image = Image.FromFile(tempFilePathToAssetDirectory + "New.jpg");
+            itOpen.Image = Image.FromFile(tempFilePathToAssetDirectory + "Open.jpg");
+            itSave.Image = Image.FromFile(tempFilePathToAssetDirectory + "Save.jpg");
+            itUndo.Image = Image.FromFile(tempFilePathToAssetDirectory + "Undo.jpg");
+            itRedo.Image = Image.FromFile(tempFilePathToAssetDirectory + "Redo.jpg");
+            itArrow.Image = Image.FromFile(tempFilePathToAssetDirectory + "Arrow.jpg");
+            itTranslate.Image = Image.FromFile(tempFilePathToAssetDirectory + "Translate.jpg");
+            itRotate.Image = Image.FromFile(tempFilePathToAssetDirectory + "Rotate.jpg");
+            itScale.Image = Image.FromFile(tempFilePathToAssetDirectory + "Scale.jpg");
+            itScaleLinear.Image = Image.FromFile(tempFilePathToAssetDirectory + "ScaleLinear.jpg");
+
+            itAdd.BackgroundImage = Image.FromFile(tempFilePathToAssetDirectory + "Add.jpg");
+            itSubtract.BackgroundImage = Image.FromFile(tempFilePathToAssetDirectory + "Subtract.jpg");
+            itFlatten.BackgroundImage = Image.FromFile(tempFilePathToAssetDirectory + "Flatten.jpg");
+            itSmooth.BackgroundImage = Image.FromFile(tempFilePathToAssetDirectory + "Smooth.jpg");
+            itNoise.BackgroundImage = Image.FromFile(tempFilePathToAssetDirectory + "Noise.jpg");
 
             // Placeholder
-            iTopGraphic.Image = Image.FromFile("C:\\Users\\mcca0442\\Desktop\\trunk\\Super Platformer\\Button\\ButtonContent\\Noise.jpg");
-            iFrontGraphic.Image = Image.FromFile("C:\\Users\\mcca0442\\Desktop\\trunk\\Super Platformer\\Button\\ButtonContent\\Flatten.jpg");
-            iRightGraphic.Image = Image.FromFile("C:\\Users\\mcca0442\\Desktop\\trunk\\Super Platformer\\Button\\ButtonContent\\Subtract.jpg");
+            iTopGraphic.Image = Image.FromFile(tempFilePathToAssetDirectory + "Noise.jpg");
+            iFrontGraphic.Image = Image.FromFile(tempFilePathToAssetDirectory + "Flatten.jpg");
+            iRightGraphic.Image = Image.FromFile(tempFilePathToAssetDirectory + "Subtract.jpg");
             // Placeholder
         }
         #endregion
@@ -70,7 +72,7 @@ namespace LevelEditor
         #region Methods
         public void UpdateWindow()
         {
-            RenderTarget2D tempTextureToConvert = FileManager.Get().EditorWorkAreaRenderTexture2D;
+            RenderTarget2D tempTextureToConvert = GameFileManager.EditorWorkAreaRenderTexture2D;
 
             MemoryStream tempMemoryStream = new MemoryStream();
 

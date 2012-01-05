@@ -40,11 +40,11 @@ namespace LevelEditor
 
         public void Initialize()
         {
-            mTexture2D = FileManager.Get().LoadTexture2D(@mFilepath);
-            mRenderTarget2D = new RenderTarget2D(FileManager.Get().GraphicsDevice, (int)mTextureDimensions.X, (int)mTextureDimensions.Y);
-            FileManager.Get().TextureEditorRenderTarget2D = mRenderTarget2D;
-            mSpriteBatch = FileManager.Get().SpriteBatch;
-            mGraphicsDevice = FileManager.Get().GraphicsDevice;
+            mTexture2D = GameFileManager.LoadTexture2D(@mFilepath);
+            mRenderTarget2D = new RenderTarget2D(GameFileManager.GraphicsDevice, (int)mTextureDimensions.X, (int)mTextureDimensions.Y);
+            GameFileManager.TextureEditorRenderTarget2D = mRenderTarget2D;
+            mSpriteBatch = GameFileManager.SpriteBatch;
+            mGraphicsDevice = GameFileManager.GraphicsDevice;
 
             mGraphicsDevice.SetRenderTarget(mRenderTarget2D);
             mGraphicsDevice.Clear(Color.Black);
@@ -90,7 +90,7 @@ namespace LevelEditor
             mRenderTarget2D.SaveAsPng(tempMemoryStream, mRenderTarget2D.Width, mRenderTarget2D.Height);
             tempMemoryStream.Seek(0, SeekOrigin.Begin);
 
-            Texture2D tempTextureToUpdate = Texture2D.FromStream(FileManager.Get().GraphicsDevice, tempMemoryStream);
+            Texture2D tempTextureToUpdate = Texture2D.FromStream(GameFileManager.GraphicsDevice, tempMemoryStream);
             mTexture2D = tempTextureToUpdate;
 
             tempMemoryStream.Close();
@@ -126,7 +126,7 @@ namespace LevelEditor
                     mRenderTarget2D.SaveAsPng(tempMemoryStream, mRenderTarget2D.Width, mRenderTarget2D.Height);
                     tempMemoryStream.Seek(0, SeekOrigin.Begin);
 
-                    Texture2D tempTextureToUpdate = Texture2D.FromStream(FileManager.Get().GraphicsDevice, tempMemoryStream);
+                    Texture2D tempTextureToUpdate = Texture2D.FromStream(GameFileManager.GraphicsDevice, tempMemoryStream);
                     mTexture2D = tempTextureToUpdate;
 
                     tempMemoryStream.Close();

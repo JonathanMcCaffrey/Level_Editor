@@ -10,7 +10,6 @@ namespace LevelEditor
     public abstract class AbstractGameScreen
     {
         #region Singletons
-        protected FileManager theFileManager = FileManager.Get();
         protected InputManager theInputManager = InputManager.Get();
         protected UtilityManager theUtilityManager = UtilityManager.Get();
         protected TileManager theTileManager = TileManager.Get();
@@ -49,10 +48,10 @@ namespace LevelEditor
         #region Construction
         public AbstractGameScreen()
         {
-            mSpriteBatch = theFileManager.SpriteBatch;
-            mGraphicsDevice = theFileManager.GraphicsDevice;
+            mSpriteBatch = GameFileManager.SpriteBatch;
+            mGraphicsDevice = GameFileManager.GraphicsDevice;
 
-            mBackgroundTexture = theFileManager.LoadTexture2D(@"Background");
+            mBackgroundTexture = GameFileManager.LoadTexture2D(@"Background");
         }
         #endregion
 

@@ -85,11 +85,13 @@ namespace LevelEditor
         {
             mManager = theTileManager;
             Name = "tile";
-            mRenderTarget = new RenderTarget2D(FileManager.Get().GraphicsDevice, 512, 512);
+            mRenderTarget = new RenderTarget2D(GameFileManager.GraphicsDevice, 512, 512);
 
-            mObjFilePath = "C:\\Users\\mcca0442\\Desktop\\trunk\\Super Platformer\\Button\\ButtonContent\\Assets\\Asteroid.obj";
+            string tempFilePathToAssetDirectory = DirectoryFinder.FindContentDirectory();
+
+            mObjFilePath = tempFilePathToAssetDirectory + "Assets\\Asteroid.obj";
             mObjModel = new ObjModel(mObjFilePath);
-            ColorMap = theFileManager.LoadTexture2D("TextureEditorTest");
+            ColorMap = GameFileManager.LoadTexture2D("TextureEditorTest");
         }
         #endregion
 
@@ -100,13 +102,13 @@ namespace LevelEditor
 
             if (!once)
             {
-                FileManager.Get().GraphicsDevice.SetRenderTarget(mRenderTarget);
-                FileManager.Get().SpriteBatch.Begin();
+                GameFileManager.GraphicsDevice.SetRenderTarget(mRenderTarget);
+                GameFileManager.SpriteBatch.Begin();
 
-                FileManager.Get().SpriteBatch.Draw(mColorMap, Vector2.Zero, Color.White);
+                GameFileManager.SpriteBatch.Draw(mColorMap, Vector2.Zero, Color.White);
 
-                FileManager.Get().SpriteBatch.End();
-                FileManager.Get().GraphicsDevice.SetRenderTarget(null);
+                GameFileManager.SpriteBatch.End();
+                GameFileManager.GraphicsDevice.SetRenderTarget(null);
             }
         }
 

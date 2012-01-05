@@ -18,7 +18,6 @@ namespace LevelEditor
     public class AbstractEntityManager : DrawableGameComponent
     {
         #region Singletons
-        protected FileManager theFileManager = FileManager.Get();
         protected InputManager theInputManager = InputManager.Get();
         protected UtilityManager theUtilityManager = UtilityManager.Get();
         protected TileManager theTileManager = TileManager.Get();

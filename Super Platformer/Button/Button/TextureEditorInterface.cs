@@ -45,7 +45,7 @@ namespace LevelEditor
         public void UpdateWindow()
         {
 
-            tempTextureToConvert = FileManager.Get().TextureEditorRenderTarget2D;
+            tempTextureToConvert = GameFileManager.TextureEditorRenderTarget2D;
 
             MemoryStream tempMemoryStream = new MemoryStream();
 
@@ -89,28 +89,30 @@ namespace LevelEditor
 
         private void InitializeImages()
         {
-            itNew.Image = Image.FromFile("C:\\Users\\mcca0442\\Desktop\\trunk\\Super Platformer\\Button\\ButtonContent\\New.jpg");
-            itOpen.Image = Image.FromFile("C:\\Users\\mcca0442\\Desktop\\trunk\\Super Platformer\\Button\\ButtonContent\\Open.jpg");
-            itSave.Image = Image.FromFile("C:\\Users\\mcca0442\\Desktop\\trunk\\Super Platformer\\Button\\ButtonContent\\Save.jpg");
-            itUndo.Image = Image.FromFile("C:\\Users\\mcca0442\\Desktop\\trunk\\Super Platformer\\Button\\ButtonContent\\Undo.jpg");
-            itRedo.Image = Image.FromFile("C:\\Users\\mcca0442\\Desktop\\trunk\\Super Platformer\\Button\\ButtonContent\\Redo.jpg");
-            itArrow.Image = Image.FromFile("C:\\Users\\mcca0442\\Desktop\\trunk\\Super Platformer\\Button\\ButtonContent\\Arrow.jpg");
+            string tempFilePathToAssetDirectory = DirectoryFinder.FindContentDirectory();
 
-            it0.Image = Image.FromFile("C:\\Users\\mcca0442\\Desktop\\trunk\\Super Platformer\\Button\\ButtonContent\\Number0.jpg");
-            it1.Image = Image.FromFile("C:\\Users\\mcca0442\\Desktop\\trunk\\Super Platformer\\Button\\ButtonContent\\Number1.jpg");
-            it2.Image = Image.FromFile("C:\\Users\\mcca0442\\Desktop\\trunk\\Super Platformer\\Button\\ButtonContent\\Number2.jpg");
-            it3.Image = Image.FromFile("C:\\Users\\mcca0442\\Desktop\\trunk\\Super Platformer\\Button\\ButtonContent\\Number3.jpg");
-            it4.Image = Image.FromFile("C:\\Users\\mcca0442\\Desktop\\trunk\\Super Platformer\\Button\\ButtonContent\\Number4.jpg");
-            it5.Image = Image.FromFile("C:\\Users\\mcca0442\\Desktop\\trunk\\Super Platformer\\Button\\ButtonContent\\Number5.jpg");
-            it6.Image = Image.FromFile("C:\\Users\\mcca0442\\Desktop\\trunk\\Super Platformer\\Button\\ButtonContent\\Number6.jpg");
-            it7.Image = Image.FromFile("C:\\Users\\mcca0442\\Desktop\\trunk\\Super Platformer\\Button\\ButtonContent\\Number7.jpg");
-            it8.Image = Image.FromFile("C:\\Users\\mcca0442\\Desktop\\trunk\\Super Platformer\\Button\\ButtonContent\\Number8.jpg");
-            it9.Image = Image.FromFile("C:\\Users\\mcca0442\\Desktop\\trunk\\Super Platformer\\Button\\ButtonContent\\Number9.jpg");
+            itNew.Image = Image.FromFile(tempFilePathToAssetDirectory + "New.jpg");
+            itOpen.Image = Image.FromFile(tempFilePathToAssetDirectory + "Open.jpg");
+            itSave.Image = Image.FromFile(tempFilePathToAssetDirectory + "Save.jpg");
+            itUndo.Image = Image.FromFile(tempFilePathToAssetDirectory + "Undo.jpg");
+            itRedo.Image = Image.FromFile(tempFilePathToAssetDirectory + "Redo.jpg");
+            itArrow.Image = Image.FromFile(tempFilePathToAssetDirectory + "Arrow.jpg");
 
-            itAddSolid.Image = Image.FromFile("C:\\Users\\mcca0442\\Desktop\\trunk\\Super Platformer\\Button\\ButtonContent\\AddSolid.jpg");
-            itAddDiffuse.Image = Image.FromFile("C:\\Users\\mcca0442\\Desktop\\trunk\\Super Platformer\\Button\\ButtonContent\\AddDiffuse.jpg");
-            itSubtractSolid.Image = Image.FromFile("C:\\Users\\mcca0442\\Desktop\\trunk\\Super Platformer\\Button\\ButtonContent\\SubtractSolid.jpg");
-            itSubtractDiffuse.Image = Image.FromFile("C:\\Users\\mcca0442\\Desktop\\trunk\\Super Platformer\\Button\\ButtonContent\\SubtractDiffuse.jpg");
+            it0.Image = Image.FromFile(tempFilePathToAssetDirectory + "Number0.jpg");
+            it1.Image = Image.FromFile(tempFilePathToAssetDirectory + "Number1.jpg");
+            it2.Image = Image.FromFile(tempFilePathToAssetDirectory + "Number2.jpg");
+            it3.Image = Image.FromFile(tempFilePathToAssetDirectory + "Number3.jpg");
+            it4.Image = Image.FromFile(tempFilePathToAssetDirectory + "Number4.jpg");
+            it5.Image = Image.FromFile(tempFilePathToAssetDirectory + "Number5.jpg");
+            it6.Image = Image.FromFile(tempFilePathToAssetDirectory + "Number6.jpg");
+            it7.Image = Image.FromFile(tempFilePathToAssetDirectory + "Number7.jpg");
+            it8.Image = Image.FromFile(tempFilePathToAssetDirectory + "Number8.jpg");
+            it9.Image = Image.FromFile(tempFilePathToAssetDirectory + "Number9.jpg");
+
+            itAddSolid.Image = Image.FromFile(tempFilePathToAssetDirectory + "AddSolid.jpg");
+            itAddDiffuse.Image = Image.FromFile(tempFilePathToAssetDirectory + "AddDiffuse.jpg");
+            itSubtractSolid.Image = Image.FromFile(tempFilePathToAssetDirectory + "SubtractSolid.jpg");
+            itSubtractDiffuse.Image = Image.FromFile(tempFilePathToAssetDirectory + "SubtractDiffuse.jpg");
         }
 
         private void itOpen_Click(object aSender, EventArgs aEvent)
@@ -138,7 +140,7 @@ namespace LevelEditor
             else
             {
                 UpdateWindow();
-                mTextureEditor.AddTextureToStack(new EditorTexture2D(FileManager.Get().LoadTexture2D("Background"), tempMousePosition, Microsoft.Xna.Framework.Color.White));
+                mTextureEditor.AddTextureToStack(new EditorTexture2D(GameFileManager.LoadTexture2D("Background"), tempMousePosition, Microsoft.Xna.Framework.Color.White));
             }
         }
 
@@ -162,7 +164,7 @@ namespace LevelEditor
 
         private void itNew_Click(object sender, EventArgs e)
         {
-            mTextureEditor.Texture2D = FileManager.Get().LoadTexture2D("TextureEditorTest");
+            mTextureEditor.Texture2D = GameFileManager.LoadTexture2D("TextureEditorTest");
             mTextureEditor.Reset();
         }
         #endregion

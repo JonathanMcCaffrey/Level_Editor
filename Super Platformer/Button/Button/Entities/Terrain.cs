@@ -18,7 +18,7 @@ namespace LevelEditor
         #region Construction
         public Terrain()
         {
-            mHeightMap = FileManager.Get().LoadTexture2D("TextureEditorTest");
+            mHeightMap = GameFileManager.LoadTexture2D("TextureEditorTest");
 
             mHeightMap.GetData<Color>(colorDataBuffer);
 
@@ -49,7 +49,7 @@ namespace LevelEditor
         public void Draw()
         {
             //TODO: Delegate this update instead of performing it on every frame.
-            mHeightMap = FileManager.Get().TextureEditorRenderTarget2D;
+            mHeightMap = GameFileManager.TextureEditorRenderTarget2D;
             mHeightMap.GetData<Color>(colorDataBuffer);
 
             int iterator = 0;
@@ -72,19 +72,19 @@ namespace LevelEditor
                 }
             }
 
-            FileManager.Get().GraphicsDevice.RasterizerState = RasterizerState.CullClockwise;
-            FileManager.Get().GraphicsDevice.BlendState = BlendState.Opaque;
-            FileManager.Get().GraphicsDevice.DepthStencilState = DepthStencilState.Default;
+            GameFileManager.GraphicsDevice.RasterizerState = RasterizerState.CullClockwise;
+            GameFileManager.GraphicsDevice.BlendState = BlendState.Opaque;
+            GameFileManager.GraphicsDevice.DepthStencilState = DepthStencilState.Default;
 
-            foreach (EffectPass pass in FileManager.Get().Effect.CurrentTechnique.Passes)
+            foreach (EffectPass pass in GameFileManager.Effect.CurrentTechnique.Passes)
             {
-                FileManager.Get().Effect.CurrentTechnique = FileManager.Get().Effect.Techniques["Standard"];
-                FileManager.Get().Effect.Parameters["xWorldViewProjectionMatrix"].SetValue(Matrix.CreateScale(3) * Matrix.Identity * FileManager.Get().ViewMatrix * FileManager.Get().ProjectionMatrix);
-                FileManager.Get().Effect.Parameters["xColorMap"].SetValue(mHeightMap);
+                GameFileManager.Effect.CurrentTechnique = GameFileManager.Effect.Techniques["Standard"];
+                GameFileManager.Effect.Parameters["xWorldViewProjectionMatrix"].SetValue(Matrix.CreateScale(3) * Matrix.Identity * GameFileManager.ViewMatrix * GameFileManager.ProjectionMatrix);
+                GameFileManager.Effect.Parameters["xColorMap"].SetValue(mHeightMap);
 
                 pass.Apply();
 
-                FileManager.Get().GraphicsDevice.DrawUserPrimitives(PrimitiveType.LineList, mVextexData, 0, mVextexData.Length /2);
+                GameFileManager.GraphicsDevice.DrawUserPrimitives(PrimitiveType.LineList, mVextexData, 0, mVextexData.Length /2);
             }
         }
         #endregion

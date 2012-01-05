@@ -67,10 +67,9 @@ namespace LevelEditor
         #endregion
 
         #region Construction
-        public EditorAssetLoader(string aFilePathToDirectory)
-            : base(aFilePathToDirectory)
+        public EditorAssetLoader()
         {
-
+            FilePathToDirectory = DirectoryFinder.FindEditorGameAssetDirectory();
         }
         #endregion
 

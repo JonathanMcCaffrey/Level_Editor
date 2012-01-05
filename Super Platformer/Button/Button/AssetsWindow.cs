@@ -12,7 +12,7 @@ namespace LevelEditor
     public partial class AssetsWindow : Form
     {
         #region Fields
-        EditorAssetLoader mEditorAssetLoader = new EditorAssetLoader(@"C:\Users\mcca0442\Desktop\trunk\Super Platformer\Button\ButtonContent\Assets");
+        EditorAssetLoader mEditorAssetLoader = new EditorAssetLoader();
 
         Tile mSelectedTile;
 
@@ -25,7 +25,7 @@ namespace LevelEditor
             InitializeComponent();
 
             mSelectedTile = new Tile();
-            FileManager.Get().CurrentTile = mSelectedTile;
+            GameFileManager.CurrentTile = mSelectedTile;
 
             /* this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
              this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;*/

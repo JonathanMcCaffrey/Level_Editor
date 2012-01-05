@@ -18,10 +18,6 @@ namespace LevelEditor
     //</summary>
     public class ObjModel
     {
-        #region Singletons
-        FileManager theFileManager;
-        #endregion
-
         #region Fields
         private Matrix mIdenityMatrix = Matrix.Identity;
        
@@ -80,10 +76,7 @@ namespace LevelEditor
         public ObjModel(string aObjFilePath)
         {
             // TODO: Change technique of extracting the current graphic device.
-            theFileManager = FileManager.Get();
-
-            mEffect = theFileManager.Effect;
-
+            mEffect = GameFileManager.Effect;
 
             mStreamReader = new StreamReader(aObjFilePath);
 
@@ -275,9 +268,9 @@ namespace LevelEditor
                 index += 3;
             }
 
-            mVertexBuffer = new VertexBuffer(theFileManager.GraphicsDevice, VertexPositionNormalTexture.VertexDeclaration, mObjModel.Length, BufferUsage.WriteOnly);
+            mVertexBuffer = new VertexBuffer(GameFileManager.GraphicsDevice, VertexPositionNormalTexture.VertexDeclaration, mObjModel.Length, BufferUsage.WriteOnly);
             mVertexBuffer.SetData(mObjModel);
-            mIndexBuffer = new IndexBuffer(theFileManager.GraphicsDevice, typeof(int), mFaceList.Length, BufferUsage.None);
+            mIndexBuffer = new IndexBuffer(GameFileManager.GraphicsDevice, typeof(int), mFaceList.Length, BufferUsage.None);
             mIndexBuffer.SetData(mFaceList);
         }
         #endregion
@@ -285,21 +278,21 @@ namespace LevelEditor
         #region Methods
         public void Draw(Tile aTile)
         {
-            theFileManager.GraphicsDevice.RasterizerState = RasterizerState.CullClockwise;
-            theFileManager.GraphicsDevice.BlendState = BlendState.Opaque;
-            theFileManager.GraphicsDevice.DepthStencilState = DepthStencilState.Default;
+            GameFileManager.GraphicsDevice.RasterizerState = RasterizerState.CullClockwise;
+            GameFileManager.GraphicsDevice.BlendState = BlendState.Opaque;
+            GameFileManager.GraphicsDevice.DepthStencilState = DepthStencilState.Default;
 
 
             foreach (EffectPass pass in mEffect.CurrentTechnique.Passes)
             {
                 mEffect.CurrentTechnique = mEffect.Techniques["Standard"];
-                mEffect.Parameters["xWorldViewProjectionMatrix"].SetValue(aTile.ScaleMatrix * aTile.RotationMatrix * aTile.WorldMatrix * theFileManager.ViewMatrix * theFileManager.ProjectionMatrix);
+                mEffect.Parameters["xWorldViewProjectionMatrix"].SetValue(aTile.ScaleMatrix * aTile.RotationMatrix * aTile.WorldMatrix * GameFileManager.ViewMatrix * GameFileManager.ProjectionMatrix);
 
                 mEffect.Parameters["xColorMap"].SetValue(aTile.Graphic);
 
                 pass.Apply();
 
-                theFileManager.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleList, mObjModel, 0, mObjModel.Length / 3);
+                GameFileManager.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleList, mObjModel, 0, mObjModel.Length / 3);
             }
         }
 

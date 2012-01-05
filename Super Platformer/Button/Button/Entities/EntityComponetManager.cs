@@ -18,7 +18,6 @@ namespace LevelEditor
     {
         #region Singletons
         InputManager theInputManager = InputManager.Get();
-        FileManager theFileManager = FileManager.Get();
         #endregion
 
         #region Data
@@ -70,16 +69,14 @@ namespace LevelEditor
 
             mList.Add(TileManager.Get());
 
-            theFileManager = FileManager.Get();
-
-            mSpriteBatch = theFileManager.SpriteBatch;
-            mGraphicDevice = theFileManager.GraphicsDevice;
+            mSpriteBatch = GameFileManager.SpriteBatch;
+            mGraphicDevice = GameFileManager.GraphicsDevice;
 
             mEditorWorkAreaRenderTexture2D = new RenderTarget2D(mGraphicDevice, 728, 561);
 
-            theFileManager.EditorWorkAreaRenderTexture2D = mEditorWorkAreaRenderTexture2D;
+            GameFileManager.EditorWorkAreaRenderTexture2D = mEditorWorkAreaRenderTexture2D;
 
-            gizmo = new GizmoComponent(theFileManager.ContentManager, theFileManager.GraphicsDevice);
+            gizmo = new GizmoComponent(GameFileManager.ContentManager, GameFileManager.GraphicsDevice);
             gizmo.Initialize();
 
             mTerrain = new Terrain();
@@ -92,23 +89,23 @@ namespace LevelEditor
         {
             if (levelEditor.Views.SelectedTab.Name == "tabPerspective")
             {
-                theFileManager.ProjectionMatrix = theFileManager.PerspectiveProjectionMatrix;
-                theFileManager.ViewMatrix = theFileManager.CameraViewMatrix;
+                GameFileManager.ProjectionMatrix = GameFileManager.PerspectiveProjectionMatrix;
+                GameFileManager.ViewMatrix = GameFileManager.CameraViewMatrix;
             }
             else if (levelEditor.Views.SelectedTab.Name == "tabTop")
             {
-                theFileManager.ProjectionMatrix = theFileManager.OrthographicProjectionMatrix;
-                theFileManager.ViewMatrix = theFileManager.TopViewMatrix;
+                GameFileManager.ProjectionMatrix = GameFileManager.OrthographicProjectionMatrix;
+                GameFileManager.ViewMatrix = GameFileManager.TopViewMatrix;
             }
             else if (levelEditor.Views.SelectedTab.Name == "tabFront")
             {
-                theFileManager.ProjectionMatrix = theFileManager.OrthographicProjectionMatrix;
-                theFileManager.ViewMatrix = theFileManager.FrontViewMatrix;
+                GameFileManager.ProjectionMatrix = GameFileManager.OrthographicProjectionMatrix;
+                GameFileManager.ViewMatrix = GameFileManager.FrontViewMatrix;
             }
             else if (levelEditor.Views.SelectedTab.Name == "tabRight")
             {
-                theFileManager.ProjectionMatrix = theFileManager.OrthographicProjectionMatrix;
-                theFileManager.ViewMatrix = theFileManager.RightViewMatrix;
+                GameFileManager.ProjectionMatrix = GameFileManager.OrthographicProjectionMatrix;
+                GameFileManager.ViewMatrix = GameFileManager.RightViewMatrix;
             }
 
             gizmo.HandleInput();
@@ -132,7 +129,7 @@ namespace LevelEditor
             {
                 mList[loop].Draw(aGameTime);
             }
-            mSpriteBatch.Draw(FileManager.Get().LoadTexture2D("Arrow"), Vector2.Zero, Color.White);
+            mSpriteBatch.Draw(GameFileManager.LoadTexture2D("Arrow"), Vector2.Zero, Color.White);
 
             gizmo.Draw3D();
 
@@ -144,7 +141,7 @@ namespace LevelEditor
 
             levelEditor.UpdateWindow();
          
-            theFileManager.EditorWorkAreaRenderTexture2D = mEditorWorkAreaRenderTexture2D;
+            GameFileManager.EditorWorkAreaRenderTexture2D = mEditorWorkAreaRenderTexture2D;
         }
 
         public void Clear()

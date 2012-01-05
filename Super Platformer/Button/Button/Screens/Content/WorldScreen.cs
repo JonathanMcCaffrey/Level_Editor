@@ -20,9 +20,9 @@ namespace LevelEditor
         #region Construction
         public WorldScreen()
         {
-            mBackgroundTexture = theFileManager.LoadTexture2D("Background");
+            mBackgroundTexture = GameFileManager.LoadTexture2D("Background");
 
-            mQuakeCamera = new QuakeCamera(theFileManager.GraphicsDevice.Viewport);
+            mQuakeCamera = new QuakeCamera(GameFileManager.GraphicsDevice.Viewport);
             //   Enemy.CreateEnemy(Vector2.Zero);
         }
 

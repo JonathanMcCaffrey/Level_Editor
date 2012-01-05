@@ -10,7 +10,6 @@ namespace LevelEditor
     public class AbstractEntity
     {
         #region Singletons
-        protected FileManager theFileManager = FileManager.Get();
         protected InputManager theInputManager = InputManager.Get();
         protected UtilityManager theUtilityManager = UtilityManager.Get();
         protected TileManager theTileManager = TileManager.Get();
@@ -35,7 +34,7 @@ namespace LevelEditor
         protected string mFilePathToGraphic = "IconOne";
         public Texture2D Graphic
         {
-            get { return theFileManager.LoadTexture2D(mFilePathToGraphic); }// theFileManager.LoadTexture2D(FilePathToGraphic); }
+            get { return GameFileManager.LoadTexture2D(mFilePathToGraphic); }// GameFileManager.LoadTexture2D(FilePathToGraphic); }
         }
         public string FilePathToGraphic
         {

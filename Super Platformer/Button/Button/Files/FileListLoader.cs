@@ -19,6 +19,10 @@ namespace LevelEditor
         private string mFilePathToDirectory = null;
         public string FilePathToDirectory
         {
+            protected set
+            {
+                mFilePathToDirectory = value;
+            }
             get
             {
                 if (mFilePathToDirectory == null)
@@ -37,9 +41,9 @@ namespace LevelEditor
         #endregion
 
         #region Construction
-        public FileListLoader(string aFilePathToDirectory)
+        public FileListLoader()
         {
-            mFilePathToDirectory = aFilePathToDirectory;
+           
         }
         #endregion
 

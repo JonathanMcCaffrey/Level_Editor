@@ -11,7 +11,6 @@ namespace LevelEditor
 {
     public class GizmoComponent
     {
-        FileManager theFileManager = FileManager.Get();
         InputManager theInputManager = InputManager.Get();
         TileManager theTileManager = TileManager.Get();
 
@@ -214,7 +213,7 @@ namespace LevelEditor
             quadEffect.DiffuseColor = highlightColor.ToVector3();
             quadEffect.Alpha = 0.5f;
 
-            theFileManager.GizmoSelection = Selection;
+            GameFileManager.GizmoSelection = Selection;
 
             translationModel = content.Load<Model>("gizmo_translate");
             rotationModel = content.Load<Model>("gizmo_rotate");
@@ -303,8 +302,8 @@ namespace LevelEditor
             if (!Enabled)
                 return;
 
-            this.view = theFileManager.ViewMatrix;
-            this.projection = theFileManager.ProjectionMatrix;
+            this.view = GameFileManager.ViewMatrix;
+            this.projection = GameFileManager.ProjectionMatrix;
 
             // scale for mouse.delta
             inputScale = (float)gameTime.ElapsedGameTime.TotalSeconds;
@@ -312,7 +311,7 @@ namespace LevelEditor
             SetPosition();
 
             // -- Scale Gizmo to fit on-screen -- //
-            Vector3 vLength = theFileManager.CameraPosition - position;
+            Vector3 vLength = GameFileManager.CameraPosition - position;
             float scaleFactor = 25;
 
             screenScale = vLength.Length() / scaleFactor;

@@ -9,6 +9,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
 
+
 #region Program
 namespace LevelEditor
 {
@@ -36,7 +37,6 @@ namespace LevelEditor
     public class Game1 : Microsoft.Xna.Framework.Game
     {
         #region Singletons
-        protected FileManager theFileManager;
         protected InputManager theInputManager;
         protected UtilityManager theUtilityManager;
         protected TileManager theTileManager;
@@ -59,13 +59,13 @@ namespace LevelEditor
             mGraphicsDeviceManager.PreferredBackBufferWidth = (int)mScreenDimensions.X;
             mGraphicsDeviceManager.PreferredBackBufferHeight = (int)mScreenDimensions.Y;
 
-           // mGraphicsDeviceManager.PreferredBackBufferWidth = (int)1;
-           // mGraphicsDeviceManager.PreferredBackBufferHeight = (int)1;
+            DirectoryFinder.FindProjectDirectory();
         }
 
         protected override void Initialize()
         {
-            theFileManager = FileManager.Get(this);
+            GameFileManager.StartGameFileManager(this);
+
             theInputManager = InputManager.Get(this);
             theUtilityManager = UtilityManager.Get(this);
             theTileManager = TileManager.Get(this);
@@ -103,8 +103,8 @@ namespace LevelEditor
             {
                 Vector2 mousePosition = new Vector2(theInputManager.mousePosition.X, theInputManager.mousePosition.Y);
 
-                theFileManager.CurrentTile.WorldPosition = new Vector3(mousePosition.X, mousePosition.Y, 0);
-                theFileManager.CurrentTile.Clone();
+                GameFileManager.CurrentTile.WorldPosition = new Vector3(mousePosition.X, mousePosition.Y, 0);
+                GameFileManager.CurrentTile.Clone();
 
             }
 

@@ -38,10 +38,10 @@ namespace LevelEditor
 
         public QuakeCamera(Viewport viewPort)
         {
-            viewMatrix = FileManager.Get().ViewMatrix;
-            projectionMatrix = FileManager.Get().ProjectionMatrix;
+            viewMatrix = GameFileManager.ViewMatrix;
+            projectionMatrix = GameFileManager.ProjectionMatrix;
 
-            cameraPosition = FileManager.Get().CameraPosition;
+            cameraPosition = GameFileManager.CameraPosition;
             leftrightRot = -17.3000031f;
 
 
@@ -118,7 +118,7 @@ namespace LevelEditor
             Vector3 rotatedVector = Vector3.Transform(vectorToAdd, cameraRotation);
             cameraPosition += moveSpeed * rotatedVector;
 
-            FileManager.Get().CameraPosition = cameraPosition;
+            GameFileManager.CameraPosition = cameraPosition;
 
             UpdateViewMatrix();
         }
@@ -138,7 +138,7 @@ namespace LevelEditor
 
             viewMatrix = Matrix.CreateLookAt(cameraPosition, cameraFinalTarget, cameraRotatedUpVector);
 
-            FileManager.Get().ViewMatrix = viewMatrix;
+            GameFileManager.ViewMatrix = viewMatrix;
         }
 
         public float UpDownRot

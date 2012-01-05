@@ -109,7 +109,7 @@ namespace LevelEditor
 
         public Vector2 GetScreenCenter()
         {
-            Vector2 temporaryScreenmCenter = new Vector2(FileManager.Get().GraphicsDevice.Viewport.Width / 2, FileManager.Get().GraphicsDevice.Viewport.Height / 2);
+            Vector2 temporaryScreenmCenter = new Vector2(GameFileManager.GraphicsDevice.Viewport.Width / 2, GameFileManager.GraphicsDevice.Viewport.Height / 2);
 
             return temporaryScreenmCenter;
         }
