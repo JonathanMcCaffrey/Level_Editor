@@ -14,10 +14,28 @@ namespace LevelEditor
 {
     public partial class LevelEditorInterface : Form
     {
+        #region Enums
+        enum View
+        {
+            PERSPECTIVE,
+            TOP,
+            FRONT,
+            RIGHT
+        }
+        #endregion
+
         #region Fields
+        private View mSelectedView = View.PERSPECTIVE;
         private bool mIsHoveringOnEditor = false;
         private bool mIsControlKeyHeldDown = false;
         private WorldBox mWorldBox = new WorldBox();
+
+        private bool mIsMouseDown = false;
+        private Vector2 mOldMousePosition = Vector2.Zero;
+        private Vector2 mCurrentMousePosition = Vector2.Zero;
+
+        public Microsoft.Xna.Framework.Rectangle mRectangle;  
+
         #endregion
 
         #region Properties
@@ -99,6 +117,12 @@ namespace LevelEditor
 
             Invalidate();
 
+            if (mIsMouseDown)
+            {
+                mRectangle.Width = (int)(mCurrentMousePosition.X - mOldMousePosition.X);
+                mRectangle.Height = (int)(mCurrentMousePosition.Y - mOldMousePosition.Y);
+            }
+
             if (mIsHoveringOnEditor)
             {
              //   InputManager.Get().MousePositionOnWindow = new Vector2(MousePosition.X - this.Location.X - 16, MousePosition.Y - this.Location.Y -273);
@@ -165,7 +189,36 @@ namespace LevelEditor
         #region HandleInput
         private void PerspectiveView_MouseClick(object sender, EventArgs e)
         {
+            GameFiles.CurrentTile.Clone();
 
+            mSelectedView = View.PERSPECTIVE;
+
+            mIsMouseDown = true;
+        }
+
+        void iPerspectiveGraphic_MouseDown(object sender, MouseEventArgs a_MouseEvent)
+        {
+            mRectangle.X = a_MouseEvent.X;
+            mRectangle.Y = a_MouseEvent.Y;
+
+            mRectangle.Width = 0;
+            mRectangle.Height = 0;
+
+            mIsMouseDown = true;
+
+            mOldMousePosition.X = a_MouseEvent.X;
+            mOldMousePosition.Y = a_MouseEvent.Y;
+        }
+
+        void iPerspectiveGraphic_MouseUp(object sender, System.Windows.Forms.MouseEventArgs a_MouseEvent)
+        {
+            mIsMouseDown = false;
+        }
+
+        void iPerspectiveGraphic_MouseMove(object sender, MouseEventArgs a_MouseEvent)
+        {
+            mCurrentMousePosition.X = a_MouseEvent.X;
+            mCurrentMousePosition.Y = a_MouseEvent.Y;
         }
 
         private void TopView_MouseClick(object sender, EventArgs e)

@@ -33,6 +33,9 @@ namespace LevelEditor
 
         Terrain mTerrain;
 
+        Texture2D mSelectionBox;
+        Rectangle mRectangle;
+
         #endregion
 
         #region Construction
@@ -73,10 +76,14 @@ namespace LevelEditor
 
             GameFiles.EditorWorkAreaRenderTexture2D = mEditorWorkAreaRenderTexture2D;
 
-            gizmo = new GizmoComponent(GameFiles.ContentManager, GameFiles.GraphicsDevice);
-            gizmo.Initialize();
+            gizmo = new GizmoComponent();
 
             mTerrain = new Terrain();
+
+            mSelectionBox = GameFiles.LoadTexture2D("Blank");
+            mRectangle = new Rectangle(0, 0, mSelectionBox.Width, mSelectionBox.Height);
+
+            levelEditor.mRectangle = mRectangle;
 
         }
         #endregion
@@ -84,6 +91,8 @@ namespace LevelEditor
         #region Methods
         public override void Update(GameTime aGameTime)
         {
+            mRectangle = levelEditor.mRectangle;
+
             if (levelEditor.Views.SelectedTab.Name == "tabPerspective")
             {
                 GameFiles.ProjectionMatrix = GameFiles.PerspectiveProjectionMatrix;
@@ -105,7 +114,6 @@ namespace LevelEditor
                 GameFiles.ViewMatrix = GameFiles.RightViewMatrix;
             }
 
-            gizmo.HandleInput();
             gizmo.Update(aGameTime);
 
             for (int loop = 0; loop < mList.Count; loop++)
@@ -133,6 +141,10 @@ namespace LevelEditor
             mTerrain.Draw();
             levelEditor.WorldBox.Draw();
 
+            mSpriteBatch.End();
+            
+            mSpriteBatch.Begin(SpriteSortMode.Immediate, BlendState.Additive, SamplerState.LinearClamp, DepthStencilState.None, RasterizerState.CullNone);
+            mSpriteBatch.Draw(mSelectionBox, mRectangle, Color.Red);
             mSpriteBatch.End();
 
             mGraphicDevice.SetRenderTarget(null);
