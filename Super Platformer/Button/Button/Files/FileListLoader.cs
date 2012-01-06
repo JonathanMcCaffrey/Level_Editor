@@ -14,8 +14,15 @@ namespace LevelEditor
     //</summary>
     public class FileListLoader
     {
-        #region Data
-        private string mFilePathToDirectory = null;
+        #region Fields
+
+        private string mFilePathToDirectory = null; 
+        private List<string> mListOfFilePaths = new List<string>();
+
+        #endregion
+
+        #region Properties
+
         public string FilePathToDirectory
         {
             protected set
@@ -32,11 +39,12 @@ namespace LevelEditor
                 return mFilePathToDirectory;
             }
         }
-        private List<string> mListOfFilePaths = new List<string>();
+
         public List<string> ListOfFilePaths
         {
             get { return mListOfFilePaths; }
         }
+
         #endregion
 
         #region Construction

@@ -10,7 +10,7 @@ namespace LevelEditor
     //<summary>
     // Contains terrain stuff.
     //</summary>
-    class Terrain
+    public class Terrain
     {
         #region Fields
         private Texture2D mHeightMap;

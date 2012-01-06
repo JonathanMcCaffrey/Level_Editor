@@ -8,11 +8,11 @@ using Microsoft.Xna.Framework.Graphics;
 namespace LevelEditor
 {
     //<summary>
-    // Contains EditorTexture2D stuff.
+    // Is a structure that contains all Texture2D data required by the texture editor.
     //</summary>
     public struct EditorTexture2D
     {
-        #region Data
+        #region Fields
         public Texture2D mTexture2D;
         public Vector2 mPosition;
         public Rectangle mSourceRectangle;

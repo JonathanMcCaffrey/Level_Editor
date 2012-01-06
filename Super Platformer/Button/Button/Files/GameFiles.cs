@@ -17,7 +17,7 @@ namespace LevelEditor
         //TODO: Doxygen everything.
         #region Constants
         const float CAMERA_ORTHO_DISTANCE = 5000.0f;
-        const float CAMERA_DRAW_DISTANCE = 9000.0f;
+        const float CAMERA_DRAW_DISTANCE = 18000.0f;
         static Vector3 CAMERA_STARTING_POSITION = new Vector3(5000.0f, 500.0f, 0.0f);
         #endregion
 

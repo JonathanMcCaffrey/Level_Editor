@@ -11,8 +11,13 @@ namespace LevelEditor
     //</summary>
     public class EditorAssetLoader : FileListLoader
     {
-        #region Data
+        #region Fields
         private List<string> mSortedModelFiles = new List<string>();
+        private List<string> mStortedIconFiles = new List<string>();
+        private List<string> mStortedTextureFiles = new List<string>();
+        #endregion
+
+        #region Properties
         public List<string> SortedModelFiles
         {
             get
@@ -26,7 +31,6 @@ namespace LevelEditor
             }
         }
 
-        private List<string> mStortedIconFiles = new List<string>();
         public List<string> StortedIconFiles
         {
             get
@@ -45,7 +49,6 @@ namespace LevelEditor
             }
         }
 
-        private List<string> mStortedTextureFiles = new List<string>();
         public List<string> StortedTextureFiles
         {
             get

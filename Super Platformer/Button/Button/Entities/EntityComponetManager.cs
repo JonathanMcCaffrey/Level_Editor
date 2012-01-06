@@ -131,6 +131,7 @@ namespace LevelEditor
             gizmo.Draw3D();
 
             mTerrain.Draw();
+            levelEditor.WorldBox.Draw();
 
             mSpriteBatch.End();
 

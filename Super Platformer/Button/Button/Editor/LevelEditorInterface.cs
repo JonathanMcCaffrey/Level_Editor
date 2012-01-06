@@ -16,30 +16,35 @@ namespace LevelEditor
     {
         #region Fields
         private bool mIsHoveringOnEditor = false;
+        private bool mIsControlKeyHeldDown = false;
+        private WorldBox mWorldBox = new WorldBox();
         #endregion
 
         #region Properties
-
         public TabControl Views
         {
             get { return iViews; }
         }
 
+        public WorldBox WorldBox
+        {
+            get { return mWorldBox; }
+        }
         #endregion
 
         #region Construction
         public LevelEditorInterface()
         {
-            /* this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;*/
-            this.TopMost = false;
-
             InitializeComponent();
             InitializeImages();
+
+            mWorldBox.DimensionsX = (float)iWorldDimensionX.Value;
+            mWorldBox.DimensionsY = (float)iWorldDimensionY.Value;
+            mWorldBox.DimensionsZ = (float)iWorldDimensionZ.Value;
+
+            mWorldBox.Update();
         }
 
-        /** Windows Form cannot preload images with XNA 4.0. Microsoft stated the problem will not be fixed in future updates.
-            So, this function call intializes all images in the interface. */
         private void InitializeImages()
         {
             string tempFilePathToAssetDirectory = DirectoryFinder.FindContentDirectory(); 
@@ -72,6 +77,8 @@ namespace LevelEditor
         #region Methods
         public void UpdateWindow()
         {
+            //TODO: Due to the nature of this call, it should not be called every frame or the game will crash.
+
             RenderTarget2D tempTextureToConvert = GameFiles.EditorWorkAreaRenderTexture2D;
 
             MemoryStream tempMemoryStream = new MemoryStream();
@@ -84,8 +91,6 @@ namespace LevelEditor
             tempMemoryStream.Close();
             tempMemoryStream.Dispose();
             tempMemoryStream = null;
-
-            string bla = iViews.SelectedTab.Name;
 
             iPerspectiveGraphic.Image = tempImageToUpdate;
             iTopGraphic.Image = tempImageToUpdate;
@@ -100,54 +105,119 @@ namespace LevelEditor
             }
         }
 
-        private void itOpen_Click(object sender, EventArgs aEvent)
+        #region Icons
+
+        private void Open_Click(object sender, EventArgs aEvent)
         {
             OpenFileDialog tempFileDialog = new OpenFileDialog();
             tempFileDialog.ShowDialog();
             tempFileDialog.Dispose();
         }
 
-        private void itSave_Click(object sender, EventArgs aEvent)
+        private void Save_Click(object sender, EventArgs aEvent)
         {
             SaveFileDialog tempFileDialog = new SaveFileDialog();
             tempFileDialog.ShowDialog();
             tempFileDialog.Dispose();
         }
 
-        void iGameGraphic_MouseDoubleClick(object sender, MouseEventArgs aMouseEvent)
-        {
-            Vector2 tempMousePosition = new Vector2(aMouseEvent.X, aMouseEvent.Y);
-        }
-
-        void iGameGraphic_MouseClick(object sender, MouseEventArgs aMouseEvent)
-        {
-            Vector2 tempMousePosition = new Vector2(aMouseEvent.X, aMouseEvent.Y);
-        }
-        #endregion
-
-        private void iPerspectiveGraphic_Click(object sender, MouseEventArgs e)
-        {
-         //   InputManager.Get().MousePositionOnWindow = new Vector2(e.X, e.Y);
-        }
-
-        void iPerspectiveGraphic_MouseHover(object sender, EventArgs e)
-        {
-            mIsHoveringOnEditor = true;
-        }
-
-        void iPerspectiveGraphic_MouseLeave(object sender, EventArgs e)
-        {
-            mIsHoveringOnEditor = false;
-        }
-
-        private void itNew_Click(object sender, EventArgs e)
+        private void New_Click(object sender, EventArgs e)
         {
             EntityComponetManager.Get().Clear();
         }
 
-        private void iAssetList_SelectedIndexChanged(object sender, EventArgs e)
+        private void Undo_Click(object sender, EventArgs e)
         {
 
         }
+
+        private void Redo_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Arrow_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Translate_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Rotate_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Scale_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ScaleLinear_Click(object sender, EventArgs e)
+        {
+
+        }
+        #endregion
+
+        #region HandleInput
+        private void PerspectiveView_MouseClick(object sender, EventArgs e)
+        {
+
+        }
+
+        private void TopView_MouseClick(object sender, EventArgs e)
+        {
+
+        }
+
+        private void FrontView_MouseClick(object sender, EventArgs e)
+        {
+
+        }
+
+        private void RightView_MouseClick(object sender, EventArgs e)
+        {
+
+        }
+        #endregion
+        void LevelEditorInterface_KeyDown(object sender, System.Windows.Forms.KeyEventArgs aKey)
+        {
+            switch (aKey.KeyCode)
+            {
+                case Keys.ControlKey:
+                    mIsControlKeyHeldDown = true;
+                    break;
+            }
+        }
+
+        void LevelEditorInterface_KeyUp(object sender, System.Windows.Forms.KeyEventArgs aKey)
+        {
+            switch (aKey.KeyCode)
+            {
+                case Keys.ControlKey:
+                    mIsControlKeyHeldDown = false;
+                    break;
+            }
+        }
+
+        private void iWorldDimensionX_ValueChanged(object sender, EventArgs aEvent)
+        {
+            mWorldBox.DimensionsX = (float)iWorldDimensionX.Value;
+            mWorldBox.Update();
+        }
+        private void iWorldDimensionY_ValueChanged(object sender, EventArgs aEvent)
+        {
+            mWorldBox.DimensionsY = (float)iWorldDimensionY.Value;
+            mWorldBox.Update();
+        }
+        private void iWorldDimensionZ_ValueChanged(object sender, EventArgs aEvent)
+        {
+            mWorldBox.DimensionsZ = (float)iWorldDimensionZ.Value;
+            mWorldBox.Update();
+        }
+        #endregion
     }
 }

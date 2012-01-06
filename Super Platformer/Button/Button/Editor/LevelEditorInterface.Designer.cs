@@ -61,10 +61,10 @@
             this.label2 = new System.Windows.Forms.Label();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.numericUpDown3 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
-            this.lPosition = new System.Windows.Forms.Label();
+            this.iWorldDimensionZ = new System.Windows.Forms.NumericUpDown();
+            this.iWorldDimensionY = new System.Windows.Forms.NumericUpDown();
+            this.iWorldDimensionX = new System.Windows.Forms.NumericUpDown();
+            this.lWorldDimension = new System.Windows.Forms.Label();
             this.tabAssets = new System.Windows.Forms.TabPage();
             this.numericUpDown13 = new System.Windows.Forms.NumericUpDown();
             this.numericUpDown14 = new System.Windows.Forms.NumericUpDown();
@@ -126,9 +126,9 @@
             this.tabInfo.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.iWorldDimensionZ)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.iWorldDimensionY)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.iWorldDimensionX)).BeginInit();
             this.tabAssets.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown13)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown14)).BeginInit();
@@ -197,7 +197,7 @@
             this.itNew.Size = new System.Drawing.Size(23, 28);
             this.itNew.Text = "New";
             this.itNew.ToolTipText = "New";
-            this.itNew.Click += new System.EventHandler(this.itNew_Click);
+            this.itNew.Click += new System.EventHandler(this.New_Click);
             // 
             // itOpen
             // 
@@ -207,7 +207,7 @@
             this.itOpen.Name = "itOpen";
             this.itOpen.Size = new System.Drawing.Size(23, 28);
             this.itOpen.Text = "Open";
-            this.itOpen.Click += new System.EventHandler(this.itOpen_Click);
+            this.itOpen.Click += new System.EventHandler(this.Open_Click);
             // 
             // itSave
             // 
@@ -218,7 +218,7 @@
             this.itSave.Size = new System.Drawing.Size(23, 28);
             this.itSave.Text = "toolStripButton3";
             this.itSave.ToolTipText = "Save";
-            this.itSave.Click += new System.EventHandler(this.itSave_Click);
+            this.itSave.Click += new System.EventHandler(this.Save_Click);
             // 
             // itUndo
             // 
@@ -229,6 +229,7 @@
             this.itUndo.Size = new System.Drawing.Size(23, 28);
             this.itUndo.Text = "toolStripButton4";
             this.itUndo.ToolTipText = "Undo";
+            this.itUndo.Click += new System.EventHandler(this.Undo_Click);
             // 
             // itRedo
             // 
@@ -239,6 +240,7 @@
             this.itRedo.Size = new System.Drawing.Size(23, 28);
             this.itRedo.Text = "toolStripButton5";
             this.itRedo.ToolTipText = "Redo";
+            this.itRedo.Click += new System.EventHandler(this.Redo_Click);
             // 
             // itArrow
             // 
@@ -249,6 +251,7 @@
             this.itArrow.Size = new System.Drawing.Size(23, 28);
             this.itArrow.Text = "Arrow";
             this.itArrow.ToolTipText = "Arrow";
+            this.itArrow.Click += new System.EventHandler(this.Arrow_Click);
             // 
             // itTranslate
             // 
@@ -259,6 +262,7 @@
             this.itTranslate.Size = new System.Drawing.Size(23, 28);
             this.itTranslate.Text = "Translate";
             this.itTranslate.ToolTipText = "Translate";
+            this.itTranslate.Click += new System.EventHandler(this.Translate_Click);
             // 
             // itRotate
             // 
@@ -269,6 +273,7 @@
             this.itRotate.Size = new System.Drawing.Size(23, 28);
             this.itRotate.Text = "Rotate";
             this.itRotate.ToolTipText = "Rotate";
+            this.itRotate.Click += new System.EventHandler(this.Rotate_Click);
             // 
             // itScale
             // 
@@ -278,6 +283,7 @@
             this.itScale.Name = "itScale";
             this.itScale.Size = new System.Drawing.Size(23, 28);
             this.itScale.Text = "Scale";
+            this.itScale.Click += new System.EventHandler(this.Scale_Click);
             // 
             // itScaleLinear
             // 
@@ -287,6 +293,7 @@
             this.itScaleLinear.Name = "itScaleLinear";
             this.itScaleLinear.Size = new System.Drawing.Size(23, 28);
             this.itScaleLinear.Text = "ScaleLinear";
+            this.itScaleLinear.Click += new System.EventHandler(this.ScaleLinear_Click);
             // 
             // openFileDialog1
             // 
@@ -316,6 +323,7 @@
             this.iViews.SelectedIndex = 0;
             this.iViews.Size = new System.Drawing.Size(750, 605);
             this.iViews.TabIndex = 3;
+            this.iViews.TabStop = false;
             // 
             // tabPerspective
             // 
@@ -336,11 +344,7 @@
             this.iPerspectiveGraphic.Size = new System.Drawing.Size(736, 573);
             this.iPerspectiveGraphic.TabIndex = 2;
             this.iPerspectiveGraphic.TabStop = false;
-            this.iPerspectiveGraphic.MouseClick += new System.Windows.Forms.MouseEventHandler(this.iGameGraphic_MouseClick);
-            this.iPerspectiveGraphic.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.iGameGraphic_MouseDoubleClick);
-            this.iPerspectiveGraphic.MouseDown += new System.Windows.Forms.MouseEventHandler(this.iPerspectiveGraphic_Click);
-            this.iPerspectiveGraphic.MouseEnter += new System.EventHandler(this.iPerspectiveGraphic_MouseHover);
-            this.iPerspectiveGraphic.MouseLeave += new System.EventHandler(this.iPerspectiveGraphic_MouseLeave);
+            this.iPerspectiveGraphic.Click += new System.EventHandler(this.PerspectiveView_MouseClick);
             // 
             // tabTop
             // 
@@ -361,6 +365,7 @@
             this.iTopGraphic.Size = new System.Drawing.Size(736, 573);
             this.iTopGraphic.TabIndex = 0;
             this.iTopGraphic.TabStop = false;
+            this.iTopGraphic.Click += new System.EventHandler(this.TopView_MouseClick);
             // 
             // tabFront
             // 
@@ -381,6 +386,7 @@
             this.iFrontGraphic.Size = new System.Drawing.Size(736, 573);
             this.iFrontGraphic.TabIndex = 0;
             this.iFrontGraphic.TabStop = false;
+            this.iFrontGraphic.Click += new System.EventHandler(this.FrontView_MouseClick);
             // 
             // tabRight
             // 
@@ -401,6 +407,7 @@
             this.iRightGraphic.Size = new System.Drawing.Size(736, 573);
             this.iRightGraphic.TabIndex = 0;
             this.iRightGraphic.TabStop = false;
+            this.iRightGraphic.Click += new System.EventHandler(this.RightView_MouseClick);
             // 
             // Modes
             // 
@@ -424,10 +431,10 @@
             this.tabInfo.Controls.Add(this.label2);
             this.tabInfo.Controls.Add(this.pictureBox5);
             this.tabInfo.Controls.Add(this.comboBox1);
-            this.tabInfo.Controls.Add(this.numericUpDown3);
-            this.tabInfo.Controls.Add(this.numericUpDown2);
-            this.tabInfo.Controls.Add(this.numericUpDown1);
-            this.tabInfo.Controls.Add(this.lPosition);
+            this.tabInfo.Controls.Add(this.iWorldDimensionZ);
+            this.tabInfo.Controls.Add(this.iWorldDimensionY);
+            this.tabInfo.Controls.Add(this.iWorldDimensionX);
+            this.tabInfo.Controls.Add(this.lWorldDimension);
             this.tabInfo.ForeColor = System.Drawing.SystemColors.ControlText;
             this.tabInfo.Location = new System.Drawing.Point(4, 25);
             this.tabInfo.Name = "tabInfo";
@@ -455,6 +462,7 @@
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(122, 23);
             this.button1.TabIndex = 39;
+            this.button1.TabStop = false;
             this.button1.Text = "Reset Game";
             this.button1.UseVisualStyleBackColor = false;
             // 
@@ -465,6 +473,7 @@
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(122, 23);
             this.button3.TabIndex = 41;
+            this.button3.TabStop = false;
             this.button3.Text = "Editor Mode";
             this.button3.UseVisualStyleBackColor = false;
             // 
@@ -475,6 +484,7 @@
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(122, 23);
             this.button2.TabIndex = 40;
+            this.button2.TabStop = false;
             this.button2.Text = "Game Mode";
             this.button2.UseVisualStyleBackColor = false;
             // 
@@ -485,15 +495,16 @@
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(279, 66);
             this.textBox2.TabIndex = 38;
+            this.textBox2.TabStop = false;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(179, 69);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(109, 17);
+            this.label2.Size = new System.Drawing.Size(49, 17);
             this.label2.TabIndex = 37;
-            this.label2.Text = "Personal Notes:";
+            this.label2.Text = "Notes:";
             // 
             // pictureBox5
             // 
@@ -519,37 +530,104 @@
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(121, 24);
             this.comboBox1.TabIndex = 33;
+            this.comboBox1.TabStop = false;
             this.comboBox1.Text = "Night Sky";
             // 
-            // numericUpDown3
+            // iWorldDimensionZ
             // 
-            this.numericUpDown3.Location = new System.Drawing.Point(397, 40);
-            this.numericUpDown3.Name = "numericUpDown3";
-            this.numericUpDown3.Size = new System.Drawing.Size(64, 23);
-            this.numericUpDown3.TabIndex = 23;
+            this.iWorldDimensionZ.Increment = new decimal(new int[] {
+            1024,
+            0,
+            0,
+            0});
+            this.iWorldDimensionZ.Location = new System.Drawing.Point(397, 40);
+            this.iWorldDimensionZ.Maximum = new decimal(new int[] {
+            2048,
+            0,
+            0,
+            0});
+            this.iWorldDimensionZ.Minimum = new decimal(new int[] {
+            2048,
+            0,
+            0,
+            0});
+            this.iWorldDimensionZ.Name = "iWorldDimensionZ";
+            this.iWorldDimensionZ.Size = new System.Drawing.Size(64, 23);
+            this.iWorldDimensionZ.TabIndex = 23;
+            this.iWorldDimensionZ.TabStop = false;
+            this.iWorldDimensionZ.Value = new decimal(new int[] {
+            2048,
+            0,
+            0,
+            0});
+            this.iWorldDimensionZ.ValueChanged += new System.EventHandler(this.iWorldDimensionZ_ValueChanged);
             // 
-            // numericUpDown2
+            // iWorldDimensionY
             // 
-            this.numericUpDown2.Location = new System.Drawing.Point(326, 40);
-            this.numericUpDown2.Name = "numericUpDown2";
-            this.numericUpDown2.Size = new System.Drawing.Size(64, 23);
-            this.numericUpDown2.TabIndex = 22;
+            this.iWorldDimensionY.Increment = new decimal(new int[] {
+            1024,
+            0,
+            0,
+            0});
+            this.iWorldDimensionY.Location = new System.Drawing.Point(326, 40);
+            this.iWorldDimensionY.Maximum = new decimal(new int[] {
+            2048,
+            0,
+            0,
+            0});
+            this.iWorldDimensionY.Minimum = new decimal(new int[] {
+            2048,
+            0,
+            0,
+            0});
+            this.iWorldDimensionY.Name = "iWorldDimensionY";
+            this.iWorldDimensionY.Size = new System.Drawing.Size(64, 23);
+            this.iWorldDimensionY.TabIndex = 22;
+            this.iWorldDimensionY.TabStop = false;
+            this.iWorldDimensionY.Value = new decimal(new int[] {
+            2048,
+            0,
+            0,
+            0});
+            this.iWorldDimensionY.ValueChanged += new System.EventHandler(this.iWorldDimensionY_ValueChanged);
             // 
-            // numericUpDown1
+            // iWorldDimensionX
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(256, 40);
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(64, 23);
-            this.numericUpDown1.TabIndex = 21;
+            this.iWorldDimensionX.Increment = new decimal(new int[] {
+            1024,
+            0,
+            0,
+            0});
+            this.iWorldDimensionX.Location = new System.Drawing.Point(256, 40);
+            this.iWorldDimensionX.Maximum = new decimal(new int[] {
+            8192,
+            0,
+            0,
+            0});
+            this.iWorldDimensionX.Minimum = new decimal(new int[] {
+            512,
+            0,
+            0,
+            0});
+            this.iWorldDimensionX.Name = "iWorldDimensionX";
+            this.iWorldDimensionX.Size = new System.Drawing.Size(64, 23);
+            this.iWorldDimensionX.TabIndex = 21;
+            this.iWorldDimensionX.TabStop = false;
+            this.iWorldDimensionX.Value = new decimal(new int[] {
+            2048,
+            0,
+            0,
+            0});
+            this.iWorldDimensionX.ValueChanged += new System.EventHandler(this.iWorldDimensionX_ValueChanged);
             // 
-            // lPosition
+            // lWorldDimension
             // 
-            this.lPosition.AutoSize = true;
-            this.lPosition.Location = new System.Drawing.Point(179, 42);
-            this.lPosition.Name = "lPosition";
-            this.lPosition.Size = new System.Drawing.Size(78, 17);
-            this.lPosition.TabIndex = 3;
-            this.lPosition.Text = "Dimension:";
+            this.lWorldDimension.AutoSize = true;
+            this.lWorldDimension.Location = new System.Drawing.Point(179, 42);
+            this.lWorldDimension.Name = "lWorldDimension";
+            this.lWorldDimension.Size = new System.Drawing.Size(78, 17);
+            this.lWorldDimension.TabIndex = 3;
+            this.lWorldDimension.Text = "Dimension:";
             // 
             // tabAssets
             // 
@@ -583,6 +661,7 @@
             this.numericUpDown13.Name = "numericUpDown13";
             this.numericUpDown13.Size = new System.Drawing.Size(64, 23);
             this.numericUpDown13.TabIndex = 50;
+            this.numericUpDown13.TabStop = false;
             // 
             // numericUpDown14
             // 
@@ -590,6 +669,7 @@
             this.numericUpDown14.Name = "numericUpDown14";
             this.numericUpDown14.Size = new System.Drawing.Size(64, 23);
             this.numericUpDown14.TabIndex = 49;
+            this.numericUpDown14.TabStop = false;
             // 
             // numericUpDown15
             // 
@@ -597,6 +677,7 @@
             this.numericUpDown15.Name = "numericUpDown15";
             this.numericUpDown15.Size = new System.Drawing.Size(64, 23);
             this.numericUpDown15.TabIndex = 48;
+            this.numericUpDown15.TabStop = false;
             // 
             // numericUpDown16
             // 
@@ -604,6 +685,7 @@
             this.numericUpDown16.Name = "numericUpDown16";
             this.numericUpDown16.Size = new System.Drawing.Size(64, 23);
             this.numericUpDown16.TabIndex = 47;
+            this.numericUpDown16.TabStop = false;
             // 
             // numericUpDown17
             // 
@@ -611,6 +693,7 @@
             this.numericUpDown17.Name = "numericUpDown17";
             this.numericUpDown17.Size = new System.Drawing.Size(64, 23);
             this.numericUpDown17.TabIndex = 46;
+            this.numericUpDown17.TabStop = false;
             // 
             // numericUpDown18
             // 
@@ -618,6 +701,7 @@
             this.numericUpDown18.Name = "numericUpDown18";
             this.numericUpDown18.Size = new System.Drawing.Size(64, 23);
             this.numericUpDown18.TabIndex = 45;
+            this.numericUpDown18.TabStop = false;
             // 
             // numericUpDown19
             // 
@@ -625,6 +709,7 @@
             this.numericUpDown19.Name = "numericUpDown19";
             this.numericUpDown19.Size = new System.Drawing.Size(64, 23);
             this.numericUpDown19.TabIndex = 44;
+            this.numericUpDown19.TabStop = false;
             // 
             // numericUpDown20
             // 
@@ -632,6 +717,7 @@
             this.numericUpDown20.Name = "numericUpDown20";
             this.numericUpDown20.Size = new System.Drawing.Size(64, 23);
             this.numericUpDown20.TabIndex = 43;
+            this.numericUpDown20.TabStop = false;
             // 
             // numericUpDown21
             // 
@@ -639,6 +725,7 @@
             this.numericUpDown21.Name = "numericUpDown21";
             this.numericUpDown21.Size = new System.Drawing.Size(64, 23);
             this.numericUpDown21.TabIndex = 42;
+            this.numericUpDown21.TabStop = false;
             // 
             // numericUpDown22
             // 
@@ -646,6 +733,7 @@
             this.numericUpDown22.Name = "numericUpDown22";
             this.numericUpDown22.Size = new System.Drawing.Size(64, 23);
             this.numericUpDown22.TabIndex = 41;
+            this.numericUpDown22.TabStop = false;
             // 
             // numericUpDown23
             // 
@@ -653,6 +741,7 @@
             this.numericUpDown23.Name = "numericUpDown23";
             this.numericUpDown23.Size = new System.Drawing.Size(64, 23);
             this.numericUpDown23.TabIndex = 40;
+            this.numericUpDown23.TabStop = false;
             // 
             // numericUpDown24
             // 
@@ -660,6 +749,7 @@
             this.numericUpDown24.Name = "numericUpDown24";
             this.numericUpDown24.Size = new System.Drawing.Size(64, 23);
             this.numericUpDown24.TabIndex = 39;
+            this.numericUpDown24.TabStop = false;
             // 
             // label8
             // 
@@ -768,6 +858,7 @@
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(122, 23);
             this.button7.TabIndex = 44;
+            this.button7.TabStop = false;
             this.button7.Text = "Height  Mode";
             this.button7.UseVisualStyleBackColor = false;
             // 
@@ -778,6 +869,7 @@
             this.button8.Name = "button8";
             this.button8.Size = new System.Drawing.Size(122, 23);
             this.button8.TabIndex = 46;
+            this.button8.TabStop = false;
             this.button8.Text = "Texture Mode";
             this.button8.UseVisualStyleBackColor = false;
             // 
@@ -788,6 +880,7 @@
             this.button9.Name = "button9";
             this.button9.Size = new System.Drawing.Size(122, 23);
             this.button9.TabIndex = 45;
+            this.button9.TabStop = false;
             this.button9.Text = "Pick Terrain";
             this.button9.UseVisualStyleBackColor = false;
             // 
@@ -842,6 +935,7 @@
             this.numericUpDown6.Name = "numericUpDown6";
             this.numericUpDown6.Size = new System.Drawing.Size(64, 23);
             this.numericUpDown6.TabIndex = 64;
+            this.numericUpDown6.TabStop = false;
             // 
             // numericUpDown8
             // 
@@ -849,6 +943,7 @@
             this.numericUpDown8.Name = "numericUpDown8";
             this.numericUpDown8.Size = new System.Drawing.Size(64, 23);
             this.numericUpDown8.TabIndex = 62;
+            this.numericUpDown8.TabStop = false;
             // 
             // numericUpDown9
             // 
@@ -856,6 +951,7 @@
             this.numericUpDown9.Name = "numericUpDown9";
             this.numericUpDown9.Size = new System.Drawing.Size(64, 23);
             this.numericUpDown9.TabIndex = 61;
+            this.numericUpDown9.TabStop = false;
             // 
             // numericUpDown10
             // 
@@ -863,6 +959,7 @@
             this.numericUpDown10.Name = "numericUpDown10";
             this.numericUpDown10.Size = new System.Drawing.Size(64, 23);
             this.numericUpDown10.TabIndex = 60;
+            this.numericUpDown10.TabStop = false;
             // 
             // numericUpDown11
             // 
@@ -870,6 +967,7 @@
             this.numericUpDown11.Name = "numericUpDown11";
             this.numericUpDown11.Size = new System.Drawing.Size(64, 23);
             this.numericUpDown11.TabIndex = 59;
+            this.numericUpDown11.TabStop = false;
             // 
             // numericUpDown12
             // 
@@ -877,6 +975,7 @@
             this.numericUpDown12.Name = "numericUpDown12";
             this.numericUpDown12.Size = new System.Drawing.Size(64, 23);
             this.numericUpDown12.TabIndex = 58;
+            this.numericUpDown12.TabStop = false;
             // 
             // numericUpDown25
             // 
@@ -884,6 +983,7 @@
             this.numericUpDown25.Name = "numericUpDown25";
             this.numericUpDown25.Size = new System.Drawing.Size(64, 23);
             this.numericUpDown25.TabIndex = 57;
+            this.numericUpDown25.TabStop = false;
             // 
             // numericUpDown26
             // 
@@ -891,6 +991,7 @@
             this.numericUpDown26.Name = "numericUpDown26";
             this.numericUpDown26.Size = new System.Drawing.Size(64, 23);
             this.numericUpDown26.TabIndex = 56;
+            this.numericUpDown26.TabStop = false;
             // 
             // numericUpDown27
             // 
@@ -898,6 +999,7 @@
             this.numericUpDown27.Name = "numericUpDown27";
             this.numericUpDown27.Size = new System.Drawing.Size(64, 23);
             this.numericUpDown27.TabIndex = 55;
+            this.numericUpDown27.TabStop = false;
             // 
             // label1
             // 
@@ -942,6 +1044,7 @@
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(122, 23);
             this.button4.TabIndex = 39;
+            this.button4.TabStop = false;
             this.button4.Text = "Remove Light";
             this.button4.UseVisualStyleBackColor = false;
             // 
@@ -952,6 +1055,7 @@
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(122, 23);
             this.button5.TabIndex = 41;
+            this.button5.TabStop = false;
             this.button5.Text = "Save Light";
             this.button5.UseVisualStyleBackColor = false;
             // 
@@ -962,6 +1066,7 @@
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(122, 23);
             this.button6.TabIndex = 40;
+            this.button6.TabStop = false;
             this.button6.Text = "Add Light";
             this.button6.UseVisualStyleBackColor = false;
             // 
@@ -984,6 +1089,8 @@
             this.Controls.Add(this.iIconStrip);
             this.Name = "LevelEditorInterface";
             this.Text = "Level Editor";
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.LevelEditorInterface_KeyDown);
+            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.LevelEditorInterface_KeyUp);
             this.iIconStrip.ResumeLayout(false);
             this.iIconStrip.PerformLayout();
             this.iBackPanel.ResumeLayout(false);
@@ -1001,9 +1108,9 @@
             this.tabInfo.PerformLayout();
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.iWorldDimensionZ)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.iWorldDimensionY)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.iWorldDimensionX)).EndInit();
             this.tabAssets.ResumeLayout(false);
             this.tabAssets.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown13)).EndInit();
@@ -1038,7 +1145,6 @@
             this.ResumeLayout(false);
 
         }
-
        #endregion
 
         private System.Windows.Forms.ToolStrip iIconStrip;
@@ -1060,14 +1166,12 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.PictureBox pictureBox5;
         private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.NumericUpDown numericUpDown3;
-        private System.Windows.Forms.NumericUpDown numericUpDown2;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
-        private System.Windows.Forms.Label lPosition;
+        private System.Windows.Forms.NumericUpDown iWorldDimensionZ;
+        private System.Windows.Forms.NumericUpDown iWorldDimensionY;
+        private System.Windows.Forms.NumericUpDown iWorldDimensionX;
+        private System.Windows.Forms.Label lWorldDimension;
         private System.Windows.Forms.TabPage tabAssets;
         private System.Windows.Forms.NumericUpDown numericUpDown13;
         private System.Windows.Forms.NumericUpDown numericUpDown14;
@@ -1123,5 +1227,7 @@
         private System.Windows.Forms.PictureBox iTopGraphic;
         private System.Windows.Forms.PictureBox iFrontGraphic;
         private System.Windows.Forms.PictureBox iRightGraphic;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.Label label2;
     }
 }
