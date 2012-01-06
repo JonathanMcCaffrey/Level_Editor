@@ -605,7 +605,7 @@
             0,
             0});
             this.iWorldDimensionX.Minimum = new decimal(new int[] {
-            512,
+            2048,
             0,
             0,
             0});

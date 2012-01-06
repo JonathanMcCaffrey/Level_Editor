@@ -5,9 +5,7 @@ using System.Text;
 
 namespace LevelEditor
 {
-    // Binary Tree.
-
-    public class RedoStack
+    public class RedoActionStack
     {
     }
 }

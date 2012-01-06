@@ -5,8 +5,6 @@ using System.Text;
 
 namespace LevelEditor
 {
-    // Binary Tree.
-
     class TrueAssetStack
     {
     }

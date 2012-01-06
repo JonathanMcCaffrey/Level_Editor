@@ -5,12 +5,6 @@ using System.Text;
 
 namespace LevelEditor
 {
-    enum ActionFlag
-    {
-        Move,
-        Delete
-    }
-
     public interface IEditorStackAction
     {
         void Action();

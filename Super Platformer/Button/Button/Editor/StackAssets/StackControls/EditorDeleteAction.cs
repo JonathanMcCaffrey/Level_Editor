@@ -5,15 +5,13 @@ using System.Text;
 
 namespace LevelEditor
 {
-    public struct EditorDeleteAction : IEditorStackAction
+    public class EditorDeleteAction : IEditorStackAction
     {
-        ActionFlag m_ActionFlag = ActionFlag.Delete;
         int m_OwnerId = 0;
 
         public void Action()
         {
 
         }
-
     }
 }

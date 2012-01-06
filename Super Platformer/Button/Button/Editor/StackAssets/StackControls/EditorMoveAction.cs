@@ -5,10 +5,9 @@ using System.Text;
 
 namespace LevelEditor
 {
-    public struct EditorMoveAction : IEditorStackAction
+    public class EditorMoveAction : IEditorStackAction
     {
         #region Fields
-        ActionFlag m_ActionFlag = ActionFlag.Move;
         int m_OwnerId = 0;
         #endregion
 
