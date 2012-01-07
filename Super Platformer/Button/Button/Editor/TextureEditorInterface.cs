@@ -44,7 +44,6 @@ namespace LevelEditor
         #region Methods
         public void UpdateWindow()
         {
-
             tempTextureToConvert = GameFiles.TextureEditorRenderTarget2D;
 
             MemoryStream tempMemoryStream = new MemoryStream();
@@ -142,6 +141,10 @@ namespace LevelEditor
                 UpdateWindow();
                 mTextureEditor.AddTextureToStack(new EditorTexture2D(GameFiles.LoadTexture2D("Background"), tempMousePosition, Microsoft.Xna.Framework.Color.White));
             }
+
+
+            EntityComponetManager.Get().Test();
+
         }
 
         //TODO: Use this instead of clickity clicks. Give all windows there own mouse coords from InputManager.

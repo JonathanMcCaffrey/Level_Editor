@@ -34,7 +34,7 @@ namespace LevelEditor
         private Vector2 mOldMousePosition = Vector2.Zero;
         private Vector2 mCurrentMousePosition = Vector2.Zero;
 
-        public Microsoft.Xna.Framework.Rectangle mRectangle;  
+        public Microsoft.Xna.Framework.Rectangle mRectangle;
 
         #endregion
 
@@ -65,7 +65,7 @@ namespace LevelEditor
 
         private void InitializeImages()
         {
-            string tempFilePathToAssetDirectory = DirectoryFinder.FindContentDirectory(); 
+            string tempFilePathToAssetDirectory = DirectoryFinder.FindContentDirectory();
 
             itNew.Image = Image.FromFile(tempFilePathToAssetDirectory + "New.jpg");
             itOpen.Image = Image.FromFile(tempFilePathToAssetDirectory + "Open.jpg");
@@ -95,8 +95,6 @@ namespace LevelEditor
         #region Methods
         public void UpdateWindow()
         {
-            //TODO: Due to the nature of this call, it should not be called every frame or the game will crash.
-
             RenderTarget2D tempTextureToConvert = GameFiles.EditorWorkAreaRenderTexture2D;
 
             MemoryStream tempMemoryStream = new MemoryStream();
@@ -105,7 +103,7 @@ namespace LevelEditor
             tempMemoryStream.Seek(0, SeekOrigin.Begin);
 
             Image tempImageToUpdate = System.Drawing.Bitmap.FromStream(tempMemoryStream);
-            
+
             tempMemoryStream.Close();
             tempMemoryStream.Dispose();
             tempMemoryStream = null;
@@ -125,8 +123,16 @@ namespace LevelEditor
 
             if (mIsHoveringOnEditor)
             {
-             //   InputManager.Get().MousePositionOnWindow = new Vector2(MousePosition.X - this.Location.X - 16, MousePosition.Y - this.Location.Y -273);
+                //   InputManager.Get().MousePositionOnWindow = new Vector2(MousePosition.X - this.Location.X - 16, MousePosition.Y - this.Location.Y -273);
             }
+        }
+
+        bool WorldBoxHasChanged()
+        {
+            bool tempBoolean = false;
+
+
+            return tempBoolean;
         }
 
         #region Icons

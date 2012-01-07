@@ -31,7 +31,7 @@ namespace LevelEditor
 
         private GizmoComponent gizmo;
 
-        Terrain mTerrain;
+        Terrain[] mTerrain;
 
         Texture2D mSelectionBox;
         Rectangle mRectangle;
@@ -78,7 +78,22 @@ namespace LevelEditor
 
             gizmo = new GizmoComponent();
 
-            mTerrain = new Terrain();
+            mTerrain = new Terrain[4];
+
+            for (int loop = 0; loop < mTerrain.Length; loop += 2)
+            {
+                mTerrain[loop] = new Terrain();
+                mTerrain[loop].WorldPosition = new Vector3(2048 * (-loop / 2), 0, -2048);
+
+                mTerrain[loop + 1] = new Terrain();
+                mTerrain[loop + 1].WorldPosition = new Vector3(2048 * (-loop / 2), 0, 0);
+            }
+
+
+            for (int loop = 0; loop < mTerrain.Length; loop++)
+            {
+                mTerrain[loop].Update();
+            }
 
             mSelectionBox = GameFiles.LoadTexture2D("Selection");
             mRectangle = new Rectangle(0, 0, mSelectionBox.Width, mSelectionBox.Height);
@@ -89,6 +104,17 @@ namespace LevelEditor
         #endregion
 
         #region Methods
+
+        //** Test Code
+        public void Test()
+        {
+            for (int loop = 0; loop < mTerrain.Length; loop++)
+            {
+                mTerrain[loop].Update();
+            }
+        }
+        //** Test Code
+
         public override void Update(GameTime aGameTime)
         {
             mRectangle = levelEditor.mRectangle;
@@ -130,6 +156,11 @@ namespace LevelEditor
             mSpriteBatch.Begin();
             mGraphicDevice.Clear(Color.Green);
 
+            for (int loop = 0; loop < mTerrain.Length; loop++)
+            {
+                mTerrain[loop].Draw();
+            }
+
             for (int loop = 0; loop < mList.Count; loop++)
             {
                 mList[loop].Draw(aGameTime);
@@ -138,11 +169,12 @@ namespace LevelEditor
 
             gizmo.Draw3D();
 
-            mTerrain.Draw();
+
+
             levelEditor.WorldBox.Draw();
 
             mSpriteBatch.End();
-            
+
             mSpriteBatch.Begin(SpriteSortMode.Immediate, BlendState.Additive, SamplerState.LinearClamp, DepthStencilState.None, RasterizerState.CullNone);
             mSpriteBatch.Draw(mSelectionBox, mRectangle, Color.Red);
             mSpriteBatch.End();
@@ -150,7 +182,7 @@ namespace LevelEditor
             mGraphicDevice.SetRenderTarget(null);
 
             levelEditor.UpdateWindow();
-         
+
             GameFiles.EditorWorkAreaRenderTexture2D = mEditorWorkAreaRenderTexture2D;
         }
 

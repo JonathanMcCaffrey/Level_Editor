@@ -13,17 +13,27 @@ namespace LevelEditor
     public class Terrain
     {
         #region Fields
-        private Texture2D mHeightMap;
-        private VertexPositionNormalTexture[] mVextexData = new VertexPositionNormalTexture[65536];
-        private Color[] colorDataBuffer = new Color[65536];
+        private Texture2D m_HeightMap;
+        private VertexPositionNormalTexture[] m_VextexData = new VertexPositionNormalTexture[65536];
+        private Color[] m_ColorDataBuffer = new Color[65536];
+
+        private Vector3 m_WorldPosition = Vector3.Zero;
+        #endregion
+
+        #region Properties
+        public Vector3 WorldPosition
+        {
+            get { return m_WorldPosition; }
+            set { m_WorldPosition = value; }
+        }
         #endregion
 
         #region Construction
         public Terrain()
         {
-            mHeightMap = GameFiles.LoadTexture2D("TextureEditorTest");
+            m_HeightMap = GameFiles.LoadTexture2D("TextureEditorTest");
 
-            mHeightMap.GetData<Color>(colorDataBuffer);
+            m_HeightMap.GetData<Color>(m_ColorDataBuffer);
 
             int iterator = 0;
             for (float xLoop = 0; xLoop < 256; xLoop++)
@@ -31,16 +41,15 @@ namespace LevelEditor
                 for (float yLoop = 0; yLoop < 256; yLoop++)
                 {
                     //TODO: Add a sorting algorithm, or load a obj that happens to be the correct size.
+                    m_VextexData[iterator].Position.X = xLoop * 8.0f + WorldPosition.X;
+                    m_VextexData[iterator].Position.Z = yLoop * 8.0f + WorldPosition.Z;
+                    m_VextexData[iterator].TextureCoordinate.X = (xLoop + 1.0f) / 256.0f;
+                    m_VextexData[iterator].TextureCoordinate.Y = (yLoop + 1.0f) / 256.0f;
+                    m_VextexData[iterator].Position.Y = -m_ColorDataBuffer[iterator].R * 5.0f;
 
-                    mVextexData[iterator ].Position.X = xLoop * 2;
-                    mVextexData[iterator].Position.Z = yLoop * 2;
-                    mVextexData[iterator].TextureCoordinate.X = (xLoop + 1.0f) / 256.0f;
-                    mVextexData[iterator].TextureCoordinate.Y = (yLoop + 1.0f) / 256.0f;
-                    mVextexData[iterator].Position.Y = -colorDataBuffer[iterator].R;
-
-                    mVextexData[iterator].Normal.X = 0.0f;
-                    mVextexData[iterator].Normal.Y = 1.0f;
-                    mVextexData[iterator].Normal.Z = 0.0f;
+                    m_VextexData[iterator].Normal.X = 0.0f;
+                    m_VextexData[iterator].Normal.Y = 1.0f;
+                    m_VextexData[iterator].Normal.Z = 0.0f;
 
                     iterator++;
                 }
@@ -49,31 +58,35 @@ namespace LevelEditor
         #endregion
 
         #region Methods
-        public void Draw()
+        public void Update()
         {
             //TODO: Delegate this update instead of performing it on every frame.
-            mHeightMap = GameFiles.TextureEditorRenderTarget2D;
-            mHeightMap.GetData<Color>(colorDataBuffer);
+            m_HeightMap = GameFiles.TextureEditorRenderTarget2D;
+            m_HeightMap.GetData<Color>(m_ColorDataBuffer);
 
             int iterator = 0;
             for (float xLoop = 0; xLoop < 256; xLoop++)
             {
                 for (float yLoop = 0; yLoop < 256; yLoop++)
                 {
-                    //TODO: Add a sorting algorithm, or load a obj that happens to be the correct size.
-                    mVextexData[iterator].Position.X = xLoop * 2;
-                    mVextexData[iterator].Position.Z = yLoop * 2;
-                    mVextexData[iterator].TextureCoordinate.X = (xLoop + 1.0f) / 256.0f;
-                    mVextexData[iterator].TextureCoordinate.Y = (yLoop + 1.0f) / 256.0f;
-                    mVextexData[iterator].Position.Y = -colorDataBuffer[iterator].R;
+                    m_VextexData[iterator].Position.X = (xLoop * 8.0f) + WorldPosition.X;
+                    m_VextexData[iterator].Position.Z = (yLoop * 8.0f) + WorldPosition.Z;
+                    m_VextexData[iterator].TextureCoordinate.X = (xLoop + 1.0f) / 256.0f;
+                    m_VextexData[iterator].TextureCoordinate.Y = (yLoop + 1.0f) / 256.0f;
+                    m_VextexData[iterator].Position.Y = -m_ColorDataBuffer[iterator].R * 5.0f;
 
-                    mVextexData[iterator].Normal.X = 0.0f;
-                    mVextexData[iterator].Normal.Y = 1.0f;
-                    mVextexData[iterator].Normal.Z = 0.0f;
+                    m_VextexData[iterator].Normal.X = 0.0f;
+                    m_VextexData[iterator].Normal.Y = 1.0f;
+                    m_VextexData[iterator].Normal.Z = 0.0f;
 
                     iterator++;
                 }
             }
+        }
+
+        public void Draw()
+        {
+            
 
             GameFiles.GraphicsDevice.RasterizerState = RasterizerState.CullClockwise;
             GameFiles.GraphicsDevice.BlendState = BlendState.Opaque;
@@ -82,12 +95,12 @@ namespace LevelEditor
             foreach (EffectPass pass in GameFiles.Effect.CurrentTechnique.Passes)
             {
                 GameFiles.Effect.CurrentTechnique = GameFiles.Effect.Techniques["Standard"];
-                GameFiles.Effect.Parameters["xWorldViewProjectionMatrix"].SetValue(Matrix.CreateScale(3) * Matrix.Identity * GameFiles.ViewMatrix * GameFiles.ProjectionMatrix);
-                GameFiles.Effect.Parameters["xColorMap"].SetValue(mHeightMap);
+                GameFiles.Effect.Parameters["xWorldViewProjectionMatrix"].SetValue( Matrix.Identity * GameFiles.ViewMatrix * GameFiles.ProjectionMatrix);
+                GameFiles.Effect.Parameters["xColorMap"].SetValue(m_HeightMap);
 
                 pass.Apply();
 
-                GameFiles.GraphicsDevice.DrawUserPrimitives(PrimitiveType.LineList, mVextexData, 0, mVextexData.Length /2);
+                GameFiles.GraphicsDevice.DrawUserPrimitives(PrimitiveType.LineList, m_VextexData, 0, m_VextexData.Length / 2);
             }
         }
         #endregion

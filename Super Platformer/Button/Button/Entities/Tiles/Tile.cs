@@ -93,11 +93,17 @@ namespace LevelEditor
         #region Methods
 
         float x = 0;
+        static int y = 0;
         public override void Update()
         {
-            x += 0.01f;
+            x += 0.1f;
 
-            mWorldPosition = new Vector3((float)Math.Sin(x) * 4000, (float)Math.Sin(x / 3) * 200, (float)Math.Sin(x / 2) * 400);
+            y++;
+
+            mWorldPosition += new Vector3((float)Math.Sin(x) * 20, (float)Math.Sin(x / 3) * 20, (float)Math.Sin(x / 2) * 40);
+            mWorldPosition.X -= (float)Math.Sin((float)(new Random(y++).NextDouble())) * (float)(new Random(y++).NextDouble()) * 10.0f;
+            mWorldPosition.Z-= (float)Math.Sin((float)(new Random(y++).NextDouble())) * (float)(new Random(y++).NextDouble()) * 10.0f;
+            mWorldPosition.X -= (float)Math.Sin((float)(new Random(y++).NextDouble())) * (float)(new Random(y++).NextDouble()) * 10.0f;
 
             if (!once)
             {
