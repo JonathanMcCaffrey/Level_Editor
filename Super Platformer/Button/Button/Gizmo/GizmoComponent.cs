@@ -146,7 +146,19 @@ namespace LevelEditor
         #region Update
         public void Update(GameTime a_GameTime)
         {
-            if (m_IsEnabled == false) { return; }
+            if (m_IsEnabled == false) 
+            {
+                if (m_GizmoSelection.Count < 1)
+                {
+                    m_IsEnabled = false;
+                }
+                else
+                {
+                    m_IsEnabled = true;
+                }
+
+                return;
+            }
 
             m_TranslationDelta = (float)a_GameTime.ElapsedGameTime.TotalSeconds;
 

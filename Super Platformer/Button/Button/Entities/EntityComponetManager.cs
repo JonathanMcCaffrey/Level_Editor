@@ -80,7 +80,7 @@ namespace LevelEditor
 
             mTerrain = new Terrain();
 
-            mSelectionBox = GameFiles.LoadTexture2D("Blank");
+            mSelectionBox = GameFiles.LoadTexture2D("Selection");
             mRectangle = new Rectangle(0, 0, mSelectionBox.Width, mSelectionBox.Height);
 
             levelEditor.mRectangle = mRectangle;

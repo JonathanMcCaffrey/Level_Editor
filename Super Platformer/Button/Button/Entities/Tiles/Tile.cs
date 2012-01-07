@@ -30,25 +30,19 @@ namespace LevelEditor
         private string mObjFilePath;
         private ObjModel mObjModel;
 
-        Matrix mWorldMatrix = Matrix.Identity;
         public Matrix WorldMatrix
         {
             get { return Matrix.CreateTranslation(mWorldPosition.X, mWorldPosition.Y, mWorldPosition.Z); }
-            set { mWorldMatrix = value; }
         }
 
-        Matrix mScaleMatrix;
         public Matrix ScaleMatrix
         {
             get { return Matrix.CreateScale(mScale.X, mScale.Y, mScale.Z); }
-            set { mScaleMatrix = value; }
         }
 
-        Matrix mRotationMatrix;
         public Matrix RotationMatrix
         {
             get { return Matrix.CreateRotationX(mRotation.X) * Matrix.CreateRotationY(mRotation.Y) * Matrix.CreateRotationZ(mRotation.Z); }
-            set { mRotationMatrix = value; }
         }
 
         private RenderTarget2D mRenderTarget;
@@ -97,9 +91,13 @@ namespace LevelEditor
         #endregion
 
         #region Methods
+
+        float x = 0;
         public override void Update()
         {
-            mWorldMatrix = Matrix.CreateTranslation(mWorldPosition.X, mWorldPosition.Y, mWorldPosition.Z);
+            x += 0.01f;
+
+            mWorldPosition = new Vector3((float)Math.Sin(x) * 4000, (float)Math.Sin(x / 3) * 200, (float)Math.Sin(x / 2) * 400);
 
             if (!once)
             {
@@ -117,6 +115,23 @@ namespace LevelEditor
         public override void Draw()
         {
             mObjModel.Draw(this);
+
+            Vector3 tempUnproject = GameFiles.GraphicsDevice.Viewport.Project(Vector3.Zero, GameFiles.ProjectionMatrix, GameFiles.ViewMatrix, WorldMatrix);
+
+            Vector2 temp = new Vector2(tempUnproject.X, tempUnproject.Y);
+
+            GameFiles.SpriteBatch.End();
+
+            float scale = 2000.0f / (GameFiles.CameraPosition.X - mWorldPosition.X);
+
+
+            Texture2D tempTex = GameFiles.LoadTexture2D("Selection");
+
+            GameFiles.SpriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, SamplerState.LinearWrap, DepthStencilState.None, RasterizerState.CullNone);
+            GameFiles.SpriteBatch.Draw(tempTex, temp, new Rectangle(0, 0, tempTex.Width, tempTex.Height), Color.LimeGreen, 0.0f, new Vector2(tempTex.Width / 2, tempTex.Height/2), scale * 0.5f, SpriteEffects.None, 0.0f);
+            GameFiles.SpriteBatch.End();
+
+            GameFiles.SpriteBatch.Begin();
         }
 
         public void Clone()
