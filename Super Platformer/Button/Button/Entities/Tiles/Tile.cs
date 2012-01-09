@@ -104,6 +104,11 @@ namespace LevelEditor
             mWorldPosition.X -= (float)Math.Sin((float)(new Random(y++).NextDouble())) * (float)(new Random(y++).NextDouble()) * 10.0f;
             mWorldPosition.Z-= (float)Math.Sin((float)(new Random(y++).NextDouble())) * (float)(new Random(y++).NextDouble()) * 10.0f;
             mWorldPosition.X -= (float)Math.Sin((float)(new Random(y++).NextDouble())) * (float)(new Random(y++).NextDouble()) * 10.0f;
+            mRotation.X -= (float)Math.Sin((float)(new Random(y++).NextDouble())) * (float)(new Random(y++).NextDouble()) * 10.0f;
+            mRotation.Z -= (float)Math.Sin((float)(new Random(y++).NextDouble())) * (float)(new Random(y++).NextDouble()) * 10.0f;
+            mRotation.Y -= (float)Math.Sin((float)(new Random(y++).NextDouble())) * (float)(new Random(y++).NextDouble()) * 5.0f;
+
+            mScale = new Vector3((float)Math.Sin(x / 3.0f), (float)Math.Sin(x / 5.0f), (float)Math.Sin(x / 4.0f)) + new Vector3(2.0f,2.0f,2.0f);
 
             if (!once)
             {

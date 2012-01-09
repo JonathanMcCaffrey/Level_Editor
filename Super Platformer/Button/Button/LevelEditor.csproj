@@ -131,6 +131,7 @@
     <Compile Include="Editor\StackAssets\StackControls\IEditorStackAction.cs" />
     <Compile Include="Editor\Storage\BinaryTree.cs" />
     <Compile Include="Editor\Storage\BinaryTreeNode.cs" />
+    <Compile Include="Files\Serializers\AssetSerializer.cs" />
     <Compile Include="Entities\Terrain.cs" />
     <Compile Include="Entities\WorldBox.cs" />
     <Compile Include="Files\Content\EditorAssetLoader.cs" />

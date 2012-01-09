@@ -40,7 +40,6 @@ namespace LevelEditor
             {
                 for (float yLoop = 0; yLoop < 256; yLoop++)
                 {
-                    //TODO: Add a sorting algorithm, or load a obj that happens to be the correct size.
                     m_VextexData[iterator].Position.X = xLoop * 8.0f + WorldPosition.X;
                     m_VextexData[iterator].Position.Z = yLoop * 8.0f + WorldPosition.Z;
                     m_VextexData[iterator].TextureCoordinate.X = (xLoop + 1.0f) / 256.0f;
@@ -60,7 +59,6 @@ namespace LevelEditor
         #region Methods
         public void Update()
         {
-            //TODO: Delegate this update instead of performing it on every frame.
             m_HeightMap = GameFiles.TextureEditorRenderTarget2D;
             m_HeightMap.GetData<Color>(m_ColorDataBuffer);
 

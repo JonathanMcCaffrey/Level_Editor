@@ -96,12 +96,10 @@ namespace LevelEditor
                         break;
 
                     case "jpg":
-                        Console.WriteLine(ListOfFilePaths[loop]);
                         mStortedIconFiles.Add(ListOfFilePaths[loop]);
                         break;
 
                     case "png":
-                        Console.WriteLine(ListOfFilePaths[loop]);
                         mStortedTextureFiles.Add(ListOfFilePaths[loop]);
                         break;
 

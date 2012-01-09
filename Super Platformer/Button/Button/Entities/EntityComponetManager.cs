@@ -11,6 +11,9 @@ using Microsoft.Xna.Framework.Input;
 using System.Runtime.Serialization;
 using System.Xml.Serialization;
 using System.Xml;
+using System.IO;
+using System.Runtime.Serialization;
+using System.Runtime.Serialization.Formatters.Binary;
 
 namespace LevelEditor
 {
@@ -35,7 +38,6 @@ namespace LevelEditor
 
         Texture2D mSelectionBox;
         Rectangle mRectangle;
-
         #endregion
 
         #region Construction
@@ -99,7 +101,6 @@ namespace LevelEditor
             mRectangle = new Rectangle(0, 0, mSelectionBox.Width, mSelectionBox.Height);
 
             levelEditor.mRectangle = mRectangle;
-
         }
         #endregion
 

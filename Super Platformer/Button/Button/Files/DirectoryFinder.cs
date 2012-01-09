@@ -20,7 +20,6 @@ namespace LevelEditor
             string path = Uri.UnescapeDataString(uri.Path);
             string directoryPath = Path.GetDirectoryName(path);
             directoryPath = directoryPath.Replace("\\Button\\bin\\x86\\Debug", "\\");
-            Console.WriteLine(directoryPath);
 
             return directoryPath;
         }
@@ -32,7 +31,6 @@ namespace LevelEditor
             string path = Uri.UnescapeDataString(uri.Path);
             string directoryPath = Path.GetDirectoryName(path);
             directoryPath = directoryPath.Replace("\\Button\\bin\\x86\\Debug", "\\ButtonContent\\Assets\\");
-            Console.WriteLine(directoryPath);
 
             return directoryPath;
         }
@@ -44,7 +42,6 @@ namespace LevelEditor
             string path = Uri.UnescapeDataString(uri.Path);
             string directoryPath = Path.GetDirectoryName(path);
             directoryPath = directoryPath.Replace("\\Button\\bin\\x86\\Debug", "\\ButtonContent\\");
-            Console.WriteLine(directoryPath);
 
             return directoryPath;
         }
