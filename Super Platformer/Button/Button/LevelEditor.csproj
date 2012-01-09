@@ -177,7 +177,6 @@
     <Compile Include="Editor\TextureEditorInterface.Designer.cs">
       <DependentUpon>TextureEditorInterface.cs</DependentUpon>
     </Compile>
-    <Compile Include="GameUtilities.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Game.ico" />
