@@ -108,6 +108,11 @@ namespace LevelEditor
         {
             List<VertexPositionColor> tempVertexData = new List<VertexPositionColor>(18);
 
+            m_GizmoSelection = GameFiles.GizmoSelection;
+
+            m_LineEffect = new BasicEffect(GameFiles.GraphicsDevice);
+            m_QuadEffect = new BasicEffect(GameFiles.GraphicsDevice);
+
             // X
             tempVertexData.Add(new VertexPositionColor(new Vector3(LINE_OFFSET, 0, 0), m_AxisColors[0]));
             tempVertexData.Add(new VertexPositionColor(new Vector3(LINE_LENGTH, 0, 0), m_AxisColors[0]));
@@ -200,6 +205,10 @@ namespace LevelEditor
         {
             if (m_IsEnabled == false) { return; }
 
+            m_ActiveMode = GizmoMode.TRANSLATE;
+            m_ActiveAxis = GizmoAxis.XY;
+            m_ActivePivot = PivotType.OBJECT_CENTER;
+
             GameFiles.GraphicsDevice.DepthStencilState = DepthStencilState.None;
 
             m_LineEffect.World = m_GizmoWorld;
@@ -256,9 +265,9 @@ namespace LevelEditor
                                 ModelMeshPart tempModelMeshPart = tempModelMesh.MeshParts[meshPartLoop];
 
                                 BasicEffect effect = (BasicEffect)tempModelMeshPart.Effect;
-                                Vector3 color = m_AxisColors[meshPartLoop].ToVector3();
+                                Vector3 color = m_AxisColors[loop].ToVector3();
 
-                                effect.World = m_ModelLocalSpace[meshPartLoop] * m_GizmoWorld;
+                                effect.World = m_ModelLocalSpace[loop] * m_GizmoWorld;
                                 effect.DiffuseColor = color;
                                 effect.EmissiveColor = color;
 
