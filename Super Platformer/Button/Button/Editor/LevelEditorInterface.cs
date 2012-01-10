@@ -195,11 +195,19 @@ namespace LevelEditor
         #region HandleInput
         private void PerspectiveView_MouseClick(object sender, EventArgs e)
         {
-            GameFiles.CurrentTile.Clone();
-
             mSelectedView = View.PERSPECTIVE;
 
             mIsMouseDown = true;
+
+            Console.WriteLine(mRectangle);
+
+            for (int loop = 0; loop < TileManager.Get().List.Count; loop++)
+            {
+                if (TileManager.Get().List[loop].SelectionRectangle.Intersects(new Microsoft.Xna.Framework.Rectangle(mRectangle.X, mRectangle.Y, 1,1)))
+                {
+                    GameFiles.GizmoSelection[0] = TileManager.Get().List[loop];
+                }
+            }
         }
 
         void iPerspectiveGraphic_MouseDown(object sender, MouseEventArgs a_MouseEvent)
@@ -225,6 +233,13 @@ namespace LevelEditor
         {
             mCurrentMousePosition.X = a_MouseEvent.X;
             mCurrentMousePosition.Y = a_MouseEvent.Y;
+
+            mRectangle.X = a_MouseEvent.X;
+            mRectangle.Y = a_MouseEvent.Y;
+
+            mRectangle.Width = 50;
+            mRectangle.Height = 50;
+
         }
 
         private void TopView_MouseClick(object sender, EventArgs e)
@@ -248,6 +263,9 @@ namespace LevelEditor
             {
                 case Keys.ControlKey:
                     mIsControlKeyHeldDown = true;
+                    break;
+                case Keys.Space:
+                    GameFiles.CurrentTile.Clone();
                     break;
             }
         }

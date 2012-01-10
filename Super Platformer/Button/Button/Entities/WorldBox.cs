@@ -17,67 +17,67 @@ namespace LevelEditor
         #endregion
 
         #region Fields
-        private Vector3 mDimensions;
-        private Vector3 mOrigin = Vector3.Zero;
+        private Vector3 m_Dimensions;
+        private Vector3 m_Origin = Vector3.Zero;
 
-        private VertexPositionColor[] mGridData;
-        private VertexPositionColor[] mBoxData;
+        private VertexPositionColor[] m_GridData;
+        private VertexPositionColor[] m_BoxData;
         #endregion
 
         #region Property
         public Vector3 Dimensions
         {
-            get { return mDimensions; }
-            set { mDimensions = value; }
+            get { return m_Dimensions; }
+            set { m_Dimensions = value; }
         }
         public float DimensionsX
         {
-            get { return mDimensions.X; }
-            set { mDimensions.X = value; }
+            get { return m_Dimensions.X; }
+            set { m_Dimensions.X = value; }
         }
         public float DimensionsY
         {
-            get { return mDimensions.Y; }
-            set { mDimensions.Y = value; }
+            get { return m_Dimensions.Y; }
+            set { m_Dimensions.Y = value; }
         }
         public float DimensionsZ
         {
-            get { return mDimensions.Z; }
-            set { mDimensions.Z = value; }
+            get { return m_Dimensions.Z; }
+            set { m_Dimensions.Z = value; }
         }
 
         public Vector3 MaxPoint
         {
-            get { return mOrigin + (mDimensions / 2); }
+            get { return m_Origin + (m_Dimensions / 2); }
         }
         public int MaxPointX
         {
-            get { return (int)(mOrigin + (mDimensions / 2)).X; }
+            get { return (int)(m_Origin + (m_Dimensions / 2)).X; }
         }
         public int MaxPointY
         {
-            get { return (int)(mOrigin + (mDimensions / 2)).Y; }
+            get { return (int)(m_Origin + (m_Dimensions / 2)).Y; }
         }
         public int MaxPointZ
         {
-            get { return (int)(mOrigin + (mDimensions / 2)).Z; }
+            get { return (int)(m_Origin + (m_Dimensions / 2)).Z; }
         }
 
         public Vector3 MinPoint
         {
-            get { return mOrigin - (mDimensions / 2); }
+            get { return m_Origin - (m_Dimensions / 2); }
         }
         public int MinPointX
         {
-            get { return (int)(mOrigin - (mDimensions / 2)).X; }
+            get { return (int)(m_Origin - (m_Dimensions / 2)).X; }
         }
         public int MinPointY
         {
-            get { return (int)(mOrigin - (mDimensions / 2)).Y; }
+            get { return (int)(m_Origin - (m_Dimensions / 2)).Y; }
         }
         public int MinPointZ
         {
-            get { return (int)(mOrigin - (mDimensions / 2)).Z; }
+            get { return (int)(m_Origin - (m_Dimensions / 2)).Z; }
         }
         #endregion
 
@@ -89,7 +89,7 @@ namespace LevelEditor
         public void Update()
         {
             int numberOfGridBoxes = (int)((DimensionsX / GRID_SIZE) * (DimensionsY / GRID_SIZE) * (DimensionsZ / GRID_SIZE));
-            mGridData = new VertexPositionColor[numberOfGridBoxes * 48];
+            m_GridData = new VertexPositionColor[numberOfGridBoxes * 48];
 
             int iterator = 0;
 
@@ -100,132 +100,132 @@ namespace LevelEditor
                 {
                     for (int zLoop = MinPointZ; zLoop < MaxPointZ; zLoop += GRID_SIZE)
                     {
-                        mGridData[iterator].Position = new Vector3(xLoop - GRID_SIZE, yLoop - GRID_SIZE, zLoop - GRID_SIZE); iterator++;
-                        mGridData[iterator].Position = new Vector3(xLoop - GRID_SIZE, yLoop + GRID_SIZE, zLoop - GRID_SIZE); iterator++;
+                        m_GridData[iterator].Position = new Vector3(xLoop - GRID_SIZE, yLoop - GRID_SIZE, zLoop - GRID_SIZE); iterator++;
+                        m_GridData[iterator].Position = new Vector3(xLoop - GRID_SIZE, yLoop + GRID_SIZE, zLoop - GRID_SIZE); iterator++;
 
-                        mGridData[iterator].Position = new Vector3(xLoop - GRID_SIZE, yLoop + GRID_SIZE, zLoop - GRID_SIZE); iterator++;
-                        mGridData[iterator].Position = new Vector3(xLoop + GRID_SIZE, yLoop + GRID_SIZE, zLoop - GRID_SIZE); iterator++;
+                        m_GridData[iterator].Position = new Vector3(xLoop - GRID_SIZE, yLoop + GRID_SIZE, zLoop - GRID_SIZE); iterator++;
+                        m_GridData[iterator].Position = new Vector3(xLoop + GRID_SIZE, yLoop + GRID_SIZE, zLoop - GRID_SIZE); iterator++;
 
-                        mGridData[iterator].Position = new Vector3(xLoop + GRID_SIZE, yLoop + GRID_SIZE, zLoop - GRID_SIZE); iterator++;
-                        mGridData[iterator].Position = new Vector3(xLoop + GRID_SIZE, yLoop - GRID_SIZE, zLoop - GRID_SIZE); iterator++;
+                        m_GridData[iterator].Position = new Vector3(xLoop + GRID_SIZE, yLoop + GRID_SIZE, zLoop - GRID_SIZE); iterator++;
+                        m_GridData[iterator].Position = new Vector3(xLoop + GRID_SIZE, yLoop - GRID_SIZE, zLoop - GRID_SIZE); iterator++;
 
-                        mGridData[iterator].Position = new Vector3(xLoop + GRID_SIZE, yLoop - GRID_SIZE, zLoop - GRID_SIZE); iterator++;
-                        mGridData[iterator].Position = new Vector3(xLoop - GRID_SIZE, yLoop - GRID_SIZE, zLoop - GRID_SIZE); iterator++;
-
-
-                        mGridData[iterator].Position = new Vector3(xLoop - GRID_SIZE, yLoop - GRID_SIZE, zLoop + GRID_SIZE); iterator++;
-                        mGridData[iterator].Position = new Vector3(xLoop - GRID_SIZE, yLoop + GRID_SIZE, zLoop + GRID_SIZE); iterator++;
-
-                        mGridData[iterator].Position = new Vector3(xLoop - GRID_SIZE, yLoop + GRID_SIZE, zLoop + GRID_SIZE); iterator++;
-                        mGridData[iterator].Position = new Vector3(xLoop + GRID_SIZE, yLoop + GRID_SIZE, zLoop + GRID_SIZE); iterator++;
-
-                        mGridData[iterator].Position = new Vector3(xLoop + GRID_SIZE, yLoop + GRID_SIZE, zLoop + GRID_SIZE); iterator++;
-                        mGridData[iterator].Position = new Vector3(xLoop + GRID_SIZE, yLoop - GRID_SIZE, zLoop + GRID_SIZE); iterator++;
-
-                        mGridData[iterator].Position = new Vector3(xLoop + GRID_SIZE, yLoop - GRID_SIZE, zLoop + GRID_SIZE); iterator++;
-                        mGridData[iterator].Position = new Vector3(xLoop - GRID_SIZE, yLoop - GRID_SIZE, zLoop + GRID_SIZE); iterator++;
+                        m_GridData[iterator].Position = new Vector3(xLoop + GRID_SIZE, yLoop - GRID_SIZE, zLoop - GRID_SIZE); iterator++;
+                        m_GridData[iterator].Position = new Vector3(xLoop - GRID_SIZE, yLoop - GRID_SIZE, zLoop - GRID_SIZE); iterator++;
 
 
-                        mGridData[iterator].Position = new Vector3(xLoop - GRID_SIZE, yLoop - GRID_SIZE, zLoop - GRID_SIZE); iterator++;
-                        mGridData[iterator].Position = new Vector3(xLoop - GRID_SIZE, yLoop - GRID_SIZE, zLoop + GRID_SIZE); iterator++;
+                        m_GridData[iterator].Position = new Vector3(xLoop - GRID_SIZE, yLoop - GRID_SIZE, zLoop + GRID_SIZE); iterator++;
+                        m_GridData[iterator].Position = new Vector3(xLoop - GRID_SIZE, yLoop + GRID_SIZE, zLoop + GRID_SIZE); iterator++;
 
-                        mGridData[iterator].Position = new Vector3(xLoop - GRID_SIZE, yLoop - GRID_SIZE, zLoop + GRID_SIZE); iterator++;
-                        mGridData[iterator].Position = new Vector3(xLoop - GRID_SIZE, yLoop + GRID_SIZE, zLoop + GRID_SIZE); iterator++;
+                        m_GridData[iterator].Position = new Vector3(xLoop - GRID_SIZE, yLoop + GRID_SIZE, zLoop + GRID_SIZE); iterator++;
+                        m_GridData[iterator].Position = new Vector3(xLoop + GRID_SIZE, yLoop + GRID_SIZE, zLoop + GRID_SIZE); iterator++;
 
-                        mGridData[iterator].Position = new Vector3(xLoop - GRID_SIZE, yLoop + GRID_SIZE, zLoop + GRID_SIZE); iterator++;
-                        mGridData[iterator].Position = new Vector3(xLoop - GRID_SIZE, yLoop + GRID_SIZE, zLoop - GRID_SIZE); iterator++;
+                        m_GridData[iterator].Position = new Vector3(xLoop + GRID_SIZE, yLoop + GRID_SIZE, zLoop + GRID_SIZE); iterator++;
+                        m_GridData[iterator].Position = new Vector3(xLoop + GRID_SIZE, yLoop - GRID_SIZE, zLoop + GRID_SIZE); iterator++;
 
-                        mGridData[iterator].Position = new Vector3(xLoop - GRID_SIZE, yLoop + GRID_SIZE, zLoop - GRID_SIZE); iterator++;
-                        mGridData[iterator].Position = new Vector3(xLoop - GRID_SIZE, yLoop - GRID_SIZE, zLoop - GRID_SIZE); iterator++;
-
-
-                        mGridData[iterator].Position = new Vector3(xLoop + GRID_SIZE, yLoop - GRID_SIZE, zLoop - GRID_SIZE); iterator++;
-                        mGridData[iterator].Position = new Vector3(xLoop + GRID_SIZE, yLoop - GRID_SIZE, zLoop + GRID_SIZE); iterator++;
-
-                        mGridData[iterator].Position = new Vector3(xLoop + GRID_SIZE, yLoop - GRID_SIZE, zLoop + GRID_SIZE); iterator++;
-                        mGridData[iterator].Position = new Vector3(xLoop + GRID_SIZE, yLoop + GRID_SIZE, zLoop + GRID_SIZE); iterator++;
-
-                        mGridData[iterator].Position = new Vector3(xLoop + GRID_SIZE, yLoop + GRID_SIZE, zLoop + GRID_SIZE); iterator++;
-                        mGridData[iterator].Position = new Vector3(xLoop + GRID_SIZE, yLoop + GRID_SIZE, zLoop - GRID_SIZE); iterator++;
-
-                        mGridData[iterator].Position = new Vector3(xLoop + GRID_SIZE, yLoop + GRID_SIZE, zLoop - GRID_SIZE); iterator++;
-                        mGridData[iterator].Position = new Vector3(xLoop + GRID_SIZE, yLoop - GRID_SIZE, zLoop - GRID_SIZE); iterator++;
+                        m_GridData[iterator].Position = new Vector3(xLoop + GRID_SIZE, yLoop - GRID_SIZE, zLoop + GRID_SIZE); iterator++;
+                        m_GridData[iterator].Position = new Vector3(xLoop - GRID_SIZE, yLoop - GRID_SIZE, zLoop + GRID_SIZE); iterator++;
 
 
-                        mGridData[iterator].Position = new Vector3(xLoop - GRID_SIZE, yLoop - GRID_SIZE, zLoop - GRID_SIZE); iterator++;
-                        mGridData[iterator].Position = new Vector3(xLoop - GRID_SIZE, yLoop - GRID_SIZE, zLoop + GRID_SIZE); iterator++;
+                        m_GridData[iterator].Position = new Vector3(xLoop - GRID_SIZE, yLoop - GRID_SIZE, zLoop - GRID_SIZE); iterator++;
+                        m_GridData[iterator].Position = new Vector3(xLoop - GRID_SIZE, yLoop - GRID_SIZE, zLoop + GRID_SIZE); iterator++;
 
-                        mGridData[iterator].Position = new Vector3(xLoop - GRID_SIZE, yLoop - GRID_SIZE, zLoop + GRID_SIZE); iterator++;
-                        mGridData[iterator].Position = new Vector3(xLoop + GRID_SIZE, yLoop - GRID_SIZE, zLoop + GRID_SIZE); iterator++;
+                        m_GridData[iterator].Position = new Vector3(xLoop - GRID_SIZE, yLoop - GRID_SIZE, zLoop + GRID_SIZE); iterator++;
+                        m_GridData[iterator].Position = new Vector3(xLoop - GRID_SIZE, yLoop + GRID_SIZE, zLoop + GRID_SIZE); iterator++;
 
-                        mGridData[iterator].Position = new Vector3(xLoop + GRID_SIZE, yLoop - GRID_SIZE, zLoop + GRID_SIZE); iterator++;
-                        mGridData[iterator].Position = new Vector3(xLoop + GRID_SIZE, yLoop - GRID_SIZE, zLoop - GRID_SIZE); iterator++;
+                        m_GridData[iterator].Position = new Vector3(xLoop - GRID_SIZE, yLoop + GRID_SIZE, zLoop + GRID_SIZE); iterator++;
+                        m_GridData[iterator].Position = new Vector3(xLoop - GRID_SIZE, yLoop + GRID_SIZE, zLoop - GRID_SIZE); iterator++;
 
-                        mGridData[iterator].Position = new Vector3(xLoop + GRID_SIZE, yLoop - GRID_SIZE, zLoop - GRID_SIZE); iterator++;
-                        mGridData[iterator].Position = new Vector3(xLoop - GRID_SIZE, yLoop - GRID_SIZE, zLoop - GRID_SIZE); iterator++;
+                        m_GridData[iterator].Position = new Vector3(xLoop - GRID_SIZE, yLoop + GRID_SIZE, zLoop - GRID_SIZE); iterator++;
+                        m_GridData[iterator].Position = new Vector3(xLoop - GRID_SIZE, yLoop - GRID_SIZE, zLoop - GRID_SIZE); iterator++;
 
 
-                        mGridData[iterator].Position = new Vector3(xLoop - GRID_SIZE, yLoop + GRID_SIZE, zLoop - GRID_SIZE); iterator++;
-                        mGridData[iterator].Position = new Vector3(xLoop - GRID_SIZE, yLoop + GRID_SIZE, zLoop + GRID_SIZE); iterator++;
+                        m_GridData[iterator].Position = new Vector3(xLoop + GRID_SIZE, yLoop - GRID_SIZE, zLoop - GRID_SIZE); iterator++;
+                        m_GridData[iterator].Position = new Vector3(xLoop + GRID_SIZE, yLoop - GRID_SIZE, zLoop + GRID_SIZE); iterator++;
 
-                        mGridData[iterator].Position = new Vector3(xLoop - GRID_SIZE, yLoop + GRID_SIZE, zLoop + GRID_SIZE); iterator++;
-                        mGridData[iterator].Position = new Vector3(xLoop + GRID_SIZE, yLoop + GRID_SIZE, zLoop + GRID_SIZE); iterator++;
+                        m_GridData[iterator].Position = new Vector3(xLoop + GRID_SIZE, yLoop - GRID_SIZE, zLoop + GRID_SIZE); iterator++;
+                        m_GridData[iterator].Position = new Vector3(xLoop + GRID_SIZE, yLoop + GRID_SIZE, zLoop + GRID_SIZE); iterator++;
 
-                        mGridData[iterator].Position = new Vector3(xLoop + GRID_SIZE, yLoop + GRID_SIZE, zLoop + GRID_SIZE); iterator++;
-                        mGridData[iterator].Position = new Vector3(xLoop + GRID_SIZE, yLoop + GRID_SIZE, zLoop - GRID_SIZE); iterator++;
+                        m_GridData[iterator].Position = new Vector3(xLoop + GRID_SIZE, yLoop + GRID_SIZE, zLoop + GRID_SIZE); iterator++;
+                        m_GridData[iterator].Position = new Vector3(xLoop + GRID_SIZE, yLoop + GRID_SIZE, zLoop - GRID_SIZE); iterator++;
 
-                        mGridData[iterator].Position = new Vector3(xLoop + GRID_SIZE, yLoop + GRID_SIZE, zLoop - GRID_SIZE); iterator++;
-                        mGridData[iterator].Position = new Vector3(xLoop - GRID_SIZE, yLoop + GRID_SIZE, zLoop - GRID_SIZE); iterator++;
+                        m_GridData[iterator].Position = new Vector3(xLoop + GRID_SIZE, yLoop + GRID_SIZE, zLoop - GRID_SIZE); iterator++;
+                        m_GridData[iterator].Position = new Vector3(xLoop + GRID_SIZE, yLoop - GRID_SIZE, zLoop - GRID_SIZE); iterator++;
+
+
+                        m_GridData[iterator].Position = new Vector3(xLoop - GRID_SIZE, yLoop - GRID_SIZE, zLoop - GRID_SIZE); iterator++;
+                        m_GridData[iterator].Position = new Vector3(xLoop - GRID_SIZE, yLoop - GRID_SIZE, zLoop + GRID_SIZE); iterator++;
+
+                        m_GridData[iterator].Position = new Vector3(xLoop - GRID_SIZE, yLoop - GRID_SIZE, zLoop + GRID_SIZE); iterator++;
+                        m_GridData[iterator].Position = new Vector3(xLoop + GRID_SIZE, yLoop - GRID_SIZE, zLoop + GRID_SIZE); iterator++;
+
+                        m_GridData[iterator].Position = new Vector3(xLoop + GRID_SIZE, yLoop - GRID_SIZE, zLoop + GRID_SIZE); iterator++;
+                        m_GridData[iterator].Position = new Vector3(xLoop + GRID_SIZE, yLoop - GRID_SIZE, zLoop - GRID_SIZE); iterator++;
+
+                        m_GridData[iterator].Position = new Vector3(xLoop + GRID_SIZE, yLoop - GRID_SIZE, zLoop - GRID_SIZE); iterator++;
+                        m_GridData[iterator].Position = new Vector3(xLoop - GRID_SIZE, yLoop - GRID_SIZE, zLoop - GRID_SIZE); iterator++;
+
+
+                        m_GridData[iterator].Position = new Vector3(xLoop - GRID_SIZE, yLoop + GRID_SIZE, zLoop - GRID_SIZE); iterator++;
+                        m_GridData[iterator].Position = new Vector3(xLoop - GRID_SIZE, yLoop + GRID_SIZE, zLoop + GRID_SIZE); iterator++;
+
+                        m_GridData[iterator].Position = new Vector3(xLoop - GRID_SIZE, yLoop + GRID_SIZE, zLoop + GRID_SIZE); iterator++;
+                        m_GridData[iterator].Position = new Vector3(xLoop + GRID_SIZE, yLoop + GRID_SIZE, zLoop + GRID_SIZE); iterator++;
+
+                        m_GridData[iterator].Position = new Vector3(xLoop + GRID_SIZE, yLoop + GRID_SIZE, zLoop + GRID_SIZE); iterator++;
+                        m_GridData[iterator].Position = new Vector3(xLoop + GRID_SIZE, yLoop + GRID_SIZE, zLoop - GRID_SIZE); iterator++;
+
+                        m_GridData[iterator].Position = new Vector3(xLoop + GRID_SIZE, yLoop + GRID_SIZE, zLoop - GRID_SIZE); iterator++;
+                        m_GridData[iterator].Position = new Vector3(xLoop - GRID_SIZE, yLoop + GRID_SIZE, zLoop - GRID_SIZE); iterator++;
                     }
                 }
             }
 
-            for (int loop = 0; loop < mGridData.Length; loop++)
+            for (int loop = 0; loop < m_GridData.Length; loop++)
             {
-                mGridData[loop].Color = Color.LightGreen;
+                m_GridData[loop].Color = Color.LightGreen;
             }
 
-            mBoxData = new VertexPositionColor[30];
+            m_BoxData = new VertexPositionColor[30];
 
             iterator = 0;
             Color temporaryColor = Color.Red;
-            mBoxData[iterator] = new VertexPositionColor(new Vector3(MinPointX, MinPointY, MinPointZ), temporaryColor); iterator++;
-            mBoxData[iterator] = new VertexPositionColor(new Vector3(MinPointX, MaxPointY, MinPointZ), temporaryColor); iterator++;
-            mBoxData[iterator] = new VertexPositionColor(new Vector3(MaxPointX, MaxPointY, MinPointZ), temporaryColor); iterator++;
-            mBoxData[iterator] = new VertexPositionColor(new Vector3(MaxPointX, MinPointY, MinPointZ), temporaryColor); iterator++;
-            mBoxData[iterator] = new VertexPositionColor(new Vector3(MinPointX, MinPointY, MinPointZ), temporaryColor); iterator++;
+            m_BoxData[iterator] = new VertexPositionColor(new Vector3(MinPointX, MinPointY, MinPointZ), temporaryColor); iterator++;
+            m_BoxData[iterator] = new VertexPositionColor(new Vector3(MinPointX, MaxPointY, MinPointZ), temporaryColor); iterator++;
+            m_BoxData[iterator] = new VertexPositionColor(new Vector3(MaxPointX, MaxPointY, MinPointZ), temporaryColor); iterator++;
+            m_BoxData[iterator] = new VertexPositionColor(new Vector3(MaxPointX, MinPointY, MinPointZ), temporaryColor); iterator++;
+            m_BoxData[iterator] = new VertexPositionColor(new Vector3(MinPointX, MinPointY, MinPointZ), temporaryColor); iterator++;
 
-            mBoxData[iterator] = new VertexPositionColor(new Vector3(MinPointX, MinPointY, MaxPointZ), temporaryColor); iterator++;
-            mBoxData[iterator] = new VertexPositionColor(new Vector3(MinPointX, MaxPointY, MaxPointZ), temporaryColor); iterator++;
-            mBoxData[iterator] = new VertexPositionColor(new Vector3(MaxPointX, MaxPointY, MaxPointZ), temporaryColor); iterator++;
-            mBoxData[iterator] = new VertexPositionColor(new Vector3(MaxPointX, MinPointY, MaxPointZ), temporaryColor); iterator++;
-            mBoxData[iterator] = new VertexPositionColor(new Vector3(MinPointX, MinPointY, MaxPointZ), temporaryColor); iterator++;
-
-
-            mBoxData[iterator] = new VertexPositionColor(new Vector3(MinPointX, MinPointY, MinPointZ), temporaryColor); iterator++;
-            mBoxData[iterator] = new VertexPositionColor(new Vector3(MinPointX, MinPointY, MaxPointZ), temporaryColor); iterator++;
-            mBoxData[iterator] = new VertexPositionColor(new Vector3(MinPointX, MaxPointY, MaxPointZ), temporaryColor); iterator++;
-            mBoxData[iterator] = new VertexPositionColor(new Vector3(MinPointX, MaxPointY, MinPointZ), temporaryColor); iterator++;
-            mBoxData[iterator] = new VertexPositionColor(new Vector3(MinPointX, MinPointY, MinPointZ), temporaryColor); iterator++;
-
-            mBoxData[iterator] = new VertexPositionColor(new Vector3(MaxPointX, MinPointY, MinPointZ), temporaryColor); iterator++;
-            mBoxData[iterator] = new VertexPositionColor(new Vector3(MaxPointX, MinPointY, MaxPointZ), temporaryColor); iterator++;
-            mBoxData[iterator] = new VertexPositionColor(new Vector3(MaxPointX, MaxPointY, MaxPointZ), temporaryColor); iterator++;
-            mBoxData[iterator] = new VertexPositionColor(new Vector3(MaxPointX, MaxPointY, MinPointZ), temporaryColor); iterator++;
-            mBoxData[iterator] = new VertexPositionColor(new Vector3(MaxPointX, MinPointY, MinPointZ), temporaryColor); iterator++;
+            m_BoxData[iterator] = new VertexPositionColor(new Vector3(MinPointX, MinPointY, MaxPointZ), temporaryColor); iterator++;
+            m_BoxData[iterator] = new VertexPositionColor(new Vector3(MinPointX, MaxPointY, MaxPointZ), temporaryColor); iterator++;
+            m_BoxData[iterator] = new VertexPositionColor(new Vector3(MaxPointX, MaxPointY, MaxPointZ), temporaryColor); iterator++;
+            m_BoxData[iterator] = new VertexPositionColor(new Vector3(MaxPointX, MinPointY, MaxPointZ), temporaryColor); iterator++;
+            m_BoxData[iterator] = new VertexPositionColor(new Vector3(MinPointX, MinPointY, MaxPointZ), temporaryColor); iterator++;
 
 
-            mBoxData[iterator] = new VertexPositionColor(new Vector3(MinPointX, MinPointY, MinPointZ), temporaryColor); iterator++;
-            mBoxData[iterator] = new VertexPositionColor(new Vector3(MinPointX, MinPointY, MaxPointZ), temporaryColor); iterator++;
-            mBoxData[iterator] = new VertexPositionColor(new Vector3(MaxPointX, MinPointY, MaxPointZ), temporaryColor); iterator++;
-            mBoxData[iterator] = new VertexPositionColor(new Vector3(MaxPointX, MinPointY, MinPointZ), temporaryColor); iterator++;
-            mBoxData[iterator] = new VertexPositionColor(new Vector3(MinPointX, MinPointY, MinPointZ), temporaryColor); iterator++;
+            m_BoxData[iterator] = new VertexPositionColor(new Vector3(MinPointX, MinPointY, MinPointZ), temporaryColor); iterator++;
+            m_BoxData[iterator] = new VertexPositionColor(new Vector3(MinPointX, MinPointY, MaxPointZ), temporaryColor); iterator++;
+            m_BoxData[iterator] = new VertexPositionColor(new Vector3(MinPointX, MaxPointY, MaxPointZ), temporaryColor); iterator++;
+            m_BoxData[iterator] = new VertexPositionColor(new Vector3(MinPointX, MaxPointY, MinPointZ), temporaryColor); iterator++;
+            m_BoxData[iterator] = new VertexPositionColor(new Vector3(MinPointX, MinPointY, MinPointZ), temporaryColor); iterator++;
 
-            mBoxData[iterator] = new VertexPositionColor(new Vector3(MinPointX, MaxPointY, MinPointZ), temporaryColor); iterator++;
-            mBoxData[iterator] = new VertexPositionColor(new Vector3(MinPointX, MaxPointY, MaxPointZ), temporaryColor); iterator++;
-            mBoxData[iterator] = new VertexPositionColor(new Vector3(MaxPointX, MaxPointY, MaxPointZ), temporaryColor); iterator++;
-            mBoxData[iterator] = new VertexPositionColor(new Vector3(MaxPointX, MaxPointY, MinPointZ), temporaryColor); iterator++;
-            mBoxData[iterator] = new VertexPositionColor(new Vector3(MinPointX, MaxPointY, MinPointZ), temporaryColor); iterator++;
+            m_BoxData[iterator] = new VertexPositionColor(new Vector3(MaxPointX, MinPointY, MinPointZ), temporaryColor); iterator++;
+            m_BoxData[iterator] = new VertexPositionColor(new Vector3(MaxPointX, MinPointY, MaxPointZ), temporaryColor); iterator++;
+            m_BoxData[iterator] = new VertexPositionColor(new Vector3(MaxPointX, MaxPointY, MaxPointZ), temporaryColor); iterator++;
+            m_BoxData[iterator] = new VertexPositionColor(new Vector3(MaxPointX, MaxPointY, MinPointZ), temporaryColor); iterator++;
+            m_BoxData[iterator] = new VertexPositionColor(new Vector3(MaxPointX, MinPointY, MinPointZ), temporaryColor); iterator++;
+
+
+            m_BoxData[iterator] = new VertexPositionColor(new Vector3(MinPointX, MinPointY, MinPointZ), temporaryColor); iterator++;
+            m_BoxData[iterator] = new VertexPositionColor(new Vector3(MinPointX, MinPointY, MaxPointZ), temporaryColor); iterator++;
+            m_BoxData[iterator] = new VertexPositionColor(new Vector3(MaxPointX, MinPointY, MaxPointZ), temporaryColor); iterator++;
+            m_BoxData[iterator] = new VertexPositionColor(new Vector3(MaxPointX, MinPointY, MinPointZ), temporaryColor); iterator++;
+            m_BoxData[iterator] = new VertexPositionColor(new Vector3(MinPointX, MinPointY, MinPointZ), temporaryColor); iterator++;
+
+            m_BoxData[iterator] = new VertexPositionColor(new Vector3(MinPointX, MaxPointY, MinPointZ), temporaryColor); iterator++;
+            m_BoxData[iterator] = new VertexPositionColor(new Vector3(MinPointX, MaxPointY, MaxPointZ), temporaryColor); iterator++;
+            m_BoxData[iterator] = new VertexPositionColor(new Vector3(MaxPointX, MaxPointY, MaxPointZ), temporaryColor); iterator++;
+            m_BoxData[iterator] = new VertexPositionColor(new Vector3(MaxPointX, MaxPointY, MinPointZ), temporaryColor); iterator++;
+            m_BoxData[iterator] = new VertexPositionColor(new Vector3(MinPointX, MaxPointY, MinPointZ), temporaryColor); iterator++;
 
             #endregion
         }
@@ -245,7 +245,7 @@ namespace LevelEditor
                 GameFiles.BasicEffect.Projection = GameFiles.ProjectionMatrix;
 
                 pass.Apply();
-                GameFiles.GraphicsDevice.DrawUserPrimitives(PrimitiveType.LineList, mGridData, 0, mGridData.Length / 2);
+                GameFiles.GraphicsDevice.DrawUserPrimitives(PrimitiveType.LineList, m_GridData, 0, m_GridData.Length / 2);
             }
 
             foreach (EffectPass pass in GameFiles.BasicEffect.CurrentTechnique.Passes)
@@ -256,7 +256,7 @@ namespace LevelEditor
                 GameFiles.BasicEffect.Projection = GameFiles.ProjectionMatrix;
 
                 pass.Apply();
-                GameFiles.GraphicsDevice.DrawUserPrimitives(PrimitiveType.LineStrip, mBoxData, 0, mBoxData.Length - 1);
+                GameFiles.GraphicsDevice.DrawUserPrimitives(PrimitiveType.LineStrip, m_BoxData, 0, m_BoxData.Length - 1);
             }
         }
         #endregion

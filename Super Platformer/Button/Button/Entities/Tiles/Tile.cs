@@ -59,6 +59,15 @@ namespace LevelEditor
             get { return mColorMap; }
             set { mColorMap = value; }
         }
+
+
+        private Rectangle mSelectionRectangle = Rectangle.Empty;
+        public Rectangle SelectionRectangle
+        {
+            get { return mSelectionRectangle; }
+            set { mSelectionRectangle = value; }
+        }
+
         #endregion
 
         #region Construction
@@ -135,11 +144,14 @@ namespace LevelEditor
 
             float scale = 2000.0f / (GameFiles.CameraPosition.X - mWorldPosition.X);
 
-
             Texture2D tempTex = GameFiles.LoadTexture2D("Selection");
 
+            mSelectionRectangle = new Rectangle((int)temp.X, (int)temp.Y, (int)tempTex.Width, (int)tempTex.Height);
+
+
+
             GameFiles.SpriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, SamplerState.LinearWrap, DepthStencilState.None, RasterizerState.CullNone);
-            GameFiles.SpriteBatch.Draw(tempTex, temp, new Rectangle(0, 0, tempTex.Width, tempTex.Height), Color.LimeGreen, 0.0f, new Vector2(tempTex.Width / 2, tempTex.Height/2), scale * 0.5f, SpriteEffects.None, 0.0f);
+            GameFiles.SpriteBatch.Draw(tempTex, temp, new Rectangle(0, 0, tempTex.Width, tempTex.Height), Color.LimeGreen, 0.0f, Vector2.Zero, scale * 0.5f, SpriteEffects.None, 0.0f);
             GameFiles.SpriteBatch.End();
 
             GameFiles.SpriteBatch.Begin();

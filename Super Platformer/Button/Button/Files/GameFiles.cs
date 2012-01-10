@@ -22,31 +22,31 @@ namespace LevelEditor
         #endregion
 
         #region Fields
-        private static bool mHasBeenIntialized = false;
+        private static bool m_HasBeenIntialized = false;
 
-        private static List<SpriteFont> mSpriteFontList = new List<SpriteFont>();
-        private static List<string> mSpriteFontFilePathList = new List<string>();
-        private static List<Model> mModelList = new List<Model>();
-        private static List<string> mModelFilePathList = new List<string>();
-        private static List<Texture2D> mTexture2DList = new List<Texture2D>();
-        private static List<string> mTexture2DFilePathList = new List<string>();
+        private static List<SpriteFont> m_SpriteFontList = new List<SpriteFont>();
+        private static List<string> m_SpriteFontFilePathList = new List<string>();
+        private static List<Model> m_ModelList = new List<Model>();
+        private static List<string> m_ModelFilePathList = new List<string>();
+        private static List<Texture2D> m_Texture2DList = new List<Texture2D>();
+        private static List<string> m_Texture2DFilePathList = new List<string>();
 
-        private static LevelEditorInterface mLevelEditorInterface = null;
+        private static LevelEditorInterface m_LevelEditorInterface = null;
 
-        private static RenderTarget2D mTextureEditorRenderTarget2D = null;
-        private static RenderTarget2D mEditorWorkAreaRenderTarget2D = null;
-        private static RenderTarget2D mRenderTarget2D = null;
+        private static RenderTarget2D m_TextureEditorRenderTarget2D = null;
+        private static RenderTarget2D m_EditorWorkAreaRenderTarget2D = null;
+        private static RenderTarget2D m_RenderTarget2D = null;
 
-        private static BasicEffect mBasicEffect = null;
-        private static Effect mEffect = null;
-        private static SpriteBatch mSpriteBatch;
-        private static SpriteFont mSpriteFont;
-        private static Game mGame = null;
-        private static ContentManager mContentManager = null;
-        private static GraphicsDevice mGraphicsDevice = null;
+        private static BasicEffect m_BasicEffect = null;
+        private static Effect m_Effect = null;
+        private static SpriteBatch m_SpriteBatch;
+        private static SpriteFont m_SpriteFont;
+        private static Game m_Game = null;
+        private static ContentManager m_ContentManager = null;
+        private static GraphicsDevice m_GraphicsDevice = null;
         
-        private static Vector2 mScreenCenter = Vector2.Zero;
-        private static Vector3 mCameraPosition = Vector3.Zero;
+        private static Vector2 m_ScreenCenter = Vector2.Zero;
+        private static Vector3 m_CameraPosition = Vector3.Zero;
                 
         private static Matrix mViewMatrix = Matrix.Identity;
         private static Matrix mCameraViewMatrix = Matrix.Identity;
@@ -57,8 +57,8 @@ namespace LevelEditor
         private static Matrix mPerspectiveProjectionMatrix = Matrix.Identity;
         private static Matrix mOrthographicProjectionMatrix = Matrix.Identity;
                 
-        private static List<Tile> mGizmoSelection = null;
-        private static Tile mCurrentTile = null;
+        private static List<Tile> m_GizmoSelection = null;
+        private static Tile m_CurrentTile = null;
         #endregion
 
         #region Properties
@@ -66,14 +66,14 @@ namespace LevelEditor
         {
             get
             {
-                if (mTextureEditorRenderTarget2D == null)
+                if (m_TextureEditorRenderTarget2D == null)
                 {
                     Console.WriteLine("{0} is being called before {1} is initialized. {2}.", "mTextureEditorRenderTarget2D", "mTextureEditorRenderTarget2D", ToString());
                 }
 
-                return mTextureEditorRenderTarget2D;
+                return m_TextureEditorRenderTarget2D;
             }
-            set { mTextureEditorRenderTarget2D = value; }
+            set { m_TextureEditorRenderTarget2D = value; }
         }
 
 
@@ -81,14 +81,14 @@ namespace LevelEditor
         {
             get
             {
-                if (mTextureEditorRenderTarget2D == null)
+                if (m_TextureEditorRenderTarget2D == null)
                 {
                     Console.WriteLine("{0} is being called before {1} is initialized. {2}.", "mEditorWorkAreaRenderTarget2D", "mEditorWorkAreaRenderTarget2D", ToString());
                 }
 
-                return mEditorWorkAreaRenderTarget2D;
+                return m_EditorWorkAreaRenderTarget2D;
             }
-            set { mEditorWorkAreaRenderTarget2D = value; }
+            set { m_EditorWorkAreaRenderTarget2D = value; }
         }
 
 
@@ -96,14 +96,14 @@ namespace LevelEditor
         {
             get
             {
-                if (mRenderTarget2D == null)
+                if (m_RenderTarget2D == null)
                 {
-                    mRenderTarget2D = new RenderTarget2D(mGraphicsDevice, mGraphicsDevice.Viewport.Width, mGraphicsDevice.Viewport.Height);
+                    m_RenderTarget2D = new RenderTarget2D(m_GraphicsDevice, m_GraphicsDevice.Viewport.Width, m_GraphicsDevice.Viewport.Height);
                 }
 
-                return mRenderTarget2D;
+                return m_RenderTarget2D;
             }
-            set { mRenderTarget2D = value; }
+            set { m_RenderTarget2D = value; }
         }
 
 
@@ -111,12 +111,12 @@ namespace LevelEditor
         {
             get
             {
-                if (mBasicEffect == null)
+                if (m_BasicEffect == null)
                 {
-                    mBasicEffect = new BasicEffect(mGraphicsDevice);
+                    m_BasicEffect = new BasicEffect(m_GraphicsDevice);
                 }
 
-                return mBasicEffect;
+                return m_BasicEffect;
             }
         }
 
@@ -125,13 +125,13 @@ namespace LevelEditor
         {
             get
             {
-                if (mEffect == null)
+                if (m_Effect == null)
                 {
                     string effectToLoad = "Basic";
 
                     try
                     {
-                        mEffect = mContentManager.Load<Effect>("Basic");
+                        m_Effect = m_ContentManager.Load<Effect>("Basic");
                     }
                     catch
                     {
@@ -140,7 +140,7 @@ namespace LevelEditor
                     }
                 }
 
-                return mEffect;
+                return m_Effect;
             }
         }
 
@@ -148,12 +148,12 @@ namespace LevelEditor
         {
             get
             {
-                if (mSpriteBatch == null)
+                if (m_SpriteBatch == null)
                 {
-                    mSpriteBatch = new SpriteBatch(GraphicsDevice);
+                    m_SpriteBatch = new SpriteBatch(GraphicsDevice);
                 }
 
-                return mSpriteBatch;
+                return m_SpriteBatch;
             }
         }
 
@@ -161,13 +161,13 @@ namespace LevelEditor
         {
             get
             {
-                if (mSpriteFont == null)
+                if (m_SpriteFont == null)
                 {
                     string spriteFontToLoad = "Title";
 
                     try
                     {
-                        mSpriteFont = LoadFont(spriteFontToLoad);
+                        m_SpriteFont = LoadFont(spriteFontToLoad);
                     }
                     catch
                     {
@@ -176,10 +176,10 @@ namespace LevelEditor
                     }
                 }
 
-                return mSpriteFont;
+                return m_SpriteFont;
 
             }
-            set { mSpriteFont = value; }
+            set { m_SpriteFont = value; }
         }
 
 
@@ -187,12 +187,12 @@ namespace LevelEditor
         {
             get
             {
-                if (mContentManager == null)
+                if (m_ContentManager == null)
                 {
                     Console.WriteLine("{0} is being called before {1} is initialized. {2}.", "mContentManager", "GameFileManager", ToString());
                 }
 
-                return mContentManager;
+                return m_ContentManager;
             }
         }
 
@@ -201,12 +201,12 @@ namespace LevelEditor
         {
             get
             {
-                if (mGraphicsDevice == null)
+                if (m_GraphicsDevice == null)
                 {
                     Console.WriteLine("{0} is being called before {1} is initialized. {2}.", "mGraphicsDevice", "GameFileManager", ToString());
                 }
 
-                return mGraphicsDevice;
+                return m_GraphicsDevice;
             }
         }
 
@@ -215,17 +215,17 @@ namespace LevelEditor
         {
             get
             {
-                if (mGraphicsDevice == null)
+                if (m_GraphicsDevice == null)
                 {
                     Console.WriteLine("{0} is being called before {1} is initialized. {2}.", "mScreenCenter", "GameFileManager", ToString());
                 }
 
-                if (mScreenCenter.Y == 0)
+                if (m_ScreenCenter.Y == 0)
                 {
-                    mScreenCenter = new Vector2(mGraphicsDevice.Viewport.Width / 2, mGraphicsDevice.Viewport.Height / 2);
+                    m_ScreenCenter = new Vector2(m_GraphicsDevice.Viewport.Width / 2, m_GraphicsDevice.Viewport.Height / 2);
                 }
 
-                return mScreenCenter;
+                return m_ScreenCenter;
             }
         }
 
@@ -234,8 +234,8 @@ namespace LevelEditor
 
         public static Vector3 CameraPosition
         {
-            get { return mCameraPosition; }
-            set { mCameraPosition = value; }
+            get { return m_CameraPosition; }
+            set { m_CameraPosition = value; }
         }
 
         public static Matrix ViewMatrix
@@ -290,14 +290,14 @@ namespace LevelEditor
         {
             get
             {
-                if (mGizmoSelection == null)
+                if (m_GizmoSelection == null)
                 {
                     Console.WriteLine("{0} is being called before {1} is initialized. {2}.", "mGizmoSelection", "mGizmoSelection", ToString());
                 }
 
-                return mGizmoSelection;
+                return m_GizmoSelection;
             }
-            set { mGizmoSelection = value; }
+            set { m_GizmoSelection = value; }
         }
 
 
@@ -305,14 +305,14 @@ namespace LevelEditor
         {
             get
             {
-                if (mCurrentTile == null)
+                if (m_CurrentTile == null)
                 {
                     Console.WriteLine("{0} is being called before {1} is initialized. {2}.", "mCurrentTile", "mCurrentTile", ToString());
                 }
 
-                return mCurrentTile;
+                return m_CurrentTile;
             }
-            set { mCurrentTile = value; }
+            set { m_CurrentTile = value; }
         }
         /** PlaceHolder */
 
@@ -321,13 +321,13 @@ namespace LevelEditor
         #region Methods
         public static void StartGameFileManager(Game aGame)
         {
-            mHasBeenIntialized = true;
+            m_HasBeenIntialized = true;
 
-            mGame = aGame;
-            mGraphicsDevice = aGame.GraphicsDevice;
-            mContentManager = aGame.Content;
+            m_Game = aGame;
+            m_GraphicsDevice = aGame.GraphicsDevice;
+            m_ContentManager = aGame.Content;
 
-            mCameraPosition = CAMERA_STARTING_POSITION;
+            m_CameraPosition = CAMERA_STARTING_POSITION;
 
             mCameraViewMatrix = Matrix.CreateLookAt(CameraPosition, Vector3.Zero, Vector3.Up);
             mPerspectiveProjectionMatrix = Matrix.CreatePerspectiveFieldOfView(MathHelper.PiOver4, (float)GraphicsDevice.Viewport.Width / (float)GraphicsDevice.Viewport.Height, 1.0f, CAMERA_DRAW_DISTANCE);
@@ -344,52 +344,52 @@ namespace LevelEditor
         public static SpriteFont LoadFont(string aFilePath)
         {
             int i = 0;
-            for (i = 0; i < mSpriteFontFilePathList.Count; i++)
+            for (i = 0; i < m_SpriteFontFilePathList.Count; i++)
             {
-                if (aFilePath == mSpriteFontFilePathList[i])
+                if (aFilePath == m_SpriteFontFilePathList[i])
                 {
-                    return mSpriteFontList[i];
+                    return m_SpriteFontList[i];
                 }
             }
 
-            mSpriteFontFilePathList.Add(aFilePath);
-            mSpriteFontList.Add(mGame.Content.Load<SpriteFont>(aFilePath));
+            m_SpriteFontFilePathList.Add(aFilePath);
+            m_SpriteFontList.Add(m_Game.Content.Load<SpriteFont>(aFilePath));
 
-            return mSpriteFontList[i];
+            return m_SpriteFontList[i];
         }
 
         public static Model LoadModel(string aFilePath)
         {
             int i = 0;
-            for (i = 0; i < mModelFilePathList.Count; i++)
+            for (i = 0; i < m_ModelFilePathList.Count; i++)
             {
-                if (aFilePath == mModelFilePathList[i])
+                if (aFilePath == m_ModelFilePathList[i])
                 {
-                    return mModelList[i];
+                    return m_ModelList[i];
                 }
             }
 
-            mModelFilePathList.Add(aFilePath);
-            mModelList.Add(mGame.Content.Load<Model>(aFilePath));
+            m_ModelFilePathList.Add(aFilePath);
+            m_ModelList.Add(m_Game.Content.Load<Model>(aFilePath));
 
-            return mModelList[i];
+            return m_ModelList[i];
         }
 
         public static Texture2D LoadTexture2D(string aFilePath)
         {
             int i = 0;
-            for (i = 0; i < mTexture2DFilePathList.Count; i++)
+            for (i = 0; i < m_Texture2DFilePathList.Count; i++)
             {
-                if (aFilePath == mTexture2DFilePathList[i])
+                if (aFilePath == m_Texture2DFilePathList[i])
                 {
-                    return mTexture2DList[i];
+                    return m_Texture2DList[i];
                 }
             }
 
-            mTexture2DFilePathList.Add(aFilePath);
-            mTexture2DList.Add(mGame.Content.Load<Texture2D>(aFilePath));
+            m_Texture2DFilePathList.Add(aFilePath);
+            m_Texture2DList.Add(m_Game.Content.Load<Texture2D>(aFilePath));
 
-            return mTexture2DList[i];
+            return m_Texture2DList[i];
         }
 
         #region Common .NET Overrides

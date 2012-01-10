@@ -108,7 +108,9 @@ namespace LevelEditor
         {
             List<VertexPositionColor> tempVertexData = new List<VertexPositionColor>(18);
 
-            m_GizmoSelection = GameFiles.GizmoSelection;
+            m_GizmoSelection = new List<Tile>();
+            m_GizmoSelection.Add(new Tile());
+            GameFiles.GizmoSelection = m_GizmoSelection;
 
             m_LineEffect = new BasicEffect(GameFiles.GraphicsDevice);
             m_QuadEffect = new BasicEffect(GameFiles.GraphicsDevice);
@@ -153,7 +155,7 @@ namespace LevelEditor
         {
             if (m_IsEnabled == false) 
             {
-                if (m_GizmoSelection.Count < 1)
+                if (m_GizmoSelection == null || m_GizmoSelection.Count < 1)
                 {
                     m_IsEnabled = false;
                 }
