@@ -345,9 +345,9 @@
             this.iPerspectiveGraphic.TabIndex = 2;
             this.iPerspectiveGraphic.TabStop = false;
             this.iPerspectiveGraphic.Click += new System.EventHandler(this.PerspectiveView_MouseClick);
-            this.iPerspectiveGraphic.MouseDown += new System.Windows.Forms.MouseEventHandler(iPerspectiveGraphic_MouseDown);
-            this.iPerspectiveGraphic.MouseUp += new System.Windows.Forms.MouseEventHandler(iPerspectiveGraphic_MouseUp);
-            this.iPerspectiveGraphic.MouseMove += new System.Windows.Forms.MouseEventHandler(iPerspectiveGraphic_MouseMove);
+            this.iPerspectiveGraphic.MouseDown += new System.Windows.Forms.MouseEventHandler(this.iPerspectiveGraphic_MouseDown);
+            this.iPerspectiveGraphic.MouseMove += new System.Windows.Forms.MouseEventHandler(this.iPerspectiveGraphic_MouseMove);
+            this.iPerspectiveGraphic.MouseUp += new System.Windows.Forms.MouseEventHandler(this.iPerspectiveGraphic_MouseUp);
             // 
             // tabTop
             // 
