@@ -151,7 +151,7 @@ namespace LevelEditor
 
         public override void Draw(GameTime aGameTime)
         {
-            textureEditor.DrawIntoTextureEditor();
+         /*   textureEditor.DrawIntoTextureEditor();
 
             mGraphicDevice.SetRenderTarget(mEditorWorkAreaRenderTexture2D);
             mSpriteBatch.Begin();
@@ -181,10 +181,30 @@ namespace LevelEditor
             mSpriteBatch.End();
 
             mGraphicDevice.SetRenderTarget(null);
+            */
+            mGraphicDevice.Clear(Color.Red);
+
+            mSpriteBatch.Begin();
+            for (int loop = 0; loop < mTerrain.Length; loop++)
+            {
+                mTerrain[loop].Draw();
+            }
+
+            for (int loop = 0; loop < mList.Count; loop++)
+            {
+                mList[loop].Draw(aGameTime);
+            }
+
+            levelEditor.WorldBox.Draw();
+
+            mSpriteBatch.End();
+            /*
+
+            mGraphicDevice.SetRenderTarget(null);
 
             levelEditor.UpdateWindow();
 
-            GameFiles.EditorWorkAreaRenderTexture2D = mEditorWorkAreaRenderTexture2D;
+            GameFiles.EditorWorkAreaRenderTexture2D = mEditorWorkAreaRenderTexture2D;*/
         }
 
         public void Clear()

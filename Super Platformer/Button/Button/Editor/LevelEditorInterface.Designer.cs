@@ -29,26 +29,26 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LevelEditorInterface));
-            System.Windows.Forms.ListViewItem listViewItem25 = new System.Windows.Forms.ListViewItem("light_001");
-            System.Windows.Forms.ListViewItem listViewItem26 = new System.Windows.Forms.ListViewItem("light_002");
-            System.Windows.Forms.ListViewItem listViewItem27 = new System.Windows.Forms.ListViewItem("StartingArea_Red_001");
-            System.Windows.Forms.ListViewItem listViewItem28 = new System.Windows.Forms.ListViewItem("Not implemented.");
-            System.Windows.Forms.ListViewItem listViewItem29 = new System.Windows.Forms.ListViewItem("asset_001");
-            System.Windows.Forms.ListViewItem listViewItem30 = new System.Windows.Forms.ListViewItem("asset_002");
-            System.Windows.Forms.ListViewItem listViewItem31 = new System.Windows.Forms.ListViewItem("Rock_Large_001");
-            System.Windows.Forms.ListViewItem listViewItem32 = new System.Windows.Forms.ListViewItem("Not Implemented.");
-            System.Windows.Forms.ListViewItem listViewItem21 = new System.Windows.Forms.ListViewItem("vertex_001");
-            System.Windows.Forms.ListViewItem listViewItem22 = new System.Windows.Forms.ListViewItem("vertex_002");
-            System.Windows.Forms.ListViewItem listViewItem23 = new System.Windows.Forms.ListViewItem("Battle_Difficult_001");
-            System.Windows.Forms.ListViewItem listViewItem24 = new System.Windows.Forms.ListViewItem("Not Implemented.");
-            System.Windows.Forms.ListViewItem listViewItem33 = new System.Windows.Forms.ListViewItem("vertex_001");
-            System.Windows.Forms.ListViewItem listViewItem34 = new System.Windows.Forms.ListViewItem("vertex_002");
-            System.Windows.Forms.ListViewItem listViewItem35 = new System.Windows.Forms.ListViewItem("Battle_Difficult_001");
-            System.Windows.Forms.ListViewItem listViewItem36 = new System.Windows.Forms.ListViewItem("Not Implemented.");
-            System.Windows.Forms.ListViewItem listViewItem37 = new System.Windows.Forms.ListViewItem("event_enemy_001");
-            System.Windows.Forms.ListViewItem listViewItem38 = new System.Windows.Forms.ListViewItem("event_pickups_001");
-            System.Windows.Forms.ListViewItem listViewItem39 = new System.Windows.Forms.ListViewItem("Battle_TwinFighters");
-            System.Windows.Forms.ListViewItem listViewItem40 = new System.Windows.Forms.ListViewItem("Not Implemented.");
+            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem("asset_001");
+            System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem("asset_002");
+            System.Windows.Forms.ListViewItem listViewItem3 = new System.Windows.Forms.ListViewItem("Rock_Large_001");
+            System.Windows.Forms.ListViewItem listViewItem4 = new System.Windows.Forms.ListViewItem("Not Implemented.");
+            System.Windows.Forms.ListViewItem listViewItem5 = new System.Windows.Forms.ListViewItem("light_001");
+            System.Windows.Forms.ListViewItem listViewItem6 = new System.Windows.Forms.ListViewItem("light_002");
+            System.Windows.Forms.ListViewItem listViewItem7 = new System.Windows.Forms.ListViewItem("StartingArea_Red_001");
+            System.Windows.Forms.ListViewItem listViewItem8 = new System.Windows.Forms.ListViewItem("Not implemented.");
+            System.Windows.Forms.ListViewItem listViewItem9 = new System.Windows.Forms.ListViewItem("vertex_001");
+            System.Windows.Forms.ListViewItem listViewItem10 = new System.Windows.Forms.ListViewItem("vertex_002");
+            System.Windows.Forms.ListViewItem listViewItem11 = new System.Windows.Forms.ListViewItem("Battle_Difficult_001");
+            System.Windows.Forms.ListViewItem listViewItem12 = new System.Windows.Forms.ListViewItem("Not Implemented.");
+            System.Windows.Forms.ListViewItem listViewItem13 = new System.Windows.Forms.ListViewItem("event_enemy_001");
+            System.Windows.Forms.ListViewItem listViewItem14 = new System.Windows.Forms.ListViewItem("event_pickups_001");
+            System.Windows.Forms.ListViewItem listViewItem15 = new System.Windows.Forms.ListViewItem("Battle_TwinFighters");
+            System.Windows.Forms.ListViewItem listViewItem16 = new System.Windows.Forms.ListViewItem("Not Implemented.");
+            System.Windows.Forms.ListViewItem listViewItem17 = new System.Windows.Forms.ListViewItem("vertex_001");
+            System.Windows.Forms.ListViewItem listViewItem18 = new System.Windows.Forms.ListViewItem("vertex_002");
+            System.Windows.Forms.ListViewItem listViewItem19 = new System.Windows.Forms.ListViewItem("Battle_Difficult_001");
+            System.Windows.Forms.ListViewItem listViewItem20 = new System.Windows.Forms.ListViewItem("Not Implemented.");
             this.iIconStrip = new System.Windows.Forms.ToolStrip();
             this.itNew = new System.Windows.Forms.ToolStripButton();
             this.itOpen = new System.Windows.Forms.ToolStripButton();
@@ -62,15 +62,6 @@
             this.itScaleLinear = new System.Windows.Forms.ToolStripButton();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.iBackPanel = new System.Windows.Forms.Panel();
-            this.iViews = new System.Windows.Forms.TabControl();
-            this.tabPerspective = new System.Windows.Forms.TabPage();
-            this.iPerspectiveGraphic = new System.Windows.Forms.PictureBox();
-            this.tabTop = new System.Windows.Forms.TabPage();
-            this.iTopGraphic = new System.Windows.Forms.PictureBox();
-            this.tabFront = new System.Windows.Forms.TabPage();
-            this.iFrontGraphic = new System.Windows.Forms.PictureBox();
-            this.tabRight = new System.Windows.Forms.TabPage();
-            this.iRightGraphic = new System.Windows.Forms.PictureBox();
             this.Modes = new System.Windows.Forms.TabControl();
             this.tabInfo = new System.Windows.Forms.TabPage();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -86,6 +77,7 @@
             this.iWorldDimensionX = new System.Windows.Forms.NumericUpDown();
             this.lWorldDimension = new System.Windows.Forms.Label();
             this.tabAssets = new System.Windows.Forms.TabPage();
+            this.listView2 = new System.Windows.Forms.ListView();
             this.numericUpDown13 = new System.Windows.Forms.NumericUpDown();
             this.numericUpDown14 = new System.Windows.Forms.NumericUpDown();
             this.numericUpDown15 = new System.Windows.Forms.NumericUpDown();
@@ -132,6 +124,10 @@
             this.button6 = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.tabSpline = new System.Windows.Forms.TabPage();
+            this.listView3 = new System.Windows.Forms.ListView();
+            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.label6 = new System.Windows.Forms.Label();
+            this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.numericUpDown28 = new System.Windows.Forms.NumericUpDown();
             this.numericUpDown29 = new System.Windows.Forms.NumericUpDown();
             this.numericUpDown30 = new System.Windows.Forms.NumericUpDown();
@@ -139,37 +135,34 @@
             this.label13 = new System.Windows.Forms.Label();
             this.button12 = new System.Windows.Forms.Button();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.button10 = new System.Windows.Forms.Button();
             this.numericUpDown31 = new System.Windows.Forms.NumericUpDown();
             this.label14 = new System.Windows.Forms.Label();
-            this.button10 = new System.Windows.Forms.Button();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
-            this.label6 = new System.Windows.Forms.Label();
-            this.listView2 = new System.Windows.Forms.ListView();
-            this.listView3 = new System.Windows.Forms.ListView();
             this.tabEvent = new System.Windows.Forms.TabPage();
-            this.listView4 = new System.Windows.Forms.ListView();
-            this.button11 = new System.Windows.Forms.Button();
-            this.panel5 = new System.Windows.Forms.Panel();
             this.listView5 = new System.Windows.Forms.ListView();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
-            this.button13 = new System.Windows.Forms.Button();
+            this.listView4 = new System.Windows.Forms.ListView();
+            this.panel5 = new System.Windows.Forms.Panel();
             this.button14 = new System.Windows.Forms.Button();
+            this.button13 = new System.Windows.Forms.Button();
+            this.comboBox3 = new System.Windows.Forms.ComboBox();
+            this.button11 = new System.Windows.Forms.Button();
             this.tabShaders = new System.Windows.Forms.TabPage();
-            this.panel6 = new System.Windows.Forms.Panel();
             this.button17 = new System.Windows.Forms.Button();
+            this.panel6 = new System.Windows.Forms.Panel();
             this.button15 = new System.Windows.Forms.Button();
+            this.tabTest = new System.Windows.Forms.TabPage();
+            this.tabRight = new System.Windows.Forms.TabPage();
+            this.iRightGraphic = new System.Windows.Forms.PictureBox();
+            this.tabFront = new System.Windows.Forms.TabPage();
+            this.iFrontGraphic = new System.Windows.Forms.PictureBox();
+            this.tabTop = new System.Windows.Forms.TabPage();
+            this.iTopGraphic = new System.Windows.Forms.PictureBox();
+            this.tabPerspective = new System.Windows.Forms.TabPage();
+            this.iPerspectiveGraphic = new System.Windows.Forms.PictureBox();
+            this.iViews = new System.Windows.Forms.TabControl();
+            this.perspectiveControl1 = new LevelEditor.PerspectiveControl();
             this.iIconStrip.SuspendLayout();
             this.iBackPanel.SuspendLayout();
-            this.iViews.SuspendLayout();
-            this.tabPerspective.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.iPerspectiveGraphic)).BeginInit();
-            this.tabTop.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.iTopGraphic)).BeginInit();
-            this.tabFront.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.iFrontGraphic)).BeginInit();
-            this.tabRight.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.iRightGraphic)).BeginInit();
             this.Modes.SuspendLayout();
             this.tabInfo.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -207,16 +200,26 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown26)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown27)).BeginInit();
             this.tabSpline.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown28)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown29)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown30)).BeginInit();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown31)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.tabEvent.SuspendLayout();
             this.panel5.SuspendLayout();
             this.tabShaders.SuspendLayout();
             this.panel6.SuspendLayout();
+            this.tabTest.SuspendLayout();
+            this.tabRight.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.iRightGraphic)).BeginInit();
+            this.tabFront.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.iFrontGraphic)).BeginInit();
+            this.tabTop.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.iTopGraphic)).BeginInit();
+            this.tabPerspective.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.iPerspectiveGraphic)).BeginInit();
+            this.iViews.SuspendLayout();
             this.SuspendLayout();
             // 
             // iIconStrip
@@ -369,107 +372,6 @@
             this.iBackPanel.Name = "iBackPanel";
             this.iBackPanel.Size = new System.Drawing.Size(750, 792);
             this.iBackPanel.TabIndex = 1;
-            // 
-            // iViews
-            // 
-            this.iViews.Controls.Add(this.tabPerspective);
-            this.iViews.Controls.Add(this.tabTop);
-            this.iViews.Controls.Add(this.tabFront);
-            this.iViews.Controls.Add(this.tabRight);
-            this.iViews.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.iViews.Location = new System.Drawing.Point(0, 187);
-            this.iViews.Name = "iViews";
-            this.iViews.SelectedIndex = 0;
-            this.iViews.Size = new System.Drawing.Size(750, 605);
-            this.iViews.TabIndex = 3;
-            this.iViews.TabStop = false;
-            // 
-            // tabPerspective
-            // 
-            this.tabPerspective.Controls.Add(this.iPerspectiveGraphic);
-            this.tabPerspective.Location = new System.Drawing.Point(4, 22);
-            this.tabPerspective.Name = "tabPerspective";
-            this.tabPerspective.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPerspective.Size = new System.Drawing.Size(742, 579);
-            this.tabPerspective.TabIndex = 0;
-            this.tabPerspective.Text = "Perspective";
-            this.tabPerspective.UseVisualStyleBackColor = true;
-            // 
-            // iPerspectiveGraphic
-            // 
-            this.iPerspectiveGraphic.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.iPerspectiveGraphic.Location = new System.Drawing.Point(3, 3);
-            this.iPerspectiveGraphic.Name = "iPerspectiveGraphic";
-            this.iPerspectiveGraphic.Size = new System.Drawing.Size(736, 573);
-            this.iPerspectiveGraphic.TabIndex = 2;
-            this.iPerspectiveGraphic.TabStop = false;
-            this.iPerspectiveGraphic.Click += new System.EventHandler(this.PerspectiveView_MouseClick);
-            this.iPerspectiveGraphic.MouseDown += new System.Windows.Forms.MouseEventHandler(this.iPerspectiveGraphic_MouseDown);
-            this.iPerspectiveGraphic.MouseMove += new System.Windows.Forms.MouseEventHandler(this.iPerspectiveGraphic_MouseMove);
-            this.iPerspectiveGraphic.MouseUp += new System.Windows.Forms.MouseEventHandler(this.iPerspectiveGraphic_MouseUp);
-            // 
-            // tabTop
-            // 
-            this.tabTop.Controls.Add(this.iTopGraphic);
-            this.tabTop.Location = new System.Drawing.Point(4, 22);
-            this.tabTop.Name = "tabTop";
-            this.tabTop.Padding = new System.Windows.Forms.Padding(3);
-            this.tabTop.Size = new System.Drawing.Size(742, 579);
-            this.tabTop.TabIndex = 1;
-            this.tabTop.Text = "Top";
-            this.tabTop.UseVisualStyleBackColor = true;
-            // 
-            // iTopGraphic
-            // 
-            this.iTopGraphic.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.iTopGraphic.Location = new System.Drawing.Point(3, 3);
-            this.iTopGraphic.Name = "iTopGraphic";
-            this.iTopGraphic.Size = new System.Drawing.Size(736, 573);
-            this.iTopGraphic.TabIndex = 0;
-            this.iTopGraphic.TabStop = false;
-            this.iTopGraphic.Click += new System.EventHandler(this.TopView_MouseClick);
-            // 
-            // tabFront
-            // 
-            this.tabFront.Controls.Add(this.iFrontGraphic);
-            this.tabFront.Location = new System.Drawing.Point(4, 22);
-            this.tabFront.Name = "tabFront";
-            this.tabFront.Padding = new System.Windows.Forms.Padding(3);
-            this.tabFront.Size = new System.Drawing.Size(742, 579);
-            this.tabFront.TabIndex = 2;
-            this.tabFront.Text = "Front";
-            this.tabFront.UseVisualStyleBackColor = true;
-            // 
-            // iFrontGraphic
-            // 
-            this.iFrontGraphic.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.iFrontGraphic.Location = new System.Drawing.Point(3, 3);
-            this.iFrontGraphic.Name = "iFrontGraphic";
-            this.iFrontGraphic.Size = new System.Drawing.Size(736, 573);
-            this.iFrontGraphic.TabIndex = 0;
-            this.iFrontGraphic.TabStop = false;
-            this.iFrontGraphic.Click += new System.EventHandler(this.FrontView_MouseClick);
-            // 
-            // tabRight
-            // 
-            this.tabRight.Controls.Add(this.iRightGraphic);
-            this.tabRight.Location = new System.Drawing.Point(4, 22);
-            this.tabRight.Name = "tabRight";
-            this.tabRight.Padding = new System.Windows.Forms.Padding(3);
-            this.tabRight.Size = new System.Drawing.Size(742, 579);
-            this.tabRight.TabIndex = 3;
-            this.tabRight.Text = "Right";
-            this.tabRight.UseVisualStyleBackColor = true;
-            // 
-            // iRightGraphic
-            // 
-            this.iRightGraphic.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.iRightGraphic.Location = new System.Drawing.Point(3, 3);
-            this.iRightGraphic.Name = "iRightGraphic";
-            this.iRightGraphic.Size = new System.Drawing.Size(736, 573);
-            this.iRightGraphic.TabIndex = 0;
-            this.iRightGraphic.TabStop = false;
-            this.iRightGraphic.Click += new System.EventHandler(this.RightView_MouseClick);
             // 
             // Modes
             // 
@@ -720,6 +622,21 @@
             this.tabAssets.Size = new System.Drawing.Size(742, 158);
             this.tabAssets.TabIndex = 1;
             this.tabAssets.Text = "Assets";
+            // 
+            // listView2
+            // 
+            this.listView2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.listView2.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
+            listViewItem1,
+            listViewItem2,
+            listViewItem3,
+            listViewItem4});
+            this.listView2.Location = new System.Drawing.Point(35, 28);
+            this.listView2.Name = "listView2";
+            this.listView2.Size = new System.Drawing.Size(126, 116);
+            this.listView2.TabIndex = 66;
+            this.listView2.UseCompatibleStateImageBehavior = false;
+            this.listView2.View = System.Windows.Forms.View.List;
             // 
             // numericUpDown13
             // 
@@ -991,10 +908,10 @@
             // 
             this.listView1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listView1.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem25,
-            listViewItem26,
-            listViewItem27,
-            listViewItem28});
+            listViewItem5,
+            listViewItem6,
+            listViewItem7,
+            listViewItem8});
             this.listView1.Location = new System.Drawing.Point(35, 28);
             this.listView1.Name = "listView1";
             this.listView1.Size = new System.Drawing.Size(126, 116);
@@ -1173,6 +1090,54 @@
             this.tabSpline.Text = "Spline";
             this.tabSpline.UseVisualStyleBackColor = true;
             // 
+            // listView3
+            // 
+            this.listView3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.listView3.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
+            listViewItem9,
+            listViewItem10,
+            listViewItem11,
+            listViewItem12});
+            this.listView3.Location = new System.Drawing.Point(35, 28);
+            this.listView3.Name = "listView3";
+            this.listView3.Size = new System.Drawing.Size(126, 116);
+            this.listView3.TabIndex = 87;
+            this.listView3.UseCompatibleStateImageBehavior = false;
+            this.listView3.View = System.Windows.Forms.View.List;
+            // 
+            // numericUpDown1
+            // 
+            this.numericUpDown1.Location = new System.Drawing.Point(263, 93);
+            this.numericUpDown1.Name = "numericUpDown1";
+            this.numericUpDown1.Size = new System.Drawing.Size(64, 23);
+            this.numericUpDown1.TabIndex = 86;
+            this.numericUpDown1.TabStop = false;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(188, 95);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(56, 17);
+            this.label6.TabIndex = 85;
+            this.label6.Text = "Length:";
+            // 
+            // comboBox2
+            // 
+            this.comboBox2.FormattingEnabled = true;
+            this.comboBox2.Items.AddRange(new object[] {
+            "White",
+            "Red",
+            "Blue",
+            "Green",
+            "Yellow",
+            "Orange",
+            "Gray"});
+            this.comboBox2.Location = new System.Drawing.Point(263, 63);
+            this.comboBox2.Name = "comboBox2";
+            this.comboBox2.Size = new System.Drawing.Size(121, 24);
+            this.comboBox2.TabIndex = 84;
+            // 
             // numericUpDown28
             // 
             this.numericUpDown28.Location = new System.Drawing.Point(404, 36);
@@ -1239,6 +1204,17 @@
             this.panel4.TabIndex = 69;
             this.panel4.Paint += new System.Windows.Forms.PaintEventHandler(this.panel4_Paint);
             // 
+            // button10
+            // 
+            this.button10.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.button10.Location = new System.Drawing.Point(33, 90);
+            this.button10.Name = "button10";
+            this.button10.Size = new System.Drawing.Size(122, 23);
+            this.button10.TabIndex = 84;
+            this.button10.TabStop = false;
+            this.button10.Text = "Delete";
+            this.button10.UseVisualStyleBackColor = false;
+            // 
             // numericUpDown31
             // 
             this.numericUpDown31.Location = new System.Drawing.Point(32, 31);
@@ -1256,80 +1232,6 @@
             this.label14.TabIndex = 84;
             this.label14.Text = "Insert Vertex at:";
             // 
-            // button10
-            // 
-            this.button10.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.button10.Location = new System.Drawing.Point(33, 90);
-            this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(122, 23);
-            this.button10.TabIndex = 84;
-            this.button10.TabStop = false;
-            this.button10.Text = "Delete";
-            this.button10.UseVisualStyleBackColor = false;
-            // 
-            // comboBox2
-            // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Items.AddRange(new object[] {
-            "White",
-            "Red",
-            "Blue",
-            "Green",
-            "Yellow",
-            "Orange",
-            "Gray"});
-            this.comboBox2.Location = new System.Drawing.Point(263, 63);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(121, 24);
-            this.comboBox2.TabIndex = 84;
-            // 
-            // numericUpDown1
-            // 
-            this.numericUpDown1.Location = new System.Drawing.Point(263, 93);
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(64, 23);
-            this.numericUpDown1.TabIndex = 86;
-            this.numericUpDown1.TabStop = false;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(188, 95);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(56, 17);
-            this.label6.TabIndex = 85;
-            this.label6.Text = "Length:";
-            // 
-            // listView2
-            // 
-            this.listView2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.listView2.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem29,
-            listViewItem30,
-            listViewItem31,
-            listViewItem32});
-            this.listView2.Location = new System.Drawing.Point(35, 28);
-            this.listView2.Name = "listView2";
-            this.listView2.Size = new System.Drawing.Size(126, 116);
-            this.listView2.TabIndex = 66;
-            this.listView2.UseCompatibleStateImageBehavior = false;
-            this.listView2.View = System.Windows.Forms.View.List;
-            // 
-            // listView3
-            // 
-            this.listView3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.listView3.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem21,
-            listViewItem22,
-            listViewItem23,
-            listViewItem24});
-            this.listView3.Location = new System.Drawing.Point(35, 28);
-            this.listView3.Name = "listView3";
-            this.listView3.Size = new System.Drawing.Size(126, 116);
-            this.listView3.TabIndex = 87;
-            this.listView3.UseCompatibleStateImageBehavior = false;
-            this.listView3.View = System.Windows.Forms.View.List;
-            // 
             // tabEvent
             // 
             this.tabEvent.Controls.Add(this.listView5);
@@ -1343,32 +1245,35 @@
             this.tabEvent.Text = "Events";
             this.tabEvent.UseVisualStyleBackColor = true;
             // 
+            // listView5
+            // 
+            this.listView5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.listView5.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
+            listViewItem13,
+            listViewItem14,
+            listViewItem15,
+            listViewItem16});
+            this.listView5.Location = new System.Drawing.Point(167, 28);
+            this.listView5.Name = "listView5";
+            this.listView5.Size = new System.Drawing.Size(126, 116);
+            this.listView5.TabIndex = 99;
+            this.listView5.UseCompatibleStateImageBehavior = false;
+            this.listView5.View = System.Windows.Forms.View.List;
+            // 
             // listView4
             // 
             this.listView4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listView4.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem33,
-            listViewItem34,
-            listViewItem35,
-            listViewItem36});
+            listViewItem17,
+            listViewItem18,
+            listViewItem19,
+            listViewItem20});
             this.listView4.Location = new System.Drawing.Point(35, 28);
             this.listView4.Name = "listView4";
             this.listView4.Size = new System.Drawing.Size(126, 116);
             this.listView4.TabIndex = 98;
             this.listView4.UseCompatibleStateImageBehavior = false;
             this.listView4.View = System.Windows.Forms.View.SmallIcon;
-            // 
-            // button11
-            // 
-            this.button11.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.button11.Location = new System.Drawing.Point(15, 62);
-            this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(122, 23);
-            this.button11.TabIndex = 88;
-            this.button11.TabStop = false;
-            this.button11.Text = "New Event";
-            this.button11.UseVisualStyleBackColor = false;
-            this.button11.Click += new System.EventHandler(this.button11_Click);
             // 
             // panel5
             // 
@@ -1383,20 +1288,27 @@
             this.panel5.Size = new System.Drawing.Size(304, 124);
             this.panel5.TabIndex = 89;
             // 
-            // listView5
+            // button14
             // 
-            this.listView5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.listView5.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem37,
-            listViewItem38,
-            listViewItem39,
-            listViewItem40});
-            this.listView5.Location = new System.Drawing.Point(167, 28);
-            this.listView5.Name = "listView5";
-            this.listView5.Size = new System.Drawing.Size(126, 116);
-            this.listView5.TabIndex = 99;
-            this.listView5.UseCompatibleStateImageBehavior = false;
-            this.listView5.View = System.Windows.Forms.View.List;
+            this.button14.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.button14.Location = new System.Drawing.Point(163, 61);
+            this.button14.Name = "button14";
+            this.button14.Size = new System.Drawing.Size(122, 23);
+            this.button14.TabIndex = 102;
+            this.button14.TabStop = false;
+            this.button14.Text = "Delete";
+            this.button14.UseVisualStyleBackColor = false;
+            // 
+            // button13
+            // 
+            this.button13.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.button13.Location = new System.Drawing.Point(163, 32);
+            this.button13.Name = "button13";
+            this.button13.Size = new System.Drawing.Size(122, 23);
+            this.button13.TabIndex = 101;
+            this.button13.TabStop = false;
+            this.button13.Text = "Edit";
+            this.button13.UseVisualStyleBackColor = false;
             // 
             // comboBox3
             // 
@@ -1410,27 +1322,17 @@
             this.comboBox3.Size = new System.Drawing.Size(121, 24);
             this.comboBox3.TabIndex = 100;
             // 
-            // button13
+            // button11
             // 
-            this.button13.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.button13.Location = new System.Drawing.Point(163, 32);
-            this.button13.Name = "button13";
-            this.button13.Size = new System.Drawing.Size(122, 23);
-            this.button13.TabIndex = 101;
-            this.button13.TabStop = false;
-            this.button13.Text = "Edit";
-            this.button13.UseVisualStyleBackColor = false;
-            // 
-            // button14
-            // 
-            this.button14.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.button14.Location = new System.Drawing.Point(163, 61);
-            this.button14.Name = "button14";
-            this.button14.Size = new System.Drawing.Size(122, 23);
-            this.button14.TabIndex = 102;
-            this.button14.TabStop = false;
-            this.button14.Text = "Delete";
-            this.button14.UseVisualStyleBackColor = false;
+            this.button11.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.button11.Location = new System.Drawing.Point(15, 62);
+            this.button11.Name = "button11";
+            this.button11.Size = new System.Drawing.Size(122, 23);
+            this.button11.TabIndex = 88;
+            this.button11.TabStop = false;
+            this.button11.Text = "New Event";
+            this.button11.UseVisualStyleBackColor = false;
+            this.button11.Click += new System.EventHandler(this.button11_Click);
             // 
             // tabShaders
             // 
@@ -1444,16 +1346,6 @@
             this.tabShaders.Text = "Shaders";
             this.tabShaders.UseVisualStyleBackColor = true;
             // 
-            // panel6
-            // 
-            this.panel6.BackColor = System.Drawing.Color.Gainsboro;
-            this.panel6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel6.Controls.Add(this.button15);
-            this.panel6.Location = new System.Drawing.Point(498, 23);
-            this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(189, 124);
-            this.panel6.TabIndex = 71;
-            // 
             // button17
             // 
             this.button17.BackColor = System.Drawing.Color.WhiteSmoke;
@@ -1465,6 +1357,16 @@
             this.button17.Text = "Refresh";
             this.button17.UseVisualStyleBackColor = false;
             // 
+            // panel6
+            // 
+            this.panel6.BackColor = System.Drawing.Color.Gainsboro;
+            this.panel6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel6.Controls.Add(this.button15);
+            this.panel6.Location = new System.Drawing.Point(498, 23);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(189, 124);
+            this.panel6.TabIndex = 71;
+            // 
             // button15
             // 
             this.button15.BackColor = System.Drawing.Color.WhiteSmoke;
@@ -1475,6 +1377,128 @@
             this.button15.TabStop = false;
             this.button15.Text = "Edit";
             this.button15.UseVisualStyleBackColor = false;
+            // 
+            // tabTest
+            // 
+            this.tabTest.Controls.Add(this.perspectiveControl1);
+            this.tabTest.Location = new System.Drawing.Point(4, 22);
+            this.tabTest.Name = "tabTest";
+            this.tabTest.Padding = new System.Windows.Forms.Padding(3);
+            this.tabTest.Size = new System.Drawing.Size(742, 579);
+            this.tabTest.TabIndex = 5;
+            this.tabTest.Text = "Test";
+            this.tabTest.UseVisualStyleBackColor = true;
+            // 
+            // tabRight
+            // 
+            this.tabRight.Controls.Add(this.iRightGraphic);
+            this.tabRight.Location = new System.Drawing.Point(4, 22);
+            this.tabRight.Name = "tabRight";
+            this.tabRight.Padding = new System.Windows.Forms.Padding(3);
+            this.tabRight.Size = new System.Drawing.Size(742, 579);
+            this.tabRight.TabIndex = 3;
+            this.tabRight.Text = "Right";
+            this.tabRight.UseVisualStyleBackColor = true;
+            // 
+            // iRightGraphic
+            // 
+            this.iRightGraphic.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.iRightGraphic.Location = new System.Drawing.Point(3, 3);
+            this.iRightGraphic.Name = "iRightGraphic";
+            this.iRightGraphic.Size = new System.Drawing.Size(736, 573);
+            this.iRightGraphic.TabIndex = 0;
+            this.iRightGraphic.TabStop = false;
+            this.iRightGraphic.Click += new System.EventHandler(this.RightView_MouseClick);
+            // 
+            // tabFront
+            // 
+            this.tabFront.Controls.Add(this.iFrontGraphic);
+            this.tabFront.Location = new System.Drawing.Point(4, 22);
+            this.tabFront.Name = "tabFront";
+            this.tabFront.Padding = new System.Windows.Forms.Padding(3);
+            this.tabFront.Size = new System.Drawing.Size(742, 579);
+            this.tabFront.TabIndex = 2;
+            this.tabFront.Text = "Front";
+            this.tabFront.UseVisualStyleBackColor = true;
+            // 
+            // iFrontGraphic
+            // 
+            this.iFrontGraphic.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.iFrontGraphic.Location = new System.Drawing.Point(3, 3);
+            this.iFrontGraphic.Name = "iFrontGraphic";
+            this.iFrontGraphic.Size = new System.Drawing.Size(736, 573);
+            this.iFrontGraphic.TabIndex = 0;
+            this.iFrontGraphic.TabStop = false;
+            this.iFrontGraphic.Click += new System.EventHandler(this.FrontView_MouseClick);
+            // 
+            // tabTop
+            // 
+            this.tabTop.Controls.Add(this.iTopGraphic);
+            this.tabTop.Location = new System.Drawing.Point(4, 22);
+            this.tabTop.Name = "tabTop";
+            this.tabTop.Padding = new System.Windows.Forms.Padding(3);
+            this.tabTop.Size = new System.Drawing.Size(742, 579);
+            this.tabTop.TabIndex = 1;
+            this.tabTop.Text = "Top";
+            this.tabTop.UseVisualStyleBackColor = true;
+            // 
+            // iTopGraphic
+            // 
+            this.iTopGraphic.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.iTopGraphic.Location = new System.Drawing.Point(3, 3);
+            this.iTopGraphic.Name = "iTopGraphic";
+            this.iTopGraphic.Size = new System.Drawing.Size(736, 573);
+            this.iTopGraphic.TabIndex = 0;
+            this.iTopGraphic.TabStop = false;
+            this.iTopGraphic.Click += new System.EventHandler(this.TopView_MouseClick);
+            // 
+            // tabPerspective
+            // 
+            this.tabPerspective.Controls.Add(this.iPerspectiveGraphic);
+            this.tabPerspective.Location = new System.Drawing.Point(4, 22);
+            this.tabPerspective.Name = "tabPerspective";
+            this.tabPerspective.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPerspective.Size = new System.Drawing.Size(742, 579);
+            this.tabPerspective.TabIndex = 0;
+            this.tabPerspective.Text = "Perspective";
+            this.tabPerspective.UseVisualStyleBackColor = true;
+            // 
+            // iPerspectiveGraphic
+            // 
+            this.iPerspectiveGraphic.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.iPerspectiveGraphic.Location = new System.Drawing.Point(3, 3);
+            this.iPerspectiveGraphic.Name = "iPerspectiveGraphic";
+            this.iPerspectiveGraphic.Size = new System.Drawing.Size(736, 573);
+            this.iPerspectiveGraphic.TabIndex = 2;
+            this.iPerspectiveGraphic.TabStop = false;
+            this.iPerspectiveGraphic.Click += new System.EventHandler(this.PerspectiveView_MouseClick);
+            this.iPerspectiveGraphic.MouseDown += new System.Windows.Forms.MouseEventHandler(this.iPerspectiveGraphic_MouseDown);
+            this.iPerspectiveGraphic.MouseMove += new System.Windows.Forms.MouseEventHandler(this.iPerspectiveGraphic_MouseMove);
+            this.iPerspectiveGraphic.MouseUp += new System.Windows.Forms.MouseEventHandler(this.iPerspectiveGraphic_MouseUp);
+            // 
+            // iViews
+            // 
+            this.iViews.Controls.Add(this.tabPerspective);
+            this.iViews.Controls.Add(this.tabTop);
+            this.iViews.Controls.Add(this.tabFront);
+            this.iViews.Controls.Add(this.tabRight);
+            this.iViews.Controls.Add(this.tabTest);
+            this.iViews.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.iViews.Location = new System.Drawing.Point(0, 187);
+            this.iViews.Name = "iViews";
+            this.iViews.SelectedIndex = 0;
+            this.iViews.Size = new System.Drawing.Size(750, 605);
+            this.iViews.TabIndex = 3;
+            this.iViews.TabStop = false;
+            // 
+            // perspectiveControl1
+            // 
+            this.perspectiveControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.perspectiveControl1.Location = new System.Drawing.Point(3, 3);
+            this.perspectiveControl1.Name = "perspectiveControl1";
+            this.perspectiveControl1.Size = new System.Drawing.Size(736, 573);
+            this.perspectiveControl1.TabIndex = 0;
+            this.perspectiveControl1.Text = "perspectiveControl1";
             // 
             // LevelEditorInterface
             // 
@@ -1491,15 +1515,6 @@
             this.iIconStrip.ResumeLayout(false);
             this.iIconStrip.PerformLayout();
             this.iBackPanel.ResumeLayout(false);
-            this.iViews.ResumeLayout(false);
-            this.tabPerspective.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.iPerspectiveGraphic)).EndInit();
-            this.tabTop.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.iTopGraphic)).EndInit();
-            this.tabFront.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.iFrontGraphic)).EndInit();
-            this.tabRight.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.iRightGraphic)).EndInit();
             this.Modes.ResumeLayout(false);
             this.tabInfo.ResumeLayout(false);
             this.tabInfo.PerformLayout();
@@ -1541,17 +1556,27 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown27)).EndInit();
             this.tabSpline.ResumeLayout(false);
             this.tabSpline.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown28)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown29)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown30)).EndInit();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown31)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.tabEvent.ResumeLayout(false);
             this.panel5.ResumeLayout(false);
             this.tabShaders.ResumeLayout(false);
             this.panel6.ResumeLayout(false);
+            this.tabTest.ResumeLayout(false);
+            this.tabRight.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.iRightGraphic)).EndInit();
+            this.tabFront.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.iFrontGraphic)).EndInit();
+            this.tabTop.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.iTopGraphic)).EndInit();
+            this.tabPerspective.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.iPerspectiveGraphic)).EndInit();
+            this.iViews.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -1628,15 +1653,6 @@
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.PictureBox iPerspectiveGraphic;
-        private System.Windows.Forms.TabControl iViews;
-        private System.Windows.Forms.TabPage tabPerspective;
-        private System.Windows.Forms.TabPage tabTop;
-        private System.Windows.Forms.TabPage tabFront;
-        private System.Windows.Forms.TabPage tabRight;
-        private System.Windows.Forms.PictureBox iTopGraphic;
-        private System.Windows.Forms.PictureBox iFrontGraphic;
-        private System.Windows.Forms.PictureBox iRightGraphic;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TabPage tabSpline;
@@ -1667,5 +1683,16 @@
         private System.Windows.Forms.Button button17;
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.Button button15;
+        private System.Windows.Forms.TabControl iViews;
+        private System.Windows.Forms.TabPage tabPerspective;
+        private System.Windows.Forms.PictureBox iPerspectiveGraphic;
+        private System.Windows.Forms.TabPage tabTop;
+        private System.Windows.Forms.PictureBox iTopGraphic;
+        private System.Windows.Forms.TabPage tabFront;
+        private System.Windows.Forms.PictureBox iFrontGraphic;
+        private System.Windows.Forms.TabPage tabRight;
+        private System.Windows.Forms.PictureBox iRightGraphic;
+        private System.Windows.Forms.TabPage tabTest;
+        private PerspectiveControl perspectiveControl1;
     }
 }

@@ -208,6 +208,13 @@ namespace LevelEditor
 
                 return m_GraphicsDevice;
             }
+            set
+            {
+                m_GraphicsDevice = value;
+                m_BasicEffect = new BasicEffect(m_GraphicsDevice);
+                m_Effect = m_ContentManager.Load<Effect>("Basic");
+
+            }
         }
 
 

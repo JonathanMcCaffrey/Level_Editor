@@ -148,13 +148,9 @@ namespace LevelEditor
 
         public void Draw()
         {
-
-
-            GameFiles.GraphicsDevice.RasterizerState = RasterizerState.CullClockwise;
+        /*    GameFiles.GraphicsDevice.RasterizerState = RasterizerState.CullClockwise;
             GameFiles.GraphicsDevice.BlendState = BlendState.Opaque;
             GameFiles.GraphicsDevice.DepthStencilState = DepthStencilState.Default;
-
-
 
             foreach (EffectPass pass in GameFiles.Effect.CurrentTechnique.Passes)
             {
@@ -167,7 +163,7 @@ namespace LevelEditor
                 pass.Apply();
 
                 GameFiles.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleList, m_VertexData, 0, m_VertexData.Length / 3);
-            }
+            }*/
         }
         #endregion
     }

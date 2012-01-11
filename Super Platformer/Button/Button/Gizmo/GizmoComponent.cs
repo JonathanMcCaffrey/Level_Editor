@@ -205,6 +205,8 @@ namespace LevelEditor
         #region Draw
         public void Draw3D()
         {
+            return;
+
             if (m_IsEnabled == false) { return; }
 
             m_ActiveMode = GizmoMode.TRANSLATE;

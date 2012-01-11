@@ -148,8 +148,6 @@ namespace LevelEditor
 
             mSelectionRectangle = new Rectangle((int)temp.X, (int)temp.Y, (int)tempTex.Width, (int)tempTex.Height);
 
-
-
             GameFiles.SpriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, SamplerState.LinearWrap, DepthStencilState.None, RasterizerState.CullNone);
             GameFiles.SpriteBatch.Draw(tempTex, temp, new Rectangle(0, 0, tempTex.Width, tempTex.Height), Color.LimeGreen, 0.0f, Vector2.Zero, scale * 0.5f, SpriteEffects.None, 0.0f);
             GameFiles.SpriteBatch.End();
