@@ -131,6 +131,7 @@
     <Compile Include="Editor\EditorTexture2D.cs" />
     <Compile Include="Editor\Storage\BinaryTree.cs" />
     <Compile Include="Editor\Storage\BinaryTreeNode.cs" />
+    <Compile Include="Files\FbxModel.cs" />
     <Compile Include="Files\Serializers\AssetSerializer.cs" />
     <Compile Include="Entities\Terrain.cs" />
     <Compile Include="Entities\WorldBox.cs" />
