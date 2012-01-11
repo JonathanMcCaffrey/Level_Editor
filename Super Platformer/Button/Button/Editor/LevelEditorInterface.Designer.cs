@@ -29,6 +29,26 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LevelEditorInterface));
+            System.Windows.Forms.ListViewItem listViewItem25 = new System.Windows.Forms.ListViewItem("light_001");
+            System.Windows.Forms.ListViewItem listViewItem26 = new System.Windows.Forms.ListViewItem("light_002");
+            System.Windows.Forms.ListViewItem listViewItem27 = new System.Windows.Forms.ListViewItem("StartingArea_Red_001");
+            System.Windows.Forms.ListViewItem listViewItem28 = new System.Windows.Forms.ListViewItem("Not implemented.");
+            System.Windows.Forms.ListViewItem listViewItem29 = new System.Windows.Forms.ListViewItem("asset_001");
+            System.Windows.Forms.ListViewItem listViewItem30 = new System.Windows.Forms.ListViewItem("asset_002");
+            System.Windows.Forms.ListViewItem listViewItem31 = new System.Windows.Forms.ListViewItem("Rock_Large_001");
+            System.Windows.Forms.ListViewItem listViewItem32 = new System.Windows.Forms.ListViewItem("Not Implemented.");
+            System.Windows.Forms.ListViewItem listViewItem21 = new System.Windows.Forms.ListViewItem("vertex_001");
+            System.Windows.Forms.ListViewItem listViewItem22 = new System.Windows.Forms.ListViewItem("vertex_002");
+            System.Windows.Forms.ListViewItem listViewItem23 = new System.Windows.Forms.ListViewItem("Battle_Difficult_001");
+            System.Windows.Forms.ListViewItem listViewItem24 = new System.Windows.Forms.ListViewItem("Not Implemented.");
+            System.Windows.Forms.ListViewItem listViewItem33 = new System.Windows.Forms.ListViewItem("vertex_001");
+            System.Windows.Forms.ListViewItem listViewItem34 = new System.Windows.Forms.ListViewItem("vertex_002");
+            System.Windows.Forms.ListViewItem listViewItem35 = new System.Windows.Forms.ListViewItem("Battle_Difficult_001");
+            System.Windows.Forms.ListViewItem listViewItem36 = new System.Windows.Forms.ListViewItem("Not Implemented.");
+            System.Windows.Forms.ListViewItem listViewItem37 = new System.Windows.Forms.ListViewItem("event_enemy_001");
+            System.Windows.Forms.ListViewItem listViewItem38 = new System.Windows.Forms.ListViewItem("event_pickups_001");
+            System.Windows.Forms.ListViewItem listViewItem39 = new System.Windows.Forms.ListViewItem("Battle_TwinFighters");
+            System.Windows.Forms.ListViewItem listViewItem40 = new System.Windows.Forms.ListViewItem("Not Implemented.");
             this.iIconStrip = new System.Windows.Forms.ToolStrip();
             this.itNew = new System.Windows.Forms.ToolStripButton();
             this.itOpen = new System.Windows.Forms.ToolStripButton();
@@ -111,6 +131,34 @@
             this.button5 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.tabSpline = new System.Windows.Forms.TabPage();
+            this.numericUpDown28 = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown29 = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown30 = new System.Windows.Forms.NumericUpDown();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.button12 = new System.Windows.Forms.Button();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.numericUpDown31 = new System.Windows.Forms.NumericUpDown();
+            this.label14 = new System.Windows.Forms.Label();
+            this.button10 = new System.Windows.Forms.Button();
+            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.label6 = new System.Windows.Forms.Label();
+            this.listView2 = new System.Windows.Forms.ListView();
+            this.listView3 = new System.Windows.Forms.ListView();
+            this.tabEvent = new System.Windows.Forms.TabPage();
+            this.listView4 = new System.Windows.Forms.ListView();
+            this.button11 = new System.Windows.Forms.Button();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.listView5 = new System.Windows.Forms.ListView();
+            this.comboBox3 = new System.Windows.Forms.ComboBox();
+            this.button13 = new System.Windows.Forms.Button();
+            this.button14 = new System.Windows.Forms.Button();
+            this.tabShaders = new System.Windows.Forms.TabPage();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.button17 = new System.Windows.Forms.Button();
+            this.button15 = new System.Windows.Forms.Button();
             this.iIconStrip.SuspendLayout();
             this.iBackPanel.SuspendLayout();
             this.iViews.SuspendLayout();
@@ -158,6 +206,17 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown25)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown26)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown27)).BeginInit();
+            this.tabSpline.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown28)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown29)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown30)).BeginInit();
+            this.panel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown31)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            this.tabEvent.SuspendLayout();
+            this.panel5.SuspendLayout();
+            this.tabShaders.SuspendLayout();
+            this.panel6.SuspendLayout();
             this.SuspendLayout();
             // 
             // iIconStrip
@@ -418,6 +477,9 @@
             this.Modes.Controls.Add(this.tabAssets);
             this.Modes.Controls.Add(this.tabTerrain);
             this.Modes.Controls.Add(this.tabLights);
+            this.Modes.Controls.Add(this.tabSpline);
+            this.Modes.Controls.Add(this.tabEvent);
+            this.Modes.Controls.Add(this.tabShaders);
             this.Modes.Dock = System.Windows.Forms.DockStyle.Top;
             this.Modes.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Modes.Location = new System.Drawing.Point(0, 0);
@@ -635,6 +697,7 @@
             // tabAssets
             // 
             this.tabAssets.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.tabAssets.Controls.Add(this.listView2);
             this.tabAssets.Controls.Add(this.numericUpDown13);
             this.tabAssets.Controls.Add(this.numericUpDown14);
             this.tabAssets.Controls.Add(this.numericUpDown15);
@@ -926,11 +989,18 @@
             // 
             // listView1
             // 
-            this.listView1.Location = new System.Drawing.Point(35, 26);
+            this.listView1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.listView1.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
+            listViewItem25,
+            listViewItem26,
+            listViewItem27,
+            listViewItem28});
+            this.listView1.Location = new System.Drawing.Point(35, 28);
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(126, 126);
+            this.listView1.Size = new System.Drawing.Size(126, 116);
             this.listView1.TabIndex = 65;
             this.listView1.UseCompatibleStateImageBehavior = false;
+            this.listView1.View = System.Windows.Forms.View.List;
             // 
             // numericUpDown6
             // 
@@ -1027,9 +1097,9 @@
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(188, 66);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(41, 17);
+            this.label4.Size = new System.Drawing.Size(45, 17);
             this.label4.TabIndex = 52;
-            this.label4.Text = "Color";
+            this.label4.Text = "Color:";
             // 
             // label5
             // 
@@ -1081,6 +1151,330 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(189, 124);
             this.panel2.TabIndex = 43;
+            // 
+            // tabSpline
+            // 
+            this.tabSpline.Controls.Add(this.listView3);
+            this.tabSpline.Controls.Add(this.numericUpDown1);
+            this.tabSpline.Controls.Add(this.label6);
+            this.tabSpline.Controls.Add(this.comboBox2);
+            this.tabSpline.Controls.Add(this.numericUpDown28);
+            this.tabSpline.Controls.Add(this.numericUpDown29);
+            this.tabSpline.Controls.Add(this.numericUpDown30);
+            this.tabSpline.Controls.Add(this.label10);
+            this.tabSpline.Controls.Add(this.label13);
+            this.tabSpline.Controls.Add(this.button12);
+            this.tabSpline.Controls.Add(this.panel4);
+            this.tabSpline.Location = new System.Drawing.Point(4, 25);
+            this.tabSpline.Name = "tabSpline";
+            this.tabSpline.Padding = new System.Windows.Forms.Padding(3);
+            this.tabSpline.Size = new System.Drawing.Size(742, 158);
+            this.tabSpline.TabIndex = 6;
+            this.tabSpline.Text = "Spline";
+            this.tabSpline.UseVisualStyleBackColor = true;
+            // 
+            // numericUpDown28
+            // 
+            this.numericUpDown28.Location = new System.Drawing.Point(404, 36);
+            this.numericUpDown28.Name = "numericUpDown28";
+            this.numericUpDown28.Size = new System.Drawing.Size(64, 23);
+            this.numericUpDown28.TabIndex = 76;
+            this.numericUpDown28.TabStop = false;
+            // 
+            // numericUpDown29
+            // 
+            this.numericUpDown29.Location = new System.Drawing.Point(333, 36);
+            this.numericUpDown29.Name = "numericUpDown29";
+            this.numericUpDown29.Size = new System.Drawing.Size(64, 23);
+            this.numericUpDown29.TabIndex = 75;
+            this.numericUpDown29.TabStop = false;
+            // 
+            // numericUpDown30
+            // 
+            this.numericUpDown30.Location = new System.Drawing.Point(263, 36);
+            this.numericUpDown30.Name = "numericUpDown30";
+            this.numericUpDown30.Size = new System.Drawing.Size(64, 23);
+            this.numericUpDown30.TabIndex = 74;
+            this.numericUpDown30.TabStop = false;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(188, 66);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(45, 17);
+            this.label10.TabIndex = 71;
+            this.label10.Text = "Color:";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(188, 38);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(62, 17);
+            this.label13.TabIndex = 70;
+            this.label13.Text = "Position:";
+            // 
+            // button12
+            // 
+            this.button12.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.button12.Location = new System.Drawing.Point(531, 84);
+            this.button12.Name = "button12";
+            this.button12.Size = new System.Drawing.Size(122, 23);
+            this.button12.TabIndex = 67;
+            this.button12.TabStop = false;
+            this.button12.Text = "Confirm";
+            this.button12.UseVisualStyleBackColor = false;
+            // 
+            // panel4
+            // 
+            this.panel4.BackColor = System.Drawing.Color.Gainsboro;
+            this.panel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel4.Controls.Add(this.button10);
+            this.panel4.Controls.Add(this.numericUpDown31);
+            this.panel4.Controls.Add(this.label14);
+            this.panel4.Location = new System.Drawing.Point(498, 23);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(189, 124);
+            this.panel4.TabIndex = 69;
+            this.panel4.Paint += new System.Windows.Forms.PaintEventHandler(this.panel4_Paint);
+            // 
+            // numericUpDown31
+            // 
+            this.numericUpDown31.Location = new System.Drawing.Point(32, 31);
+            this.numericUpDown31.Name = "numericUpDown31";
+            this.numericUpDown31.Size = new System.Drawing.Size(122, 23);
+            this.numericUpDown31.TabIndex = 85;
+            this.numericUpDown31.TabStop = false;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(31, 9);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(107, 17);
+            this.label14.TabIndex = 84;
+            this.label14.Text = "Insert Vertex at:";
+            // 
+            // button10
+            // 
+            this.button10.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.button10.Location = new System.Drawing.Point(33, 90);
+            this.button10.Name = "button10";
+            this.button10.Size = new System.Drawing.Size(122, 23);
+            this.button10.TabIndex = 84;
+            this.button10.TabStop = false;
+            this.button10.Text = "Delete";
+            this.button10.UseVisualStyleBackColor = false;
+            // 
+            // comboBox2
+            // 
+            this.comboBox2.FormattingEnabled = true;
+            this.comboBox2.Items.AddRange(new object[] {
+            "White",
+            "Red",
+            "Blue",
+            "Green",
+            "Yellow",
+            "Orange",
+            "Gray"});
+            this.comboBox2.Location = new System.Drawing.Point(263, 63);
+            this.comboBox2.Name = "comboBox2";
+            this.comboBox2.Size = new System.Drawing.Size(121, 24);
+            this.comboBox2.TabIndex = 84;
+            // 
+            // numericUpDown1
+            // 
+            this.numericUpDown1.Location = new System.Drawing.Point(263, 93);
+            this.numericUpDown1.Name = "numericUpDown1";
+            this.numericUpDown1.Size = new System.Drawing.Size(64, 23);
+            this.numericUpDown1.TabIndex = 86;
+            this.numericUpDown1.TabStop = false;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(188, 95);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(56, 17);
+            this.label6.TabIndex = 85;
+            this.label6.Text = "Length:";
+            // 
+            // listView2
+            // 
+            this.listView2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.listView2.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
+            listViewItem29,
+            listViewItem30,
+            listViewItem31,
+            listViewItem32});
+            this.listView2.Location = new System.Drawing.Point(35, 28);
+            this.listView2.Name = "listView2";
+            this.listView2.Size = new System.Drawing.Size(126, 116);
+            this.listView2.TabIndex = 66;
+            this.listView2.UseCompatibleStateImageBehavior = false;
+            this.listView2.View = System.Windows.Forms.View.List;
+            // 
+            // listView3
+            // 
+            this.listView3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.listView3.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
+            listViewItem21,
+            listViewItem22,
+            listViewItem23,
+            listViewItem24});
+            this.listView3.Location = new System.Drawing.Point(35, 28);
+            this.listView3.Name = "listView3";
+            this.listView3.Size = new System.Drawing.Size(126, 116);
+            this.listView3.TabIndex = 87;
+            this.listView3.UseCompatibleStateImageBehavior = false;
+            this.listView3.View = System.Windows.Forms.View.List;
+            // 
+            // tabEvent
+            // 
+            this.tabEvent.Controls.Add(this.listView5);
+            this.tabEvent.Controls.Add(this.listView4);
+            this.tabEvent.Controls.Add(this.panel5);
+            this.tabEvent.Location = new System.Drawing.Point(4, 25);
+            this.tabEvent.Name = "tabEvent";
+            this.tabEvent.Padding = new System.Windows.Forms.Padding(3);
+            this.tabEvent.Size = new System.Drawing.Size(742, 158);
+            this.tabEvent.TabIndex = 7;
+            this.tabEvent.Text = "Events";
+            this.tabEvent.UseVisualStyleBackColor = true;
+            // 
+            // listView4
+            // 
+            this.listView4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.listView4.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
+            listViewItem33,
+            listViewItem34,
+            listViewItem35,
+            listViewItem36});
+            this.listView4.Location = new System.Drawing.Point(35, 28);
+            this.listView4.Name = "listView4";
+            this.listView4.Size = new System.Drawing.Size(126, 116);
+            this.listView4.TabIndex = 98;
+            this.listView4.UseCompatibleStateImageBehavior = false;
+            this.listView4.View = System.Windows.Forms.View.SmallIcon;
+            // 
+            // button11
+            // 
+            this.button11.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.button11.Location = new System.Drawing.Point(15, 62);
+            this.button11.Name = "button11";
+            this.button11.Size = new System.Drawing.Size(122, 23);
+            this.button11.TabIndex = 88;
+            this.button11.TabStop = false;
+            this.button11.Text = "New Event";
+            this.button11.UseVisualStyleBackColor = false;
+            this.button11.Click += new System.EventHandler(this.button11_Click);
+            // 
+            // panel5
+            // 
+            this.panel5.BackColor = System.Drawing.Color.Gainsboro;
+            this.panel5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel5.Controls.Add(this.button14);
+            this.panel5.Controls.Add(this.button13);
+            this.panel5.Controls.Add(this.comboBox3);
+            this.panel5.Controls.Add(this.button11);
+            this.panel5.Location = new System.Drawing.Point(383, 23);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(304, 124);
+            this.panel5.TabIndex = 89;
+            // 
+            // listView5
+            // 
+            this.listView5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.listView5.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
+            listViewItem37,
+            listViewItem38,
+            listViewItem39,
+            listViewItem40});
+            this.listView5.Location = new System.Drawing.Point(167, 28);
+            this.listView5.Name = "listView5";
+            this.listView5.Size = new System.Drawing.Size(126, 116);
+            this.listView5.TabIndex = 99;
+            this.listView5.UseCompatibleStateImageBehavior = false;
+            this.listView5.View = System.Windows.Forms.View.List;
+            // 
+            // comboBox3
+            // 
+            this.comboBox3.FormattingEnabled = true;
+            this.comboBox3.Items.AddRange(new object[] {
+            "Enemy",
+            "Ship Speed",
+            "Pickup"});
+            this.comboBox3.Location = new System.Drawing.Point(15, 32);
+            this.comboBox3.Name = "comboBox3";
+            this.comboBox3.Size = new System.Drawing.Size(121, 24);
+            this.comboBox3.TabIndex = 100;
+            // 
+            // button13
+            // 
+            this.button13.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.button13.Location = new System.Drawing.Point(163, 32);
+            this.button13.Name = "button13";
+            this.button13.Size = new System.Drawing.Size(122, 23);
+            this.button13.TabIndex = 101;
+            this.button13.TabStop = false;
+            this.button13.Text = "Edit";
+            this.button13.UseVisualStyleBackColor = false;
+            // 
+            // button14
+            // 
+            this.button14.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.button14.Location = new System.Drawing.Point(163, 61);
+            this.button14.Name = "button14";
+            this.button14.Size = new System.Drawing.Size(122, 23);
+            this.button14.TabIndex = 102;
+            this.button14.TabStop = false;
+            this.button14.Text = "Delete";
+            this.button14.UseVisualStyleBackColor = false;
+            // 
+            // tabShaders
+            // 
+            this.tabShaders.Controls.Add(this.button17);
+            this.tabShaders.Controls.Add(this.panel6);
+            this.tabShaders.Location = new System.Drawing.Point(4, 25);
+            this.tabShaders.Name = "tabShaders";
+            this.tabShaders.Padding = new System.Windows.Forms.Padding(3);
+            this.tabShaders.Size = new System.Drawing.Size(742, 158);
+            this.tabShaders.TabIndex = 8;
+            this.tabShaders.Text = "Shaders";
+            this.tabShaders.UseVisualStyleBackColor = true;
+            // 
+            // panel6
+            // 
+            this.panel6.BackColor = System.Drawing.Color.Gainsboro;
+            this.panel6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel6.Controls.Add(this.button15);
+            this.panel6.Location = new System.Drawing.Point(498, 23);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(189, 124);
+            this.panel6.TabIndex = 71;
+            // 
+            // button17
+            // 
+            this.button17.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.button17.Location = new System.Drawing.Point(531, 46);
+            this.button17.Name = "button17";
+            this.button17.Size = new System.Drawing.Size(122, 23);
+            this.button17.TabIndex = 72;
+            this.button17.TabStop = false;
+            this.button17.Text = "Refresh";
+            this.button17.UseVisualStyleBackColor = false;
+            // 
+            // button15
+            // 
+            this.button15.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.button15.Location = new System.Drawing.Point(32, 51);
+            this.button15.Name = "button15";
+            this.button15.Size = new System.Drawing.Size(122, 23);
+            this.button15.TabIndex = 73;
+            this.button15.TabStop = false;
+            this.button15.Text = "Edit";
+            this.button15.UseVisualStyleBackColor = false;
             // 
             // LevelEditorInterface
             // 
@@ -1145,6 +1539,19 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown25)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown26)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown27)).EndInit();
+            this.tabSpline.ResumeLayout(false);
+            this.tabSpline.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown28)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown29)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown30)).EndInit();
+            this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown31)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            this.tabEvent.ResumeLayout(false);
+            this.panel5.ResumeLayout(false);
+            this.tabShaders.ResumeLayout(false);
+            this.panel6.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -1232,5 +1639,33 @@
         private System.Windows.Forms.PictureBox iRightGraphic;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TabPage tabSpline;
+        private System.Windows.Forms.NumericUpDown numericUpDown28;
+        private System.Windows.Forms.NumericUpDown numericUpDown29;
+        private System.Windows.Forms.NumericUpDown numericUpDown30;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Button button12;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.NumericUpDown numericUpDown31;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Button button10;
+        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.ListView listView2;
+        private System.Windows.Forms.ListView listView3;
+        private System.Windows.Forms.TabPage tabEvent;
+        private System.Windows.Forms.ListView listView5;
+        private System.Windows.Forms.ListView listView4;
+        private System.Windows.Forms.Panel panel5;
+        private System.Windows.Forms.ComboBox comboBox3;
+        private System.Windows.Forms.Button button11;
+        private System.Windows.Forms.Button button14;
+        private System.Windows.Forms.Button button13;
+        private System.Windows.Forms.TabPage tabShaders;
+        private System.Windows.Forms.Button button17;
+        private System.Windows.Forms.Panel panel6;
+        private System.Windows.Forms.Button button15;
     }
 }

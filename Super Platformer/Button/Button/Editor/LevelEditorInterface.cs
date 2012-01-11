@@ -233,13 +233,6 @@ namespace LevelEditor
         {
             mCurrentMousePosition.X = a_MouseEvent.X;
             mCurrentMousePosition.Y = a_MouseEvent.Y;
-
-            mRectangle.X = a_MouseEvent.X;
-            mRectangle.Y = a_MouseEvent.Y;
-
-            mRectangle.Width = 50;
-            mRectangle.Height = 50;
-
         }
 
         private void TopView_MouseClick(object sender, EventArgs e)
@@ -296,5 +289,15 @@ namespace LevelEditor
             mWorldBox.Update();
         }
         #endregion
+
+        private void panel4_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void button11_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

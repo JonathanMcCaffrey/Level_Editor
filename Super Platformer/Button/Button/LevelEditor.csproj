@@ -114,10 +114,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Editor\StackAssets\RedoStack.cs" />
-    <Compile Include="Editor\StackAssets\UndoStack.cs" />
-    <Compile Include="Editor\StackAssets\SeenAssetStack.cs" />
-    <Compile Include="Editor\StackAssets\TrueAssetStack.cs" />
     <Compile Include="Editor\AssetsWindow.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -125,10 +121,14 @@
       <DependentUpon>AssetsWindow.cs</DependentUpon>
     </Compile>
     <Compile Include="Camera\QuakeCamera.cs" />
+    <Compile Include="Editor\Controls\Content\PerspectiveControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Editor\Controls\GraphicsDeviceControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Editor\Controls\GraphicsDeviceService.cs" />
     <Compile Include="Editor\EditorTexture2D.cs" />
-    <Compile Include="Editor\StackAssets\StackControls\EditorDeleteAction.cs" />
-    <Compile Include="Editor\StackAssets\StackControls\EditorMoveAction.cs" />
-    <Compile Include="Editor\StackAssets\StackControls\IEditorStackAction.cs" />
     <Compile Include="Editor\Storage\BinaryTree.cs" />
     <Compile Include="Editor\Storage\BinaryTreeNode.cs" />
     <Compile Include="Files\Serializers\AssetSerializer.cs" />
@@ -177,6 +177,7 @@
     <Compile Include="Editor\TextureEditorInterface.Designer.cs">
       <DependentUpon>TextureEditorInterface.cs</DependentUpon>
     </Compile>
+    <Compile Include="Editor\Controls\ServiceContainer.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Game.ico" />
@@ -219,6 +220,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Editor\AssetsWindow.resx">
       <DependentUpon>AssetsWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Editor\Controls\GraphicsDeviceControl.resx">
+      <DependentUpon>GraphicsDeviceControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Editor\LevelEditorInterface.resx">
       <DependentUpon>LevelEditorInterface.cs</DependentUpon>
