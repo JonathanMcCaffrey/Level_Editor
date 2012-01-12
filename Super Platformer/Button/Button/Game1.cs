@@ -21,6 +21,7 @@ namespace LevelEditor
         [STAThread]
         static int Main()
         {
+            Application.EnableVisualStyles();
             using (Game1 game = new Game1())
             {
                 game.Run();

@@ -87,7 +87,7 @@ namespace LevelEditor
 
         private void Initialize()
         {
-            mManager = theTileManager;
+         /*   mManager = theTileManager;
             Name = "tile";
             mRenderTarget = new RenderTarget2D(GameFiles.GraphicsDevice, 512, 512);
 
@@ -95,7 +95,7 @@ namespace LevelEditor
 
             mObjFilePath = tempFilePathToAssetDirectory + "Assets\\Asteroid.obj";
             mObjModel = new ObjModel(mObjFilePath);
-            ColorMap = GameFiles.LoadTexture2D("TextureEditorTest");
+            ColorMap = GameFiles.LoadTexture2D("TextureEditorTest");*/
         }
         #endregion
 

@@ -95,7 +95,7 @@ namespace LevelEditor
         #region Methods
         public void UpdateWindow()
         {
-            RenderTarget2D tempTextureToConvert = GameFiles.EditorWorkAreaRenderTexture2D;
+     /*       RenderTarget2D tempTextureToConvert = GameFiles.EditorWorkAreaRenderTexture2D;
 
             MemoryStream tempMemoryStream = new MemoryStream();
 
@@ -124,7 +124,7 @@ namespace LevelEditor
             if (mIsHoveringOnEditor)
             {
                 //   InputManager.Get().MousePositionOnWindow = new Vector2(MousePosition.X - this.Location.X - 16, MousePosition.Y - this.Location.Y -273);
-            }
+            }*/
         }
 
         bool WorldBoxHasChanged()
@@ -296,6 +296,11 @@ namespace LevelEditor
         }
 
         private void button11_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void perspectiveControl1_Click(object sender, EventArgs e)
         {
 
         }

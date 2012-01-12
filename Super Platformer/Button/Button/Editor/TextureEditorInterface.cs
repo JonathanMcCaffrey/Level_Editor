@@ -44,7 +44,7 @@ namespace LevelEditor
         #region Methods
         public void UpdateWindow()
         {
-            tempTextureToConvert = GameFiles.TextureEditorRenderTarget2D;
+         /*   tempTextureToConvert = GameFiles.TextureEditorRenderTarget2D;
 
             MemoryStream tempMemoryStream = new MemoryStream();
 
@@ -59,7 +59,7 @@ namespace LevelEditor
             iTextureGraphic.Image = tempImageToUpdate;
 
             Invalidate();
-
+            */
             /*
 
             if (FileManager.Get().GizmoSelection != null && FileManager.Get().GizmoSelection.Count >= 1)

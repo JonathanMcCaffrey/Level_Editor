@@ -74,10 +74,10 @@ namespace LevelEditor
             mSpriteBatch = GameFiles.SpriteBatch;
             mGraphicDevice = GameFiles.GraphicsDevice;
 
-            mEditorWorkAreaRenderTexture2D = new RenderTarget2D(mGraphicDevice, 728, 561);
+        //    mEditorWorkAreaRenderTexture2D = new RenderTarget2D(mGraphicDevice, 728, 561);
 
-            GameFiles.EditorWorkAreaRenderTexture2D = mEditorWorkAreaRenderTexture2D;
-
+          //  GameFiles.EditorWorkAreaRenderTexture2D = mEditorWorkAreaRenderTexture2D;
+            /*
             gizmo = new GizmoComponent();
 
             mTerrain = new Terrain[4];
@@ -90,17 +90,17 @@ namespace LevelEditor
                 mTerrain[loop + 1] = new Terrain();
                 mTerrain[loop + 1].WorldPosition = new Vector3(2048 * (-loop / 2), 0, 0);
             }
-
-
+            */
+/*
             for (int loop = 0; loop < mTerrain.Length; loop++)
             {
                 mTerrain[loop].Update();
-            }
+            }*/
 
-            mSelectionBox = GameFiles.LoadTexture2D("Selection");
+           /* mSelectionBox = GameFiles.LoadTexture2D("Selection");
             mRectangle = new Rectangle(0, 0, mSelectionBox.Width, mSelectionBox.Height);
 
-            levelEditor.mRectangle = mRectangle;
+            levelEditor.mRectangle = mRectangle;*/
         }
         #endregion
 
@@ -141,7 +141,7 @@ namespace LevelEditor
                 GameFiles.ViewMatrix = GameFiles.RightViewMatrix;
             }
 
-            gizmo.Update(aGameTime);
+          //  gizmo.Update(aGameTime);
 
             for (int loop = 0; loop < mList.Count; loop++)
             {
@@ -182,22 +182,10 @@ namespace LevelEditor
 
             mGraphicDevice.SetRenderTarget(null);
             */
-            mGraphicDevice.Clear(Color.Red);
+          /*  mGraphicDevice.Clear(Color.Red);
 
-            mSpriteBatch.Begin();
-            for (int loop = 0; loop < mTerrain.Length; loop++)
-            {
-                mTerrain[loop].Draw();
-            }
+            levelEditor.WorldBox.Draw();*/
 
-            for (int loop = 0; loop < mList.Count; loop++)
-            {
-                mList[loop].Draw(aGameTime);
-            }
-
-            levelEditor.WorldBox.Draw();
-
-            mSpriteBatch.End();
             /*
 
             mGraphicDevice.SetRenderTarget(null);
