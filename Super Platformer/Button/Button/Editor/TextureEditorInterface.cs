@@ -44,7 +44,7 @@ namespace LevelEditor
         #region Methods
         public void UpdateWindow()
         {
-         /*   tempTextureToConvert = GameFiles.TextureEditorRenderTarget2D;
+            tempTextureToConvert = GameFiles.TextureEditorRenderTarget2D;
 
             MemoryStream tempMemoryStream = new MemoryStream();
 
@@ -59,9 +59,8 @@ namespace LevelEditor
             iTextureGraphic.Image = tempImageToUpdate;
 
             Invalidate();
-            */
+            
             /*
-
             if (FileManager.Get().GizmoSelection != null && FileManager.Get().GizmoSelection.Count >= 1)
             {
                 tempTextureToConvert = FileManager.Get().GizmoSelection[0].RenderTarget;
@@ -81,9 +80,6 @@ namespace LevelEditor
                 Invalidate();
             }
           */
-
-
-
         }
 
         private void InitializeImages()
@@ -142,7 +138,6 @@ namespace LevelEditor
                 mTextureEditor.AddTextureToStack(new EditorTexture2D(GameFiles.LoadTexture2D("Background"), tempMousePosition, Microsoft.Xna.Framework.Color.White));
             }
 
-
             EntityComponetManager.Get().Test();
 
         }
@@ -171,5 +166,10 @@ namespace LevelEditor
             mTextureEditor.Reset();
         }
         #endregion
+
+        private void iTextureGraphic_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

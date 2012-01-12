@@ -10,7 +10,6 @@ using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
 using System.Windows.Forms;
 
-
 #region Program
 namespace LevelEditor
 {
@@ -22,10 +21,18 @@ namespace LevelEditor
         static int Main()
         {
             Application.EnableVisualStyles();
+
+          //  LevelEditorInterface editor = new LevelEditorInterface();
+
+            Game1 game2 = new Game1();
+
+            game2.Run();
+            
+            /*
             using (Game1 game = new Game1())
             {
                 game.Run();
-            }
+            }*/
 
             return 0;
         }
@@ -48,6 +55,7 @@ namespace LevelEditor
         #region Data
         GraphicsDeviceManager mGraphicsDeviceManager;
         Vector2 mScreenDimensions = new Vector2(736, 573);
+        IntPtr mWindowHandle;
         #endregion
 
         #region Construction
@@ -63,8 +71,29 @@ namespace LevelEditor
             DirectoryFinder.FindProjectDirectory();
         }
 
+        public Game1(IntPtr a_WindowHandle)
+        {
+            mWindowHandle = a_WindowHandle;
+
+            IsMouseVisible = true;
+            mGraphicsDeviceManager = new GraphicsDeviceManager(this);
+            Content.RootDirectory = "Content";
+
+            mGraphicsDeviceManager.PreferredBackBufferWidth = (int)mScreenDimensions.X;
+            mGraphicsDeviceManager.PreferredBackBufferHeight = (int)mScreenDimensions.Y;
+
+            DirectoryFinder.FindProjectDirectory();
+        }
+
         protected override void Initialize()
         {
+
+      /*      if (mWindowHandle != null)
+            {
+                GraphicsDevice.PresentationParameters.DeviceWindowHandle = mWindowHandle;
+                GraphicsDevice.Present(null,null,mWindowHandle);
+            }*/
+
             GameFiles.StartGameFileManager(this);
 
             theTileManager = TileManager.Get(this);

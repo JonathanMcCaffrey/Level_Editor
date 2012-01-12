@@ -232,11 +232,11 @@ namespace LevelEditor
 
         public void Draw()
         {
-         /*   GameFiles.GraphicsDevice.RasterizerState = RasterizerState.CullClockwise;
+            GameFiles.GraphicsDevice.RasterizerState = RasterizerState.CullClockwise;
             GameFiles.GraphicsDevice.BlendState = BlendState.Opaque;
             GameFiles.GraphicsDevice.DepthStencilState = DepthStencilState.Default;
 
-            foreach (EffectPass pass in GameFiles.BasicEffect.CurrentTechnique.Passes)
+           /* foreach (EffectPass pass in GameFiles.BasicEffect.CurrentTechnique.Passes)
             {
                // GameFiles.BasicEffect.Alpha = 0.5f;
                 GameFiles.BasicEffect.VertexColorEnabled = true;

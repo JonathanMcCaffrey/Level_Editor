@@ -331,6 +331,7 @@ namespace LevelEditor
             this.iTextureGraphic.Size = new System.Drawing.Size(256, 256);
             this.iTextureGraphic.TabIndex = 0;
             this.iTextureGraphic.TabStop = false;
+            this.iTextureGraphic.Click += new System.EventHandler(this.iTextureGraphic_Click);
             this.iTextureGraphic.MouseClick += new System.Windows.Forms.MouseEventHandler(this.iTextureGraphic_Click);
             this.iTextureGraphic.MouseDown += new System.Windows.Forms.MouseEventHandler(this.iTextureGraphic_MouseDown);
             this.iTextureGraphic.MouseUp += new System.Windows.Forms.MouseEventHandler(this.iTextureGraphic_MouseUp);

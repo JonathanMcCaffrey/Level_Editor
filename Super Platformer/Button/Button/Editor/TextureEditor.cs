@@ -49,8 +49,8 @@ namespace LevelEditor
             mSpriteBatch = GameFiles.SpriteBatch;
             mGraphicsDevice = GameFiles.GraphicsDevice;
 
-       //     mGraphicsDevice.SetRenderTarget(mRenderTarget2D);
-          //  mGraphicsDevice.Clear(Color.Black);
+            mGraphicsDevice.SetRenderTarget(mRenderTarget2D);
+            mGraphicsDevice.Clear(Color.Black);
 
             if (mTexture2D == null)
             {
@@ -58,14 +58,14 @@ namespace LevelEditor
             }
             else
             {
-           /*     mSpriteBatch.Begin();
+                mSpriteBatch.Begin();
                 mSpriteBatch.Draw(mTexture2D, Vector2.Zero, Color.White);
                 mSpriteBatch.End();
                 if (mTexturesToDraw != null)
                 {
                     mTexturesToDraw.Clear();
                 }
-                mGraphicsDevice.SetRenderTarget(null);*/
+                mGraphicsDevice.SetRenderTarget(null);
             }
 
             mTextureEditorInterface.UpdateWindow();

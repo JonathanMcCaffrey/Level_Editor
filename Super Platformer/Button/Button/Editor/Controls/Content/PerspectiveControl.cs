@@ -24,7 +24,6 @@ namespace LevelEditor
         SpriteBatch spriteBatch;
         #endregion
 
-
         public readonly VertexPositionColor[] Vertices =
         {
             new VertexPositionColor(new Vector3(-1, -1, 0), Color.Red),
@@ -35,7 +34,6 @@ namespace LevelEditor
         #region Construction
         protected override void Initialize()
         {
-         //   GameFiles.GraphicsDevice = GraphicsDevice;
             GraphicsDevice.Clear(Microsoft.Xna.Framework.Color.Red);
 
             temp = new WorldBox();
@@ -47,8 +45,6 @@ namespace LevelEditor
             effect = new BasicEffect(GraphicsDevice);
             effect.VertexColorEnabled = true;
 
-            //GameFiles.BasicEffect = effect;
-
             Application.Idle += delegate { Invalidate(); };
         }
         #endregion
@@ -59,15 +55,13 @@ namespace LevelEditor
             GraphicsDevice.Clear(Color.CornflowerBlue);
             GraphicsDevice.RasterizerState = RasterizerState.CullNone;
 
-            spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.Additive, SamplerState.LinearClamp, DepthStencilState.None, RasterizerState.CullNone);
-            
+
             effect.CurrentTechnique.Passes[0].Apply();
             GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleList,
                                              Vertices, 0, 1);
 
-            spriteBatch.Draw(GameFiles.LoadTexture2D("TextureEditorTest"), Vector2.Zero, Color.White);
+           // spriteBatch.Draw(GameFiles.LoadTexture2D("TextureEditorTest"), Vector2.Zero, Color.White);
 
-            spriteBatch.End();
         }
         #endregion
     }

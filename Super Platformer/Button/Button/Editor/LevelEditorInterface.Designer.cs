@@ -161,6 +161,8 @@
             this.button17 = new System.Windows.Forms.Button();
             this.panel6 = new System.Windows.Forms.Panel();
             this.button15 = new System.Windows.Forms.Button();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.panel7 = new System.Windows.Forms.Panel();
             this.iIconStrip.SuspendLayout();
             this.iBackPanel.SuspendLayout();
             this.iViews.SuspendLayout();
@@ -220,6 +222,7 @@
             this.panel5.SuspendLayout();
             this.tabShaders.SuspendLayout();
             this.panel6.SuspendLayout();
+            this.tabPage1.SuspendLayout();
             this.SuspendLayout();
             // 
             // iIconStrip
@@ -380,6 +383,7 @@
             this.iViews.Controls.Add(this.tabFront);
             this.iViews.Controls.Add(this.tabRight);
             this.iViews.Controls.Add(this.tabTest);
+            this.iViews.Controls.Add(this.tabPage1);
             this.iViews.Dock = System.Windows.Forms.DockStyle.Fill;
             this.iViews.Location = new System.Drawing.Point(0, 187);
             this.iViews.Name = "iViews";
@@ -1501,6 +1505,27 @@
             this.button15.Text = "Edit";
             this.button15.UseVisualStyleBackColor = false;
             // 
+            // tabPage1
+            // 
+            this.tabPage1.Controls.Add(this.panel7);
+            this.tabPage1.Location = new System.Drawing.Point(4, 22);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(742, 579);
+            this.tabPage1.TabIndex = 6;
+            this.tabPage1.Text = "tabPage1";
+            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // panel7
+            // 
+            this.panel7.BackColor = System.Drawing.Color.Gray;
+            this.panel7.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel7.Location = new System.Drawing.Point(3, 3);
+            this.panel7.Name = "panel7";
+            this.panel7.Size = new System.Drawing.Size(736, 573);
+            this.panel7.TabIndex = 0;
+            this.panel7.Paint += new System.Windows.Forms.PaintEventHandler(this.panel7_Paint);
+            // 
             // LevelEditorInterface
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1578,6 +1603,7 @@
             this.panel5.ResumeLayout(false);
             this.tabShaders.ResumeLayout(false);
             this.panel6.ResumeLayout(false);
+            this.tabPage1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -1695,5 +1721,7 @@
         private System.Windows.Forms.PictureBox iRightGraphic;
         private System.Windows.Forms.TabPage tabTest;
         private PerspectiveControl perspectiveControl1;
+        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.Panel panel7;
     }
 }

@@ -159,7 +159,7 @@ namespace LevelEditor
                     m_SpriteBatch = new SpriteBatch(GraphicsDevice);
                 }
 
-                return null;// m_SpriteBatch;
+                return  m_SpriteBatch;
             }
         }
 
@@ -212,14 +212,12 @@ namespace LevelEditor
                     Console.WriteLine("{0} is being called before {1} is initialized. {2}.", "mGraphicsDevice", "GameFileManager", ToString());
                 }
 
-                return null;// m_GraphicsDevice;
+                return  m_GraphicsDevice;
             }
+
             set
             {
                 m_GraphicsDevice = value;
-                m_BasicEffect = new BasicEffect(m_GraphicsDevice);
-                m_Effect = m_ContentManager.Load<Effect>("Basic");
-
             }
         }
 
@@ -334,7 +332,7 @@ namespace LevelEditor
         #region Methods
         public static void StartGameFileManager(Game aGame)
         {
-       /*     m_HasBeenIntialized = true;
+            m_HasBeenIntialized = true;
 
             m_Game = aGame;
             m_GraphicsDevice = aGame.GraphicsDevice;
@@ -351,7 +349,7 @@ namespace LevelEditor
             mRightViewMatrix = Matrix.CreateLookAt(new Vector3(1, 1, CAMERA_ORTHO_DISTANCE), Vector3.Zero, Vector3.Up);
 
             mProjectionMatrix = mPerspectiveProjectionMatrix;
-            mViewMatrix = mCameraViewMatrix;*/
+            mViewMatrix = mCameraViewMatrix;
         }
 
         public static SpriteFont LoadFont(string aFilePath)

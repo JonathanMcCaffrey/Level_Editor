@@ -24,6 +24,8 @@ namespace LevelEditor
         }
         #endregion
 
+        public IntPtr WindowHandle;
+
         #region Fields
         private View mSelectedView = View.PERSPECTIVE;
         private bool mIsHoveringOnEditor = false;
@@ -61,6 +63,8 @@ namespace LevelEditor
             mWorldBox.DimensionsZ = (float)iWorldDimensionZ.Value;
 
             mWorldBox.Update();
+
+            WindowHandle = panel7.Handle;
         }
 
         private void InitializeImages()
@@ -95,7 +99,7 @@ namespace LevelEditor
         #region Methods
         public void UpdateWindow()
         {
-     /*       RenderTarget2D tempTextureToConvert = GameFiles.EditorWorkAreaRenderTexture2D;
+            RenderTarget2D tempTextureToConvert = GameFiles.EditorWorkAreaRenderTexture2D;
 
             MemoryStream tempMemoryStream = new MemoryStream();
 
@@ -124,7 +128,7 @@ namespace LevelEditor
             if (mIsHoveringOnEditor)
             {
                 //   InputManager.Get().MousePositionOnWindow = new Vector2(MousePosition.X - this.Location.X - 16, MousePosition.Y - this.Location.Y -273);
-            }*/
+            }
         }
 
         bool WorldBoxHasChanged()
@@ -303,6 +307,11 @@ namespace LevelEditor
         private void perspectiveControl1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void panel7_Paint(object sender, PaintEventArgs e)
+        {
+            
         }
     }
 }
