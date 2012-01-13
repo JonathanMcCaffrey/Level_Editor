@@ -12,7 +12,7 @@ using Microsoft.Xna.Framework.Storage;
 namespace LevelEditor
 {
     //<summary>
-    // Custom Obj Loading for dynamic asset loading at runtime,
+    // Custom Fbx Loading for dynamic asset loading at runtime,
     // to allows users to drag and drop new assets into the editor
     // in realtime. Only used for static assets.
     //</summary>
@@ -35,6 +35,7 @@ namespace LevelEditor
         private Effect m_Effect;
 
         private string m_PathToTexture;
+        private Texture2D m_Texture;
 
         private Vector3[] m_PositionVertex;
         private int[] m_PositionIndex;
@@ -53,6 +54,13 @@ namespace LevelEditor
         private VertexPositionNormalTexture[] m_FbxModel;
         private int[] m_FbxIndex;
         private VertexPositionColor[] m_CollisionBox;
+
+        private int m_PositionVertexCount;
+        private int m_PositionIndexCount;
+        private int m_NormalDataCount;
+        private int m_UvVertexCount;
+        private int m_UvIndexCount;
+        private int m_UvDataCount;
 
         #endregion
 
@@ -84,43 +92,252 @@ namespace LevelEditor
                 m_RawData = m_StreamReader.ReadLine();
 
                 if (m_RawData.StartsWith("Texture:"))
-                { 
-                    // TODO: Finish the parsing logic.
+                {
+                    //TODO: Add a dynamic texture loader.
+                    bool isStillParsing = true;
+                    while (isStillParsing)
+                    {
+                        m_RawData = m_StreamReader.ReadLine();
+                        if (m_RawData.StartsWith("RelativeFilename:"))
+                        {
+                            int valueAt = m_RawData.IndexOf('"');
+                            m_RawData.Remove(0, valueAt);
+                            m_RawData.Remove(m_RawData.Length);
+
+                            m_PathToTexture = m_RawData;
+
+                            isStillParsing = false;
+                        }
+                    }
                 }
                 if (m_RawData.StartsWith("Vertices:"))
-                { 
-                    // TODO: Finish the parsing logic.
+                {
+                    int valueAt = m_RawData.IndexOf('*');
+                    m_RawData.Remove(0, valueAt);
+                    m_RawData.Remove(m_RawData.Length);
+                    m_RawData.Remove(m_RawData.Length);
+
+                    m_PositionVertexCount = (int)System.Convert.ToDouble(m_RawData);
+                    m_PositionVertex = new Vector3[m_PositionVertexCount / 3];
+
+                    bool isStillParsing = true;
+                    while (isStillParsing)
+                    {
+                        m_RawData = m_StreamReader.ReadLine();
+                        if (m_RawData.StartsWith("a:"))
+                        {
+                            valueAt = m_RawData.IndexOf(' ');
+                            m_RawData.Remove(0, valueAt);
+
+                            string[] buffer = new string[m_PositionVertexCount];
+
+                            buffer = m_RawData.Split(',');
+
+                            for (int loop = 0; loop < buffer.Length; loop += 3)
+                            {
+                                m_PositionVertex[loop / 3] = new Vector3(   (float)System.Convert.ToDouble(buffer[loop]),
+                                                                            (float)System.Convert.ToDouble(buffer[loop + 1]),
+                                                                            (float)System.Convert.ToDouble(buffer[loop + 2]));
+                            }
+
+                            isStillParsing = false;
+                        }
+                    }
                 }
                 if (m_RawData.StartsWith("PolygonVertexIndex:"))
-                { 
-                    // TODO: Finish the parsing logic.
+                {
+                    int valueAt = m_RawData.IndexOf('*');
+                    m_RawData.Remove(0, valueAt);
+                    m_RawData.Remove(m_RawData.Length);
+                    m_RawData.Remove(m_RawData.Length);
+
+                    m_PositionIndexCount = (int)System.Convert.ToDouble(m_RawData);
+                    m_PositionIndex = new int[m_PositionIndexCount / 3];
+
+                    bool isStillParsing = true;
+                    while (isStillParsing)
+                    {
+                        m_RawData = m_StreamReader.ReadLine();
+                        if (m_RawData.StartsWith("a:"))
+                        {
+                            valueAt = m_RawData.IndexOf(' ');
+                            m_RawData.Remove(0, valueAt);
+
+                            string[] buffer = new string[m_PositionIndexCount];
+
+                            buffer = m_RawData.Split(',');
+
+                            for (int loop = 0; loop < buffer.Length; loop++)
+                            {
+                                m_PositionIndex[loop] = (int)System.Convert.ToDouble(buffer[loop]);
+                            }
+
+                            isStillParsing = false;
+                        }
+                    }
                 }
                 if (m_RawData.StartsWith("LayerElementNormal:"))
-                { 
-                    // TODO: Finish the parsing logic.
+                {
+                    int valueAt = m_RawData.IndexOf('*');
+                    m_RawData.Remove(0, valueAt);
+                    m_RawData.Remove(m_RawData.Length);
+                    m_RawData.Remove(m_RawData.Length);
+
+                    m_NormalDataCount = (int)System.Convert.ToDouble(m_RawData);
+                    m_NormalData = new Vector3[m_NormalDataCount / 3];
+
+                    bool isStillParsing = true;
+                    while (isStillParsing)
+                    {
+                        m_RawData = m_StreamReader.ReadLine();
+                        if (m_RawData.StartsWith("a:"))
+                        {
+                            valueAt = m_RawData.IndexOf(' ');
+                            m_RawData.Remove(0, valueAt);
+
+                            string[] buffer = new string[m_NormalDataCount];
+
+                            buffer = m_RawData.Split(',');
+
+                            for (int loop = 0; loop < buffer.Length; loop += 3)
+                            {
+                                m_NormalData[loop / 3] = new Vector3(   (float)System.Convert.ToDouble(buffer[loop]), 
+                                                                        (float)System.Convert.ToDouble(buffer[loop + 1]), 
+                                                                        (float)System.Convert.ToDouble(buffer[loop + 2]));
+                            }
+
+                            isStillParsing = false;
+                        }
+                    }
                 }
                 if (m_RawData.StartsWith("LayerElementUv:"))
-                { 
-                    // TODO: Finish the parsing logic.
+                {
+                    int valueAt = m_RawData.IndexOf('*');
+                    m_RawData.Remove(0, valueAt);
+                    m_RawData.Remove(m_RawData.Length);
+                    m_RawData.Remove(m_RawData.Length);
+
+                    m_UvVertexCount = (int)System.Convert.ToDouble(m_RawData);
+                    m_UvVertex = new Vector2[m_UvVertexCount / 2];
+
+                    bool isStillParsing = true;
+                    while (isStillParsing)
+                    {
+                        m_RawData = m_StreamReader.ReadLine();
+                        if (m_RawData.StartsWith("a:"))
+                        {
+                            valueAt = m_RawData.IndexOf(' ');
+                            m_RawData.Remove(0, valueAt);
+
+                            string[] buffer = new string[m_UvVertexCount];
+
+                            buffer = m_RawData.Split(',');
+
+                            for (int loop = 0; loop < buffer.Length; loop += 2)
+                            {
+                                m_UvVertex[loop / 2] = new Vector2( (float)System.Convert.ToDouble(buffer[loop]), 
+                                                                    (float)System.Convert.ToDouble(buffer[loop + 1]));
+                            }
+
+                            isStillParsing = false;
+                        }
+                    }
                 }
                 if (m_RawData.StartsWith("UvIndex:"))
-                { 
-                    // TODO: Finish the parsing logic.
-                }
-                if (m_RawData.StartsWith("\"Lcl Translation\""))
-                { 
-                    // TODO: Finish the parsing logic.
-                }
-                if (m_RawData.StartsWith("\"Lcl Rotation\""))
-                { 
-                    // TODO: Finish the parsing logic.
-                }
-                if (m_RawData.StartsWith("\"Lcl Scale\""))
-                { 
-                    // TODO: Finish the parsing logic.
-                }
+                {
+                    int valueAt = m_RawData.IndexOf('*');
+                    m_RawData.Remove(0, valueAt);
+                    m_RawData.Remove(m_RawData.Length);
+                    m_RawData.Remove(m_RawData.Length);
 
-                // TODO: Organize parsed data.
+                    m_UvIndexCount = (int)System.Convert.ToDouble(m_RawData);
+                    m_UvIndex = new int[m_UvIndexCount];
+
+                    bool isStillParsing = true;
+                    while (isStillParsing)
+                    {
+                        m_RawData = m_StreamReader.ReadLine();
+                        if (m_RawData.StartsWith("a:"))
+                        {
+                            valueAt = m_RawData.IndexOf(' ');
+                            m_RawData.Remove(0, valueAt);
+
+                            string[] buffer = new string[m_UvIndexCount];
+
+                            buffer = m_RawData.Split(',');
+
+                            for (int loop = 0; loop < buffer.Length; loop++)
+                            {
+                                m_UvIndex[loop] = System.Convert.ToInt16(buffer[loop]);
+                            }
+
+                            isStillParsing = false;
+                        }
+                    }
+                }
+                if (m_RawData.StartsWith("P: \"Lcl Translation\""))
+                {
+                    m_RawData = m_RawData.Replace(" P: \"Lcl Translation\", \"Lcl Translation\", \"\", \"A\",", string.Empty);
+
+                    bool isStillParsing = true;
+                    while (isStillParsing)
+                    {
+                        string[] buffer = new string[3];
+
+                        buffer = m_RawData.Split(',');
+
+                        for (int loop = 0; loop < buffer.Length; loop += 2)
+                        {
+                            m_Translation= new Vector3( (float)System.Convert.ToDouble(buffer[loop]),
+                                                        (float)System.Convert.ToDouble(buffer[loop + 1]),
+                                                        (float)System.Convert.ToDouble(buffer[loop + 2]));
+                        }
+
+                        isStillParsing = false;
+                    }
+                }
+                if (m_RawData.StartsWith("P: \"Lcl Rotation\""))
+                {
+                    m_RawData = m_RawData.Replace(" P: \"Lcl Rotation\", \"Lcl Rotation\", \"\", \"A\",", string.Empty);
+
+                    bool isStillParsing = true;
+                    while (isStillParsing)
+                    {
+                        string[] buffer = new string[3];
+
+                        buffer = m_RawData.Split(',');
+
+                        for (int loop = 0; loop < buffer.Length; loop += 2)
+                        {
+                            m_Rotation = new Vector3((float)System.Convert.ToDouble(buffer[loop]),
+                                                        (float)System.Convert.ToDouble(buffer[loop + 1]),
+                                                        (float)System.Convert.ToDouble(buffer[loop + 2]));
+                        }
+
+                        isStillParsing = false;
+                    }
+                }
+                if (m_RawData.StartsWith("P: \"Lcl Scale\""))
+                {
+                    m_RawData = m_RawData.Replace(" P: \"Lcl Scale\", \"Lcl Scale\", \"\", \"A\",", string.Empty);
+
+                    bool isStillParsing = true;
+                    while (isStillParsing)
+                    {
+                        string[] buffer = new string[3];
+
+                        buffer = m_RawData.Split(',');
+
+                        for (int loop = 0; loop < buffer.Length; loop += 2)
+                        {
+                            m_Scale = new Vector3((float)System.Convert.ToDouble(buffer[loop]),
+                                                        (float)System.Convert.ToDouble(buffer[loop + 1]),
+                                                        (float)System.Convert.ToDouble(buffer[loop + 2]));
+                        }
+
+                        isStillParsing = false;
+                    }
+                }
             }
 
             m_StreamReader.Close();
@@ -198,11 +415,21 @@ namespace LevelEditor
             m_CollisionBox[temporaryInt] = new VertexPositionColor(new Vector3(m_HighestPointOnModel.X, m_HighestPointOnModel.Y, m_LowestPointOnModel.Z), temporaryColor); temporaryInt++;
             m_CollisionBox[temporaryInt] = new VertexPositionColor(new Vector3(m_LowestPointOnModel.X, m_HighestPointOnModel.Y, m_LowestPointOnModel.Z), temporaryColor); temporaryInt++;
 
+            m_PositionData = new Vector3[m_PositionIndexCount];
+            for(int loop = 0; loop < m_PositionIndexCount; loop++)
+            {
+                m_PositionData[loop] = m_PositionVertex[m_PositionIndex[loop]];
+            }
 
-            int index = 0;
+            m_UvData = new Vector2[m_UvIndexCount];
+            for(int loop = 0; loop < m_UvIndexCount; loop++)
+            {
+                m_UvData[loop] = m_UvVertex[m_UvIndex[loop]];
+            }
+
             for (int loop = 0; loop < m_FbxModel.Length; loop++)
             {
-                // TODO: Set FbxModel
+                m_FbxModel[loop] = new VertexPositionNormalTexture(m_PositionData[loop], m_NormalData[loop], m_UvData[loop]);
             }
 
             for (int loop = 0; loop < m_FbxIndex.Length; loop++)
@@ -225,11 +452,17 @@ namespace LevelEditor
             GameFiles.GraphicsDevice.BlendState = BlendState.Opaque;
             GameFiles.GraphicsDevice.DepthStencilState = DepthStencilState.Default;
 
+            Matrix defaultMatrix =  Matrix.Identity *
+                                    Matrix.CreateScale(m_Scale) *
+                                    Matrix.CreateRotationX(m_Rotation.X) *
+                                    Matrix.CreateRotationY(m_Rotation.Y) *
+                                    Matrix.CreateRotationZ(m_Rotation.Z) *
+                                    Matrix.CreateTranslation(m_Translation);
 
             foreach (EffectPass pass in m_Effect.CurrentTechnique.Passes)
             {
                 m_Effect.CurrentTechnique = m_Effect.Techniques["Standard"];
-                m_Effect.Parameters["xWorldViewProjectionMatrix"].SetValue(aTile.ScaleMatrix * aTile.RotationMatrix * aTile.WorldMatrix * GameFiles.ViewMatrix * GameFiles.ProjectionMatrix);
+                m_Effect.Parameters["xWorldViewProjectionMatrix"].SetValue(defaultMatrix * aTile.ScaleMatrix * aTile.RotationMatrix * aTile.WorldMatrix * GameFiles.ViewMatrix * GameFiles.ProjectionMatrix);
 
                 m_Effect.Parameters["xColorMap"].SetValue(aTile.Graphic);
 
