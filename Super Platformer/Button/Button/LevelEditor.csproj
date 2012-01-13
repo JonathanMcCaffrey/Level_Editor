@@ -131,7 +131,8 @@
     <Compile Include="Editor\EditorTexture2D.cs" />
     <Compile Include="Editor\Storage\BinaryTree.cs" />
     <Compile Include="Editor\Storage\BinaryTreeNode.cs" />
-    <Compile Include="Files\FbxModel.cs" />
+    <Compile Include="Files\Loaders\FbxModel.cs" />
+    <Compile Include="Files\Loaders\BmpTexture.cs" />
     <Compile Include="Files\Serializers\AssetSerializer.cs" />
     <Compile Include="Entities\Terrain.cs" />
     <Compile Include="Entities\WorldBox.cs" />
@@ -156,7 +157,7 @@
       <DependentUpon>LoadMap.cs</DependentUpon>
     </Compile>
     <Compile Include="Gizmo\Quad.cs" />
-    <Compile Include="Files\ObjModel.cs" />
+    <Compile Include="Files\Loaders\ObjModel.cs" />
     <Compile Include="Editor\SaveMap.cs">
       <SubType>Form</SubType>
     </Compile>

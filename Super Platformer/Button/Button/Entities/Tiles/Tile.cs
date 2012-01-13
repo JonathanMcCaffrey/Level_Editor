@@ -87,7 +87,7 @@ namespace LevelEditor
 
         private void Initialize()
         {
-         /*   mManager = theTileManager;
+            mManager = theTileManager;
             Name = "tile";
             mRenderTarget = new RenderTarget2D(GameFiles.GraphicsDevice, 512, 512);
 
@@ -95,7 +95,7 @@ namespace LevelEditor
 
             mObjFilePath = tempFilePathToAssetDirectory + "Assets\\Asteroid.obj";
             mObjModel = new ObjModel(mObjFilePath);
-            ColorMap = GameFiles.LoadTexture2D("TextureEditorTest");*/
+            ColorMap = GameFiles.LoadTexture2D("TextureEditorTest");
         }
         #endregion
 
@@ -106,7 +106,6 @@ namespace LevelEditor
         public override void Update()
         {
             x += 0.1f;
-
             y++;
 
             mWorldPosition += new Vector3((float)Math.Sin(x) * 20, (float)Math.Sin(x / 3) * 20, (float)Math.Sin(x / 2) * 40);
@@ -118,20 +117,8 @@ namespace LevelEditor
             mRotation.Y -= (float)Math.Sin((float)(new Random(y++).NextDouble())) * (float)(new Random(y++).NextDouble()) * 5.0f;
 
             mScale = new Vector3((float)Math.Sin(x / 3.0f), (float)Math.Sin(x / 5.0f), (float)Math.Sin(x / 4.0f)) + new Vector3(2.0f,2.0f,2.0f);
-
-            if (!once)
-            {
-                GameFiles.GraphicsDevice.SetRenderTarget(mRenderTarget);
-                GameFiles.SpriteBatch.Begin();
-
-                GameFiles.SpriteBatch.Draw(mColorMap, Vector2.Zero, Color.White);
-
-                GameFiles.SpriteBatch.End();
-                GameFiles.GraphicsDevice.SetRenderTarget(null);
-            }
         }
 
-        bool once = false;
         public override void Draw()
         {
             mObjModel.Draw(this);
@@ -149,7 +136,7 @@ namespace LevelEditor
             mSelectionRectangle = new Rectangle((int)temp.X, (int)temp.Y, (int)tempTex.Width, (int)tempTex.Height);
 
             GameFiles.SpriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, SamplerState.LinearWrap, DepthStencilState.None, RasterizerState.CullNone);
-            GameFiles.SpriteBatch.Draw(tempTex, temp, new Rectangle(0, 0, tempTex.Width, tempTex.Height), Color.LimeGreen, 0.0f, Vector2.Zero, scale * 0.5f, SpriteEffects.None, 0.0f);
+            GameFiles.SpriteBatch.Draw(tempTex, temp, new Rectangle(0, 0, tempTex.Width, tempTex.Height), Color.LimeGreen, 0.0f, new Vector2(tempTex.Width/2, tempTex.Height/2), scale * 0.5f, SpriteEffects.None, 0.0f);
             GameFiles.SpriteBatch.End();
 
             GameFiles.SpriteBatch.Begin();
@@ -170,7 +157,6 @@ namespace LevelEditor
             catch
             {
                 Console.WriteLine("{0} has an incorrect filepath of {1}. {2}.", "clonedTile", this.FilePathToModel, this.ToString());
-
             }
         }
 

@@ -38,6 +38,8 @@ namespace LevelEditor
 
         public Microsoft.Xna.Framework.Rectangle mRectangle;
 
+        private Image tempImageToUpdate = null;
+
         #endregion
 
         #region Properties
@@ -97,20 +99,19 @@ namespace LevelEditor
         #endregion
 
         #region Methods
+
+        int x = 0;
         public void UpdateWindow()
         {
             RenderTarget2D tempTextureToConvert = GameFiles.EditorWorkAreaRenderTexture2D;
 
-            MemoryStream tempMemoryStream = new MemoryStream();
+            using (MemoryStream tempMemoryStream = new MemoryStream())
+            {
+                tempTextureToConvert.SaveAsPng(tempMemoryStream, tempTextureToConvert.Width, tempTextureToConvert.Height);
+                tempMemoryStream.Seek(0, SeekOrigin.Begin);
 
-            tempTextureToConvert.SaveAsPng(tempMemoryStream, tempTextureToConvert.Width, tempTextureToConvert.Height);
-            tempMemoryStream.Seek(0, SeekOrigin.Begin);
-
-            Image tempImageToUpdate = System.Drawing.Bitmap.FromStream(tempMemoryStream);
-
-            tempMemoryStream.Close();
-            tempMemoryStream.Dispose();
-            tempMemoryStream = null;
+                tempImageToUpdate = System.Drawing.Bitmap.FromStream(tempMemoryStream);
+            }
 
             iPerspectiveGraphic.Image = tempImageToUpdate;
             iTopGraphic.Image = tempImageToUpdate;
@@ -129,6 +130,7 @@ namespace LevelEditor
             {
                 //   InputManager.Get().MousePositionOnWindow = new Vector2(MousePosition.X - this.Location.X - 16, MousePosition.Y - this.Location.Y -273);
             }
+
         }
 
         bool WorldBoxHasChanged()
@@ -207,7 +209,7 @@ namespace LevelEditor
 
             for (int loop = 0; loop < TileManager.Get().List.Count; loop++)
             {
-                if (TileManager.Get().List[loop].SelectionRectangle.Intersects(new Microsoft.Xna.Framework.Rectangle(mRectangle.X, mRectangle.Y, 1,1)))
+                if (TileManager.Get().List[loop].SelectionRectangle.Intersects(new Microsoft.Xna.Framework.Rectangle(mRectangle.X, mRectangle.Y, 1, 1)))
                 {
                     GameFiles.GizmoSelection[0] = TileManager.Get().List[loop];
                 }
@@ -221,6 +223,8 @@ namespace LevelEditor
 
             mRectangle.Width = 0;
             mRectangle.Height = 0;
+
+            GameFiles.CurrentTile.Clone();
 
             mIsMouseDown = true;
 
@@ -311,7 +315,7 @@ namespace LevelEditor
 
         private void panel7_Paint(object sender, PaintEventArgs e)
         {
-            
+
         }
     }
 }
