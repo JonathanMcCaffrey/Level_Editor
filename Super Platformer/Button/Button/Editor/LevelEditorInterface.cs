@@ -91,9 +91,9 @@ namespace LevelEditor
             itNoise.BackgroundImage = Image.FromFile(tempFilePathToAssetDirectory + "Noise.jpg");
 
             // Placeholder
-            iTopGraphic.Image = Image.FromFile(tempFilePathToAssetDirectory + "Noise.jpg");
-            iFrontGraphic.Image = Image.FromFile(tempFilePathToAssetDirectory + "Flatten.jpg");
-            iRightGraphic.Image = Image.FromFile(tempFilePathToAssetDirectory + "Subtract.jpg");
+           // iTopGraphic.Image = Image.FromFile(tempFilePathToAssetDirectory + "Noise.jpg");
+           // iFrontGraphic.Image = Image.FromFile(tempFilePathToAssetDirectory + "Flatten.jpg");
+           // iRightGraphic.Image = Image.FromFile(tempFilePathToAssetDirectory + "Subtract.jpg");
             // Placeholder
         }
         #endregion
@@ -114,9 +114,6 @@ namespace LevelEditor
             }
 
             iPerspectiveGraphic.Image = tempImageToUpdate;
-            iTopGraphic.Image = tempImageToUpdate;
-            iFrontGraphic.Image = tempImageToUpdate;
-            iRightGraphic.Image = tempImageToUpdate;
 
             Invalidate();
 

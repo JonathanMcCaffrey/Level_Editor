@@ -13,7 +13,7 @@ namespace LevelEditor
 {
     //<summary>
     // Custom Obj Loading for dynamic asset loading at runtime,
-    // to allows users to drag and drop new assets into the editor
+    // to allows users to drag and drop new assets shorto the editor
     // in realtime. Only used for static assets.
     //</summary>
     public class ObjModel
@@ -30,17 +30,17 @@ namespace LevelEditor
         private IndexBuffer mIndexBuffer;
 
         private Vector3[] mColorVerts;
-        private uint mColorVertsCount = 0;
+        private ushort mColorVertsCount = 0;
         private Vector3[] mNormalVerts;
-        private uint mNormalVertsCount = 0;
+        private ushort mNormalVertsCount = 0;
         private Vector2[] mTextureCoordinates;
-        private uint mTextureCoordinatesCount = 0;
+        private ushort mTextureCoordinatesCount = 0;
 
-        private uint[] mFaceList;
-        private uint mFaceCount = 0;
+        private short[] mFaceList;
+        private short mFaceCount = 0;
 
-        private Vector3 mHighestPointOnModel = Vector3.Zero;
-        private Vector3 mLowestPointOnModel = Vector3.Zero;
+        private Vector3 mHighestPoshortOnModel = Vector3.Zero;
+        private Vector3 mLowestPoshortOnModel = Vector3.Zero;
         
         private VertexPositionColor[] mCollisionBox;
         private VertexPositionNormalTexture[] mObjModel;
@@ -62,13 +62,13 @@ namespace LevelEditor
             get { return mDimension; }
         }
 
-        public Vector3 HighestPointOnModel
+        public Vector3 HighestPoshortOnModel
         {
-            get { return mHighestPointOnModel; }
+            get { return mHighestPoshortOnModel; }
         }
         public Vector3 LowestPontOnModel
         {
-            get { return mLowestPointOnModel; }
+            get { return mLowestPoshortOnModel; }
         }
         #endregion
 
@@ -107,7 +107,7 @@ namespace LevelEditor
             mColorVerts = new Vector3[mColorVertsCount];
             mNormalVerts = new Vector3[mNormalVertsCount];
             mTextureCoordinates = new Vector2[mTextureCoordinatesCount];
-            mFaceList = new uint[mFaceCount * 9];
+            mFaceList = new short[mFaceCount * 9];
 
             mColorVertsCount = 0;
             mNormalVertsCount = 0;
@@ -167,17 +167,17 @@ namespace LevelEditor
                     string[] pileTwo = organizedData[2].Split('/');
                     string[] pileThree = organizedData[3].Split('/');
 
-                    mFaceList[mFaceCount] = (uint)Convert.ToDouble(pileOne[0]) - 1;
-                    mFaceList[mFaceCount + 1] = (uint)Convert.ToDouble(pileOne[1]) - 1;
-                    mFaceList[mFaceCount + 2] = (uint)Convert.ToDouble(pileOne[2]) - 1;
+                    mFaceList[mFaceCount] = (short)(Convert.ToDouble(pileOne[0]) - 1);
+                    mFaceList[mFaceCount + 1] = (short)(Convert.ToDouble(pileOne[1]) - 1);
+                    mFaceList[mFaceCount + 2] = (short)(Convert.ToDouble(pileOne[2]) - 1);
 
-                    mFaceList[mFaceCount + 3] = (uint)Convert.ToDouble(pileTwo[0]) - 1;
-                    mFaceList[mFaceCount + 4] = (uint)Convert.ToDouble(pileTwo[1]) - 1;
-                    mFaceList[mFaceCount + 5] = (uint)Convert.ToDouble(pileTwo[2]) - 1;
+                    mFaceList[mFaceCount + 3] = (short)(Convert.ToDouble(pileTwo[0]) - 1);
+                    mFaceList[mFaceCount + 4] = (short)(Convert.ToDouble(pileTwo[1]) - 1);
+                    mFaceList[mFaceCount + 5] = (short)(Convert.ToDouble(pileTwo[2]) - 1);
 
-                    mFaceList[mFaceCount + 6] = (uint)Convert.ToDouble(pileThree[0]) - 1;
-                    mFaceList[mFaceCount + 7] = (uint)Convert.ToDouble(pileThree[1]) - 1;
-                    mFaceList[mFaceCount + 8] = (uint)Convert.ToDouble(pileThree[2]) - 1;
+                    mFaceList[mFaceCount + 6] = (short)(Convert.ToDouble(pileThree[0]) - 1);
+                    mFaceList[mFaceCount + 7] = (short)(Convert.ToDouble(pileThree[1]) - 1);
+                    mFaceList[mFaceCount + 8] = (short)(Convert.ToDouble(pileThree[2]) - 1);
 
                     mFaceCount += 9;
                 }
@@ -185,84 +185,84 @@ namespace LevelEditor
 
             mStreamReader.Close();
 
-            for (uint loop = 0; loop < mColorVerts.Length; loop++)
+            for (ushort loop = 0; loop < mColorVerts.Length; loop++)
             {
-                if (mColorVerts[loop].X > mHighestPointOnModel.X)
+                if (mColorVerts[loop].X > mHighestPoshortOnModel.X)
                 {
-                    mHighestPointOnModel.X = mColorVerts[loop].X;
+                    mHighestPoshortOnModel.X = mColorVerts[loop].X;
                 }
-                if (mColorVerts[loop].Y > mHighestPointOnModel.Y)
+                if (mColorVerts[loop].Y > mHighestPoshortOnModel.Y)
                 {
-                    mHighestPointOnModel.Y = mColorVerts[loop].Y;
+                    mHighestPoshortOnModel.Y = mColorVerts[loop].Y;
                 }
-                if (mColorVerts[loop].Z > mHighestPointOnModel.Z)
+                if (mColorVerts[loop].Z > mHighestPoshortOnModel.Z)
                 {
-                    mHighestPointOnModel.Z = mColorVerts[loop].Z;
+                    mHighestPoshortOnModel.Z = mColorVerts[loop].Z;
                 }
 
-                if (mColorVerts[loop].X < mLowestPointOnModel.X)
+                if (mColorVerts[loop].X < mLowestPoshortOnModel.X)
                 {
-                    mLowestPointOnModel.X = mColorVerts[loop].X;
+                    mLowestPoshortOnModel.X = mColorVerts[loop].X;
                 }
-                if (mColorVerts[loop].Y < mLowestPointOnModel.Y)
+                if (mColorVerts[loop].Y < mLowestPoshortOnModel.Y)
                 {
-                    mLowestPointOnModel.Y = mColorVerts[loop].Y;
+                    mLowestPoshortOnModel.Y = mColorVerts[loop].Y;
                 }
-                if (mColorVerts[loop].Z < mLowestPointOnModel.Z)
+                if (mColorVerts[loop].Z < mLowestPoshortOnModel.Z)
                 {
-                    mLowestPointOnModel.Z = mColorVerts[loop].Z;
+                    mLowestPoshortOnModel.Z = mColorVerts[loop].Z;
                 }
             }
 
-            mDimension = new Vector3(mHighestPointOnModel.X - mLowestPointOnModel.X, mHighestPointOnModel.Y - mLowestPointOnModel.Y, mHighestPointOnModel.Z - mLowestPointOnModel.Z);
+            mDimension = new Vector3(mHighestPoshortOnModel.X - mLowestPoshortOnModel.X, mHighestPoshortOnModel.Y - mLowestPoshortOnModel.Y, mHighestPoshortOnModel.Z - mLowestPoshortOnModel.Z);
 
             mCollisionBox = new VertexPositionColor[30];
 
             Color temporaryColor = Color.Red;
-            int temporaryInt = 0;
+            short temporaryshort = 0;
 
-            mCollisionBox[temporaryInt] = new VertexPositionColor(new Vector3(mLowestPointOnModel.X, mLowestPointOnModel.Y, mLowestPointOnModel.Z), temporaryColor); temporaryInt++;
-            mCollisionBox[temporaryInt] = new VertexPositionColor(new Vector3(mLowestPointOnModel.X, mHighestPointOnModel.Y, mLowestPointOnModel.Z), temporaryColor); temporaryInt++;
-            mCollisionBox[temporaryInt] = new VertexPositionColor(new Vector3(mHighestPointOnModel.X, mHighestPointOnModel.Y, mLowestPointOnModel.Z), temporaryColor); temporaryInt++;
-            mCollisionBox[temporaryInt] = new VertexPositionColor(new Vector3(mHighestPointOnModel.X, mLowestPointOnModel.Y, mLowestPointOnModel.Z), temporaryColor); temporaryInt++;
-            mCollisionBox[temporaryInt] = new VertexPositionColor(new Vector3(mLowestPointOnModel.X, mLowestPointOnModel.Y, mLowestPointOnModel.Z), temporaryColor); temporaryInt++;
+            mCollisionBox[temporaryshort] = new VertexPositionColor(new Vector3(mLowestPoshortOnModel.X, mLowestPoshortOnModel.Y, mLowestPoshortOnModel.Z), temporaryColor); temporaryshort++;
+            mCollisionBox[temporaryshort] = new VertexPositionColor(new Vector3(mLowestPoshortOnModel.X, mHighestPoshortOnModel.Y, mLowestPoshortOnModel.Z), temporaryColor); temporaryshort++;
+            mCollisionBox[temporaryshort] = new VertexPositionColor(new Vector3(mHighestPoshortOnModel.X, mHighestPoshortOnModel.Y, mLowestPoshortOnModel.Z), temporaryColor); temporaryshort++;
+            mCollisionBox[temporaryshort] = new VertexPositionColor(new Vector3(mHighestPoshortOnModel.X, mLowestPoshortOnModel.Y, mLowestPoshortOnModel.Z), temporaryColor); temporaryshort++;
+            mCollisionBox[temporaryshort] = new VertexPositionColor(new Vector3(mLowestPoshortOnModel.X, mLowestPoshortOnModel.Y, mLowestPoshortOnModel.Z), temporaryColor); temporaryshort++;
 
-            mCollisionBox[temporaryInt] = new VertexPositionColor(new Vector3(mLowestPointOnModel.X, mLowestPointOnModel.Y, mHighestPointOnModel.Z), temporaryColor); temporaryInt++;
-            mCollisionBox[temporaryInt] = new VertexPositionColor(new Vector3(mLowestPointOnModel.X, mHighestPointOnModel.Y, mHighestPointOnModel.Z), temporaryColor); temporaryInt++;
-            mCollisionBox[temporaryInt] = new VertexPositionColor(new Vector3(mHighestPointOnModel.X, mHighestPointOnModel.Y, mHighestPointOnModel.Z), temporaryColor); temporaryInt++;
-            mCollisionBox[temporaryInt] = new VertexPositionColor(new Vector3(mHighestPointOnModel.X, mLowestPointOnModel.Y, mHighestPointOnModel.Z), temporaryColor); temporaryInt++;
-            mCollisionBox[temporaryInt] = new VertexPositionColor(new Vector3(mLowestPointOnModel.X, mLowestPointOnModel.Y, mHighestPointOnModel.Z), temporaryColor); temporaryInt++;
-
-
-            mCollisionBox[temporaryInt] = new VertexPositionColor(new Vector3(mLowestPointOnModel.X, mLowestPointOnModel.Y, mLowestPointOnModel.Z), temporaryColor); temporaryInt++;
-            mCollisionBox[temporaryInt] = new VertexPositionColor(new Vector3(mLowestPointOnModel.X, mLowestPointOnModel.Y, mHighestPointOnModel.Z), temporaryColor); temporaryInt++;
-            mCollisionBox[temporaryInt] = new VertexPositionColor(new Vector3(mLowestPointOnModel.X, mHighestPointOnModel.Y, mHighestPointOnModel.Z), temporaryColor); temporaryInt++;
-            mCollisionBox[temporaryInt] = new VertexPositionColor(new Vector3(mLowestPointOnModel.X, mHighestPointOnModel.Y, mLowestPointOnModel.Z), temporaryColor); temporaryInt++;
-            mCollisionBox[temporaryInt] = new VertexPositionColor(new Vector3(mLowestPointOnModel.X, mLowestPointOnModel.Y, mLowestPointOnModel.Z), temporaryColor); temporaryInt++;
-
-            mCollisionBox[temporaryInt] = new VertexPositionColor(new Vector3(mHighestPointOnModel.X, mLowestPointOnModel.Y, mLowestPointOnModel.Z), temporaryColor); temporaryInt++;
-            mCollisionBox[temporaryInt] = new VertexPositionColor(new Vector3(mHighestPointOnModel.X, mLowestPointOnModel.Y, mHighestPointOnModel.Z), temporaryColor); temporaryInt++;
-            mCollisionBox[temporaryInt] = new VertexPositionColor(new Vector3(mHighestPointOnModel.X, mHighestPointOnModel.Y, mHighestPointOnModel.Z), temporaryColor); temporaryInt++;
-            mCollisionBox[temporaryInt] = new VertexPositionColor(new Vector3(mHighestPointOnModel.X, mHighestPointOnModel.Y, mLowestPointOnModel.Z), temporaryColor); temporaryInt++;
-            mCollisionBox[temporaryInt] = new VertexPositionColor(new Vector3(mHighestPointOnModel.X, mLowestPointOnModel.Y, mLowestPointOnModel.Z), temporaryColor); temporaryInt++;
+            mCollisionBox[temporaryshort] = new VertexPositionColor(new Vector3(mLowestPoshortOnModel.X, mLowestPoshortOnModel.Y, mHighestPoshortOnModel.Z), temporaryColor); temporaryshort++;
+            mCollisionBox[temporaryshort] = new VertexPositionColor(new Vector3(mLowestPoshortOnModel.X, mHighestPoshortOnModel.Y, mHighestPoshortOnModel.Z), temporaryColor); temporaryshort++;
+            mCollisionBox[temporaryshort] = new VertexPositionColor(new Vector3(mHighestPoshortOnModel.X, mHighestPoshortOnModel.Y, mHighestPoshortOnModel.Z), temporaryColor); temporaryshort++;
+            mCollisionBox[temporaryshort] = new VertexPositionColor(new Vector3(mHighestPoshortOnModel.X, mLowestPoshortOnModel.Y, mHighestPoshortOnModel.Z), temporaryColor); temporaryshort++;
+            mCollisionBox[temporaryshort] = new VertexPositionColor(new Vector3(mLowestPoshortOnModel.X, mLowestPoshortOnModel.Y, mHighestPoshortOnModel.Z), temporaryColor); temporaryshort++;
 
 
-            mCollisionBox[temporaryInt] = new VertexPositionColor(new Vector3(mLowestPointOnModel.X, mLowestPointOnModel.Y, mLowestPointOnModel.Z), temporaryColor); temporaryInt++;
-            mCollisionBox[temporaryInt] = new VertexPositionColor(new Vector3(mLowestPointOnModel.X, mLowestPointOnModel.Y, mHighestPointOnModel.Z), temporaryColor); temporaryInt++;
-            mCollisionBox[temporaryInt] = new VertexPositionColor(new Vector3(mHighestPointOnModel.X, mLowestPointOnModel.Y, mHighestPointOnModel.Z), temporaryColor); temporaryInt++;
-            mCollisionBox[temporaryInt] = new VertexPositionColor(new Vector3(mHighestPointOnModel.X, mLowestPointOnModel.Y, mLowestPointOnModel.Z), temporaryColor); temporaryInt++;
-            mCollisionBox[temporaryInt] = new VertexPositionColor(new Vector3(mLowestPointOnModel.X, mLowestPointOnModel.Y, mLowestPointOnModel.Z), temporaryColor); temporaryInt++;
+            mCollisionBox[temporaryshort] = new VertexPositionColor(new Vector3(mLowestPoshortOnModel.X, mLowestPoshortOnModel.Y, mLowestPoshortOnModel.Z), temporaryColor); temporaryshort++;
+            mCollisionBox[temporaryshort] = new VertexPositionColor(new Vector3(mLowestPoshortOnModel.X, mLowestPoshortOnModel.Y, mHighestPoshortOnModel.Z), temporaryColor); temporaryshort++;
+            mCollisionBox[temporaryshort] = new VertexPositionColor(new Vector3(mLowestPoshortOnModel.X, mHighestPoshortOnModel.Y, mHighestPoshortOnModel.Z), temporaryColor); temporaryshort++;
+            mCollisionBox[temporaryshort] = new VertexPositionColor(new Vector3(mLowestPoshortOnModel.X, mHighestPoshortOnModel.Y, mLowestPoshortOnModel.Z), temporaryColor); temporaryshort++;
+            mCollisionBox[temporaryshort] = new VertexPositionColor(new Vector3(mLowestPoshortOnModel.X, mLowestPoshortOnModel.Y, mLowestPoshortOnModel.Z), temporaryColor); temporaryshort++;
 
-            mCollisionBox[temporaryInt] = new VertexPositionColor(new Vector3(mLowestPointOnModel.X, mHighestPointOnModel.Y, mLowestPointOnModel.Z), temporaryColor); temporaryInt++;
-            mCollisionBox[temporaryInt] = new VertexPositionColor(new Vector3(mLowestPointOnModel.X, mHighestPointOnModel.Y, mHighestPointOnModel.Z), temporaryColor); temporaryInt++;
-            mCollisionBox[temporaryInt] = new VertexPositionColor(new Vector3(mHighestPointOnModel.X, mHighestPointOnModel.Y, mHighestPointOnModel.Z), temporaryColor); temporaryInt++;
-            mCollisionBox[temporaryInt] = new VertexPositionColor(new Vector3(mHighestPointOnModel.X, mHighestPointOnModel.Y, mLowestPointOnModel.Z), temporaryColor); temporaryInt++;
-            mCollisionBox[temporaryInt] = new VertexPositionColor(new Vector3(mLowestPointOnModel.X, mHighestPointOnModel.Y, mLowestPointOnModel.Z), temporaryColor); temporaryInt++;
+            mCollisionBox[temporaryshort] = new VertexPositionColor(new Vector3(mHighestPoshortOnModel.X, mLowestPoshortOnModel.Y, mLowestPoshortOnModel.Z), temporaryColor); temporaryshort++;
+            mCollisionBox[temporaryshort] = new VertexPositionColor(new Vector3(mHighestPoshortOnModel.X, mLowestPoshortOnModel.Y, mHighestPoshortOnModel.Z), temporaryColor); temporaryshort++;
+            mCollisionBox[temporaryshort] = new VertexPositionColor(new Vector3(mHighestPoshortOnModel.X, mHighestPoshortOnModel.Y, mHighestPoshortOnModel.Z), temporaryColor); temporaryshort++;
+            mCollisionBox[temporaryshort] = new VertexPositionColor(new Vector3(mHighestPoshortOnModel.X, mHighestPoshortOnModel.Y, mLowestPoshortOnModel.Z), temporaryColor); temporaryshort++;
+            mCollisionBox[temporaryshort] = new VertexPositionColor(new Vector3(mHighestPoshortOnModel.X, mLowestPoshortOnModel.Y, mLowestPoshortOnModel.Z), temporaryColor); temporaryshort++;
 
+
+            mCollisionBox[temporaryshort] = new VertexPositionColor(new Vector3(mLowestPoshortOnModel.X, mLowestPoshortOnModel.Y, mLowestPoshortOnModel.Z), temporaryColor); temporaryshort++;
+            mCollisionBox[temporaryshort] = new VertexPositionColor(new Vector3(mLowestPoshortOnModel.X, mLowestPoshortOnModel.Y, mHighestPoshortOnModel.Z), temporaryColor); temporaryshort++;
+            mCollisionBox[temporaryshort] = new VertexPositionColor(new Vector3(mHighestPoshortOnModel.X, mLowestPoshortOnModel.Y, mHighestPoshortOnModel.Z), temporaryColor); temporaryshort++;
+            mCollisionBox[temporaryshort] = new VertexPositionColor(new Vector3(mHighestPoshortOnModel.X, mLowestPoshortOnModel.Y, mLowestPoshortOnModel.Z), temporaryColor); temporaryshort++;
+            mCollisionBox[temporaryshort] = new VertexPositionColor(new Vector3(mLowestPoshortOnModel.X, mLowestPoshortOnModel.Y, mLowestPoshortOnModel.Z), temporaryColor); temporaryshort++;
+
+            mCollisionBox[temporaryshort] = new VertexPositionColor(new Vector3(mLowestPoshortOnModel.X, mHighestPoshortOnModel.Y, mLowestPoshortOnModel.Z), temporaryColor); temporaryshort++;
+            mCollisionBox[temporaryshort] = new VertexPositionColor(new Vector3(mLowestPoshortOnModel.X, mHighestPoshortOnModel.Y, mHighestPoshortOnModel.Z), temporaryColor); temporaryshort++;
+            mCollisionBox[temporaryshort] = new VertexPositionColor(new Vector3(mHighestPoshortOnModel.X, mHighestPoshortOnModel.Y, mHighestPoshortOnModel.Z), temporaryColor); temporaryshort++;
+            mCollisionBox[temporaryshort] = new VertexPositionColor(new Vector3(mHighestPoshortOnModel.X, mHighestPoshortOnModel.Y, mLowestPoshortOnModel.Z), temporaryColor); temporaryshort++;
+            mCollisionBox[temporaryshort] = new VertexPositionColor(new Vector3(mLowestPoshortOnModel.X, mHighestPoshortOnModel.Y, mLowestPoshortOnModel.Z), temporaryColor); temporaryshort++;
+             
             mObjModel = new VertexPositionNormalTexture[mFaceList.Length / 3];
 
-            int index = 0;
-            for (int loop = 0; loop < mObjModel.Length; loop++)
+            short index = 0;
+            for (short loop = 0; loop < mObjModel.Length; loop++)
             {
                 mObjModel[loop] = new VertexPositionNormalTexture(mColorVerts[mFaceList[index]], mNormalVerts[mFaceList[index + 2]], mTextureCoordinates[mFaceList[index + 1]]);
                 index += 3;
@@ -270,7 +270,7 @@ namespace LevelEditor
 
             mVertexBuffer = new VertexBuffer(GameFiles.GraphicsDevice, VertexPositionNormalTexture.VertexDeclaration, mObjModel.Length, BufferUsage.WriteOnly);
             mVertexBuffer.SetData(mObjModel);
-            mIndexBuffer = new IndexBuffer(GameFiles.GraphicsDevice, typeof(int), mFaceList.Length, BufferUsage.None);
+            mIndexBuffer = new IndexBuffer(GameFiles.GraphicsDevice, typeof(short), mFaceList.Length, BufferUsage.None);
             mIndexBuffer.SetData(mFaceList);
         }
         #endregion

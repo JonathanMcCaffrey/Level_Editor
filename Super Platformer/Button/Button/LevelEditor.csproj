@@ -121,6 +121,9 @@
       <DependentUpon>AssetsWindow.cs</DependentUpon>
     </Compile>
     <Compile Include="Camera\QuakeCamera.cs" />
+    <Compile Include="Editor\Controls\Content\LevelEditorControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Editor\Controls\Content\PerspectiveControl.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -129,8 +132,6 @@
     </Compile>
     <Compile Include="Editor\Controls\GraphicsDeviceService.cs" />
     <Compile Include="Editor\EditorTexture2D.cs" />
-    <Compile Include="Editor\Storage\BinaryTree.cs" />
-    <Compile Include="Editor\Storage\BinaryTreeNode.cs" />
     <Compile Include="Files\Loaders\FbxModel.cs" />
     <Compile Include="Files\Loaders\BmpTexture.cs" />
     <Compile Include="Files\Serializers\AssetSerializer.cs" />

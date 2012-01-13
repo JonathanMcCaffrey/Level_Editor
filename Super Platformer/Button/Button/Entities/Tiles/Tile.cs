@@ -93,7 +93,7 @@ namespace LevelEditor
 
             string tempFilePathToAssetDirectory = DirectoryFinder.FindContentDirectory();
 
-            mObjFilePath = tempFilePathToAssetDirectory + "Assets\\Asteroid.obj";
+            mObjFilePath = tempFilePathToAssetDirectory + "Assets\\Monolith.obj";
             mObjModel = new ObjModel(mObjFilePath);
             ColorMap = GameFiles.LoadTexture2D("TextureEditorTest");
         }
